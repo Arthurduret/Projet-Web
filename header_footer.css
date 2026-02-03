@@ -5,7 +5,6 @@
     box-sizing: border-box;
     font: bold;
     font-size: large;
-    font-style: italic;
 }
 
 html, body {
@@ -14,7 +13,7 @@ html, body {
 }
 
 body {
-display: flex;
+    display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
@@ -32,6 +31,7 @@ header {
     padding: 1rem 10%;
     background-color: #ffffff;
     width: 100%;
+    font-style: italic;
 }
 
 header nav {
@@ -74,11 +74,11 @@ header nav a:hover {
     color: white !important;
 }
 
-/* Taille de l'icône profil */
+
 .btn-compte img {
-    height: 1.2rem;          /* Même taille que le texte pour un alignement parfait */
+    height: 1.2rem;          
     width: auto;
-    display: block;          /* Supprime l'espace vide sous l'image */
+    display: block;          
 }
 
 
@@ -90,6 +90,7 @@ footer {
     flex-direction: row;
     gap: 2rem;
     padding: 0.25rem;
+    font-style: italic;
 }
 
 footer a {
@@ -104,3 +105,30 @@ footer p {
     color: #ffffff;
 }
 
+
+
+.pages_footeur {
+    max-width: 800px;      /* Empêche le texte de trop s'étaler */
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Ajoute ombre */
+    border-radius: 8px;
+    line-height: 1.6;      /* Augmente l'espace entre les lignes */
+    color: #333;
+}
+
+.pages_footeur h1 {
+    color: #293771;
+    font-size: larger;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.pages_footeur h2 {
+    color: #f17526;        
+    font-size: large;
+    margin-top: 25px;
+    border-bottom: 2px solid #f8f8f8;
+    padding-bottom: 10px;
+}
