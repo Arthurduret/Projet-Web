@@ -9,6 +9,7 @@ main {
 }
 
 .login-container {
+    position: relative;
     background: white;
     padding: 40px;
     border-radius: 30px;
