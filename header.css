@@ -1,0 +1,67 @@
+/* Reset de base pour éviter les marges blanches sur les côtés */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: bold;
+    font-size: large;
+    font-style: italic;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Centre tout le bloc (Logo + Nav) dans la page */
+    align-items: center;     /* Centre verticalement le logo et la nav */
+    gap: 5rem;               /* Espace entre le logo et le début du menu */
+    padding: 1rem 10%;
+    background-color: #ffffff;
+    width: 100%;
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;     /* Aligne verticalement les liens et le bouton bleu */
+    gap: 4rem;               /* Espace fixe entre chaque lien */
+    white-space: nowrap;
+    flex-wrap: nowrap;
+}
+
+/* Style des liens classiques */
+header a {
+    text-decoration: none;
+    color: #293771;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.5s;
+}
+
+header nav a:hover {
+    color: #f17526;
+}
+
+/* Style du bouton "Mon compte" */
+.btn-compte {
+    display: inline-flex;    /* Crucial pour aligner l'icône et le texte */
+    align-items: center;     /* Centre l'icône verticalement par rapport au texte */
+    justify-content: center;
+    gap: 1rem;               /* Espace entre l'image et le mot "Mon compte" */
+    background-color: #293771;
+    color: white !important; /* Force le texte en blanc même au survol */
+    padding: 0.8rem 1.1rem;
+    border-radius: 3rem;     /* Forme pilule */
+    transition: background-color 0.3s;
+}
+
+.btn-compte:hover {
+    background-color: #f17526;
+    color: white !important;
+}
+
+/* Taille de l'icône profil */
+.btn-compte img {
+    height: 1.2rem;          /* Même taille que le texte pour un alignement parfait */
+    width: auto;
+    display: block;          /* Supprime l'espace vide sous l'image */
+}
