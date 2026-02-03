@@ -3,10 +3,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     background-color: #f4f4f4;
     font-family: sans-serif;
     margin: 0;
+    
 }
 
 .login-container {
@@ -17,6 +17,7 @@ body {
     width: 100%;
     max-width: 400px;
     text-align: center;
+    margin-top: 50px;
 }
 
 h1 {
@@ -51,7 +52,7 @@ h1 {
 
 .input-group {
     position: relative;
-    margin-bottom: 25px;
+    margin-bottom: 25px;/*entre les cases pour ecrire*/
     text-align: left;
 }
 
