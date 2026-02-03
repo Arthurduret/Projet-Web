@@ -1,4 +1,4 @@
-body {
+main {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,7 +6,6 @@ body {
     background-color: #f4f4f4;
     font-family: sans-serif;
     margin: 0;
-    
 }
 
 .login-container {
@@ -17,7 +16,6 @@ body {
     width: 100%;
     max-width: 400px;
     text-align: center;
-    margin-top: 50px;
 }
 
 h1 {

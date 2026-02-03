@@ -8,6 +8,21 @@
     font-style: italic;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1; 
+}
+
 header {
     display: flex;
     flex-direction: row;
@@ -65,3 +80,27 @@ header nav a:hover {
     width: auto;
     display: block;          /* Supprime l'espace vide sous l'image */
 }
+
+
+footer {
+    display: flex;
+    background-color: #293771;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 0.25rem;
+}
+
+footer a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.5s;
+}
+
+footer p {
+    color: #ffffff;
+}
+
