@@ -91,3 +91,11 @@ button {
 button:hover {
     background-color: #606dd1;
 }
+
+.Réinitialiser {
+
+    font-size: 25px;
+    margin-bottom: 40px;
+    font-weight: bold;
+   
+}
