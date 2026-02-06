@@ -1,0 +1,135 @@
+/* 1. VARIABLES ET RESET */
+:root {
+    --primary-blue: #1A2B56;
+    --accent-orange: #F58220;
+    --white: #FFFFFF;
+    --light-grey: #F8F9FA;
+    --text-dark: #333333;
+    --font-main: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--light-grey);
+}
+
+/* 2. LA SECTION HERO */
+.Hero {
+    position: relative;
+    height: 450px; /* Taille ajustée pour ton visuel */
+    margin: 40px 10%; /* Plus d'espace sur les côtés pour laisser la barre respirer */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centre le texte verticalement */
+    align-items: center;
+    overflow: visible; /* CRUCIAL pour que la barre dépasse */
+}
+
+.Hero > div:first-child img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    border-radius: 40px; /* Arrondi prononcé comme sur ton modèle */
+    filter: brightness(60%);
+}
+
+/* 3. CONTENU ET BARRE */
+.content-wrapper {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    height: 100%; /* Prend toute la hauteur pour placer la barre en bas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    height: 90px; /* Barre plus épaisse comme sur ton modèle */
+    border-radius: 30px; /* Angles moins arrondis, plus rectangulaires */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    border: 1px solid #ddd;
+
+    /* POSITIONNEMENT "À CHEVAL" ET PLUS LARGE */
+    position: absolute;
+    bottom: -45px; /* Moitié de la hauteur (90/2) */
+    width: 110%; /* Dépasse de l'image */
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 10;
+}
+
+/* --- COMPARTIMENTS DE SAISIE --- */
+.input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px; /* Plus d'espace pour respirer */
+    transition: all 0.3s ease;
+}
+
+/* Trait de séparation vertical élégant */
+.input-group:first-of-type {
+    border-right: 1px solid #eee; /* Gris très clair */
+}
+
+/* Style des étiquettes (Lieux, Domaine) */
+.input-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 5px;
+    text-transform: none; /* Garde la casse naturelle */
+}
+
+/* Style des champs de texte */
+.input-group input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.1rem; /* Texte plus grand et lisible */
+    color: #444;
+    padding: 5px 0;
+}
+
+/* Style du texte d'exemple (Placeholder) */
+.input-group input::placeholder {
+    color: #bbb;
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* --- LE BOUTON LOUPE --- */
+.btn-search {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animation "rebond" */
+}
+
+.btn-search:hover {
+    transform: scale(1.15); /* Effet d'interaction pro */
+}
+
+.btn-search img {
+    width: 55px; /* Taille optimale pour ton bouton */
+    height: auto;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Légère ombre sur l'icône */
+}
