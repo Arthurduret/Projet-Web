@@ -9,24 +9,7 @@
     <link rel="stylesheet" href="header_footer.css">
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo">
-            <img src="images/LogoJobeo.png" alt="Logo" width="90" height="50">
-        </a>
-
-        <nav>
-            <a href="#entreprises" class="hover:underline focus:outline-none focus:ring-2 focus:ring-orange-500">Nos Entreprises</a>
-            <a href="a_propos.html">A propos de nous</a>
-            <a href="offres_emplois.html">Offres d'emplois</a>
-            <a href="favoris.html">Favoris</a>
-
-            <a href="identifier.html" class="btn-compte">
-                <img src="images/logo_profil.png" alt="logo_profil" width="50" height="50">
-                    Mon compte 
-            </a>
-        </nav>
-    </header>
-
+    <?php include 'header.php'; ?> 
     <main>
         <section class="Hero">
             <div><img src="images/Gemini_Generated_Image_pn6zbxpn6zbxpn6z.png" alt="Image d'accueil"></div>
