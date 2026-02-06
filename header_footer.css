@@ -20,6 +20,9 @@ body {
 
 main {
     flex: 1; 
+    display: flex;           /* Active Flexbox à l'intérieur du main */
+    align-items: center;     /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement */
 }
 
 header {
@@ -49,7 +52,7 @@ header a {
     color: #293771;
     font-weight: bold;
     font-size: 1.1rem;
-    transition: color 0.5s;
+    transition: color 0.4s;
 }
 
 header nav a:hover {
@@ -98,7 +101,11 @@ footer a {
     color: #ffffff;
     font-weight: bold;
     font-size: 1.1rem;
-    transition: color 0.5s;
+    transition: color 0.4s;
+}
+
+footer a:hover {
+    color: #f17526;
 }
 
 footer p {
@@ -109,10 +116,10 @@ footer p {
 
 .pages_footeur {
     max-width: 800px;      /* Empêche le texte de trop s'étaler */
-    margin: 50px auto;
-    padding: 40px;
+    margin: auto;
+    padding: 3rem;
     background-color: #fff;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Ajoute ombre */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Ajoute ombre */
     border-radius: 8px;
     line-height: 1.6;      /* Augmente l'espace entre les lignes */
     color: #333;
@@ -131,4 +138,8 @@ footer p {
     margin-top: 25px;
     border-bottom: 2px solid #f8f8f8;
     padding-bottom: 10px;
+}
+
+.pages_footeur li {
+    margin-left: 3rem;
 }
