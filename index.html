@@ -44,6 +44,20 @@
                         <img src="images/LoupeLogo.png" alt="Rechercher">
                     </button>
                 </form>
+
+                <div class="filter-dropdown">
+                    <button type="button" class="filter-btn" id="filterBtn">
+                        Filtres <span>▼</span>
+                    </button>
+                    <div class="drowdown-content" id="filterMenu">
+                        <label><input type="checkbox">CDI</label>
+                        <label><input type="checkbox">CDD</label>
+                        <label><input type="checkbox">Stage</label>
+                        <label><input type="checkbox">Alternance</label>
+
+                    </div>
+
+                </div>
             </div>
 
         </section>
@@ -52,5 +66,18 @@
 
     </main>
     <footer></footer>
+    <script>
+        const filterBtn = document.getElementById('filterBtn');
+        const filterMenu = document.getElementById('filterMenu');
+
+        filterBtn.addEventListener('click', function() {
+            // Alterne l'affichage entre 'flex' et 'none'
+            if (filterMenu.style.display === 'flex') {
+                filterMenu.style.display = 'none';
+            } else {
+                filterMenu.style.display = 'flex';
+            }
+        });
+    </script>
 </body>
 </html>
