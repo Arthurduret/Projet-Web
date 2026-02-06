@@ -169,3 +169,52 @@ button:hover {
     resize: none;             
     background: white;
 }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+
+    /* Login container plus flexible */
+    .login-container {
+        padding: 30px 20px;
+        width: 90%;
+    }
+
+    /* Champs double-input empilés sur mobile */
+    .double-input {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* Boutons switch empilés */
+    .switch_buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Checkbox options plus compactes sur mobile */
+    .form-entreprise .checkbox-options {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 10px;
+    }
+
+    /* Inputs et textarea occupent 100% largeur */
+    .input-group input,
+    .input-group select,
+    .input-group--commentaire textarea {
+        width: 100%;
+    }
+
+    /* Bouton centré et largeur 100% */
+    button {
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    /* Réduire taille des labels*/
+    .input-group > label {
+        font-size: 13px;
+        top: -8px;
+        left: 10px;
+    }
+}
