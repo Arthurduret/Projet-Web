@@ -1,0 +1,91 @@
+/*Definition d'une police pour tout le site web*/
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+}
+
+/*Centre les élements de la page*/
+main {
+    display: flex;
+    justify-content: center;
+    padding: 60px 0;
+}
+
+/*Fonds blanc autour du questionnaire*/
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 420px;
+}
+
+/*Titre amélioré*/
+h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*bouton retour*/
+.back-link {
+    display: block;
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+/*Mettre les cases en forme*/
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+/*Titre au dessus des case*/
+.input-group label {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: white;
+    padding: 0 5px;
+    font-size: 14px;
+    color: #1c27a3;
+}
+
+/*Chekbox*/
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 15px;
+    border: 1.5px solid #4b55a3;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+    background: white;
+}
+
+/*Positionnement des case*/
+.double-input {
+    display: flex;
+    gap: 15px;
+}
+
+/*Bouton stylisé*/
+button {
+    background-color: #242e87; 
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #606dd1;
+}
