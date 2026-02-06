@@ -13,6 +13,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD:inscription.html
     <header>
         <a href="index.html" class="logo">
             <img src="images/LogoJobeo.png" alt="Logo" width="90" height="50">
@@ -46,6 +47,10 @@
 
     </header>
 
+=======
+    <?php include 'header.php'; ?> 
+    <h1>S'inscrire</h1>
+>>>>>>> arthur:inscription.php
 
 <main>
     <div class="login-container">
@@ -142,6 +147,7 @@
                 <a href="pages_footeur/mentions_legales.html" >J’accepte la politique de confidentialité</a>
             </div>
             <button type="submit">S'inscrire</button>
+<<<<<<< HEAD:inscription.html
 
         </form>
     </div>
@@ -155,5 +161,11 @@
     <a href="#">Cookies</a>
 </footer>
 
+=======
+        </div>
+            
+    </form>
+    <?php include 'footer.php'; ?> 
+>>>>>>> arthur:inscription.php
 </body>
 </html>

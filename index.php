@@ -12,7 +12,7 @@
     <?php include 'header.php'; ?> 
     <main>
         <section class="Hero">
-            <div><img src="images/Gemini_Generated_Image_pn6zbxpn6zbxpn6z.png" alt="Image d'accueil"></div>
+            <div><img src="images/ImageFondPageAccueil.png" alt="Image d'accueil"></div>
             <div class="content-wrapper">
                 <form class="search-bar" action="">
                     <div class="input-group">
@@ -34,6 +34,7 @@
 
 
     </main>
+<<<<<<< HEAD
     <footer>
         <a href="/pages_footeur/mentions_legales.html">Mentions Légales</a>
         <p>✦</p>
@@ -41,5 +42,8 @@
         <p>✦</p>
         <a href="/pages_footeur/cookies.html">Gestion des cookies</a>
     </footer>
+=======
+    <?php include 'footer.php'; ?>
+>>>>>>> arthur
 </body>
 </html>
