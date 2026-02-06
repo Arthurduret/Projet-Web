@@ -5,13 +5,13 @@
 
     <nav id="nav-menu">
         <a href="#entreprises">Nos Entreprises</a>
-        <a href="a_propos.html">A propos de nous</a>
-        <a href="offres_emplois.html">Offres d'emplois</a>
-        <a href="favoris.html">Favoris</a>
+        <a href="a_propos.php">A propos de nous</a>
+        <a href="offres_emplois.php">Offres d'emplois</a>
+        <a href="favoris.php">Favoris</a>
     </nav>
 
     <div class="header-right">
-        <a href="identifier.html" class="btn-compte">
+        <a href="identifier.php" class="btn-compte">
             <img src="images/logo_profil.png" alt="logo_profil" width="40" height="40">
             <span>Mon compte</span>
         </a>
