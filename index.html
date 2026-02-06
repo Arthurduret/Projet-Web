@@ -52,5 +52,18 @@
 
     </main>
     <footer></footer>
+    <script>
+        const filterBtn = document.getElementById('filterBtn');
+        const filterMenu = document.getElementById('filterMenu');
+
+        filterBtn.addEventListener('click', function() {
+            // Alterne l'affichage entre 'flex' et 'none'
+            if (filterMenu.style.display === 'flex') {
+                filterMenu.style.display = 'none';
+            } else {
+                filterMenu.style.display = 'flex';
+            }
+        });
+    </script>
 </body>
 </html>
