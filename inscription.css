@@ -92,7 +92,42 @@ button:hover {
     background-color: #f17526;
 }
 
+/*==========================*/
+/*Bouton chercher un fichier*/
+/*==========================*/
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid #4b55a3;
+    border-radius: 12px;
+    font-size: 15px;
+    background: white;
+    cursor: pointer;
+    color: #444;
+}
+
+/* Bouton "Choisir un fichier" */
+input[type="file"]::file-selector-button {
+    background-color: #242e87;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: background 0.3s;
+}
+
+/* Hover bouton fichier */
+input[type="file"]::file-selector-button:hover {
+    background-color: #f17526;
+}
+
+/*================================*/
 /*Bouton entreprise et particulier*/
+/*================================*/
 
 
 /* Conteneur des deux boutons */
@@ -134,17 +169,24 @@ button:hover {
 }
 
 
+
+/*===============================================*/
+/*Particularité inscription entreprise (checkbox)*/
+/*================================================*/
+
 /*checkbox inscription entreprise*/
 
 .form-entreprise .checkbox-options {
     border: 1.5px solid #4b55a3;
     border-radius: 12px;
-    padding: 18px 15px;
+    padding: 20px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px 20px;   
+    flex-direction: column;   /* une case par ligne */
+    align-items: flex-start;  /* aligné à gauche */
+    gap: 14px;
     margin-top: 10px;
 }
+
 
 /* alignement des checkbox */
 .form-entreprise .checkbox-options label {
