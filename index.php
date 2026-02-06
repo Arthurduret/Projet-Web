@@ -12,7 +12,7 @@
     <?php include 'header.php'; ?> 
     <main>
         <section class="Hero">
-            <div><img src="images/Gemini_Generated_Image_pn6zbxpn6zbxpn6z.png" alt="Image d'accueil"></div>
+            <div><img src="images/ImageFondPageAccueil.png" alt="Image d'accueil"></div>
             <div class="content-wrapper">
                 <form class="search-bar" action="">
                     <div class="input-group">
