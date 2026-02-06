@@ -1,0 +1,134 @@
+/* Reset de base pour éviter les marges blanches sur les côtés */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: bold;
+    font-size: large;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1; 
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Centre tout le bloc (Logo + Nav) dans la page */
+    align-items: center;     /* Centre verticalement le logo et la nav */
+    gap: 5rem;               /* Espace entre le logo et le début du menu */
+    padding: 1rem 10%;
+    background-color: #ffffff;
+    width: 100%;
+    font-style: italic;
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;     /* Aligne verticalement les liens et le bouton bleu */
+    gap: 4rem;               /* Espace fixe entre chaque lien */
+    white-space: nowrap;
+    flex-wrap: nowrap;
+}
+
+/* Style des liens classiques */
+header a {
+    text-decoration: none;
+    color: #293771;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.5s;
+}
+
+header nav a:hover {
+    color: #f17526;
+}
+
+/* Style du bouton "Mon compte" */
+.btn-compte {
+    display: inline-flex;    /* Crucial pour aligner l'icône et le texte */
+    align-items: center;     /* Centre l'icône verticalement par rapport au texte */
+    justify-content: center;
+    gap: 1rem;               /* Espace entre l'image et le mot "Mon compte" */
+    background-color: #293771;
+    color: white !important; /* Force le texte en blanc même au survol */
+    padding: 0.8rem 1.1rem;
+    border-radius: 3rem;     /* Forme pilule */
+    transition: background-color 0.3s;
+}
+
+.btn-compte:hover {
+    background-color: #f17526;
+    color: white !important;
+}
+
+
+.btn-compte img {
+    height: 1.2rem;          
+    width: auto;
+    display: block;          
+}
+
+
+footer {
+    display: flex;
+    background-color: #293771;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 2rem;
+    padding: 0.25rem;
+    font-style: italic;
+}
+
+footer a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.5s;
+}
+
+footer p {
+    color: #ffffff;
+}
+
+
+
+.pages_footeur {
+    max-width: 800px;      /* Empêche le texte de trop s'étaler */
+    margin: 50px auto;
+    padding: 40px;
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Ajoute ombre */
+    border-radius: 8px;
+    line-height: 1.6;      /* Augmente l'espace entre les lignes */
+    color: #333;
+}
+
+.pages_footeur h1 {
+    color: #293771;
+    font-size: larger;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.pages_footeur h2 {
+    color: #f17526;        
+    font-size: large;
+    margin-top: 25px;
+    border-bottom: 2px solid #f8f8f8;
+    padding-bottom: 10px;
+}
