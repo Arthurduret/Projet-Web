@@ -58,15 +58,14 @@ body {
     display: flex;
     align-items: center;
     background-color: var(--white);
-    height: 90px; /* Barre plus épaisse comme sur ton modèle */
-    border-radius: 30px; /* Angles moins arrondis, plus rectangulaires */
-    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-    border: 1px solid #ddd;
+    height: 90px;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Ombre très légère */
+    border: 1px solid #333; /* Trait fin et net du modèle */
 
-    /* POSITIONNEMENT "À CHEVAL" ET PLUS LARGE */
     position: absolute;
-    bottom: -45px; /* Moitié de la hauteur (90/2) */
-    width: 110%; /* Dépasse de l'image */
+    bottom: -45px;
+    width: 105%; 
     left: 50%;
     transform: translateX(-50%); 
     z-index: 10;
@@ -77,39 +76,49 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 0 40px; /* Plus d'espace pour respirer */
-    transition: all 0.3s ease;
+    padding: 0 30px 0 60px;
+    text-align: left; /* Force l'alignement à gauche */
 }
 
-/* Trait de séparation vertical élégant */
-.input-group:first-of-type {
-    border-right: 1px solid #eee; /* Gris très clair */
-}
-
-/* Style des étiquettes (Lieux, Domaine) */
-.input-group label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--primary-blue);
-    margin-bottom: 5px;
-    text-transform: none; /* Garde la casse naturelle */
-}
-
-/* Style des champs de texte */
+/* On enlève le cadre autour des zones de texte */
 .input-group input {
-    border: none;
-    outline: none;
-    background: transparent;
-    font-size: 1.1rem; /* Texte plus grand et lisible */
-    color: #444;
+    border: none;      /* Supprime le contour gris par défaut */
+    outline: none;     /* Supprime le contour bleu au clic */
+    background: none;
+    font-size: 1rem;
+    color: #666;
     padding: 5px 0;
+    width: 100%;
+    font-style: italic;
 }
 
-/* Style du texte d'exemple (Placeholder) */
-.input-group input::placeholder {
-    color: #bbb;
-    font-style: italic;
-    font-weight: 300;
+/* Style des labels comme sur ton modèle */
+.input-group label {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 0;
+    transform: translateY(-5px);
+}
+
+.input-group input {
+    font-size: 0.95rem;
+    padding: 2px 0;
+}
+
+.input-group:first-of-type {
+    /* Ajoute ou modifie cette ligne */
+    border-right: 1px solid #a3a2a2; /* Crée le trait vertical noir/gris */
+    
+    /* Optionnel : tu peux ajuster la hauteur du trait en ajoutant des marges internes */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: -40px;
+}
+
+.btn-search img {
+    width: 50px; /* Loupe légèrement plus petite pour la nouvelle hauteur */
+    height: auto;
 }
 
 /* --- LE BOUTON LOUPE --- */
@@ -117,19 +126,14 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animation "rebond" */
-}
-
-.btn-search:hover {
-    transform: scale(1.15); /* Effet d'interaction pro */
+    padding-right: 30px; /* Espace par rapport au bord droit */
 }
 
 .btn-search img {
-    width: 55px; /* Taille optimale pour ton bouton */
+    width: 65px; /* Taille agrandie pour correspondre au visuel */
     height: auto;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Légère ombre sur l'icône */
+    filter: none; /* On enlève l'ombre portée pour rester fidèle au logo pur */
+}
+.btn-search:hover {
+    transform: scale(1.15); /* Effet d'interaction pro */
 }
