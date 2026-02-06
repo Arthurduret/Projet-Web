@@ -61,8 +61,8 @@ header nav a:hover {
 
 /* Style du bouton "Mon compte" */
 .btn-compte {
-    display: inline-flex;    /* Crucial pour aligner l'icône et le texte */
-    align-items: center;     /* Centre l'icône verticalement par rapport au texte */
+    display: inline-flex;    /* Aligner l'icône et le texte */
+    align-items: center;     /* Centrer l'icône verticalement par rapport au texte */
     justify-content: center;
     gap: 1rem;               /* Espace entre l'image et le mot "Mon compte" */
     background-color: #293771;
@@ -142,4 +142,83 @@ footer p {
 
 .pages_footeur li {
     margin-left: 3rem;
+}
+
+/* --- Styles pour ORDINATEUR (inchangés mais on cache le burger) --- */
+.menu-tel {
+    display: none;
+}
+
+/* --- Styles pour MOBILE --- */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: row !important; /* Force l'alignement horizontal */
+        justify-content: space-between; /* Écarte le logo des contrôles */
+        align-items: center;
+        padding: 0.5rem 1rem;
+        position: relative; /* Indispensable pour placer le menu déroulant */
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    /* On cache le texte "Mon compte" pour ne garder que l'icône */
+    .btn-compte span {
+        display: none;
+    }
+    
+    .btn-compte {
+        padding: 0.4rem;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+    }
+
+    .menu-tel {
+        display: block; /* On l'affiche enfin ! */
+        font-size: 1.8rem;
+        color: #293771;
+        cursor: pointer;
+    }
+
+    /* Le menu déroulant */
+header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; 
+        right: 0;
+        gap: 1rem;
+        width: 220px;
+        background-color: white;
+        box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+        
+        /* AJOUTE CES DEUX LIGNES */
+        height: auto;           /* Empêche le menu de s'étirer verticalement */
+        justify-content: flex-start; /* Aligne les liens vers le haut */
+        padding: 10px 0;        /* Un petit espace propre en haut et en bas */
+    }
+
+    header nav a {
+        /* RÉDUIS LE PADDING ICI */
+        padding: 12px 20px;     /* 12px suffit largement pour un clic tactile */
+        margin: 0;              /* Supprime toute marge parasite */
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+        text-align: left;
+        display: block;         /* Force le lien à se comporter comme un bloc */
+    }
+
+
+    header nav.active {
+        display: flex;
+    }
+
+    header nav a:last-child {
+        border-bottom: none; /* Propre : pas de ligne sous le dernier élément */
+    }
 }
