@@ -89,3 +89,44 @@ button {
 button:hover {
     background-color: #606dd1;
 }
+
+
+
+
+/* Conteneur des deux boutons */
+.switch_buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    margin-bottom: 25px;
+}
+
+/* Style commun à tous les boutons */
+.switch_btn {
+    flex: 1;                  
+    padding: 14px 0;           
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #242e87;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;     
+    font-family: inherit;
+    display: inline-block;
+    background-color: #dfe3f7; 
+    color: #242e87;
+}
+
+/* Bouton au survol (non actif) */
+.switch_btn:hover {
+    background-color: #242e87;
+    color: white;
+}
+
+/* Bouton actif / page actuelle */
+.switch_btn.active {
+    background-color: #242e87; 
+    color: white;
+    cursor: default;           
+}
