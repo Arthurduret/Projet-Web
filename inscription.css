@@ -44,7 +44,7 @@ h1 {
     margin-bottom: 25px;
 }
 /*Titre au dessus des case*/
-.input-group label {
+.input-group > label {
     position: absolute;
     top: -10px;
     left: 15px;
@@ -84,10 +84,12 @@ button {
     cursor: pointer;
     margin-top: 20px;
     transition: background 0.3s;
+    margin: 20px auto 0;
+    display: block;
 }
 
 button:hover {
-    background-color: #606dd1;
+    background-color: #f17526;
 }
 
 /*Bouton entreprise et particulier*/
@@ -129,4 +131,41 @@ button:hover {
     background-color: #242e87; 
     color: white;
     cursor: default;           
+}
+
+
+/*checkbox inscription entreprise*/
+
+.form-entreprise .checkbox-options {
+    border: 1.5px solid #4b55a3;
+    border-radius: 12px;
+    padding: 18px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 20px;   
+    margin-top: 10px;
+}
+
+/* alignement des checkbox */
+.form-entreprise .checkbox-options label {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+/* Champ commentaire style site */
+.input-group--commentaire textarea {
+    width: 100%;
+    padding: 15px;   
+    border: 1.5px solid #4b55a3;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;           
+    font-family: inherit;
+    min-height: 140px;
+    resize: none;             
+    background: white;
 }
