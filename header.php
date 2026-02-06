@@ -1,5 +1,5 @@
 <header>
-    <a href="index.html" class="logo">
+    <a href="index.php" class="logo">
         <img src="/images/LogoJobeo.png" alt="Logo" width="90" height="50">
     </a>
 
