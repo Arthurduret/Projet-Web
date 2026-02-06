@@ -1,6 +1,6 @@
 <header>
     <a href="index.html" class="logo">
-        <img src="images/LogoJobeo.png" alt="Logo" width="90" height="50">
+        <img src="/images/LogoJobeo.png" alt="Logo" width="90" height="50">
     </a>
 
     <nav id="nav-menu">
@@ -12,7 +12,7 @@
 
     <div class="header-right">
         <a href="identifier.php" class="btn-compte">
-            <img src="images/logo_profil.png" alt="logo_profil" width="40" height="40">
+            <img src="/images/logo_profil.png" alt="logo_profil" width="40" height="40">
             <span>Mon compte</span>
         </a>
         

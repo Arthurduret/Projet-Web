@@ -7,7 +7,7 @@
     <title>Cookies</title>
 </head>
 <body>
-    <?php include 'header.php'; ?> 
+    <?php include '../header.php'; ?> 
     <main>
         <div class="pages_footeur">
             <h1>Politique de Cookies & Confidentialité</h1>
@@ -22,7 +22,7 @@
             <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression...</p>
         </div>
     </main>
-    <?php include 'footer.php'; ?> 
+    <?php include '../footer.php'; ?> 
 
 </body>
 </html>
