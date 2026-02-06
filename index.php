@@ -35,6 +35,5 @@
 
     </main>
     <?php include 'footer.php'; ?>
->>>>>>> arthur
 </body>
 </html>
