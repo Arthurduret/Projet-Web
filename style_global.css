@@ -1,0 +1,26 @@
+/* Permet de renommer les paramètres principaux */
+:root {
+    /* Couleurs principales */
+    --bleu-fonce: #293771;
+    --orange: #f17526;
+    --blanc: #ffffff;
+    --gris-clair: #f8f9fa;
+    --texte-noir: #333333;
+
+    /* Polices */
+    --police-principale: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Crucial : empêche les paddings de déformer tes boîtes */
+}
+
+body {
+    font-family: var(--police-principale);
+    background-color: var(--gris-clair);
+    color: var(--texte-noir);
+    line-height: 1.6;
+}
