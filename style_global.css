@@ -18,12 +18,17 @@
     box-sizing: border-box; /* Crucial : empêche les paddings de déformer tes boîtes */
 }
 
-/* body {
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+main {
     font-family: var(--police-principale);
     background-color: var(--gris-clair);
     color: var(--texte-noir);
     line-height: 1.6;
-} */
+}
 
 h1 {
     color: var(--bleu-fonce);
