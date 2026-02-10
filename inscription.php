@@ -1,105 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobeo</title>
-    <link rel="icon" type="image/png" href="images/LogoJobeo.png">
+    <title>Jobeo - Inscription</title>
+
     <link rel="stylesheet" href="header_footer.css">
+    <link rel="stylesheet" href="inscription.css">
+    <link rel="icon" type="image/png" href="images/LogoJobeo.png">
+
 </head>
+
 <body>
-    <?php include 'header.php'; ?> 
-    <h1>S'inscrire</h1>
+<<<<<<< HEAD:inscription.html
+    <header>
+        <a href="index.html" class="logo">
+            <img src="images/LogoJobeo.png" alt="Logo" width="90" height="50">
+        </a>
 
-    <form action="#" method="post">
 
-        <div class="formulaire">
-            <!-- Email -->
-            <label for="email">Email</label><br>
-            <input type="email" id="email" name="email" placeholder="prenom.nom@gmail.com" required>
-            <br><br>
 
-        
+        <nav id="nav-menu">
+            <a href="#entreprises">Nos Entreprises</a>
+            <a href="a_propos.html">A propos de nous</a>
+            <a href="offres_emplois.html">Offres d'emplois</a>
+            <a href="favoris.html">Favoris</a>
+        </nav>
+
+        <div class="header-right">
+            <a href="identifier.html" class="btn-compte">
+                <img src="images/logo_profil.png" alt="logo_profil" width="40" height="40">
+                <span>Mon compte</span>
+            </a>
             
-            <!-- Nom -->
-            <label for="nom">Nom</label><br>
-            <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
-            <br><br>
-
-            <!-- Prénom -->
-            <label for="prenom">Prénom</label><br>
-            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
-            <br><br>
-
-            <!-- Type de contrat -->
-            <label for="contrat">Type de contrat</label><br>
-            <select id="contrat" name="contrat" required>
-                <option value="">Que recherchez-vous ?</option>
-                <option value="cdi">CDI</option>
-                <option value="cdd">CDD</option>
-                <option value="stage">Stage</option>
-                <option value="alternance">Alternance</option>
-                <option value="freelance">Freelance</option>
-            </select>
-            <br><br>
-
-            <!-- Domaine d'activité -->
-            <label for="domaine">Domaine d'activité</label><br>
-            <select id="domaine" name="domaine" required>
-                <option value="">Où recherchez-vous ?</option>
-                <option value="informatique">Informatique</option>
-                <option value="marketing">Marketing</option>
-                <option value="finance">Finance</option>
-                <option value="design">Design</option>
-                <option value="autre">Autre</option>
-            </select>
-            <br><br>
-
-
-
-            <!-- Expérience -->
-            <label for="experience">Expérience</label><br>
-            <input type="number" id="experience" name="experience" placeholder="Année d'expérience">
-            <br><br>
-
-            <!-- CV -->
-            <label for="cv">CV</label><br>
-            <input type="file" id="cv" name="cv">
-            <br><br>
-
-            <!-- Ressources additionnelles -->
-            <label for="ressources">Ressources additionnelles</label><br>
-            <input type="file" id="ressources" name="ressources">
-            <br><br>
-
-            <!-- Mot de passe -->
-            <label for="password">Mot de passe</label><br>
-            <input type="password" id="password" name="password" placeholder="Votre mot de passe" required>
-            <br><br>
-
-            <!-- Confirmation mot de passe -->
-            <label for="confirm_password">Confirmer le mot de passe</label><br>
-            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmer votre mot de passe" required>
-            <br><br>
-
-            <!-- Condition d'utilisation -->
-            <input type="checkbox" id="conditions" name="conditions" required>
-            <label for="conditions">J'accepte les conditions générales d'utilisation</label>
-            <br><br>
-
-            <!-- Condition cookies -->
-            <input type="checkbox" id="conditions" name="conditions" required>
-            <label for="conditions">J’accepte la politique de confidentialité et l’utilisation des cookies</label>
-            <br><br>
-
+            <div class="menu-tel" onclick="toggleMenu()">☰</div>
         </div>
 
-        <div class="formulaire_bouton">
-            <!-- Bouton -->
+        <script>
+        function toggleMenu() {
+            const nav = document.getElementById('nav-menu');
+            // Ajoute ou enlève la classe "active" à chaque clic
+            nav.classList.toggle('active');
+        }
+    </script>
+
+    </header>
+
+=======
+    <?php include 'header.php'; ?> 
+    <h1>S'inscrire</h1>
+>>>>>>> arthur:inscription.php
+
+<main>
+    <div class="login-container">
+
+        <a href="#" class="back-link">← Retour</a>
+
+        <h1>S'inscrire</h1>
+        
+        <div class="switch_buttons">
+            <a class="switch_btn active" disabled>Particulier</a>
+            <a href="inscription_entreprise.html" class="switch_btn">Entreprise</a>
+        </div>
+
+        <form>
+            
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="Exemple : prenom.nom@gmail.com" required>
+            </div>
+
+            <div class="double-input">
+                <div class="input-group">
+                    <label>Nom</label>
+                    <input type="text" placeholder="Votre nom" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Prénom</label>
+                    <input type="text" placeholder="Votre prénom" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>Type de contrat</label>
+                <select required>
+                    <option value="">Que recherchez-vous ?</option>
+                    <option>CDI</option>
+                    <option>CDD</option>
+                    <option>Stage</option>
+                    <option>Alternance</option>
+                    <option>Freelance</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Domaine d'activité</label>
+                <select required>
+                    <option value="">Où recherchez-vous ?</option>
+                    <option>Informatique</option>
+                    <option>Marketing</option>
+                    <option>Finance</option>
+                    <option>Design</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Expérience</label>
+                <select>
+                    <option>Année d'expérience</option>
+                    <option>0 - 1 an</option>
+                    <option>1 - 3 ans</option>
+                    <option>3 - 5 ans</option>
+                    <option>5+ ans</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>CV</label>
+                <input type="file">
+            </div>
+
+            <div class="input-group">
+                <label>Ressources additionnelles</label>
+                <input type="file">
+            </div>
+
+            <div class="input-group">
+                <label>Mot de passe</label>
+                <input type="password" placeholder="Votre mot de passe" required>
+            </div>
+
+            <div class="input-group">
+                <label>Mot de passe</label>
+                <input type="password" placeholder="Confirmer Votre mot de passe" required>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" required>
+                <a href="pages_footeur/cgu.html" >J'accepte les conditions générales d'utilisation</a>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" required>
+                <a href="pages_footeur/mentions_legales.html" >J’accepte la politique de confidentialité</a>
+            </div>
             <button type="submit">S'inscrire</button>
+<<<<<<< HEAD:inscription.html
+
+        </form>
+    </div>
+</main>
+
+<footer>
+    <a href="#">Mentions légales</a>
+    <p>✦</p>
+    <a href="#">CGU</a>
+    <p>✦</p>
+    <a href="#">Cookies</a>
+</footer>
+
+=======
         </div>
             
     </form>
     <?php include 'footer.php'; ?> 
+>>>>>>> arthur:inscription.php
 </body>
 </html>

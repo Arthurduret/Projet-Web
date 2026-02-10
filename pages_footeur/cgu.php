@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../header_footer.css">
-    <link rel="stylesheet" href="style_global.css">
+    <link rel="stylesheet" href="/style_global.css">
+    <link rel="stylesheet" href="/header_footer.css">
+    <link rel="stylesheet" href="style_cgu.css">
+
     <title>CGU</title>
 </head>
 <body>
-    <?php include 'header.php'; ?> 
+    <?php include '../header.php'; ?> 
     <main>
         <div class="pages_footeur">
             <h1>CGU (Conditions Générales d'Utilisation)</h1>
@@ -40,6 +42,6 @@
             </p>
         </div>
     </main>
-    <?php include 'footer.php'; ?> 
+    <?php include '../footer.php'; ?> 
 </body>
 </html>

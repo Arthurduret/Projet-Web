@@ -7,7 +7,7 @@
     <title>Mentions Légales</title>
 </head>
 <body>
-    <?php include 'header.php'; ?> 
+    <?php include '../header.php'; ?> 
     <main>
         <div class="pages_footeur">
             <h1> Mentions Légales</h1>
@@ -44,7 +44,7 @@
             </p>
         </div>
     </main>    
-    <?php include 'footer.php'; ?> 
+    <?php include '../footer.php'; ?> 
 </body>
 </html>
 

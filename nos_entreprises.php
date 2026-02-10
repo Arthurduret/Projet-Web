@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Style_connexion.CSS">
+    <link rel="stylesheet" href="/header_footer.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <?php include '/header.php'; ?>
+
+        <main>
+            <div class="wrapper">
+            <section>
+                <article>
+                    <p>teste</p>
+                </article>
+                <article>
+                    <p>teste2</p>
+                </article>
+                <article>
+                    <p>teste3</p>
+                </article>
+            </section>
+            </div>
+
+
+        </main>
+    
+    <?php include '/footer.php'; ?>
+    
+</body>
+</html>
