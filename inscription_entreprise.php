@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobeo - Inscription</title>
 
+    <link rel="stylesheet" href="style_global.css">
     <link rel="stylesheet" href="/header_footer.css">
     <link rel="stylesheet" href="/inscription.css">
     <link rel="icon" type="image/png" href="/images/LogoJobeo.png">
@@ -14,6 +15,7 @@
 
 <body>
     <?php include 'header.php'; ?>
+
     <main>
         <div class="login-container">
 
@@ -21,7 +23,7 @@
             <h1>S'inscrire</h1>
 
             <div class="switch_buttons">
-                <a href="inscription.html"class="switch_btn" disabled>Particulier</a>
+                <a href="inscription.php"class="switch_btn" disabled>Particulier</a>
                 <a class="switch_btn active">Entreprise</a>
             </div>
 
@@ -98,15 +100,11 @@
                     <a href="pages_footeur/mentions_legales.html" >J’accepte la politique de confidentialité</a>
                 </div>
                 <button type="submit">S'inscrire</button>
-
-
             </form>
-
-
         </div>
-
-
     </main>
+
     <?php include 'footer.php'; ?>
+
 </body>
 </html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobeo - Inscription</title>
-
+    <link rel="stylesheet" href="style_global.css">
     <link rel="stylesheet" href="header_footer.css">
     <link rel="stylesheet" href="inscription.css">
     <link rel="icon" type="image/png" href="images/LogoJobeo.png">
@@ -13,44 +13,8 @@
 </head>
 
 <body>
-<<<<<<< HEAD:inscription.html
-    <header>
-        <a href="index.html" class="logo">
-            <img src="images/LogoJobeo.png" alt="Logo" width="90" height="50">
-        </a>
-
-
-
-        <nav id="nav-menu">
-            <a href="#entreprises">Nos Entreprises</a>
-            <a href="a_propos.html">A propos de nous</a>
-            <a href="offres_emplois.html">Offres d'emplois</a>
-            <a href="favoris.html">Favoris</a>
-        </nav>
-
-        <div class="header-right">
-            <a href="identifier.html" class="btn-compte">
-                <img src="images/logo_profil.png" alt="logo_profil" width="40" height="40">
-                <span>Mon compte</span>
-            </a>
-            
-            <div class="menu-tel" onclick="toggleMenu()">☰</div>
-        </div>
-
-        <script>
-        function toggleMenu() {
-            const nav = document.getElementById('nav-menu');
-            // Ajoute ou enlève la classe "active" à chaque clic
-            nav.classList.toggle('active');
-        }
-    </script>
-
-    </header>
-
-=======
-    <?php include 'header.php'; ?> 
-    <h1>S'inscrire</h1>
->>>>>>> arthur:inscription.php
+    
+<?php include 'header.php'; ?> 
 
 <main>
     <div class="login-container">
@@ -61,7 +25,7 @@
         
         <div class="switch_buttons">
             <a class="switch_btn active" disabled>Particulier</a>
-            <a href="inscription_entreprise.html" class="switch_btn">Entreprise</a>
+            <a href="inscription_entreprise.php" class="switch_btn">Entreprise</a>
         </div>
 
         <form>
@@ -147,25 +111,11 @@
                 <a href="pages_footeur/mentions_legales.html" >J’accepte la politique de confidentialité</a>
             </div>
             <button type="submit">S'inscrire</button>
-<<<<<<< HEAD:inscription.html
-
         </form>
     </div>
 </main>
-
-<footer>
-    <a href="#">Mentions légales</a>
-    <p>✦</p>
-    <a href="#">CGU</a>
-    <p>✦</p>
-    <a href="#">Cookies</a>
-</footer>
-
-=======
-        </div>
             
-    </form>
-    <?php include 'footer.php'; ?> 
->>>>>>> arthur:inscription.php
+<?php include 'footer.php'; ?> 
+
 </body>
 </html>
