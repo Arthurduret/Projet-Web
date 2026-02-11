@@ -1,28 +1,5 @@
-/* Reset de base pour éviter les marges blanches sur les côtés */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font: bold;
-    font-size: large;
-}
 
-html, body {
-    height: 100%;
-    margin: 0;
-}
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-main {
-    flex: 1; 
-    align-items: center;     /* Centre verticalement */
-    justify-content: center; /* Centre horizontalement */
-}
 
 header {
     display: flex;
@@ -50,7 +27,7 @@ header a {
     text-decoration: none;
     color: #293771;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     transition: color 0.4s;
 }
 
@@ -99,7 +76,7 @@ footer a {
     text-decoration: none;
     color: #ffffff;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     transition: color 0.4s;
 }
 

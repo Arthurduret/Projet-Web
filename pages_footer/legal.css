@@ -1,16 +1,3 @@
-:root {
-    /* Couleurs principales */
-    --bleu-fonce: #293771;
-    --orange: #f17526;
-    --blanc: #ffffff;
-    --gris-clair: #f8f9fa;
-    --texte-noir: #333333;
-
-    /* Polices */
-    --police-principale: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-}
-
 .pages_footer {
     justify-content: center;
     max-width: 70rem;
