@@ -90,7 +90,7 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    gap: 2rem;
+    gap: 2%;
     padding: 0.25rem;
     font-style: italic;
 }
@@ -114,7 +114,7 @@ footer p {
 
 
 
-/* --- Styles pour ORDINATEUR (inchangés mais on cache le burger) --- */
+
 .menu-tel {
     display: none;
 }
@@ -126,7 +126,7 @@ footer p {
         justify-content: space-between; /* Écarte le logo des contrôles */
         align-items: center;
         padding: 0.5rem 1rem;
-        position: relative; /* Indispensable pour placer le menu déroulant */
+        position: relative; /* Fixer le menu déroulant */
     }
 
     .header-right {
@@ -135,7 +135,7 @@ footer p {
         gap: 1rem;
     }
 
-    /* On cache le texte "Mon compte" pour ne garder que l'icône */
+    /* On cache le texte "Mon compte" pour garder que l'icône */
     .btn-compte span {
         display: none;
     }
@@ -148,13 +148,13 @@ footer p {
     }
 
     .menu-tel {
-        display: block; /* On l'affiche enfin ! */
+        display: block; 
         font-size: 1.8rem;
         color: #293771;
         cursor: pointer;
     }
 
-    /* Le menu déroulant */
+    /* Menu déroulant */
     header nav {
         display: none;
         flex-direction: column;
@@ -167,16 +167,14 @@ footer p {
         box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
         z-index: 1000;
         
-        /* AJOUTE CES DEUX LIGNES */
         height: auto;           /* Empêche le menu de s'étirer verticalement */
         justify-content: flex-start; /* Aligne les liens vers le haut */
-        padding: 10px 0;        /* Un petit espace propre en haut et en bas */
+        padding: 10px 0;       
     }
 
     header nav a {
-        /* RÉDUIS LE PADDING ICI */
-        padding: 12px 20px;     /* 12px suffit largement pour un clic tactile */
-        margin: 0;              /* Supprime toute marge parasite */
+        padding: 12px 20px;     
+        margin: 0;              
         width: 100%;
         border-bottom: 1px solid #f0f0f0;
         text-align: left;
@@ -189,6 +187,23 @@ footer p {
     }
 
     header nav a:last-child {
-        border-bottom: none; /* Propre : pas de ligne sous le dernier élément */
+        border-bottom: none; 
+    }
+
+    footer {
+        flex-direction: column; 
+        gap: 5%;              
+        padding-top: 1%;   
+        padding-bottom: 4%;
+        text-align: center;
+    }
+
+    footer a {        
+        margin-top: 2%;
+        font-size: medium;
+    }
+
+    footer p {
+        display: none;
     }
 }

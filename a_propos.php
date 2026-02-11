@@ -9,7 +9,7 @@
 <body>
     <?php include 'header.php'; ?> 
     <main>    
-        <div class="pages_footeur">
+        <div class="pages_footer">
             <h1>
                 À propos de Jobeo
             </h1>

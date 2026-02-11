@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style_global.css">
     <link rel="stylesheet" href="/header_footer.css">
-    <link rel="stylesheet" href="/pages_footeur/legal.css">
+    <link rel="stylesheet" href="/pages_footer/legal.css">
 
     <title>CGU</title>
 </head>
