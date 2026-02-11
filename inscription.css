@@ -1,11 +1,7 @@
-/*Definition d'une police pour tout le site web*/
-body {
-    font-family: sans-serif;
-    background-color: #f4f4f4;
-}
-
 /*Centre les élements de la page*/
 main {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
     display: flex;
     justify-content: center;
     padding: 60px 0;
