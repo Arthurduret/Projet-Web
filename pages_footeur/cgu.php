@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style_global.css">
     <link rel="stylesheet" href="/header_footer.css">
-    <link rel="stylesheet" href="style_cgu.css">
+    <link rel="stylesheet" href="/pages_footeur/legal.css">
 
     <title>CGU</title>
 </head>
 <body>
     <?php include '../header.php'; ?> 
     <main>
-        <div class="pages_footeur">
+        <div class="pages_footer">
             <h1>CGU (Conditions Générales d'Utilisation)</h1>
             
             <p>Définit les règles de fonctionnement du site.</p>
-            <br>
+
 
             <h2>
                 Objet : 

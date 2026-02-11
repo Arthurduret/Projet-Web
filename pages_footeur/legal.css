@@ -1,0 +1,57 @@
+:root {
+    /* Couleurs principales */
+    --bleu-fonce: #293771;
+    --orange: #f17526;
+    --blanc: #ffffff;
+    --gris-clair: #f8f9fa;
+    --texte-noir: #333333;
+
+    /* Polices */
+    --police-principale: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.pages_footer {
+    justify-content: center;
+    max-width: 70rem;
+    margin: 1rem auto;
+    padding: 3rem;
+    background-color: var(--blanc);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
+    border-radius: 0.8rem;
+}
+
+.pages_footer h1 {
+    font-size: larger;
+    margin-bottom: 1rem; 
+}
+
+.pages_footer h2 {  
+    font-size: large;
+    margin-top: 2rem;
+    border-bottom: 2px var(--blanc);
+    padding-bottom: 1rem;
+}
+
+
+/* .pages_footer li {
+    margin-left: 1%;
+} */
+
+.pages_footer p {
+    margin-top: -1rem;
+}
+
+.pages_footer .mentions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.pages_footer .mentions h2 {
+    margin-top: 0rem;
+}
+
+.pages_footer .mentions p {
+    margin-top: -2rem;
+}
