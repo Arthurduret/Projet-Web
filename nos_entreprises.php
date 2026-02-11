@@ -15,9 +15,9 @@
         <h1>Explorez les entreprises qui recrutent</h1>
         <div>
             <div>
-                <div><img src="" alt="test1">
+                <div><img src="/images/Fond_Leroy_Merlin.jpg" alt="Fond Leroy Merlin">
                 </div>
-                <div><img src="" alt="test2">
+                <div><img src="/images/Logo_Leroy_Merlin.png" alt="Logo Leroy Merlin">
                 </div>
             </div>
             <div>
