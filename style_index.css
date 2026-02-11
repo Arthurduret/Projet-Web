@@ -10,6 +10,7 @@
 
 main {
     font-family: var(--font-main);
+    margin-bottom: 2%;
 }
 
 body {
