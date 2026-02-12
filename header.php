@@ -4,7 +4,7 @@
     </a>
 
     <nav id="nav-menu">
-        <a href="/nos_entreprises">Nos Entreprises</a>
+        <a href="/nos_entreprises.php">Nos Entreprises</a>
         <a href="/a_propos.php">A propos de nous</a>
         <a href="/offres_emplois.php">Offres d'emplois</a>
         <a href="/favoris.php">Favoris</a>
