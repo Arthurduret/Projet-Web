@@ -13,7 +13,7 @@ $entreprises = $query->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="/style_global.css">
     <link rel="stylesheet" href="/style_nos_entreprises.css">
     <link rel="stylesheet" href="/header_footer.css">
-    <title>Document</title>
+    <title>Jobeo | Entreprises</title>
 </head>
 
 <body>

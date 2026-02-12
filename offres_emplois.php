@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style_global.css">
     <link rel="stylesheet" href="header_footer.css">
-    <title>Offres d'emplois</title>
+    <title>Jobeo | Offres d'emplois</title>
 </head>
 <body>
     <?php include 'header.php'; ?> 
