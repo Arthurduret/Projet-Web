@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="/style_global.css">
     <link rel="stylesheet" href="/header_footer.css">
     <link rel="stylesheet" href="/pages_footer/legal.css">
+    <link rel="icon" type="image/png" href="images/HeadLogoJobeo.png">
 
-    <title>CGU</title>
+    <title>Jobeo | CGU</title>
 </head>
 <body>
     <?php include '../header.php'; ?> 

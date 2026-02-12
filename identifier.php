@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>s'identifier</title>
-    <link rel="icon" type="image/png" href="/images/Gemini_Generated_Image_fa3fcbfa3fcbfa3f-removebg-preview (1).png">
+
+    <link rel="icon" type="image/png" href="images/HeadLogoJobeo.png">
+    <title>Jobeo | S'identifier</title>
+
     <link rel="stylesheet" href="style_global.css">
     <link rel="stylesheet" href="/Style_connexion.CSS">
     <link rel="stylesheet" href="/header_footer.css">

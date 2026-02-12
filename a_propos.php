@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="images/HeadLogoJobeo.png">
+    <title>Jobeo | A propos de nous</title>
+
     <link rel="stylesheet" href="style_global.css">
     <link rel="stylesheet" href="/pages_footer/legal.css">
     <link rel="stylesheet" href="header_footer.css">
-    <title>Jobeo | A propos de nous</title>
+
 </head>
 <body>
     <?php include 'header.php'; ?> 

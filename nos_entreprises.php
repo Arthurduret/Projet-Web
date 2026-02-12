@@ -10,10 +10,13 @@ $entreprises = $query->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="images/HeadLogoJobeo.png">
+    <title>Jobeo | Entreprises</title>
+
     <link rel="stylesheet" href="/style_global.css">
     <link rel="stylesheet" href="/style_nos_entreprises.css">
     <link rel="stylesheet" href="/header_footer.css">
-    <title>Jobeo | Entreprises</title>
 </head>
 
 <body>
