@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style_global.css">
     <link rel="stylesheet" href="/pages_footer/legal.css">
     <link rel="stylesheet" href="header_footer.css">
-    <title>à-propos-de-nous</title>
+    <title>Jobeo | A propos de nous</title>
 </head>
 <body>
     <?php include 'header.php'; ?> 
