@@ -1,3 +1,10 @@
+<?php 
+require_once 'db.php'; 
+// On récupère toutes les entreprises
+$query = $pdo->query("SELECT * FROM entreprises");
+$entreprises = $query->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,111 +22,36 @@
         <div class="header-entreprise">
             <h1>Explorez les entreprises qui recrutent</h1>
         </div>
+
         <div class="grille-entreprises">
+            <?php foreach ($entreprises as $entreprise): ?>
+                <article class="carte-entreprise">
+                    <a href="/entreprises/fiche.php?id=<?php echo $entreprise['id']; ?>">
+                        
+                        <div class="image-fond">
+                            <img src="/images/<?php echo $entreprise['image_fond']; ?>" alt="Fond <?php echo $entreprise['nom']; ?>">
+                        </div>
 
-            <article class="carte-entreprise">
-                <a href="/entreprises/leroy_merlin.php">
-                    <div class="image-fond"><img src="/images/Fond_Leroy_Merlin.jpg" alt="Fond Leroy Merlin">
-                    </div>
-                    <div class="contenu-carte">
-                        <div class="header_carte" >
-                            <img src="/images/Logo_Leroy_Merlin.png" alt="Logo Leroy Merlin" class="logo-mini">
-                            <h3 class="name-entreprise">Leroy Merlin</h3>
+                        <div class="contenu-carte">
+                            <div class="header_carte">
+                                <img src="/images/<?php echo $entreprise['image_logo']; ?>" alt="Logo" class="logo-mini">
+                                <h3 class="name-entreprise"><?php echo $entreprise['nom']; ?></h3>
+                            </div>
+
+                            <div class="infos-entreprise">
+                                <span><?php echo $entreprise['secteur']; ?></span>
+                                <span><?php echo $entreprise['taille']; ?></span>
+                            </div>
+
+                            <div class="footer-carte">
+                                <span class="nb-jobs"><?php echo $entreprise['nb_jobs']; ?> jobs</span>
+                                <span class="btn-decouvrir">Découvrir</span>
+                            </div>
                         </div>
-                        <div class="infos-entreprise">
-                                <span>Bricolage</span><span>> 10 000 salariés</span>
-                        </div>
-                        <div class="footer-carte">
-                            <span class="nb-jobs">389 jobs</span>
-                            <span class="btn-decouvrir">Découvrir</span>
-                        </div>
-                    </div>
-                </a>    
-            </article>
-                        <article class="carte-entreprise">
-                <a href="/entreprises/leroy_merlin.php">
-                    <div class="image-fond"><img src="/images/Fond_Leroy_Merlin.jpg" alt="Fond Leroy Merlin">
-                    </div>
-                    <div class="contenu-carte">
-                        <div class="header_carte" >
-                            <img src="/images/Logo_Leroy_Merlin.png" alt="Logo Leroy Merlin" class="logo-mini">
-                            <h3 class="name-entreprise">Leroy Merlin</h3>
-                        </div>
-                        <div class="infos-entreprise">
-                                <span>Bricolage</span><span>> 10 000 salariés</span>
-                        </div>
-                        <div class="footer-carte">
-                            <span class="nb-jobs">389 jobs</span>
-                            <span class="btn-decouvrir">Découvrir</span>
-                        </div>
-                    </div>
-                </a>    
-            </article>
-                        <article class="carte-entreprise">
-                <a href="/entreprises/leroy_merlin.php">
-                    <div class="image-fond"><img src="/images/Fond_Leroy_Merlin.jpg" alt="Fond Leroy Merlin">
-                    </div>
-                    <div class="contenu-carte">
-                        <div class="header_carte" >
-                            <img src="/images/Logo_Leroy_Merlin.png" alt="Logo Leroy Merlin" class="logo-mini">
-                            <h3 class="name-entreprise">Leroy Merlin</h3>
-                        </div>
-                        <div class="infos-entreprise">
-                                <span>Bricolage</span><span>> 10 000 salariés</span>
-                        </div>
-                        <div class="footer-carte">
-                            <span class="nb-jobs">389 jobs</span>
-                            <span class="btn-decouvrir">Découvrir</span>
-                        </div>
-                    </div>
-                </a>    
-            </article>
-                        <article class="carte-entreprise">
-                <a href="/entreprises/leroy_merlin.php">
-                    <div class="image-fond"><img src="/images/Fond_Leroy_Merlin.jpg" alt="Fond Leroy Merlin">
-                    </div>
-                    <div class="contenu-carte">
-                        <div class="header_carte" >
-                            <img src="/images/Logo_Leroy_Merlin.png" alt="Logo Leroy Merlin" class="logo-mini">
-                            <h3 class="name-entreprise">Leroy Merlin</h3>
-                        </div>
-                        <div class="infos-entreprise">
-                                <span>Bricolage</span><span>> 10 000 salariés</span>
-                        </div>
-                        <div class="footer-carte">
-                            <span class="nb-jobs">389 jobs</span>
-                            <span class="btn-decouvrir">Découvrir</span>
-                        </div>
-                    </div>
-                </a>    
-            </article>
-                        <article class="carte-entreprise">
-                <a href="/entreprises/leroy_merlin.php">
-                    <div class="image-fond"><img src="/images/Fond_Leroy_Merlin.jpg" alt="Fond Leroy Merlin">
-                    </div>
-                    <div class="contenu-carte">
-                        <div class="header_carte" >
-                            <img src="/images/Logo_Leroy_Merlin.png" alt="Logo Leroy Merlin" class="logo-mini">
-                            <h3 class="name-entreprise">Leroy Merlin</h3>
-                        </div>
-                        <div class="infos-entreprise">
-                                <span>Bricolage</span><span>> 10 000 salariés</span>
-                        </div>
-                        <div class="footer-carte">
-                            <span class="nb-jobs">389 jobs</span>
-                            <span class="btn-decouvrir">Découvrir</span>
-                        </div>
-                    </div>
-                </a>    
-            </article>
+                    </a>    
+                </article>
+            <?php endforeach; ?>
         </div>
-
-
-
-
-
-
-
     </main>
     <?php include 'footer.php'; ?>
     
