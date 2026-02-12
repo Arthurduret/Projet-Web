@@ -29,13 +29,12 @@ body {
 }
 
 
-main {
+main {  
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     flex: 1; 
     align-items: center;     /* Centre verticalement */
     justify-content: center; /* Centre horizontalement */
-}
-
-main {
     font-family: var(--police-principale);
     background-color: var(--gris-clair);
     color: var(--texte-noir);
