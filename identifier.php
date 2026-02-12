@@ -12,28 +12,31 @@
     <link rel="stylesheet" href="/header_footer.css">
 </head>
 
+
 <body>
-    <?php include 'header.php'; ?> 
+        <?php include 'header.php'; ?> 
 
     <main>
-
         <div class="login-container">
-            <h1>S'identifier
-            </h1>
+            <h1>S'identifier</h1>
             
             <form>
                 <div class="input-group">
                     <label>Email</label>
                     <input type="email">
                 </div>
-                </p>
+
+                
                 <button type="submit">Se connecter</button>
             </form>
         </div>
     </main>
 
     <?php include 'footer.php'; ?> 
-    
+
+
+
 </body>
+
 
 </html>

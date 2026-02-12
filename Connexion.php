@@ -16,9 +16,7 @@
     <?php include 'header.php'; ?> 
 
     <main>
-
         <div class="login-container">
-            <a href="/index.php" class="back-link">← Retour</a>
             <h1>Connexion</h1>
             
             <form>
@@ -29,14 +27,18 @@
                 
                 <div class="input-group">
                     <label>Mot de passe</label>
-                    <div class="password-wrapper">
-                        <input type="password">
+                    <div class="password-wrapper" style="position: relative; display: flex; align-items: center;">
+                        <input type="password" id="monInputPassword" style="width: 100%;">
+                        <span id="boutonOeil" style="position: absolute; right: 10px; cursor: pointer; user-select: none;">
+                            👁️
+                        </span>
                     </div>
                 </div>
                 
                 <p>
-                <a href="/mot_de_passe_oublié.php" class="back-link">Mot de passe oublié ?</a>
+                    <a href="/mot_de_passe_oublié.php" class="back-link">Mot de passe oublié ?</a>
                 </p>
+
                 <button type="submit">Se connecter</button>
             </form>
         </div>
@@ -44,5 +46,19 @@
 
     <?php include 'footer.php'; ?> 
 
+    <script>
+        const boutonOeil = document.querySelector('#boutonOeil');
+        const inputPass = document.querySelector('#monInputPassword');
+
+        boutonOeil.addEventListener('click', function() {
+            if (inputPass.type === 'password') {
+                inputPass.type = 'text';
+                this.textContent = '🙈'; 
+            } else {
+                inputPass.type = 'password';
+                this.textContent = '👁️';
+            }
+        });
+    </script>
 </body>
 </html>
