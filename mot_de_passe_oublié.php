@@ -13,7 +13,7 @@
     <?php include 'header.php'; ?> 
         <main>
             <div class="login-container">
-            <a href="Connexion.html" class="back-link">← Retour</a>
+            <a href="Connexion.php" class="back-link">← Retour</a>
 
             <div class ="Réinitialiser">
             <p>RÉINITIALISER</p>
