@@ -27,6 +27,7 @@ body {
     justify-content: center; /* Centre le texte verticalement */
     align-items: center;
     overflow: visible; /* CRUCIAL pour que la barre dépasse */
+    margin-bottom: 6rem;
 }
 
 .Hero > div:first-child img {
@@ -137,3 +138,109 @@ body {
     transform: scale(1.15); /* Effet d'interaction pro */
 }
 
+.grille-entreprises {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+
+}
+
+.carte-entreprise {
+    width: calc(25% - 2rem);
+    background-color: var(--blanc);
+    border-radius: 10px;
+    box-shadow:0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* min-width: 300px; */
+    transition: transform 0.3s ease;
+}
+
+.carte-entreprise:hover{
+    transform: scale(0.98);
+}
+
+.carte-entreprise a {
+    text-decoration: none;
+    color: inherit;
+
+}
+
+
+.image-fond img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+.logo-mini {
+    width: 7rem;
+    height: 3rem;
+    background-color: var(--blanc);
+    border-radius: 8px;
+    margin-top: -3rem;
+    margin-left: 1rem;
+    padding: 0.2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    object-fit: cover;
+    position: relative;
+}
+
+
+
+.contenu-carte {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.header-entreprise {
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.header-entreprise h1 {
+    text-align: left;
+    margin-left: 12%;
+
+}
+
+.name-entreprise {
+    display: flex;
+    align-items: flex-end;
+    color: var(--texte-noir);
+    margin-left: 0.5rem;
+}
+
+.infos-entreprise {
+    margin-left: 0.5rem;
+}
+
+.footer-carte {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0.5rem;
+}
+
+.footer-carte .btn-decouvrir {
+    color: var(--bleu-fonce);
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid var(--bleu-fonce);
+    border-radius: 20px;
+    padding: 5px 15px;
+
+    background-image: linear-gradient(to right, var(--bleu-fonce) 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    transition: all 0.4s ease;
+}
+
+.footer-carte .btn-decouvrir:hover {
+    background-position: 0 0; /* On déplace le fond pour afficher le bleu */
+    color: var(--blanc)
+}
