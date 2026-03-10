@@ -4,7 +4,7 @@ main {
     background-color: #f4f4f4;
     display: flex;
     justify-content: center;
-    padding: 60px 0;
+    padding: 60px 15px;
 }
 
 /*Fonds blanc autour du questionnaire*/
@@ -14,10 +14,10 @@ main {
     border-radius: 30px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     width: 100%;
-    max-width: 420px;
+    max-width: 500px;
 }
 
-/*Titre amélioré*/
+/*Titre*/
 h1 {
     font-size: 32px;
     margin-bottom: 30px;
@@ -39,6 +39,7 @@ h1 {
     position: relative;
     margin-bottom: 25px;
 }
+
 /*Titre au dessus des case*/
 .input-group > label {
     position: absolute;
@@ -50,7 +51,7 @@ h1 {
     color: #1c27a3;
 }
 
-/*Chekbox*/
+/*Inputs*/
 .input-group input,
 .input-group select {
     width: 100%;
@@ -62,7 +63,7 @@ h1 {
     background: white;
 }
 
-/*Positionnement des case*/
+/*Positionnement des cases double*/
 .double-input {
     display: flex;
     gap: 15px;
@@ -70,7 +71,7 @@ h1 {
 
 /*Bouton stylisé*/
 button {
-    background-color: #242e87; 
+    background-color: #242e87;
     color: white;
     border: none;
     padding: 15px 40px;
@@ -78,9 +79,8 @@ button {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 20px;
-    transition: background 0.3s;
     margin: 20px auto 0;
+    transition: background 0.3s;
     display: block;
 }
 
@@ -91,6 +91,7 @@ button:hover {
 /*==========================*/
 /*Bouton chercher un fichier*/
 /*==========================*/
+
 input[type="file"] {
     width: 100%;
     padding: 12px;
@@ -116,7 +117,6 @@ input[type="file"]::file-selector-button {
     transition: background 0.3s;
 }
 
-/* Hover bouton fichier */
 input[type="file"]::file-selector-button:hover {
     background-color: #f17526;
 }
@@ -124,7 +124,6 @@ input[type="file"]::file-selector-button:hover {
 /*================================*/
 /*Bouton entreprise et particulier*/
 /*================================*/
-
 
 /* Conteneur des deux boutons */
 .switch_buttons {
@@ -134,125 +133,146 @@ input[type="file"]::file-selector-button:hover {
     margin-bottom: 25px;
 }
 
-/* Style commun à tous les boutons */
+/* Style commun */
 .switch_btn {
-    flex: 1;                  
-    padding: 14px 0;           
+    flex: 1;
+    padding: 14px 0;
     text-align: center;
     font-size: 16px;
     font-weight: bold;
     border: 2px solid #242e87;
     cursor: pointer;
     transition: all 0.3s;
-    text-decoration: none;     
+    text-decoration: none;
     font-family: inherit;
     display: inline-block;
-    background-color: #dfe3f7; 
+    background-color: #dfe3f7;
     color: #242e87;
 }
 
-/* Bouton au survol (non actif) */
 .switch_btn:hover {
     background-color: #242e87;
     color: white;
 }
 
-/* Bouton actif / page actuelle */
 .switch_btn.active {
-    background-color: #242e87; 
+    background-color: #242e87;
     color: white;
-    cursor: default;           
+    cursor: default;
 }
-
-
 
 /*===============================================*/
 /*Particularité inscription entreprise (checkbox)*/
-/*================================================*/
-
-/*checkbox inscription entreprise*/
+/*===============================================*/
 
 .form-entreprise .checkbox-options {
     border: 1.5px solid #4b55a3;
     border-radius: 12px;
     padding: 20px;
     display: flex;
-    flex-direction: column;   /* une case par ligne */
-    align-items: flex-start;  /* aligné à gauche */
+    flex-direction: column;
+    align-items: flex-start;
     gap: 14px;
     margin-top: 10px;
 }
 
-
-/* alignement des checkbox */
 .form-entreprise .checkbox-options label {
     position: static;
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 16px;
-    white-space: nowrap;
+    white-space: normal;
 }
 
-/* Champ commentaire style site */
+/* Champ commentaire */
 .input-group--commentaire textarea {
     width: 100%;
-    padding: 15px;   
+    padding: 15px;
     border: 1.5px solid #4b55a3;
     border-radius: 12px;
     font-size: 16px;
-    outline: none;           
+    outline: none;
     font-family: inherit;
     min-height: 140px;
-    resize: none;             
+    resize: none;
     background: white;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 768px) {
+/* Checkbox CGU */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
 
-    /* Login container plus flexible */
+.checkbox-group a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #293771;
+}
+
+.checkbox-group a:hover {
+    text-decoration: underline;
+}
+
+/* ========================= */
+/* RESPONSIVE TABLETTE */
+/* ========================= */
+
+@media (max-width: 1024px) {
+
     .login-container {
-        padding: 30px 20px;
-        width: 90%;
+        max-width: 600px;
     }
 
-    /* Champs double-input empilés sur mobile */
+}
+
+/* ========================= */
+/* RESPONSIVE MOBILE */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    main {
+        padding: 40px 10px;
+    }
+
+    .login-container {
+        padding: 30px 20px;
+        width: 100%;
+        border-radius: 20px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
     .double-input {
         flex-direction: column;
         gap: 15px;
     }
 
-    /* Boutons switch empilés */
     .switch_buttons {
         flex-direction: column;
         gap: 10px;
     }
 
-    /* Checkbox options plus compactes sur mobile */
     .form-entreprise .checkbox-options {
-        flex-direction: column;
+        padding: 15px;
         gap: 12px;
-        padding: 12px 10px;
     }
 
-    /* Inputs et textarea occupent 100% largeur */
-    .input-group input,
-    .input-group select,
-    .input-group--commentaire textarea {
-        width: 100%;
-    }
-
-    /* Bouton centré et largeur 100% */
     button {
         width: 100%;
         padding: 15px 0;
     }
 
-    /* Réduire taille des labels*/
     .input-group > label {
         font-size: 13px;
         top: -8px;
         left: 10px;
     }
+
 }
