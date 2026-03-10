@@ -18,16 +18,21 @@ switch ($page) {
         $ctrl->index();
         break;
 
+    case 'a_propos':
+        require_once __DIR__ . '/../vues/a_propos_vue.php';
+        break;
+    
+
     case 'mentions_legales':
-        require_once __DIR__ . '/../controleurs/mentions_legales_controleur.php';
+        require_once __DIR__ . '/../vues/pages_footer/mentions_legales.php';
         break;
 
     case 'cgu':
-        require_once __DIR__ . '/../controleurs/cgu_controleur.php';
+        require_once __DIR__ . '/../vues/pages_footer/cgu.php';
         break;
 
     case 'cookies':
-        require_once __DIR__ . '/../controleurs/cookies_controleur.php';
+        require_once __DIR__ . '/../vues/pages_footer/cookies.php';
         break;
 
     default:

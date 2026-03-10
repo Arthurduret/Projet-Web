@@ -7,9 +7,9 @@
     <link rel="icon" type="image/png" href="images/HeadLogoJobeo.png">
     <title>Jobeo | A propos de nous</title>
 
-    <link rel="stylesheet" href="style_global.css">
-    <link rel="stylesheet" href="/pages_footer/legal.css">
-    <link rel="stylesheet" href="header_footer.css">
+    <link rel="stylesheet" href="/public/css/style_global.css">
+    <link rel="stylesheet" href="/public/css/legal.css">
+    <link rel="stylesheet" href="/public/css/header_footer.css">
 
 </head>
 <body>
