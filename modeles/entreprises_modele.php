@@ -1,4 +1,5 @@
 <?php 
+// Ce fichier a UN seul rôle : parler à la base de données
 
 class EntrepriseModele {
 
