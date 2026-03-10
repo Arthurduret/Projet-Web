@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style_global.css">
-    <link rel="stylesheet" href="/header_footer.css">
-    <link rel="stylesheet" href="/pages_footer/legal.css">
-    <link rel="icon" type="image/png" href="images/HeadLogoJobeo.png">
+    <link rel="stylesheet" href="/public/css/style_global.css">
+    <link rel="stylesheet" href="/public/css/header_footer.css">
+    <link rel="stylesheet" href="/public/css/legal.css">
+    <link rel="icon" type="image/png" href="/public/images/jobeo/HeadLogoJobeo.png">
 
     <title>Jobeo | CGU</title>
 </head>
 <body>
-    <?php include '../header.php'; ?> 
+    <?php include __DIR__ . '/partials/header.php'; ?>
     <main>
         <div class="pages_footer">
             <h1>CGU (Conditions Générales d'Utilisation)</h1>
@@ -43,6 +43,6 @@
             </p>
         </div>
     </main>
-    <?php include '../footer.php'; ?> 
+    <?php include __DIR__ . '/partials/footer.php'; ?> 
 </body>
 </html>
