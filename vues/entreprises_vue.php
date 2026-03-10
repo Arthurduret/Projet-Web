@@ -8,12 +8,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobeo | Entreprises</title>
-    <link rel="stylesheet" href="/style_global.css">
-    <link rel="stylesheet" href="/style_nos_entreprises.css">
-    <link rel="stylesheet" href="/header_footer.css">
+    <link rel="stylesheet" href="/public/css/style_global.css">
+    <link rel="stylesheet" href="/public/css/style_entreprises.css">
+    <link rel="stylesheet" href="/public/css/header_footer.css">
 </head>
 <body>
-    <?php include './header.php'; ?>
+    <?php include __DIR__ . '/partials/header.php'; ?>
 
     <main>
         <div class="header-entreprise">
@@ -27,13 +27,13 @@
                         
                         <div class="image-fond">
                             <!-- htmlspecialchars() protège contre les failles XSS -->
-                            <img src="/images/<?php echo htmlspecialchars($entreprise['image_fond']); ?>" 
+                            <img src="/public/images/entreprises/fond/<?php echo htmlspecialchars($entreprise['image_fond']); ?>" 
                                  alt="Fond <?php echo htmlspecialchars($entreprise['nom']); ?>">
                         </div>
 
                         <div class="contenu-carte">
                             <div class="header_carte">
-                                <img src="/images/<?php echo htmlspecialchars($entreprise['image_logo']); ?>" 
+                                <img src="/public/images/entreprises/logo/<?php echo htmlspecialchars($entreprise['image_logo']); ?>" 
                                      alt="Logo" class="logo-mini">
                                 <h3 class="name-entreprise">
                                     <?php echo htmlspecialchars($entreprise['nom']); ?>
@@ -58,6 +58,6 @@
         </div>
     </main>
 
-    <?php include './footer.php'; ?>
+    <?php include __DIR__ . '/partials/footer.php'; ?>
 </body>
 </html>

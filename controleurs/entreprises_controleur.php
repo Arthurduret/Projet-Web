@@ -2,7 +2,7 @@
 // Ce fichier a un seul rôle : faire le lien entre le modèle et la vue
 
 // On importe le modèle pour pouvoir l'utiliser ici
-require_once 'modeles/entreprises_modele.php';
+require_once __DIR__ . '/../modeles/entreprises_modele.php';
 
 class EntrepriseControleur {
     private $pdo;
@@ -21,7 +21,7 @@ class EntrepriseControleur {
 
         // 3. On charge la vue en lui transmettant les données
         // La vue pourra utiliser la variable $entreprises
-        require 'entreprises_vue.php';
+        require __DIR__ . '/../vues/entreprises_vue.php';
     }
 }
 
