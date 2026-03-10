@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <?php include 'header.php'; ?> 
+    <?php include __DIR__ . '/partials/header.php'; ?>
         <main>
             <div class="login-container">
             <a href="Connexion.php" class="back-link">← Retour</a>
@@ -33,7 +33,7 @@
         </form>
         </main>
 
-    <?php include 'footer.php'; ?> 
+    <?php include __DIR__ . '/partials/footer.php'; ?>
 
 </body>
 </html>

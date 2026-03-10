@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="header_footer.css">
 </head>
 <body>
-    <?php include 'header.php'; ?> 
+    <?php include __DIR__ . '/partials/header.php'; ?>
     <main>
         <h1>Offres d'emplois</h1>
         <p></p>
     </main>
-    <?php include 'footer.php'; ?> 
+    <?php include __DIR__ . '/partials/footer.php'; ?>
 </body>
 </html>

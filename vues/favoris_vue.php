@@ -11,10 +11,10 @@
     <link rel="stylesheet" href="header_footer.css">
 </head>
 <body>
-    <?php include 'header.php'; ?> 
+    <?php include __DIR__ . '/partials/header.php'; ?>
     <main>
         <h1>Vos Favoris</h1>
     </main>
-    <?php include 'footer.php'; ?> 
+    <?php include __DIR__ . '/partials/footer.php'; ?> 
 </body>
 </html>

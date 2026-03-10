@@ -14,7 +14,7 @@
 
 
 <body>
-        <?php include 'header.php'; ?> 
+    <?php include __DIR__ . '/partials/header.php'; ?> 
 
     <main>
         <div class="login-container">
@@ -32,7 +32,7 @@
         </div>
     </main>
 
-    <?php include 'footer.php'; ?> 
+    <?php include __DIR__ . '/partials/footer.php'; ?>
 
 
 
