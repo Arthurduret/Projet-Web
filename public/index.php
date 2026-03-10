@@ -18,17 +18,17 @@ switch ($page) {
         $ctrl->index();
         break;
 
-    // case 'offres':
-    //     require_once '../controleurs/offres_controleur.php';
-    //     $ctrl = new OffreControleur($pdo);
-    //     $ctrl->index();
-    //     break;
+    case 'mentions_legales':
+        require_once __DIR__ . '/../controleurs/mentions_legales_controleur.php';
+        break;
 
-    // case 'connexion':
-    //     require_once '../controleurs/connexion_controleur.php';
-    //     $ctrl = new ConnexionControleur($pdo);
-    //     $ctrl->index();
-    //     break;
+    case 'cgu':
+        require_once __DIR__ . '/../controleurs/cgu_controleur.php';
+        break;
+
+    case 'cookies':
+        require_once __DIR__ . '/../controleurs/cookies_controleur.php';
+        break;
 
     default:
         // Page inconnue → on redirige vers l'accueil

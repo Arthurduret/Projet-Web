@@ -1,7 +1,7 @@
     <footer>
-        <a href="/pages_footer/mentions_legales.php">Mentions Légales</a>
+        <a href="/public/index.php?page=mentions_legales">Mentions Légales</a>
         <p>✦</p>
-        <a href="/pages_footer/cgu.php">CGU</a>
+        <a href="/public/index.php?page=cgu">CGU</a>
         <p>✦</p>
-        <a href="/pages_footer/cookies.php">Gestion des cookies</a>
+        <a href="/public/index.php?page=cookies">Gestion des cookies</a>
     </footer>
