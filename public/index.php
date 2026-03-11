@@ -18,6 +18,12 @@ switch ($page) {
         $ctrl->index();
         break;
 
+    case 'offres_emplois':
+        require_once __DIR__ . '/../controleurs/offres_emplois_controleur.php';
+        $ctrl = new OffresControleur($pdo);
+        $ctrl->index();
+        break;
+
     case 'a_propos':
         require_once __DIR__ . '/../vues/a_propos_vue.php';
         break;

@@ -6,7 +6,7 @@
     <nav id="nav-menu">
         <a href="/public/index.php?page=entreprises">Nos Entreprises</a>
         <a href="/public/index.php?page=a_propos">A propos de nous</a>
-        <a href="/offres_emplois.php">Offres d'emplois</a>
+        <a href="/public/index.php?page=offres_emplois">Offres d'emplois</a>
         <a href="/favoris.php">Favoris</a>
     </nav>
 
