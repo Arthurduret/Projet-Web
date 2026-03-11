@@ -1,29 +1,24 @@
-<?php 
-require_once 'db.php'; 
-
-// On sélectionne TOUT, mais on s'arrête à 3 résultats
-$query = $pdo->query("SELECT * FROM entreprises LIMIT 3");
-$entreprises_accueil = $query->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/png" href="images/HeadLogoJobeo.png">
+    <link rel="icon" type="image/png" href="/public/images/jobeo/HeadLogoJobeo.png">
     <title>Jobeo | Accueil</title>
 
-    <link rel="stylesheet" href="style_global.css">
-    <link rel="stylesheet" href="style_index.css">
-    <link rel="stylesheet" href="header_footer.css">
+    <link rel="stylesheet" href="/public/css/style_global.css">
+    <link rel="stylesheet" href="/public/css/style_index.css">
+    <link rel="stylesheet" href="/public/css/header_footer.css">
 </head>
 <body>
-    <?php include 'header.php'; ?> 
+    <?php include __DIR__ . '/partials/header.php'; ?>
+
     <main>
         <section class="Hero">
-            <div><img src="images/ImageFondPageAccueil.png" alt="Image d'accueil"></div>
+            <div>
+                <img src="/public/images/jobeo/ImageFondPageAccueil.png" alt="Image d'accueil">
+            </div>
             <div class="content-wrapper">
                 <form class="search-bar" action="">
                     <div class="input-group">
@@ -35,11 +30,12 @@ $entreprises_accueil = $query->fetchAll(PDO::FETCH_ASSOC);
                         <input type="text" name="skill" id="domaine" placeholder="Data">
                     </div>
                     <button type="submit" class="btn-search">
-                        <img src="images/LoupeLogo.png" alt="Rechercher">
+                        <img src="/public/images/jobeo/LoupeLogo.png" alt="Rechercher">
                     </button>
                 </form>
             </div>
         </section>
+
         <section>
             <div class="header-entreprise">
                 <h1>Nos Entreprises</h1>
@@ -47,17 +43,26 @@ $entreprises_accueil = $query->fetchAll(PDO::FETCH_ASSOC);
             <div class="grille-entreprises">
                 <?php foreach ($entreprises_accueil as $entreprise): ?>
                     <article class="carte-entreprise">
-                        <a href="/entreprises/fiche.php?id=<?php echo $entreprise['id']; ?>">
+                        <a href="/index.php?page=fiche_entreprise&id=<?php echo htmlspecialchars($entreprise['id']); ?>">
+                            
                             <div class="image-fond">
-                                <img src="/images/<?php echo $entreprise['image_fond']; ?>" alt="Fond">
+                                <img src="/public/images/entreprises/fond/<?php echo htmlspecialchars($entreprise['image_fond']); ?>" 
+                                     alt="Fond <?php echo htmlspecialchars($entreprise['nom']); ?>">
                             </div>
+
                             <div class="contenu-carte">
                                 <div class="header_carte">
-                                    <img src="/images/<?php echo $entreprise['image_logo']; ?>" class="logo-mini">
-                                    <h3 class="name-entreprise"><?php echo $entreprise['nom']; ?></h3>
+                                    <img src="/public/images/entreprises/logo/<?php echo htmlspecialchars($entreprise['image_logo']); ?>" 
+                                         class="logo-mini"
+                                         alt="Logo <?php echo htmlspecialchars($entreprise['nom']); ?>">
+                                    <h3 class="name-entreprise">
+                                        <?php echo htmlspecialchars($entreprise['nom']); ?>
+                                    </h3>
                                 </div>
                                 <div class="footer-carte">
-                                    <span class="nb-jobs"><?php echo $entreprise['nb_jobs']; ?> jobs</span>
+                                    <span class="nb-jobs">
+                                        <?php echo htmlspecialchars($entreprise['nb_jobs']); ?> jobs
+                                    </span>
                                     <span class="btn-decouvrir">Découvrir</span>
                                 </div>
                             </div>
@@ -66,8 +71,8 @@ $entreprises_accueil = $query->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
             </div>
         </section>
-        
     </main>
-    <?php include 'footer.php'; ?>
+
+    <?php include __DIR__ . '/partials/footer.php'; ?>
 </body>
 </html>
