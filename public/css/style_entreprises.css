@@ -98,3 +98,102 @@
     background-position: 0 0; /* On déplace le fond pour afficher le bleu */
     color: var(--blanc)
 }
+
+
+/*------------------*/
+/* Responsive       */
+/*------------------*/
+
+
+
+/* ------------------------------- */
+/* TABLETTES (≤1024px) */
+/* ------------------------------- */
+
+@media (max-width: 1024px) {
+
+    .grille-entreprises {
+        gap: 2rem;
+        padding: 0 2rem;
+    }
+
+    .carte-entreprise {
+        width: calc(50% - 1rem);
+    }
+
+    .logo-mini {
+        width: 6rem;
+        height: 2.5rem;
+    }
+
+}
+
+
+/* ------------------------------- */
+/* MOBILE (≤768px) */
+/* ------------------------------- */
+
+@media (max-width: 768px) {
+
+    .grille-entreprises {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .carte-entreprise {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .image-fond img {
+        height: 140px;
+    }
+
+    .logo-mini {
+        width: 5rem;
+        height: 2rem;
+        margin-top: -2rem;
+    }
+
+    .contenu-carte {
+        padding: 12px;
+        gap: 8px;
+    }
+
+}
+
+
+/* ------------------------------- */
+/* PETITS MOBILES (≤480px) */
+/* ------------------------------- */
+
+@media (max-width: 480px) {
+
+    .image-fond img {
+        height: 120px;
+    }
+
+    .logo-mini {
+        width: 4rem;
+        height: 1.8rem;
+        margin-top: -1.8rem;
+    }
+
+    .name-entreprise {
+        font-size: 0.95rem;
+    }
+
+    .footer-carte {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .footer-carte .btn-decouvrir {
+        padding: 4px 12px;
+        font-size: 0.85rem;
+    }
+
+}

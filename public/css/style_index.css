@@ -244,3 +244,141 @@ body {
     background-position: 0 0; /* On déplace le fond pour afficher le bleu */
     color: var(--blanc)
 }
+
+
+/*----------------------------*/
+/*          Responsive          */
+/*------------------------------*/
+
+/* Tablettes et petits écrans (max 1024px) */
+
+@media (max-width: 1024px) {
+
+    .Hero {
+        height: 400px;
+        margin: 30px 5%;
+    }
+
+    .search-bar {
+        flex-direction: column;
+        height: auto;
+        padding: 20px;
+        bottom: -60px;
+        width: 90%;
+    }
+
+    .input-group {
+        width: 100%;
+        padding: 10px 0;
+        margin-right: 0;
+        border-right: none;
+    }
+
+    .btn-search {
+        padding: 15px 0 0 0;
+        align-self: flex-end;
+    }
+
+    .grille-entreprises {
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    .carte-entreprise {
+        width: calc(50% - 1rem);
+        margin-bottom: 2rem;
+    }
+
+    .logo-mini {
+        width: 6rem;
+        height: 2.5rem;
+        margin-top: -2.5rem;
+    }
+
+    .header-entreprise h1 {
+        margin-left: 5%;
+        font-size: 1.8rem;
+    }
+}
+
+/* Petits écrans mobiles (max 768px) */
+@media (max-width: 768px) {
+
+    .Hero {
+        height: 350px;
+        margin: 20px 5%;
+    }
+
+    .search-bar {
+        bottom: -70px;
+    }
+
+    .input-group label {
+        font-size: 1.2rem;
+    }
+
+    .input-group input {
+        font-size: 0.9rem;
+    }
+
+    .btn-search img {
+        width: 50px;
+    }
+
+    .carte-entreprise {
+        width: 100%;
+    }
+
+    .logo-mini {
+        width: 5rem;
+        height: 2rem;
+        margin-top: -2rem;
+    }
+
+    .header-entreprise h1 {
+        font-size: 1.6rem;
+        margin-left: 5%;
+    }
+}
+
+/* Très petits écrans / téléphones (max 480px) */
+@media (max-width: 480px) {
+
+    .Hero {
+        height: 300px;
+        margin: 15px 3%;
+    }
+
+    .search-bar {
+        width: 100%;
+        bottom: -80px;
+        padding: 15px;
+    }
+
+    .input-group {
+        padding: 5px 0;
+    }
+
+    .input-group label {
+        font-size: 1rem;
+    }
+
+    .input-group input {
+        font-size: 0.85rem;
+    }
+
+    .btn-search img {
+        width: 40px;
+    }
+
+    .logo-mini {
+        width: 4rem;
+        height: 1.8rem;
+        margin-top: -1.8rem;
+    }
+
+    .header-entreprise h1 {
+        font-size: 1.4rem;
+        margin-left: 3%;
+    }
+}
