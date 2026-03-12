@@ -86,6 +86,70 @@ footer p {
 }
 
 
+/* ============================================
+   DROPDOWN PILOTE
+   ============================================ */
+
+.nav-dropdown {
+    position: relative;
+}
+
+.nav-dropdown__trigger {
+    cursor: pointer;
+    color: #293771;
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-style: italic;
+    font-family: inherit;
+    user-select: none;
+    transition: color 0.4s;
+}
+
+.nav-dropdown__trigger:hover {
+    color: #f17526;
+}
+
+/* Le menu caché par défaut */
+.nav-dropdown__menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(41, 55, 113, 0.12);
+    min-width: 170px;
+    z-index: 100;
+    overflow: hidden;
+}
+
+/* Affiché quand la classe "open" est présente */
+.nav-dropdown.open .nav-dropdown__menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-dropdown__menu a {
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #293771;
+    font-size: 1.15rem;
+    font-weight: bold;
+    font-style: italic;
+    transition: background 0.2s, color 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.nav-dropdown__menu a:last-child {
+    border-bottom: none;
+}
+
+.nav-dropdown__menu a:hover {
+    background: #f17526;
+    color: white;
+}
 
 
 

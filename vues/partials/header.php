@@ -1,4 +1,7 @@
 <header>
+
+<?php $_SESSION['role'] = 'admin';?>
+
     <a href="/public/index.php" class="logo">
         <img src="/public/images/jobeo/LogoJobeo.png" alt="Logo" width="90" height="50">
     </a>
@@ -7,7 +10,20 @@
         <a href="/public/index.php?page=entreprises">Nos Entreprises</a>
         <a href="/public/index.php?page=a_propos">A propos de nous</a>
         <a href="/public/index.php?page=offres_emplois">Offres d'emplois</a>
-        <a href="/favoris.php">Favoris</a>
+
+        <?php if (isset($_SESSION['role']) && ($_SESSION['role'] === 'pilote' || $_SESSION['role'] === 'admin')): ?>
+            <!-- Menu déroulant Créer — visible uniquement pour les pilotes -->
+            <div class="nav-dropdown">
+                <span class="nav-dropdown__trigger">Créer ▾</span>
+                <div class="nav-dropdown__menu">
+                    <a href="/public/index.php?page=creer_entreprise">Entreprise</a>
+                    <a href="/public/index.php?page=creer_offre">Offre</a>
+                </div>
+            </div>
+        <?php else: ?>
+            <!-- Bouton Favoris — visible pour les étudiants -->
+            <a href="/favoris.php">Favoris</a>
+        <?php endif; ?>
     </nav>
 
     <div class="header-right">
@@ -22,8 +38,24 @@
     <script>
         function toggleMenu() {
             const nav = document.getElementById('nav-menu');
-            // Ajoute ou enlève la classe "active" à chaque clic
             nav.classList.toggle('active');
+        }
+
+        // Ferme le dropdown si on clique ailleurs sur la page
+        document.addEventListener('click', function(e) {
+            const dropdown = document.querySelector('.nav-dropdown');
+            if (dropdown && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
+
+        // Ouvre/ferme le dropdown au clic
+        const trigger = document.querySelector('.nav-dropdown__trigger');
+        if (trigger) {
+            trigger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.querySelector('.nav-dropdown').classList.toggle('open');
+            });
         }
     </script>
 
