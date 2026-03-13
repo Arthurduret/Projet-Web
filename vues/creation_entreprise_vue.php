@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/png" href="/public/images/jobeo/HeadLogoJobeo.png">
-    <title>Jobeo | Inscription</title>
+    <title>Jobeo | Création d'une entreprise</title>
 
     <link rel="stylesheet" href="/public/css/style_global.css">
     <link rel="stylesheet" href="/public/css/header_footer.css">
@@ -21,17 +21,17 @@
       <div class="login-container">
 
             <a href="#" class="back-link">← Retour</a>
-            <h1>S'inscrire</h1>
+            <h1>Creation d'une entreprise</h1>
 
             <form class="form-entreprise" action="#" method="POST" enctype="multipart/form-data">
                 
                 <div class="input-group">
                     <label>Nom</label>
-                    <input id="nom" type="text" name="nom" maxlength="100" placeholder="Nom d'entreprises" required>
+                    <input id="nom" type="text" name="nom" maxlength="50" placeholder="Nom de l'entreprise" required>
                 </div>
 
                 <div class="input-group input-group--commentaire">
-                    <label for="commentaire">description de l'entreprise</label>
+                    <label for="commentaire">Description de l'entreprise</label>
                     <textarea
                         id="commentaire"
                         name="description"
@@ -44,17 +44,21 @@
 
                 <div class="input-group">
                     <label>Email</label>
-                    <input id="email" type="email" name="email" placeholder="Exemple : prenom.nom@gmail.com" required>
+                    <input id="email" type="email" name="email" placeholder="contact@exemple.com" required>
                 </div>
 
                 <div class="input-group">
                     <label>Numéro de téléphone</label>
-                    <input id="tel" type="tel" name="tel" placeholder="Exemple : 06 12 34 56 78" required>
+                    <input id="tel" type="tel" name="tel" placeholder="06 12 34 56 78" required>
                 </div>
                 
                 <div class="input-group">
                     <label>Image de fond</label>
-                    <input id="image_fond" type="file" name="image_fond" accept="image/*">
+                    <input 
+                    id="image_fond" 
+                    type="file" 
+                    name="image_fond" 
+                    accept="image/*" >
                 </div>
                 
                 <div class="input-group">
@@ -62,7 +66,7 @@
                     <input id="image_logo" type="file" name="image_logo" accept="image/*">
                 </div>
 
-                <button type="submit">S'inscrire</button>
+                <button type="submit">Inscrire l’entreprise</button>
 
             </form>
         </div>
