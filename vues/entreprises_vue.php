@@ -23,7 +23,7 @@
         <div class="grille-entreprises">
             <?php foreach ($entreprises as $entreprise): ?>
                 <article class="carte-entreprise">
-                    <a href="/entreprises/fiche.php?id=<?php echo htmlspecialchars($entreprise['id']); ?>">
+                    <a href="/public/index.php?page=entreprises&id=<?php echo htmlspecialchars($entreprise['id_entreprise']); ?>">
                         
                         <div class="image-fond">
                             <!-- htmlspecialchars() protège contre les failles XSS -->
@@ -40,14 +40,9 @@
                                 </h3>
                             </div>
 
-                            <div class="infos-entreprise">
-                                <span><?php echo htmlspecialchars($entreprise['secteur']); ?></span>
-                                <span><?php echo htmlspecialchars($entreprise['taille']); ?></span>
-                            </div>
-
                             <div class="footer-carte">
                                 <span class="nb-jobs">
-                                    <?php echo htmlspecialchars($entreprise['nb_jobs']); ?> jobs
+                                    <?php echo htmlspecialchars($entreprise['nb_offres']); ?> offres
                                 </span>
                                 <span class="btn-decouvrir">Découvrir</span>
                             </div>

@@ -43,8 +43,7 @@
             <div class="grille-entreprises">
                 <?php foreach ($entreprises_accueil as $entreprise): ?>
                     <article class="carte-entreprise">
-                        <a href="/index.php?page=fiche_entreprise&id=<?php echo htmlspecialchars($entreprise['id']); ?>">
-                            
+                        <a href="/public/index.php?page=entreprises&id=<?php echo htmlspecialchars($entreprise['id_entreprise']); ?>">                            
                             <div class="image-fond">
                                 <img src="/public/images/entreprises/fond/<?php echo htmlspecialchars($entreprise['image_fond']); ?>" 
                                      alt="Fond <?php echo htmlspecialchars($entreprise['nom']); ?>">
@@ -52,16 +51,18 @@
 
                             <div class="contenu-carte">
                                 <div class="header_carte">
-                                    <img src="/public/images/entreprises/logo/<?php echo htmlspecialchars($entreprise['image_logo']); ?>" 
-                                         class="logo-mini"
-                                         alt="Logo <?php echo htmlspecialchars($entreprise['nom']); ?>">
+                                    <img src="<?php 
+                                        $chemin = '/public/images/entreprises/logo/' . $entreprise['image_logo'];
+                                        echo file_exists($_SERVER['DOCUMENT_ROOT'] . $chemin) 
+                                            ? htmlspecialchars($chemin)
+                                            : '/public/images/default_logo.png';?>">
                                     <h3 class="name-entreprise">
                                         <?php echo htmlspecialchars($entreprise['nom']); ?>
                                     </h3>
                                 </div>
                                 <div class="footer-carte">
                                     <span class="nb-jobs">
-                                        <?php echo htmlspecialchars($entreprise['nb_jobs']); ?> jobs
+                                        <?php echo htmlspecialchars($entreprise['nb_offres']); ?> offres
                                     </span>
                                     <span class="btn-decouvrir">Découvrir</span>
                                 </div>
