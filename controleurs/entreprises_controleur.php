@@ -12,16 +12,31 @@ class EntrepriseControleur {
     }    
 
     public function index() {
-        // 1. On crée le modèle en lui passant la connexion BDD
+        $model       = new EntrepriseModele($this->pdo);
+        $entreprises = $model->getEntreprises();
+        require __DIR__ . '/../vues/entreprises_vue.php';
+    }
+
+    public function create() {
+        // $this->verifierRole(['admin', 'pilote']); // TODO : décommenter quand auth en place
+        require __DIR__ . '/../vues/entreprise_form_vue.php';
+    }
+
+    public function store() {
+        // $this->verifierRole(['admin', 'pilote']); // TODO : décommenter quand auth en place
         $model = new EntrepriseModele($this->pdo);
 
-        // 2. On demande au modèle les données
-        // $entreprises contiendra un tableau avec toutes les entreprises
-        $entreprises = $model->getEntreprises();
+        $donnees = [
+            'nom'         => $_POST['nom']         ?? '',
+            'description' => $_POST['description'] ?? '',
+            'image_logo'  => $_POST['image_logo']  ?? '',
+            'image_fond'  => $_POST['image_fond']  ?? '',
+        ];
 
-        // 3. On charge la vue en lui transmettant les données
-        // La vue pourra utiliser la variable $entreprises
-        require __DIR__ . '/../vues/entreprises_vue.php';
+        $model->creerEntreprise($donnees);
+
+        header('Location: /public/index.php?page=entreprises');
+        exit;
     }
 }
 
