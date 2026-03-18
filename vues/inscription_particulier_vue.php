@@ -40,7 +40,7 @@
 
                 <div class="input-group">
                     <label>Email</label>
-                    <input type="email" placeholder="Exemple : prenom.nom@gmail.com" required>
+                    <input type="email" placeholder="prenom.nom@gmail.com" required>
                 </div>
 
                 <div class="input-group radio-container">

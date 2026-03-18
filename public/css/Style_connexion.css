@@ -149,6 +149,17 @@ button:hover {
     color: white;
     border-color: #242e87;
 }
+
+
+.checkbox-group a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #293771;
+}
+
+.checkbox-group a:hover {
+    text-decoration: underline;
+}
 /*
 .wrapper{
     display: inline;
@@ -159,4 +170,11 @@ section{
 article{
     flex: 1;
 }
-*/
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+    */
