@@ -20,14 +20,15 @@
                 <img src="/public/images/jobeo/ImageFondPageAccueil.png" alt="Image d'accueil">
             </div>
             <div class="content-wrapper">
-                <form class="search-bar" action="">
+                <form class="search-bar" method="GET" action="/public/index.php">
+                    <input type="hidden" name="page" value="offres_emplois">
                     <div class="input-group">
-                        <label for="lieu">Lieux</label>
-                        <input type="text" name="location" id="lieu" placeholder="Marseille 13001">
+                        <label for="ou">Lieu</label>
+                        <input type="text" name="ou" id="ou" placeholder="Marseille 13001">
                     </div>
                     <div class="input-group">
-                        <label for="domaine">Domaine</label>
-                        <input type="text" name="skill" id="domaine" placeholder="Data">
+                        <label for="quoi">Domaine</label>
+                        <input type="text" name="quoi" id="quoi" placeholder="Data">
                     </div>
                     <button type="submit" class="btn-search">
                         <img src="/public/images/jobeo/LoupeLogo.png" alt="Rechercher">

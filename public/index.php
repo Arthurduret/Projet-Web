@@ -4,6 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 require_once __DIR__ . '/../db.php';
+require_once __DIR__ . '/../helper/csrf.php';
 
 // Récupère la page demandée dans l'URL, 'accueil' par défaut
 $page = $_GET['page'] ?? 'accueil';
@@ -66,6 +67,10 @@ switch ($page) {
     case 'entreprise_form':
         require_once __DIR__ . '/../vues/entreprise_form_vue.php';
         break;
+
+    case 'identifier':
+        require __DIR__ . '/../vues/identifier_vue.php';
+        break;    
 
     default:
         // Page inconnue → on redirige vers l'accueil

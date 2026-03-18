@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobeo | Créer une entreprise</title>
     <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/offre.css">
+    <link rel="stylesheet" href="/public/css/forms.css">
     <link rel="stylesheet" href="/public/css/header_footer.css">
 </head>
 <body>
@@ -17,7 +17,8 @@
             <h1>Créer une entreprise</h1>
 
             <form method="POST" action="/public/index.php?page=entreprises&action=store">
-
+                <?php echo csrfInput(); ?>
+                
                 <!-- NOM -->
                 <div class="form-group">
                     <label for="nom">Nom de l'entreprise *</label>
