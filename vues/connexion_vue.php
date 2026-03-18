@@ -8,35 +8,35 @@
     <title>Jobeo | Connexion</title>
 
     <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/style_connexion.CSS">
+    <link rel="stylesheet" href="/public/css/form.css">
     <link rel="stylesheet" href="/public/css/header_footer.css">
 </head>
 
 <body>
     <?php include __DIR__ . '/partials/header.php'; ?>
 
-    <main>
+    <main class="form-page">
         <div class="login-container">
             <h1>Connexion</h1>
             
-            <form>
+            <form method="POST" action="/public/index.php?page=connexion&action=login">
+                <?php echo csrfInput(); ?>
+    
                 <div class="input-group">
-                    <label>Email</label>
-                    <input type="email">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" required autocomplete="email">
                 </div>
                 
                 <div class="input-group">
-                    <label>Mot de passe</label>
-                    <div class="password-wrapper" style="position: relative; display: flex; align-items: center;">
-                        <input type="password" id="monInputPassword" style="width: 100%;">
-                        <span id="boutonOeil" style="position: absolute; right: 10px; cursor: pointer; user-select: none;">
-                            👁️
-                        </span>
+                    <label for="password">Mot de passe</label>
+                    <div class="password-wrapper">
+                        <input type="password" name="password" id="password" required autocomplete="current-password">
+                        <span id="password-toggle" id="password-toggle">👁️</span>
                     </div>
                 </div>
                 
                 <p>
-                    <a href="/mot_de_passe_oublié.php" class="back-link">Mot de passe oublié ?</a>
+                    <a href="/public/index.php?page=mot_de_passe_oublie" class="back-link">Mot de passe oublié ?</a>
                 </p>
 
                 <button type="submit">Se connecter</button>
@@ -48,7 +48,7 @@
 
     <script>
         const boutonOeil = document.querySelector('#boutonOeil');
-        const inputPass = document.querySelector('#monInputPassword');
+        const inputPass = document.querySelector('#password');
 
         boutonOeil.addEventListener('click', function() {
             if (inputPass.type === 'password') {

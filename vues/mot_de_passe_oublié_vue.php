@@ -7,30 +7,40 @@
     <link rel="icon" type="image/png" href="/public/images/jobeo/HeadLogoJobeo.png">
     <title>Jobeo | Mot de passe oublié</title>
     
-    <link rel="stylesheet" href="/public/css/style_connexion.CSS">
+    <link rel="stylesheet" href="/public/css/form.css">
     <link rel="stylesheet" href="/public/css/style_global.css">
     <link rel="stylesheet" href="/public/css/header_footer.css">
 </head>
 <body>
 
     <?php include __DIR__ . '/partials/header.php'; ?>
-        <main>
+        <main class="form-page">
             <div class="login-container">
-            <a href="Connexion.php" class="back-link">← Retour</a>
+                <a href="/public/index.php?page=connexion" class="back-link">← Retour</a>
 
-            <div class ="Réinitialiser">
-            <p>RÉINITIALISER</p>
-            </div>
+                <h1>Réinitialiser</h1>
+                <p style="text-align:center; color:#666; margin-bottom:25px; font-size:14px;">
+                    Entrez votre adresse email pour recevoir un lien de réinitialisation.
+                </p>
 
             
         
-        <form>
-            <div class="input-group">
-                <label>Email</label>
-                <input type="email">
-            </div>
-             <button type="submit">Envoyer</button>
-        </form>
+                <form method="POST" action="/public/index.php?page=mot_de_passe_oublie&action=send">
+                    <?php echo csrfInput(); ?>
+
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input type="email"
+                                name="email"
+                                id="email"
+                                placeholder="prenom.nom@gmail.com"
+                                required
+                                autocomplete="email">
+                        </div>
+
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div>    
         </main>
 
     <?php include __DIR__ . '/partials/footer.php'; ?>

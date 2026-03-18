@@ -6,7 +6,7 @@
     <!-- Le titre change selon si on crée ou modifie -->
     <title>Jobeo | <?php echo isset($offre) ? 'Modifier l\'offre' : 'Créer une offre'; ?></title>
     <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/offre.css">
+    <link rel="stylesheet" href="/public/css/forms.css">
     <link rel="stylesheet" href="/public/css/header_footer.css">
 </head>
 <body>
