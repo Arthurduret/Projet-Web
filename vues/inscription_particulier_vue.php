@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/public/css/style_global.css">
     <link rel="stylesheet" href="/public/css/header_footer.css">
     <link rel="stylesheet" href="/public/css/forms.css">
+    
+    
 
 </head>
 
