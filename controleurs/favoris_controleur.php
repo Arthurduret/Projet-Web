@@ -1,0 +1,1 @@
+<!-- Page : pour la wishlist, ajouter/retirer une offre des favoris. -->
