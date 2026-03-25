@@ -22,12 +22,12 @@ switch ($page) {
         $action = $_GET['action'] ?? 'index';
         switch ($action) {
             case 'index':  $ctrl->index();  break;
-            // case 'show':   $ctrl->show();   break;  // ← fiche détail
+            case 'show':   $ctrl->show();   break;  // ← fiche détail
             case 'create': $ctrl->create(); break;
             case 'store':  $ctrl->store();  break;
-            // case 'edit':   $ctrl->edit();   break;
-            // case 'update': $ctrl->update(); break;
-            // case 'delete': $ctrl->delete(); break;
+            case 'edit':   $ctrl->edit();   break;
+            case 'update': $ctrl->update(); break;
+            case 'delete': $ctrl->delete(); break;
             default:       $ctrl->index();  break;
         }
         break;
