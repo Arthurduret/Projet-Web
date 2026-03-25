@@ -22,7 +22,7 @@ switch ($page) {
         $action = $_GET['action'] ?? 'index';
         switch ($action) {
             case 'index':  $ctrl->index();  break;
-            case 'show':   $ctrl->show();   break;  // ← fiche détail
+            case 'show':   $ctrl->show();   break; 
             case 'create': $ctrl->create(); break;
             case 'store':  $ctrl->store();  break;
             case 'edit':   $ctrl->edit();   break;
