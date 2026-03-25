@@ -38,6 +38,44 @@ class EntrepriseControleur {
         header('Location: /public/index.php?page=entreprises');
         exit;
     }
-}
 
+    public function show() {
+        $id    = $_GET['id'] ?? null;
+        $model = new EntrepriseModele($this->pdo);
+        $entreprise = $model->getEntrepriseById($id);
+        require __DIR__ . '/../vues/entreprise_show_vue.php';
+    }
+
+    public function edit() {
+        $id    = $_GET['id'] ?? null;
+        $model = new EntrepriseModele($this->pdo);
+        $entreprise = $model->getEntrepriseById($id);
+        require __DIR__ . '/../vues/entreprise_form_vue.php';
+    }
+
+    public function update() {
+        $id    = $_GET['id'] ?? null;
+        $model = new EntrepriseModele($this->pdo);
+
+        $donnees = [
+            'nom'         => $_POST['nom']         ?? '',
+            'description' => $_POST['description'] ?? '',
+            'image_logo'  => $_POST['image_logo']  ?? '',
+            'image_fond'  => $_POST['image_fond']  ?? '',
+        ];
+
+        $model->modifierEntreprise($id, $donnees);
+
+        header('Location: /public/index.php?page=entreprises');
+        exit;
+    }
+
+    public function delete() {
+        $id    = $_GET['id'] ?? null;
+        $model = new EntrepriseModele($this->pdo);
+        $model->supprimerEntreprise($id);
+        header('Location: /public/index.php?page=entreprises');
+        exit;
+    }
+}
 ?>
