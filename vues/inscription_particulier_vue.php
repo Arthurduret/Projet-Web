@@ -10,7 +10,9 @@
 
     <link rel="stylesheet" href="/public/css/style_global.css">
     <link rel="stylesheet" href="/public/css/header_footer.css">
-    <link rel="stylesheet" href="/public/css/inscription.css">
+    <link rel="stylesheet" href="/public/css/forms.css">
+    
+    
 
 </head>
 
@@ -18,100 +20,99 @@
     
     <?php include __DIR__ . '/partials/header.php'; ?> 
 
-    <main>
+    <main class="form-page">
         <div class="login-container">
 
-            <a href="#" class="back-link">← Retour</a>
+            <a href="/public/index.php?page=accueil" class="back-link">← Retour</a>
 
             <h1>S'inscrire</h1>
             
             <div class="switch_buttons">
-                <a class="switch_btn active" disabled>Particulier</a>
-                <a href="inscription_entreprise.php" class="switch_btn">Entreprise</a>
+                <a class="switch_btn active">Étudiant</a>
             </div>
 
-            <form>
-                
+            <form method="POST"
+                  action="/public/index.php?page=inscription&action=store"
+                  enctype="multipart/form-data">
+                <?php echo csrfInput(); ?>
+
                 <div class="input-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="Exemple : prenom.nom@gmail.com" required>
+                    <label for="email">Email</label>
+                    <input type="email"
+                           name="email"
+                           id="email"
+                           placeholder="prenom.nom@gmail.com"
+                           required
+                           autocomplete="email">
                 </div>
 
                 <div class="double-input">
                     <div class="input-group">
-                        <label>Nom</label>
-                        <input type="text" placeholder="Votre nom" required>
+                        <label for="nom">Nom</label>
+                        <input type="text"
+                               name="nom"
+                               id="nom"
+                               placeholder="Votre nom"
+                               required>
                     </div>
 
                     <div class="input-group">
-                        <label>Prénom</label>
-                        <input type="text" placeholder="Votre prénom" required>
+                        <label for="prenom">Prénom</label>
+                        <input type="text"
+                               name="prenom"
+                               id="prenom"
+                               placeholder="Votre prénom"
+                               required>
                     </div>
                 </div>
 
                 <div class="input-group">
-                    <label>Type de contrat</label>
-                    <select required>
-                        <option value="">Que recherchez-vous ?</option>
-                        <option>CDI</option>
-                        <option>CDD</option>
-                        <option>Stage</option>
-                        <option>Alternance</option>
-                        <option>Freelance</option>
-                    </select>
+                    <label for="cv">CV (PDF)</label>
+                    <input type="file"
+                           name="cv"
+                           id="cv"
+                           accept=".pdf">
                 </div>
 
                 <div class="input-group">
-                    <label>Domaine d'activité</label>
-                    <select required>
-                        <option value="">Où recherchez-vous ?</option>
-                        <option>Informatique</option>
-                        <option>Marketing</option>
-                        <option>Finance</option>
-                        <option>Design</option>
-                    </select>
+                    <label for="password">Mot de passe</label>
+                    <div class="password-wrapper">
+                        <input type="password"
+                               name="password"
+                               id="password"
+                               placeholder="8 caractères minimum"
+                               minlength="8"
+                               required
+                               autocomplete="new-password">
+                        <span class="password-toggle" id="boutonOeil">👁️</span>
+                    </div>
                 </div>
 
                 <div class="input-group">
-                    <label>Expérience</label>
-                    <select>
-                        <option>Année d'expérience</option>
-                        <option>0 - 1 an</option>
-                        <option>1 - 3 ans</option>
-                        <option>3 - 5 ans</option>
-                        <option>5+ ans</option>
-                    </select>
-                </div>
-
-                <div class="input-group">
-                    <label>CV</label>
-                    <input type="file">
-                </div>
-
-                <div class="input-group">
-                    <label>Ressources additionnelles</label>
-                    <input type="file">
-                </div>
-
-                <div class="input-group">
-                    <label>Mot de passe</label>
-                    <input type="password" placeholder="Votre mot de passe" required>
-                </div>
-
-                <div class="input-group">
-                    <label>Mot de passe</label>
-                    <input type="password" placeholder="Confirmer Votre mot de passe" required>
+                    <label for="password_confirm">Confirmer le mot de passe</label>
+                    <input type="password"
+                           name="password_confirm"
+                           id="password_confirm"
+                           placeholder="Retapez votre mot de passe"
+                           minlength="8"
+                           required
+                           autocomplete="new-password">
                 </div>
 
                 <div class="checkbox-group">
-                    <input type="checkbox" required>
-                    <a href="pages_footeur/cgu.html" >J'accepte les conditions générales d'utilisation</a>
+                    <input type="checkbox" name="accepte_cgu" id="accepte_cgu" required>
+                    <label for="accepte_cgu">
+                        J'accepte les <a href="/public/index.php?page=cgu">conditions générales d'utilisation</a>
+                    </label>
                 </div>
 
                 <div class="checkbox-group">
-                    <input type="checkbox" required>
-                    <a href="pages_footeur/mentions_legales.html" >J’accepte la politique de confidentialité</a>
+                    <input type="checkbox" name="accepte_confidentialite" id="accepte_confidentialite" required>
+                    <label for="accepte_confidentialite">
+                        J'accepte la <a href="/public/index.php?page=mentions_legales">politique de confidentialité</a>
+                    </label>
                 </div>
+
                 <button type="submit">S'inscrire</button>
             </form>
         </div>
@@ -119,5 +120,19 @@
             
     <?php include __DIR__ . '/partials/footer.php'; ?>
 
+    <script>
+        const boutonOeil = document.querySelector('#boutonOeil');
+        const inputPass  = document.querySelector('#password');
+
+        boutonOeil.addEventListener('click', function () {
+            if (inputPass.type === 'password') {
+                inputPass.type   = 'text';
+                this.textContent = '🙈';
+            } else {
+                inputPass.type   = 'password';
+                this.textContent = '👁️';
+            }
+        });
+    </script>
 </body>
 </html>

@@ -173,8 +173,8 @@
 .offre-tags {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     gap: 0.5rem;
-    margin-top: 0.3rem;
 }
 
 .offre-tags span {
@@ -197,6 +197,23 @@
 /* Bouton voir l'offre */
 .offre-action {
     flex-shrink: 0;
+}
+
+.offre-competences {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.tag-competence {
+    background: #fff3e8;
+    color: #f17526;
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    border: 1px solid #f17526;
 }
 
 .btn-voir {

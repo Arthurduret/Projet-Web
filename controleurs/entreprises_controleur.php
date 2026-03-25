@@ -12,17 +12,70 @@ class EntrepriseControleur {
     }    
 
     public function index() {
-        // 1. On crée le modèle en lui passant la connexion BDD
-        $model = new EntrepriseModele($this->pdo);
-
-        // 2. On demande au modèle les données
-        // $entreprises contiendra un tableau avec toutes les entreprises
+        $model       = new EntrepriseModele($this->pdo);
         $entreprises = $model->getEntreprises();
-
-        // 3. On charge la vue en lui transmettant les données
-        // La vue pourra utiliser la variable $entreprises
         require __DIR__ . '/../vues/entreprises_vue.php';
     }
-}
 
+    public function create() {
+        // $this->verifierRole(['admin', 'pilote']); // TODO : décommenter quand auth en place
+        require __DIR__ . '/../vues/entreprise_form_vue.php';
+    }
+
+    public function store() {
+        // $this->verifierRole(['admin', 'pilote']); // TODO : décommenter quand auth en place
+        $model = new EntrepriseModele($this->pdo);
+
+        $donnees = [
+            'nom'         => $_POST['nom']         ?? '',
+            'description' => $_POST['description'] ?? '',
+            'image_logo'  => $_POST['image_logo']  ?? '',
+            'image_fond'  => $_POST['image_fond']  ?? '',
+        ];
+
+        $model->creerEntreprise($donnees);
+
+        header('Location: /public/index.php?page=entreprises');
+        exit;
+    }
+
+    public function show() {
+        $id    = $_GET['id'] ?? null;
+        $model = new EntrepriseModele($this->pdo);
+        $entreprise = $model->getEntrepriseById($id);
+        require __DIR__ . '/../vues/entreprise_show_vue.php';
+    }
+
+    public function edit() {
+        $id    = $_GET['id'] ?? null;
+        $model = new EntrepriseModele($this->pdo);
+        $entreprise = $model->getEntrepriseById($id);
+        require __DIR__ . '/../vues/entreprise_form_vue.php';
+    }
+
+    public function update() {
+        $id    = $_GET['id'] ?? null;
+        $model = new EntrepriseModele($this->pdo);
+
+        $donnees = [
+            'nom'         => $_POST['nom']         ?? '',
+            'description' => $_POST['description'] ?? '',
+            'image_logo'  => $_POST['image_logo']  ?? '',
+            'image_fond'  => $_POST['image_fond']  ?? '',
+        ];
+
+        $model->modifierEntreprise($id, $donnees);
+
+        header('Location: /public/index.php?page=entreprises');
+        exit;
+    }
+
+    public function delete() {
+        $id    = $_GET['id'] ?? null;
+        $model = new EntrepriseModele($this->pdo);
+        $model->supprimerEntreprise($id);
+        header('Location: /public/index.php?page=entreprises');
+        exit;
+    }
+}
 ?>
