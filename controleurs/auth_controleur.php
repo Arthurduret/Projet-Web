@@ -25,9 +25,9 @@ class AuthControleur
         $utilisateur = $this->modele->findByEmail($email);
 
         if ($utilisateur) {
-            header('Location: /public/index.php?page=auth&action=connexion');
+            header('Location: /index.php?page=auth&action=connexion');
         } else {
-            header('Location: /public/index.php?page=auth&action=inscription');
+            header('Location: /index.php?page=auth&action=inscription');
         }
         exit();
     }
@@ -52,7 +52,7 @@ class AuthControleur
 
         if ($utilisateur && password_verify($password, $utilisateur['mot_de_passe'])) {
             $_SESSION['user'] = $utilisateur;
-            header('Location: /public/index.php?page=accueil');
+            header('Location: /index.php?page=accueil');
         } else {
             $erreur = "Email ou mot de passe incorrect.";
             require __DIR__ . '/../vues/connexion_vue.php';
@@ -76,7 +76,7 @@ class AuthControleur
     public function deconnexion(): void
     {
         session_destroy();
-        header('Location: /public/index.php?page=auth&action=connexion');
+        header('Location: /index.php?page=auth&action=connexion');
         exit();
     }
 }
