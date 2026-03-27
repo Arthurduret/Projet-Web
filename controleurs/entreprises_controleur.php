@@ -3,6 +3,7 @@
 
 // On importe le modèle pour pouvoir l'utiliser ici
 require_once __DIR__ . '/../modeles/entreprises_modele.php';
+require_once __DIR__ . '/../helper/validation.php';
 
 class EntrepriseControleur {
     private $pdo;
@@ -23,24 +24,32 @@ class EntrepriseControleur {
     }
 
     public function store() {
-        // $this->verifierRole(['admin', 'pilote']); // TODO : décommenter quand auth en place
-        $model = new EntrepriseModele($this->pdo);
+        $_SESSION['form_data'] = $_POST;
+        if (!Validation::requis($_POST['nom'])) {
+            Validation::erreur("Le nom est obligatoire.", '/index.php?page=entreprises&action=create');
+        }
 
+        if (!Validation::requis($_POST['description'])) {
+            Validation::erreur("La description est obligatoire.", '/index.php?page=entreprises&action=create');
+        }
 
-        $image_logo = $this->uploaderImage('image_logo', 'entreprises/logo');
-        $image_fond = $this->uploaderImage('image_fond', 'entreprises/fond');
+        if (!Validation::email($_POST['email'] ?? '')) {
+            Validation::erreur("L'email n'est pas valide.", '/index.php?page=entreprises&action=create');
+        }
 
-        $donnees = [
-            'nom'         => $_POST['nom']         ?? '',
-            'description' => $_POST['description'] ?? '',
-            'image_logo'  => $image_logo,
-            'image_fond'  => $image_fond,
-        ];
+        if (!Validation::telephone($_POST['tel'] ?? '')) {
+            Validation::erreur("Le téléphone doit contenir 10 chiffres.", '/index.php?page=entreprises&action=create');
+        }
 
+        if (empty($_FILES['image_logo']['name'])) {
+            Validation::erreur("Le logo est obligatoire.", '/index.php?page=entreprises&action=create');
+        }
 
-        $model->creerEntreprise($donnees);
-
-        header('Location: /public/index.php?page=entreprises');
+        if (empty($_FILES['image_fond']['name'])) {
+            Validation::erreur("L'image de fond est obligatoire.", '/index.php?page=entreprises&action=create');
+        }
+        unset($_SESSION['form_data']);
+        header('Location: /index.php?page=entreprises');
         exit;
     }
 

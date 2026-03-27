@@ -13,8 +13,8 @@ class EntrepriseModele {
 
     public function creerEntreprise($donnees) {
         $stmt = $this->pdo->prepare("
-            INSERT INTO entreprise (nom, description, image_logo, image_fond)
-            VALUES (:nom, :description, :image_logo, :image_fond)
+            INSERT INTO entreprise (nom, description, email, tel, image_logo, image_fond)
+            VALUES (:nom, :description, :email, :tel, :image_logo, :image_fond)
         ");
         $stmt->execute($donnees);
         return $this->pdo->lastInsertId();
