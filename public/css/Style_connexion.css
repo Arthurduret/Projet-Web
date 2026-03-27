@@ -7,6 +7,7 @@ main {
     font-family: sans-serif;
     margin: 0;
     min-height: 100vh;
+    min-height: 100vh;
 }
 
 .login-container {
@@ -22,13 +23,19 @@ main {
 
 .reinitialiser {
     font-size: 25px;
+.reinitialiser {
+    font-size: 25px;
     margin-bottom: 40px;
     font-weight: bold;
+    color: #242e87;
     color: #242e87;
 }
 
 .input-group {
+.input-group {
     position: relative;
+    margin-bottom: 25px;
+    text-align: left;
     margin-bottom: 25px;
     text-align: left;
 }
@@ -136,6 +143,17 @@ button:hover {
     background-color: #242e87;
     color: white;
     border-color: #242e87;
+}
+
+
+.checkbox-group a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #293771;
+}
+
+.checkbox-group a:hover {
+    text-decoration: underline;
 }
 /*
 .wrapper{
