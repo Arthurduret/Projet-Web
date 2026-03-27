@@ -81,7 +81,7 @@ class EntrepriseControleur {
 
         $model->modifierEntreprise($id, $donnees);
 
-        header('Location: /public/index.php?page=entreprises');
+        header('Location: /index.php?page=entreprises');
         exit;
     }
 
@@ -89,7 +89,7 @@ class EntrepriseControleur {
         $id    = $_GET['id'] ?? null;
         $model = new EntrepriseModele($this->pdo);
         $model->supprimerEntreprise($id);
-        header('Location: /public/index.php?page=entreprises');
+        header('Location: /index.php?page=entreprises');
         exit;
     }
 

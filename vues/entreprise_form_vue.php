@@ -93,7 +93,7 @@
 
                 <!-- BOUTONS -->
                 <div class="form-boutons">
-                    <a href="/public/index.php?page=entreprises" class="btn-annuler">
+                    <a href="/index.php?page=entreprises" class="btn-annuler">
                         Annuler
                     </a>
                     <button type="submit" class="btn-soumettre">

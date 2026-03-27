@@ -15,7 +15,7 @@ class OffresControleur {
     // -----------------------------------------------
     private function verifierRole(array $rolesAutorises) {
         if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], $rolesAutorises)) {
-            header('Location: /public/index.php?page=connexion');
+            header('Location: /index.php?page=connexion');
             exit;
         }
     }
@@ -50,7 +50,7 @@ class OffresControleur {
 
         // Si pas d'id dans l'URL → retour à la liste
         if (!$id) {
-            header('Location: /public/index.php?page=offres_emplois');
+            header('Location: /index.php?page=offres_emplois');
             exit;
         }
 
@@ -59,7 +59,7 @@ class OffresControleur {
 
         // Si l'offre n'existe pas en BDD → retour à la liste
         if (!$offre) {
-            header('Location: /public/index.php?page=offres_emplois');
+            header('Location: /index.php?page=offres_emplois');
             exit;
         }
 
@@ -105,7 +105,7 @@ class OffresControleur {
         $id_offre = $modele->creerOffre($donnees, $competences);
 
         // Redirige vers la fiche de la nouvelle offre
-        header('Location: /public/index.php?page=offres_emplois&action=show&id=' . $id_offre);
+        header('Location: /index.php?page=offres_emplois&action=show&id=' . $id_offre);
         exit;
     }
 
@@ -119,7 +119,7 @@ class OffresControleur {
         $id = $_GET['id'] ?? null;
 
         if (!$id) {
-            header('Location: /public/index.php?page=offres_emplois');
+            header('Location: /index.php?page=offres_emplois');
             exit;
         }
 
@@ -156,7 +156,7 @@ class OffresControleur {
 
         $modele->modifierOffre($id, $donnees, $competences);
 
-        header('Location: /public/index.php?page=offres_emplois&action=show&id=' . $id);
+        header('Location: /index.php?page=offres_emplois&action=show&id=' . $id);
         exit;
     }
 
@@ -172,7 +172,7 @@ class OffresControleur {
 
         $modele->supprimerOffre($id);
 
-        header('Location: /public/index.php?page=offres_emplois');
+        header('Location: /index.php?page=offres_emplois');
         exit;
     }
 }

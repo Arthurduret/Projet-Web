@@ -16,8 +16,8 @@
             <div class="nav-dropdown">
                 <span class="nav-dropdown__trigger">Créer ▾</span>
                 <div class="nav-dropdown__menu">
-                    <a href="/public/index.php?page=creer_entreprise">Entreprise</a>
-                    <a href="/public/index.php?page=creer_offre">Offre</a>
+                    <a href="/index.php?page=creer_entreprise">Entreprise</a>
+                    <a href="/index.php?page=creer_offre">Offre</a>
                 </div>
             </div>
         <?php else: ?>

@@ -23,7 +23,7 @@
         <div class="grille-entreprises">
             <?php foreach ($entreprises as $entreprise): ?>
                 <article class="carte-entreprise">
-                    <a href="/public/index.php?page=entreprises&id=<?php echo htmlspecialchars($entreprise['id_entreprise']); ?>">
+                    <a href="/index.php?page=entreprises&id=<?php echo htmlspecialchars($entreprise['id_entreprise']); ?>">
                         
                         <div class="image-fond">
                             <!-- htmlspecialchars() protège contre les failles XSS -->
