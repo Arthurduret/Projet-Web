@@ -25,21 +25,26 @@ class EntrepriseControleur {
     }
 
     public function store() {
+        // Sauvegarde les données pour les restituer en cas d'erreur
         $_SESSION['form_data'] = $_POST;
-        if (!Validation::requis($_POST['nom'])) {
+
+        // ──────────────────────────────────────────
+        // Validations
+        // ──────────────────────────────────────────
+        if (!Validation::requis($_POST['nom'] ?? '')) {
             Validation::erreur("Le nom est obligatoire.", '/index.php?page=entreprises&action=create');
         }
 
-        if (!Validation::requis($_POST['description'])) {
+        if (!Validation::requis($_POST['description'] ?? '')) {
             Validation::erreur("La description est obligatoire.", '/index.php?page=entreprises&action=create');
         }
 
         if (!Validation::email($_POST['email'] ?? '')) {
-            Validation::erreur("L'email n'est pas valide.", '/index.php?page=entreprises&action=create');
+            Validation::erreur("L'adresse email n'est pas valide.", '/index.php?page=entreprises&action=create');
         }
 
         if (!Validation::telephone($_POST['tel'] ?? '')) {
-            Validation::erreur("Le téléphone doit contenir 10 chiffres.", '/index.php?page=entreprises&action=create');
+            Validation::erreur("Le téléphone doit contenir 10 chiffres et commencer par 0.", '/index.php?page=entreprises&action=create');
         }
 
         if (empty($_FILES['image_logo']['name'])) {
@@ -49,6 +54,31 @@ class EntrepriseControleur {
         if (empty($_FILES['image_fond']['name'])) {
             Validation::erreur("L'image de fond est obligatoire.", '/index.php?page=entreprises&action=create');
         }
+
+        // ──────────────────────────────────────────
+        // Upload des images
+        // ──────────────────────────────────────────
+        $image_logo = $this->uploaderImage('image_logo', 'entreprises/logo');
+        $image_fond = $this->uploaderImage('image_fond', 'entreprises/fond');
+
+        // ──────────────────────────────────────────
+        // Insertion en BDD
+        // ──────────────────────────────────────────
+        $donnees = [
+            'nom'         => $_POST['nom']         ?? '',
+            'description' => $_POST['description'] ?? '',
+            'email'       => $_POST['email']       ?? '',
+            'tel'         => $_POST['tel']         ?? '',
+            'image_logo'  => $image_logo,
+            'image_fond'  => $image_fond,
+        ];
+
+        $model = new EntrepriseModele($this->pdo);
+        $model->creerEntreprise($donnees);
+
+        // ──────────────────────────────────────────
+        // Succès → on vide la session et on redirige
+        // ──────────────────────────────────────────
         unset($_SESSION['form_data']);
         header('Location: /index.php?page=entreprises');
         exit;
