@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/png" href="/public/images/jobeo/HeadLogoJobeo.png">
+    <link rel="icon" type="image/png" href="/images/jobeo/HeadLogoJobeo.png">
     <title>Jobeo | Connexion</title>
 
-    <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/form.css">
-    <link rel="stylesheet" href="/public/css/header_footer.css">
+    <link rel="stylesheet" href="/css/style_global.css">
+    <link rel="stylesheet" href="/css/form.css">
+    <link rel="stylesheet" href="/css/header_footer.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         <div class="login-container">
             <h1>Connexion</h1>
             
-            <form method="POST" action="/public/index.php?page=connexion&action=login">
+            <form method="POST" action="/index.php?page=connexion&action=login">
                 <?php echo csrfInput(); ?>
     
                 <div class="input-group">
@@ -36,7 +36,7 @@
                 </div>
                 
                 <p>
-                    <a href="/public/index.php?page=mot_de_passe_oublie" class="back-link">Mot de passe oublié ?</a>
+                    <a href="/index.php?page=mot_de_passe_oublie" class="back-link">Mot de passe oublié ?</a>
                 </p>
 
                 <button type="submit">Se connecter</button>

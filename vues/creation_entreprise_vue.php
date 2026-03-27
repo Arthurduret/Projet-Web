@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/png" href="/public/images/jobeo/HeadLogoJobeo.png">
+    <link rel="icon" type="image/png" href="/images/jobeo/HeadLogoJobeo.png">
     <title>Jobeo | Création d'une entreprise</title>
 
-    <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/header_footer.css">
-    <link rel="stylesheet" href="/public/css/form.css">
+    <link rel="stylesheet" href="/css/style_global.css">
+    <link rel="stylesheet" href="/css/header_footer.css">
+    <link rel="stylesheet" href="/css/form.css">
 
 </head>
 

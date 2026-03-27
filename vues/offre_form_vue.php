@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Le titre change selon si on crée ou modifie -->
     <title>Jobeo | <?php echo isset($offre) ? 'Modifier l\'offre' : 'Créer une offre'; ?></title>
-    <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/forms.css">
-    <link rel="stylesheet" href="/public/css/header_footer.css">
+    <link rel="stylesheet" href="/css/style_global.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/header_footer.css">
 </head>
 <body>
     <?php include __DIR__ . '/partials/header.php'; ?>
@@ -22,7 +22,7 @@
                 Si $offre existe → on est en modification → action=update
                 Si $offre n'existe pas → on est en création → action=store
             -->
-            <form method="POST" action="/public/index.php?page=offres_emplois&action=<?php echo isset($offre) ? 'update' : 'store'; ?>">
+            <form method="POST" action="/index.php?page=offres_emplois&action=<?php echo isset($offre) ? 'update' : 'store'; ?>">
 
                 <!-- En modification on envoie l'id en champ caché -->
                 <?php if (isset($offre)): ?>
@@ -139,7 +139,7 @@
 
                 <!-- BOUTONS -->
                 <div class="form-boutons">
-                    <a href="/public/index.php?page=offres_emplois" class="btn-annuler">
+                    <a href="/index.php?page=offres_emplois" class="btn-annuler">
                         Annuler
                     </a>
                     <button type="submit" class="btn-soumettre">

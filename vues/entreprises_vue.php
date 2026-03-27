@@ -8,9 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobeo | Entreprises</title>
-    <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/style_entreprises.css">
-    <link rel="stylesheet" href="/public/css/header_footer.css">
+    <link rel="stylesheet" href="/css/style_global.css">
+    <link rel="stylesheet" href="/css/style_entreprises.css">
+    <link rel="stylesheet" href="/css/header_footer.css">
 </head>
 <body>
     <?php include __DIR__ . '/partials/header.php'; ?>
@@ -23,17 +23,17 @@
         <div class="grille-entreprises">
             <?php foreach ($entreprises as $entreprise): ?>
                 <article class="carte-entreprise">
-                    <a href="/public/index.php?page=entreprises&id=<?php echo htmlspecialchars($entreprise['id_entreprise']); ?>">
+                    <a href="/index.php?page=entreprises&id=<?php echo htmlspecialchars($entreprise['id_entreprise']); ?>">
                         
                         <div class="image-fond">
                             <!-- htmlspecialchars() protège contre les failles XSS -->
-                            <img src="/public/images/entreprises/fond/<?php echo htmlspecialchars($entreprise['image_fond']); ?>" 
+                            <img src="/images/entreprises/fond/<?php echo htmlspecialchars($entreprise['image_fond']); ?>" 
                                  alt="Fond <?php echo htmlspecialchars($entreprise['nom']); ?>">
                         </div>
 
                         <div class="contenu-carte">
                             <div class="header_carte">
-                                <img src="/public/images/entreprises/logo/<?php echo htmlspecialchars($entreprise['image_logo']); ?>" 
+                                <img src="/images/entreprises/logo/<?php echo htmlspecialchars($entreprise['image_logo']); ?>" 
                                      alt="Logo" class="logo-mini">
                                 <h3 class="name-entreprise">
                                     <?php echo htmlspecialchars($entreprise['nom']); ?>

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/header_footer.css">
-    <link rel="stylesheet" href="/public/css/legal.css">
-    <link rel="icon" type="image/png" href="/public/images/jobeo/HeadLogoJobeo.png">
+    <link rel="stylesheet" href="/css/style_global.css">
+    <link rel="stylesheet" href="/css/header_footer.css">
+    <link rel="stylesheet" href="/css/legal.css">
+    <link rel="icon" type="image/png" href="/images/jobeo/HeadLogoJobeo.png">
 
     <title>Mentions Légales</title>
 </head>

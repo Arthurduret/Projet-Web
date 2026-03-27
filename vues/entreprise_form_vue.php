@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobeo | Créer une entreprise</title>
-    <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/forms.css">
-    <link rel="stylesheet" href="/public/css/header_footer.css">
+    <link rel="stylesheet" href="/css/style_global.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/header_footer.css">
 </head>
 <body>
     <?php include __DIR__ . '/partials/header.php'; ?>
@@ -16,7 +16,7 @@
 
             <h1>Créer une entreprise</h1>
 
-            <form method="POST" action="/public/index.php?page=entreprises&action=store">
+            <form method="POST" action="/index.php?page=entreprises&action=store">
                 <?php echo csrfInput(); ?>
                 
                 <!-- NOM -->
@@ -58,7 +58,7 @@
 
                 <!-- BOUTONS -->
                 <div class="form-boutons">
-                    <a href="/public/index.php?page=entreprises" class="btn-annuler">
+                    <a href="/index.php?page=entreprises" class="btn-annuler">
                         Annuler
                     </a>
                     <button type="submit" class="btn-soumettre">

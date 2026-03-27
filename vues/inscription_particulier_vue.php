@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/png" href="/public/images/jobeo/HeadLogoJobeo.png">
+    <link rel="icon" type="image/png" href="/images/jobeo/HeadLogoJobeo.png">
     <title>Jobeo | Inscription</title>
 
-    <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/header_footer.css">
-    <link rel="stylesheet" href="/public/css/forms.css">
+    <link rel="stylesheet" href="/css/style_global.css">
+    <link rel="stylesheet" href="/css/header_footer.css">
+    <link rel="stylesheet" href="/css/forms.css">
     
     
 
@@ -23,7 +23,7 @@
     <main class="form-page">
         <div class="login-container">
 
-            <a href="/public/index.php?page=accueil" class="back-link">← Retour</a>
+            <a href="/index.php?page=accueil" class="back-link">← Retour</a>
 
             <h1>S'inscrire</h1>
             
@@ -32,7 +32,7 @@
             </div>
 
             <form method="POST"
-                  action="/public/index.php?page=inscription&action=store"
+                  action="/index.php?page=inscription&action=store"
                   enctype="multipart/form-data">
                 <?php echo csrfInput(); ?>
 
@@ -102,14 +102,14 @@
                 <div class="checkbox-group">
                     <input type="checkbox" name="accepte_cgu" id="accepte_cgu" required>
                     <label for="accepte_cgu">
-                        J'accepte les <a href="/public/index.php?page=cgu">conditions générales d'utilisation</a>
+                        J'accepte les <a href="/index.php?page=cgu">conditions générales d'utilisation</a>
                     </label>
                 </div>
 
                 <div class="checkbox-group">
                     <input type="checkbox" name="accepte_confidentialite" id="accepte_confidentialite" required>
                     <label for="accepte_confidentialite">
-                        J'accepte la <a href="/public/index.php?page=mentions_legales">politique de confidentialité</a>
+                        J'accepte la <a href="/index.php?page=mentions_legales">politique de confidentialité</a>
                     </label>
                 </div>
 

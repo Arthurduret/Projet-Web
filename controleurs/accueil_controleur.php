@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../modeles/accueil_modele.php';
 
 class AccueilControleur {
-
+    
     private $pdo;
 
     public function __construct($pdo) {

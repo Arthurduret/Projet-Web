@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobeo | Offres d'emploi</title>
-    <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/header_footer.css">
-    <link rel="stylesheet" href="/public/css/offres_emplois.css">
+    <link rel="stylesheet" href="/css/style_global.css">
+    <link rel="stylesheet" href="/css/header_footer.css">
+    <link rel="stylesheet" href="/css/offres_emplois.css">
 </head>
 <body>
     <?php include __DIR__ . '/partials/header.php'; ?>
@@ -15,7 +15,7 @@
 
         <!-- BARRE DE RECHERCHE -->
         <section class="recherche-offres">
-            <form action="/public/index.php" method="GET">
+            <form action="/index.php" method="GET">
 
                 <!-- On garde la page active -->
                 <input type="hidden" name="page" value="offres_emplois">
@@ -43,7 +43,7 @@
                     </div>
 
                     <button type="submit" class="btn-search">
-                        <img src="/public/images/jobeo/LoupeLogo.png" alt="Rechercher">
+                        <img src="/images/jobeo/LoupeLogo.png" alt="Rechercher">
                     </button>
                 </div>
             </form>
@@ -66,7 +66,7 @@
 
                         <!-- Logo entreprise à gauche -->
                         <div class="offre-image">
-                            <img src="/public/images/entreprises/logo/<?php echo htmlspecialchars($offre['image_logo']); ?>" 
+                            <img src="/images/entreprises/logo/<?php echo htmlspecialchars($offre['image_logo']); ?>" 
                                  alt="Logo <?php echo htmlspecialchars($offre['nom_entreprise']); ?>">
                         </div>
 
@@ -113,7 +113,7 @@
 
                         <!-- Bouton voir l'offre -->
                         <div class="offre-action">
-                            <a href="/public/index.php?page=offres_emplois&action=show&id=<?php echo htmlspecialchars($offre['id_offre']); ?>"
+                            <a href="/index.php?page=offres_emplois&action=show&id=<?php echo htmlspecialchars($offre['id_offre']); ?>"
                                class="btn-voir">
                                 Voir l'offre
                             </a>
