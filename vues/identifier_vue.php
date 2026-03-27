@@ -7,16 +7,16 @@
     <link rel="icon" type="image/png" href="/images/jobeo/HeadLogoJobeo.png">
     <title>Jobeo | S'identifier</title>
     <link rel="stylesheet" href="/css/style_global.css">
-    <link rel="stylesheet" href="/css/style_connexion.CSS">
+    <link rel="stylesheet" href="/css/form.css">
     <link rel="stylesheet" href="/css/header_footer.css">
 </head>
 <body>
     <?php include __DIR__ . '/partials/header.php'; ?>
 
-    <main>
+    <main class="form-page">
         <div class="login-container">
             <h1>S'identifier</h1>
-            <form action="/public/index.php?page=auth&action=check" method="POST">
+            <form action="/index.php?page=auth&action=check" method="POST">
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" required>
