@@ -24,6 +24,11 @@
             
             <h2>Vos droits</h2>
             <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression...</p>
+
+            <h2>Durée de conservation</h2>
+            <p>Vos données sont conservées pendant toute la durée de votre compte.
+            En cas de suppression, elles sont effacées sous <strong>30 jours</strong>.
+            Les comptes inactifs depuis plus de <strong>3 ans</strong> sont automatiquement supprimés.</p>
         </div>
     </main>
     <?php include __DIR__ . '/../../vues/partials/footer.php'; ?> 
