@@ -84,7 +84,21 @@
                                 <span><?php echo htmlspecialchars($offre['localisation']); ?></span>
                                 <span><?php echo htmlspecialchars($offre['duree']); ?> mois</span>
                                 <span><?php echo htmlspecialchars($offre['salaire']); ?> €</span>
+                                <span><?php echo htmlspecialchars($offre['duree']); ?> mois</span>
+                                <span><?php echo htmlspecialchars($offre['salaire']); ?> €</span>
                             </div>
+                            <?php if (!empty($offre['competences'])): ?>
+                                <div class="offre-competences">
+                                    <?php 
+                                    // On découpe la chaine "PHP, MySQL, CSS" en tableau
+                                    $competences = explode(', ', $offre['competences']);
+                                    foreach ($competences as $competence): ?>
+                                        <span class="tag-competence">
+                                            <?php echo htmlspecialchars($competence); ?>
+                                        </span>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>                            
                             <?php if (!empty($offre['competences'])): ?>
                                 <div class="offre-competences">
                                     <?php 
@@ -99,6 +113,15 @@
                             <?php endif; ?>                            
 
                             <p class="offre-date">
+                                Publiée le <?php 
+                                    $date = new DateTime($offre['date_offre']);
+                                    $mois = [
+                                        1 => 'janvier', 'février', 'mars', 'avril',
+                                        'mai', 'juin', 'juillet', 'août',
+                                        'septembre', 'octobre', 'novembre', 'décembre'
+                                    ];
+                                    echo $date->format('d') . ' ' . $mois[(int)$date->format('m')] . ' ' . $date->format('Y');
+                                ?>
                                 Publiée le <?php 
                                     $date = new DateTime($offre['date_offre']);
                                     $mois = [

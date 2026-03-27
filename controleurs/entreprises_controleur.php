@@ -14,6 +14,7 @@ class EntrepriseControleur {
 
     public function index() {
         $model       = new EntrepriseModele($this->pdo);
+        $model       = new EntrepriseModele($this->pdo);
         $entreprises = $model->getEntreprises();
         require __DIR__ . '/../vues/entreprises_vue.php';
     }

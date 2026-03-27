@@ -7,6 +7,7 @@ main {
     font-family: sans-serif;
     margin: 0;
     min-height: 100vh;
+    min-height: 100vh;
 }
 
 .login-container {
@@ -20,15 +21,20 @@ main {
     text-align: center;
 }
 
+
 .reinitialiser {
     font-size: 25px;
     margin-bottom: 40px;
     font-weight: bold;
     color: #242e87;
+    color: #242e87;
 }
+
 
 .input-group {
     position: relative;
+    margin-bottom: 25px;
+    text-align: left;
     margin-bottom: 25px;
     text-align: left;
 }
@@ -78,7 +84,88 @@ button {
 
 button:hover {
     background-color: #f17526;
+;
 }
+
+.Réinitialiser {
+
+    font-size: 25px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.radio-container {
+    border-radius: 12px;
+    padding: 15px;
+    padding-top: 20px;
+}
+
+.label-radio-titre {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: white;
+    padding: 0 5px;
+    font-size: 14px;
+    color: #1c27a3;
+    z-index: 1;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group label {
+    position: static;
+    background: transparent;
+    color: #242e87;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 8px 20px;
+    border: 1.5px solid #4b55a3;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.radio-group label:hover {
+    background-color: #f0f2ff;
+}
+
+.radio-group input[type="radio"]:checked + label {
+    background-color: #242e87;
+    color: white;
+    border-color: #242e87;
+}
+
+
+.checkbox-group a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #293771;
+}
+
+.checkbox-group a:hover {
+    text-decoration: underline;
+}
+/*
+.wrapper{
+    display: inline;
+}
+section{
+    display : flex;
+}
+article{
+    flex: 1;
+}
+*/
+
 
 /* ========================= */
 /* RESPONSIVE MOBILE (≤768px) */

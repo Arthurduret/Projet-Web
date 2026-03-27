@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobeo | Créer une entreprise</title>
+    <title>Jobeo | <?php echo htmlspecialchars($offre['titre']); ?></title>
+
     <link rel="stylesheet" href="/css/style_global.css">
     <link rel="stylesheet" href="/css/form.css">
     <link rel="stylesheet" href="/css/header_footer.css">
@@ -91,7 +93,7 @@
 
                 <!-- BOUTONS -->
                 <div class="form-boutons">
-                    <a href="/index.php?page=entreprises" class="btn-annuler">
+                    <a href="/public/index.php?page=entreprises" class="btn-annuler">
                         Annuler
                     </a>
                     <button type="submit" class="btn-soumettre">

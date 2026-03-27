@@ -3,6 +3,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+session_start();
 require_once __DIR__ . '/../db.php';
 require_once __DIR__ . '/../helper/csrf.php';
 
@@ -48,22 +52,21 @@ switch ($page) {
         }
         break;
 
-    // ──────────────────────────────────────────
-    // AUTH (connexion, inscription, déconnexion)
-    // ──────────────────────────────────────────
-    // case 'auth':
-    //     require_once __DIR__ . '/../controleurs/auth_controleur.php';
-    //     $ctrl   = new AuthControleur($pdo);
-    //     $action = $_GET['action'] ?? 'connexion';
-    //     switch ($action) {
-    //         case 'connexion':   $ctrl->connexion();   break;
-    //         case 'login':       $ctrl->login();       break; // POST
-    //         case 'inscription': $ctrl->inscription(); break;
-    //         case 'register':    $ctrl->register();    break; // POST
-    //         case 'deconnexion': $ctrl->deconnexion(); break;
-    //         default:            $ctrl->connexion();   break;
-    //     }
-    //     break;
+    case 'auth':
+        require_once __DIR__ . '/../controleurs/auth_controleur.php';
+        $ctrl   = new AuthControleur($pdo);
+        $action = $_GET['action'] ?? 'connexion';
+        switch ($action) {
+            case 'identifier':  $ctrl->identifier();  break;
+            case 'check':       $ctrl->check();       break;
+            case 'connexion':   $ctrl->connexion();   break;
+            case 'login':       $ctrl->login();       break; 
+            case 'inscription': $ctrl->inscription(); break;
+            case 'register':    $ctrl->register();    break; 
+            case 'deconnexion': $ctrl->deconnexion(); break;
+            default:            $ctrl->connexion();   break;
+        }
+        break;
 
     // ──────────────────────────────────────────
     // FAVORIS (wishlist étudiant)
@@ -129,8 +132,12 @@ switch ($page) {
         require_once __DIR__ . '/../vues/pages_footer/cookies.php';
         break;
 
+    case 'entreprise_form':
+        require_once __DIR__ . '/../vues/entreprise_form_vue.php';
+        break;
+
     default:
-        header('Location: /public/index.php?page=accueil');
+        header('Location: /public/public/index.php?page=accueil');
         exit;
 }
 ?>

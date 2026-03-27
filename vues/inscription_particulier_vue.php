@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="/css/style_global.css">
     <link rel="stylesheet" href="/css/header_footer.css">
-    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/form.css">
     
     
 
@@ -98,6 +98,9 @@
                            required
                            autocomplete="new-password">
                 </div>
+
+
+
 
                 <div class="checkbox-group">
                     <input type="checkbox" name="accepte_cgu" id="accepte_cgu" required>
