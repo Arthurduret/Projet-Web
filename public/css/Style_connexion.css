@@ -6,6 +6,7 @@ main {
     background-color: #f4f4f4;
     font-family: sans-serif;
     margin: 0;
+    min-height: 100vh;
 }
 
 .login-container {
@@ -19,24 +20,17 @@ main {
     text-align: center;
 }
 
-h1 {
-    font-size: 32px;
+.reinitialiser {
+    font-size: 25px;
     margin-bottom: 40px;
     font-weight: bold;
+    color: #242e87;
 }
 
-.toggle-password {
-    position: absolute;
-    right: 15px;
-    cursor: pointer;
-    color: #4b55a3;
-}
-
-
-.password-wrapper {
+.input-group {
     position: relative;
-    display: flex;
-    align-items: center;
+    margin-bottom: 25px;
+    text-align: left;
 }
 
 .input-group input {
@@ -47,12 +41,6 @@ h1 {
     box-sizing: border-box;
     font-size: 16px;
     outline: none;
-}
-
-.input-group {
-    position: relative;
-    margin-bottom: 25px;/*entre les cases pour ecrire*/
-    text-align: left;
 }
 
 .input-group label {
@@ -160,3 +148,41 @@ article{
     flex: 1;
 }
 */
+}
+
+/* ========================= */
+/* RESPONSIVE MOBILE (≤768px) */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    main {
+        padding: 40px 10px;
+    }
+
+    .login-container {
+        width: 100%;
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+
+    .reinitialiser {
+        font-size: 22px;
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    .input-group > label {
+        font-size: 13px;
+        top: -8px;
+        left: 10px;
+    }
+}

@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jobeo | Offres d'emploi</title>
-    <link rel="stylesheet" href="/public/css/style_global.css">
-    <link rel="stylesheet" href="/public/css/offres.css">
-    <link rel="stylesheet" href="/public/css/header_footer.css">
-    <link rel="stylesheet" href="/public/css/offres_emplois.css">
+    <link rel="stylesheet" href="/css/style_global.css">
+    <link rel="stylesheet" href="/css/header_footer.css">
+    <link rel="stylesheet" href="/css/offres_emplois.css">
 </head>
 <body>
     <?php include __DIR__ . '/partials/header.php'; ?>
@@ -16,10 +15,10 @@
 
         <!-- BARRE DE RECHERCHE -->
         <section class="recherche-offres">
-            <form action="/public/index.php" method="GET">
+            <form action="/index.php" method="GET">
 
                 <!-- On garde la page active -->
-                <input type="hidden" name="page" value="offres">
+                <input type="hidden" name="page" value="offres_emplois">
 
                 <div class="search-bar">
                     <div class="input-group">
@@ -44,7 +43,7 @@
                     </div>
 
                     <button type="submit" class="btn-search">
-                        <img src="/public/images/jobeo/LoupeLogo.png" alt="Rechercher">
+                        <img src="/images/jobeo/LoupeLogo.png" alt="Rechercher">
                     </button>
                 </div>
             </form>
@@ -67,7 +66,7 @@
 
                         <!-- Logo entreprise à gauche -->
                         <div class="offre-image">
-                            <img src="/public/images/entreprises/logo/ <?php echo htmlspecialchars($offre['image_logo']); ?>" 
+                            <img src="/images/entreprises/logo/<?php echo htmlspecialchars($offre['image_logo']); ?>" 
                                  alt="Logo <?php echo htmlspecialchars($offre['nom_entreprise']); ?>">
                         </div>
 
@@ -83,19 +82,38 @@
 
                             <div class="offre-tags">
                                 <span><?php echo htmlspecialchars($offre['localisation']); ?></span>
-                                <span><?php echo htmlspecialchars($offre['type_contrat']); ?></span>
-                                <span><?php echo htmlspecialchars($offre['duree']); ?></span>
-                                <span><?php echo htmlspecialchars($offre['remuneration']); ?> €</span>
+                                <span><?php echo htmlspecialchars($offre['duree']); ?> mois</span>
+                                <span><?php echo htmlspecialchars($offre['salaire']); ?> €</span>
                             </div>
+                            <?php if (!empty($offre['competences'])): ?>
+                                <div class="offre-competences">
+                                    <?php 
+                                    // On découpe la chaine "PHP, MySQL, CSS" en tableau
+                                    $competences = explode(', ', $offre['competences']);
+                                    foreach ($competences as $competence): ?>
+                                        <span class="tag-competence">
+                                            <?php echo htmlspecialchars($competence); ?>
+                                        </span>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>                            
 
                             <p class="offre-date">
-                                Publiée le <?php echo htmlspecialchars($offre['date_offre']); ?>
+                                Publiée le <?php 
+                                    $date = new DateTime($offre['date_offre']);
+                                    $mois = [
+                                        1 => 'janvier', 'février', 'mars', 'avril',
+                                        'mai', 'juin', 'juillet', 'août',
+                                        'septembre', 'octobre', 'novembre', 'décembre'
+                                    ];
+                                    echo $date->format('d') . ' ' . $mois[(int)$date->format('m')] . ' ' . $date->format('Y');
+                                ?>
                             </p>
                         </div>
 
                         <!-- Bouton voir l'offre -->
                         <div class="offre-action">
-                            <a href="/public/index.php?page=fiche_offre&id=<?php echo htmlspecialchars($offre['id']); ?>" 
+                            <a href="/index.php?page=offres_emplois&action=show&id=<?php echo htmlspecialchars($offre['id_offre']); ?>"
                                class="btn-voir">
                                 Voir l'offre
                             </a>
