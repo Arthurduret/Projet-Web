@@ -35,19 +35,23 @@
 }
 
 .logo-mini {
-    width: 7rem;
-    height: 3rem;
+    width: 70px;
+    height: 70px;
     background-color: var(--blanc);
     border-radius: 8px;
-    margin-top: -3rem;
+    margin-top: -2rem;
     margin-left: 1rem;
     padding: 0.2rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    object-fit: cover;
+    object-fit: contain; /* ← contain au lieu de cover pour les logos */
     position: relative;
 }
 
-
+.header_carte {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
 
 .contenu-carte {
     padding: 15px;

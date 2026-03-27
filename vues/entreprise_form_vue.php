@@ -16,7 +16,7 @@
 
             <h1>Créer une entreprise</h1>
 
-            <form method="POST" action="/index.php?page=entreprises&action=store">
+            <form method="POST" action="/index.php?page=entreprises&action=store" enctype="multipart/form-data">
                 <?php echo csrfInput(); ?>
                 
                 <!-- NOM -->
@@ -40,20 +40,20 @@
 
                 <!-- LOGO -->
                 <div class="form-group">
-                    <label for="image_logo">Nom du fichier logo</label>
-                    <input type="text"
-                           name="image_logo"
-                           id="image_logo"
-                           placeholder="Ex : google_logo.png">
+                    <label for="image_logo">Logo de l'entreprise</label>
+                    <input type="file"
+                        name="image_logo"
+                        id="image_logo"
+                        accept="image/*">
                 </div>
 
                 <!-- IMAGE FOND -->
                 <div class="form-group">
-                    <label for="image_fond">Nom du fichier image de fond</label>
-                    <input type="text"
-                           name="image_fond"
-                           id="image_fond"
-                           placeholder="Ex : google_fond.jpg">
+                    <label for="image_fond">Image de fond</label>
+                    <input type="file"
+                        name="image_fond"
+                        id="image_fond"
+                        accept="image/*">
                 </div>
 
                 <!-- BOUTONS -->
