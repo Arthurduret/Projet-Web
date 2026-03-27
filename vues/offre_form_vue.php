@@ -77,7 +77,7 @@
                                name="salaire"
                                id="salaire"
                                min="0"
-                               step="0.01"
+                               step="50"
                                placeholder="Ex : 600"
                                value="<?php echo isset($offre) ? htmlspecialchars($offre['salaire']) : ''; ?>">
                     </div>

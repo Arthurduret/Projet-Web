@@ -64,7 +64,6 @@
                                 <div class="footer-carte">
                                     <span class="nb-jobs">
                                         <?php echo htmlspecialchars($entreprise['nb_offres']); ?> offres
-                                        <?php echo htmlspecialchars($entreprise['nb_offres']); ?> offres
                                     </span>
                                     <span class="btn-decouvrir">Découvrir</span>
                                 </div>

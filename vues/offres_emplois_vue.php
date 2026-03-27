@@ -109,15 +109,6 @@
                                     ];
                                     echo $date->format('d') . ' ' . $mois[(int)$date->format('m')] . ' ' . $date->format('Y');
                                 ?>
-                                Publiée le <?php 
-                                    $date = new DateTime($offre['date_offre']);
-                                    $mois = [
-                                        1 => 'janvier', 'février', 'mars', 'avril',
-                                        'mai', 'juin', 'juillet', 'août',
-                                        'septembre', 'octobre', 'novembre', 'décembre'
-                                    ];
-                                    echo $date->format('d') . ' ' . $mois[(int)$date->format('m')] . ' ' . $date->format('Y');
-                                ?>
                             </p>
                         </div>
 
