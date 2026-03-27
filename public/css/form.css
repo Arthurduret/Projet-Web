@@ -10,8 +10,8 @@
         background-color: #f4f4f4;
         display: flex;
         justify-content: center;
+        align-items: flex-start;
         padding: 60px 15px;
-        min-height: calc(100vh - 120px);
     }
 
     /* ===== CONTENEUR FORMULAIRE CARTE (connexion, inscription, mot de passe) ===== */
