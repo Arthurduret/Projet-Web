@@ -479,6 +479,45 @@ h1 {
     background: #1e2a56;
 }
 
+
+/* ===== BOUTONS SECONDAIRES (wishlist, modifier, supprimer) ===== */
+
+.btn-wishlist,
+.btn-modifier,
+.btn-supprimer {
+    background: white;
+    color: var(--bleu-fonce);
+    padding: 1rem;
+    border-radius: 30px;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid var(--bleu-fonce);
+    transition: 0.3s;
+    display: block;
+}
+
+/* Hover identique au bouton postuler mais inversé */
+.btn-wishlist:hover,
+.btn-modifier:hover,
+.btn-supprimer:hover {
+    background: var(--bleu-fonce);
+    color: white;
+}
+
+/* Cas particulier : supprimer = rouge */
+.btn-supprimer {
+    border-color: #d64545;
+    color: #d64545;
+}
+
+.btn-supprimer:hover {
+    background: #d64545;
+    color: white;
+}
+
+
+
 .encart-entreprise {
     background: white;
     padding: 1.5rem;
