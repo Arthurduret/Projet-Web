@@ -107,7 +107,8 @@ class EntrepriseControleur {
         }
 
         $nom_fichier     = uniqid('img_', true) . '.' . $extension;
-        $dossier_complet = 'C:/Users/Arthur/Documents/CESI/Web/Projet-Web/public/images/' . $dossier . '/';
+        $dossier_complet = __DIR__ . '/../../public/images/' . $dossier . '/';
+        $dossier_complet = str_replace('\\', '/', $dossier_complet);
         $destination     = $dossier_complet . $nom_fichier;
 
         if (move_uploaded_file($fichier['tmp_name'], $destination)) {
