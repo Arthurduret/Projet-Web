@@ -27,8 +27,8 @@
     </nav>
 
     <div class="header-right">
-        <a href="/public/index.php?page=auth&action=identifier" class="btn-compte">
-            <img src="/public/images/jobeo/logo_profil.png" alt="logo_profil" width="40" height="40">
+        <a href="/index.php?page=auth&action=identifier" class="btn-compte">
+            <img src="/images/jobeo/logo_profil.png" alt="logo_profil" width="40" height="40">
             <span>Mon compte</span>
         </a>
         
