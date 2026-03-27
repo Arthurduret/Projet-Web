@@ -1,407 +1,407 @@
-/* =====================================================
-   FORMS.CSS – Styles partagés pour tous les formulaires
-   Remplace : inscription.css, Style_connexion.css
-   Contient aussi les styles des formulaires offre/entreprise
-   ===================================================== */
+    /* =====================================================
+    FORMS.CSS – Styles partagés pour tous les formulaires
+    Remplace : inscription.css, Style_connexion.css
+    Contient aussi les styles des formulaires offre/entreprise
+    ===================================================== */
 
-/* ===== LAYOUT PAGE ===== */
+    /* ===== LAYOUT PAGE ===== */
 
-main.form-page {
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    padding: 60px 15px;
-    min-height: calc(100vh - 120px);
-}
-
-/* ===== CONTENEUR FORMULAIRE CARTE (connexion, inscription, mot de passe) ===== */
-
-.login-container {
-    background: white;
-    padding: 40px;
-    border-radius: 30px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-    width: 100%;
-    max-width: 500px;
-}
-
-.login-container h1 {
-    font-size: 32px;
-    margin-bottom: 30px;
-    font-weight: bold;
-    text-align: center;
-    color: #242e87;
-}
-
-.back-link {
-    display: block;
-    color: #888;
-    font-size: 14px;
-    margin-bottom: 20px;
-    text-decoration: none;
-}
-
-/* ===== CHAMPS FLOATING LABEL (connexion / inscription) ===== */
-
-.input-group {
-    position: relative;
-    margin-bottom: 25px;
-}
-
-.input-group > label {
-    position: absolute;
-    top: -10px;
-    left: 15px;
-    background: white;
-    padding: 0 5px;
-    font-size: 14px;
-    color: #1c27a3;
-    z-index: 1;
-}
-
-.input-group input,
-.input-group select {
-    width: 100%;
-    padding: 15px;
-    border: 1.5px solid #4b55a3;
-    border-radius: 12px;
-    font-size: 16px;
-    outline: none;
-    background: white;
-    box-sizing: border-box;
-}
-
-.input-group textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1.5px solid #4b55a3;
-    border-radius: 12px;
-    font-size: 16px;
-    outline: none;
-    font-family: inherit;
-    min-height: 140px;
-    resize: none;
-    background: white;
-    box-sizing: border-box;
-}
-
-/* ===== DOUBLE INPUT (nom + prénom côte à côte) ===== */
-
-.double-input {
-    display: flex;
-    gap: 15px;
-}
-
-/* ===== INPUT FILE ===== */
-
-input[type="file"] {
-    width: 100%;
-    padding: 12px;
-    border: 1.5px solid #4b55a3;
-    border-radius: 12px;
-    font-size: 15px;
-    background: white;
-    cursor: pointer;
-    color: #444;
-    box-sizing: border-box;
-}
-
-input[type="file"]::file-selector-button {
-    background-color: #242e87;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-right: 12px;
-    transition: background 0.3s;
-}
-
-input[type="file"]::file-selector-button:hover {
-    background-color: #f17526;
-}
-
-/* ===== BOUTONS PARTICULIER / ENTREPRISE ===== */
-
-.switch_buttons {
-    display: flex;
-    justify-content: center;
-    gap: 2px;
-    margin-bottom: 25px;
-}
-
-.switch_btn {
-    flex: 1;
-    padding: 14px 0;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    border: 2px solid #242e87;
-    cursor: pointer;
-    transition: all 0.3s;
-    text-decoration: none;
-    font-family: inherit;
-    display: inline-block;
-    background-color: #dfe3f7;
-    color: #242e87;
-}
-
-.switch_btn:hover {
-    background-color: #242e87;
-    color: white;
-}
-
-.switch_btn.active {
-    background-color: #242e87;
-    color: white;
-    cursor: default;
-}
-
-/* ===== CHECKBOX CGU ===== */
-
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.checkbox-group a {
-    font-size: 14px;
-    text-decoration: none;
-    color: #293771;
-}
-
-.checkbox-group a:hover {
-    text-decoration: underline;
-}
-
-/* ===== BOUTON SUBMIT PRINCIPAL ===== */
-
-.login-container button[type="submit"] {
-    background-color: #242e87;
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 20px auto 0;
-    transition: background 0.3s;
-    display: block;
-    width: 100%;
-}
-
-.login-container button[type="submit"]:hover {
-    background-color: #f17526;
-}
-
-/* ===== PASSWORD TOGGLE ===== */
-
-.password-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.password-wrapper input {
-    width: 100%;
-}
-
-.password-wrapper span {
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-    user-select: none;
-}
-
-.password-toggle {
-    position: absolute;
-    right: 10px;
-    cursor: pointer;
-    user-select: none;
-    font-size: 18px;
-}
-
-/* ===== FORMULAIRES GRANDS (offre, entreprise) ===== */
-
-main.form-main {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1.5rem;
-}
-
-.form-container {
-    background: white;
-    border-radius: 16px;
-    padding: 2.5rem;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
-}
-
-.form-container h1 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #293771;
-    margin-bottom: 2rem;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
-.form-group label {
-    font-weight: 600;
-    color: #333;
-    font-size: 0.95rem;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    padding: 0.75rem 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    font-size: 0.95rem;
-    transition: border-color 0.2s;
-    font-family: inherit;
-    box-sizing: border-box;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #293771;
-}
-
-.form-ligne {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-/* Cases à cocher compétences */
-.competences-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 10px;
-    border: 2px solid #e0e0e0;
-}
-
-.competence-checkbox {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    background: white;
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    cursor: pointer;
-    font-size: 0.88rem;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-
-.competence-checkbox:hover {
-    border-color: #293771;
-    background: #f0f3ff;
-}
-
-.competence-checkbox input[type="checkbox"] {
-    accent-color: #293771;
-    width: 16px;
-    height: 16px;
-    padding: 0;
-    border: none;
-}
-
-/* Boutons du formulaire grand */
-.form-boutons {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 2px solid #f0f0f0;
-}
-
-.btn-annuler {
-    padding: 0.75rem 1.5rem;
-    border-radius: 25px;
-    border: 2px solid #ccc;
-    color: #666;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s;
-}
-
-.btn-annuler:hover {
-    border-color: #293771;
-    color: #293771;
-}
-
-.btn-soumettre {
-    padding: 0.75rem 2rem;
-    border-radius: 25px;
-    background: #293771;
-    color: white;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    font-size: 0.95rem;
-    transition: background 0.3s;
-}
-
-.btn-soumettre:hover {
-    background: #1e2a56;
-}
-
-/* ===== RESPONSIVE ===== */
-
-@media (max-width: 768px) {
     main.form-page {
-        padding: 40px 10px;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        padding: 60px 15px;
+        min-height: calc(100vh - 120px);
     }
 
+    /* ===== CONTENEUR FORMULAIRE CARTE (connexion, inscription, mot de passe) ===== */
+
     .login-container {
-        padding: 30px 20px;
-        border-radius: 20px;
+        background: white;
+        padding: 40px;
+        border-radius: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        width: 100%;
+        max-width: 500px;
     }
 
     .login-container h1 {
-        font-size: 26px;
+        font-size: 32px;
+        margin-bottom: 30px;
+        font-weight: bold;
+        text-align: center;
+        color: #242e87;
     }
 
-    .double-input {
-        flex-direction: column;
-        gap: 15px;
+    .back-link {
+        display: block;
+        color: #888;
+        font-size: 14px;
+        margin-bottom: 20px;
+        text-decoration: none;
     }
 
-    .switch_buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
+    /* ===== CHAMPS FLOATING LABEL (connexion / inscription) ===== */
 
-    .login-container button[type="submit"] {
-        padding: 15px 0;
+    .input-group {
+        position: relative;
+        margin-bottom: 25px;
     }
 
     .input-group > label {
-        font-size: 13px;
-        top: -8px;
-        left: 10px;
+        position: absolute;
+        top: -10px;
+        left: 15px;
+        background: white;
+        padding: 0 5px;
+        font-size: 14px;
+        color: #1c27a3;
+        z-index: 1;
+    }
+
+    .input-group input,
+    .input-group select {
+        width: 100%;
+        padding: 15px;
+        border: 1.5px solid #4b55a3;
+        border-radius: 12px;
+        font-size: 16px;
+        outline: none;
+        background: white;
+        box-sizing: border-box;
+    }
+
+    .input-group textarea {
+        width: 100%;
+        padding: 15px;
+        border: 1.5px solid #4b55a3;
+        border-radius: 12px;
+        font-size: 16px;
+        outline: none;
+        font-family: inherit;
+        min-height: 140px;
+        resize: none;
+        background: white;
+        box-sizing: border-box;
+    }
+
+    /* ===== DOUBLE INPUT (nom + prénom côte à côte) ===== */
+
+    .double-input {
+        display: flex;
+        gap: 15px;
+    }
+
+    /* ===== INPUT FILE ===== */
+
+    input[type="file"] {
+        width: 100%;
+        padding: 12px;
+        border: 1.5px solid #4b55a3;
+        border-radius: 12px;
+        font-size: 15px;
+        background: white;
+        cursor: pointer;
+        color: #444;
+        box-sizing: border-box;
+    }
+
+    input[type="file"]::file-selector-button {
+        background-color: #242e87;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-right: 12px;
+        transition: background 0.3s;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+        background-color: #f17526;
+    }
+
+    /* ===== BOUTONS PARTICULIER / ENTREPRISE ===== */
+
+    .switch_buttons {
+        display: flex;
+        justify-content: center;
+        gap: 2px;
+        margin-bottom: 25px;
+    }
+
+    .switch_btn {
+        flex: 1;
+        padding: 14px 0;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        border: 2px solid #242e87;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-family: inherit;
+        display: inline-block;
+        background-color: #dfe3f7;
+        color: #242e87;
+    }
+
+    .switch_btn:hover {
+        background-color: #242e87;
+        color: white;
+    }
+
+    .switch_btn.active {
+        background-color: #242e87;
+        color: white;
+        cursor: default;
+    }
+
+    /* ===== CHECKBOX CGU ===== */
+
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .checkbox-group a {
+        font-size: 14px;
+        text-decoration: none;
+        color: #293771;
+    }
+
+    .checkbox-group a:hover {
+        text-decoration: underline;
+    }
+
+    /* ===== BOUTON SUBMIT PRINCIPAL ===== */
+
+    .login-container button[type="submit"] {
+        background-color: #242e87;
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 20px auto 0;
+        transition: background 0.3s;
+        display: block;
+        width: 100%;
+    }
+
+    .login-container button[type="submit"]:hover {
+        background-color: #f17526;
+    }
+
+    /* ===== PASSWORD TOGGLE ===== */
+
+    .password-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .password-wrapper input {
+        width: 100%;
+    }
+
+    .password-wrapper span {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 10px;
+        cursor: pointer;
+        user-select: none;
+        font-size: 18px;
+    }
+
+    /* ===== FORMULAIRES GRANDS (offre, entreprise) ===== */
+
+    main.form-main {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+    }
+
+    .form-container {
+        background: white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    }
+
+    .form-container h1 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #293771;
+        margin-bottom: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+        font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.75rem 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 0.95rem;
+        transition: border-color 0.2s;
+        font-family: inherit;
+        box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #293771;
     }
 
     .form-ligne {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
     }
-}
+
+    /* Cases à cocher compétences */
+    .competences-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 10px;
+        border: 2px solid #e0e0e0;
+    }
+
+    .competence-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: white;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        font-size: 0.88rem;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .competence-checkbox:hover {
+        border-color: #293771;
+        background: #f0f3ff;
+    }
+
+    .competence-checkbox input[type="checkbox"] {
+        accent-color: #293771;
+        width: 16px;
+        height: 16px;
+        padding: 0;
+        border: none;
+    }
+
+    /* Boutons du formulaire grand */
+    .form-boutons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 2px solid #f0f0f0;
+    }
+
+    .btn-annuler {
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        border: 2px solid #ccc;
+        color: #666;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .btn-annuler:hover {
+        border-color: #293771;
+        color: #293771;
+    }
+
+    .btn-soumettre {
+        padding: 0.75rem 2rem;
+        border-radius: 25px;
+        background: #293771;
+        color: white;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: background 0.3s;
+    }
+
+    .btn-soumettre:hover {
+        background: #1e2a56;
+    }
+
+    /* ===== RESPONSIVE ===== */
+
+    @media (max-width: 768px) {
+        main.form-page {
+            padding: 40px 10px;
+        }
+
+        .login-container {
+            padding: 30px 20px;
+            border-radius: 20px;
+        }
+
+        .login-container h1 {
+            font-size: 26px;
+        }
+
+        .double-input {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .switch_buttons {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .login-container button[type="submit"] {
+            padding: 15px 0;
+        }
+
+        .input-group > label {
+            font-size: 13px;
+            top: -8px;
+            left: 10px;
+        }
+
+        .form-ligne {
+            grid-template-columns: 1fr;
+        }
+    }

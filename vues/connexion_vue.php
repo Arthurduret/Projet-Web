@@ -1,8 +1,3 @@
-<?php
-session_start();
-require_once __DIR__ . '/../helper/csrf.php';
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
