@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="/css/style_global.css">
     <link rel="stylesheet" href="/css/header_footer.css">
-    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/form.css">
     
     
 
