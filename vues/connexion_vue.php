@@ -19,12 +19,14 @@
         <div class="login-container">
             <h1>Connexion</h1>
             
-            <form method="POST" action="/index.php?page=connexion&action=login">
+            <form method="POST" action="/index.php?page=auth&action=login">
                 <?php echo csrfInput(); ?>
     
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required autocomplete="email">
+                    <input type="email" name="email" id="email" 
+                        value="<?php echo htmlspecialchars($_GET['email'] ?? ''); ?>"
+                        required autocomplete="email">
                 </div>
                 
                 <div class="input-group">
