@@ -35,6 +35,7 @@ class AuthControleur
     // Affiche le formulaire de connexion
     public function connexion(): void
     {
+        $email = $_GET['email'] ?? '';
         require __DIR__ . '/../vues/connexion_vue.php';
     }
 
@@ -63,6 +64,7 @@ class AuthControleur
     // Affiche le formulaire d'inscription
     public function inscription(): void
     {
+        $email = $_GET['email'] ?? '';
         require __DIR__ . '/../vues/inscription_particulier_vue.php';
     }
 

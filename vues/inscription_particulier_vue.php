@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="/css/style_global.css">
     <link rel="stylesheet" href="/css/header_footer.css">
     <link rel="stylesheet" href="/css/form.css">
-    
-    
-
 </head>
 
 <body>
@@ -37,12 +34,13 @@
 
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="email"
-                           name="email"
-                           id="email"
-                           placeholder="prenom.nom@gmail.com"
-                           required
-                           autocomplete="email">
+                <input type="email"
+                    name="email"
+                    id="email"
+                    value="<?php echo htmlspecialchars($email ?? ''); ?>"
+                    placeholder="prenom.nom@gmail.com"
+                    required
+                    autocomplete="email">
                 </div>
 
                 <div class="double-input">
