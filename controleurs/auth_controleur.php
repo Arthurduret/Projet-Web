@@ -117,11 +117,21 @@ class AuthControleur
         exit();
     }
 
+    public function monCompte(): void
+    {
+        if (!isset($_SESSION['user'])) {
+            header('Location: /index.php?page=auth&action=identifier');
+            exit();
+        }
+        $utilisateur = $_SESSION['user'];
+        require __DIR__ . '/../vues/mon_compte_vue.php';
+    }
+
     // Déconnexion
     public function deconnexion(): void
     {
         session_destroy();
-        header('Location: /index.php?page=auth&action=connexion');
+        header('Location: /index.php?page=auth&action=identifier');
         exit();
     }
 }
