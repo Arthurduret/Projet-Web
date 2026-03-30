@@ -1,0 +1,75 @@
+<?php
+class FavorisModele {
+
+    private $pdo;
+
+    public function __construct($pdo) {
+        $this->pdo = $pdo;
+    }
+
+    // -----------------------------------------------
+    // Récupère toutes les offres favorites d'un utilisateur
+    // -----------------------------------------------
+    public function getFavoris($id_utilisateur) {
+        $stmt = $this->pdo->prepare("
+            SELECT offre.*, entreprise.nom AS nom_entreprise, entreprise.image_logo,
+                   GROUP_CONCAT(competence.nom SEPARATOR ', ') AS competences
+            FROM liker
+            JOIN offre ON liker.id_offre = offre.id_offre
+            JOIN entreprise ON offre.id_entreprise = entreprise.id_entreprise
+            LEFT JOIN Requerir ON offre.id_offre = Requerir.id_offre
+            LEFT JOIN competence ON Requerir.id_competence = competence.id_competence
+            WHERE liker.id_utilisateur = :id
+            GROUP BY offre.id_offre
+            ORDER BY offre.date_offre DESC
+        ");
+        $stmt->execute([':id' => $id_utilisateur]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // -----------------------------------------------
+    // Vérifie si une offre est déjà en favori
+    // -----------------------------------------------
+    public function estFavori($id_utilisateur, $id_offre) {
+        $stmt = $this->pdo->prepare("
+            SELECT COUNT(*) FROM liker
+            WHERE id_utilisateur = :id_utilisateur
+            AND id_offre = :id_offre
+        ");
+        $stmt->execute([
+            ':id_utilisateur' => $id_utilisateur,
+            ':id_offre'       => $id_offre
+        ]);
+        return $stmt->fetchColumn() > 0;
+    }
+
+    // -----------------------------------------------
+    // Ajoute une offre aux favoris
+    // -----------------------------------------------
+    public function ajouter($id_utilisateur, $id_offre) {
+        $stmt = $this->pdo->prepare("
+            INSERT INTO liker (id_utilisateur, id_offre)
+            VALUES (:id_utilisateur, :id_offre)
+        ");
+        $stmt->execute([
+            ':id_utilisateur' => $id_utilisateur,
+            ':id_offre'       => $id_offre
+        ]);
+    }
+
+    // -----------------------------------------------
+    // Retire une offre des favoris
+    // -----------------------------------------------
+    public function retirer($id_utilisateur, $id_offre) {
+        $stmt = $this->pdo->prepare("
+            DELETE FROM liker
+            WHERE id_utilisateur = :id_utilisateur
+            AND id_offre = :id_offre
+        ");
+        $stmt->execute([
+            ':id_utilisateur' => $id_utilisateur,
+            ':id_offre'       => $id_offre
+        ]);
+    }
+}
+?>

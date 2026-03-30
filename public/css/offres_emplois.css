@@ -284,3 +284,38 @@
         display: block;
     }
 }
+
+/* ===== BOUTON RETIRER FAVORI ===== */
+.btn-retirer-favori {
+    display: block;
+    text-align: center;
+    margin-top: 0.5rem;
+    color: var(--orange);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.btn-retirer-favori:hover {
+    color: #d64545;
+}
+
+/* ===== BOUTON ÉTOILE FAVORI ===== */
+.btn-coeur {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+    line-height: 1;
+    z-index: 10;
+    padding: 0;
+}
+
+.btn-coeur:hover {
+    transform: scale(1.2);
+}

@@ -95,9 +95,14 @@
             <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'etudiant'): ?>
                 <a href="/index.php?page=candidature&action=create&id=<?php echo htmlspecialchars($offre['id_offre']); ?>"
                    class="btn-postuler">Postuler à cette offre</a>
-
-                <a href="/index.php?page=wishlist&action=toggle&id=<?php echo htmlspecialchars($offre['id_offre']); ?>"
-                   class="btn-wishlist">♡ Ajouter à ma wishlist</a>
+                    <a href="/index.php?page=favoris&action=toggle&id=<?= htmlspecialchars($offre['id_offre']) ?>"
+                    class="btn-wishlist">
+                    <?php   require_once __DIR__ . '/../modeles/favoris_modele.php'; // déjà chargé si possible
+                            $favorisModele = new FavorisModele($pdo);
+                            $estFavori = $favorisModele->estFavori($_SESSION['id_utilisateur'], $offre['id_offre']);
+                            echo $estFavori ? '❤️ Retirer des favoris' : '🤍 Ajouter aux favoris';
+                        ?>
+                    </a>
             <?php endif; ?>
 
             <?php if (isset($_SESSION['role']) && in_array($_SESSION['role'], ['admin', 'pilote'])): ?>

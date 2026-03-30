@@ -64,20 +64,18 @@ switch ($page) {
         }
         break;
 
-    // ──────────────────────────────────────────
     // FAVORIS (wishlist étudiant)
-    // ──────────────────────────────────────────
-    // case 'favoris':
-    //     require_once __DIR__ . '/../controleurs/favoris_controleur.php';
-    //     $ctrl   = new FavorisControleur($pdo);
-    //     $action = $_GET['action'] ?? 'index';
-    //     switch ($action) {
-    //         case 'index':    $ctrl->index();    break;
-    //         case 'ajouter':  $ctrl->ajouter();  break; // POST
-    //         case 'retirer':  $ctrl->retirer();  break; // POST
-    //         default:         $ctrl->index();    break;
-    //     }
-    //     break;
+    case 'favoris':
+        require_once __DIR__ . '/../controleurs/favoris_controleur.php';
+        $ctrl   = new FavorisControleur($pdo);
+        $action = $_GET['action'] ?? 'index';
+        switch ($action) {
+            case 'index':    $ctrl->index();    break;
+            case 'ajouter':  $ctrl->ajouter();  break; // POST
+            case 'retirer':  $ctrl->retirer();  break; // POST
+            default:         $ctrl->index();    break;
+        }
+        break;
 
     // ──────────────────────────────────────────
     // CANDIDATURES (postuler à une offre)

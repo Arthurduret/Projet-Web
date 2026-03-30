@@ -38,6 +38,15 @@ class OffresControleur {
 
         $nb_offres = count($offres);
 
+        // Récupère les ids des favoris si étudiant connecté
+        $favoris_ids = [];
+        if (isset($_SESSION['role']) && $_SESSION['role'] === 'etudiant') {
+            require_once __DIR__ . '/../modeles/favoris_modele.php';
+            $favorisModele = new FavorisModele($this->pdo);
+            $favoris = $favorisModele->getFavoris($_SESSION['id_utilisateur']);
+            $favoris_ids = array_column($favoris, 'id_offre');
+        }
+
         require __DIR__ . '/../vues/offres_emplois_vue.php';
     }
 

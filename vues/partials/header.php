@@ -1,6 +1,6 @@
 <header>
 
-<?php $_SESSION['role'] = 'admin';?>
+<?php $_SESSION['role'] = 'etudiant';?>
 
     <a href="/index.php" class="logo">
         <img src="/images/jobeo/LogoJobeo.png" alt="Logo" width="90" height="50">
@@ -22,7 +22,7 @@
             </div>
         <?php else: ?>
             <!-- Bouton Favoris — visible pour les étudiants -->
-            <a href="/favoris.php">Favoris</a>
+            <a href="/index.php?page=favoris">Favoris</a>
         <?php endif; ?>
     </nav>
 

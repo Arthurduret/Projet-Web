@@ -118,6 +118,12 @@
                                class="btn-voir">
                                 Voir l'offre
                             </a>
+                            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'etudiant'): ?>
+                                <button class="btn-coeur <?= isset($favoris_ids) && in_array($offre['id_offre'], $favoris_ids) ? 'active' : '' ?>"
+                                        data-id="<?= htmlspecialchars($offre['id_offre']) ?>">
+                                    <?= isset($favoris_ids) && in_array($offre['id_offre'], $favoris_ids) ? '❤️' : '🤍' ?>
+                                </button>
+                            <?php endif; ?>
                         </div>
 
                     </article>
@@ -128,5 +134,28 @@
     </main>
 
     <?php include __DIR__ . '/partials/footer.php'; ?>
+
+    <script>
+    document.querySelectorAll('.btn-coeur').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const id = this.dataset.id;
+
+            fetch('/index.php?page=favoris&action=toggle&id=' + id, {
+                method: 'POST',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.favori) {
+                    this.textContent = '❤️';
+                    this.classList.add('active');
+                } else {
+                    this.textContent = '🤍';
+                    this.classList.remove('active');
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>
