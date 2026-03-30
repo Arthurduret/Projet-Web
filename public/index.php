@@ -82,8 +82,7 @@ switch ($page) {
         $action = $_GET['action'] ?? 'index';
         switch ($action) {
             case 'index':    $ctrl->index();    break;
-            case 'ajouter':  $ctrl->ajouter();  break; // POST
-            case 'retirer':  $ctrl->retirer();  break; // POST
+            case 'toggle':   $ctrl->toggle();   break; // ← vérifie que c'est bien là
             default:         $ctrl->index();    break;
         }
         break;

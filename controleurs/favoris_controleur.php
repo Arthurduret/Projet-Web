@@ -1,5 +1,3 @@
-<!-- Page : pour la wishlist, ajouter/retirer une offre des favoris. -->
-
 <?php
 require_once __DIR__ . '/../modeles/favoris_modele.php';
 
@@ -15,8 +13,8 @@ class FavorisControleur {
     // Vérifie que l'utilisateur est connecté en tant qu'étudiant
     // -----------------------------------------------
     private function verifierEtudiant() {
-        if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'etudiant') {
-            header('Location: /index.php?page=auth&action=connexion');
+        if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'etudiant') {
+            header('Location: /index.php?page=auth&action=identifier');
             exit;
         }
     }
@@ -28,8 +26,8 @@ class FavorisControleur {
     public function index() {
         $this->verifierEtudiant();
 
-        $modele  = new FavorisModele($this->pdo);
-        $favoris = $modele->getFavoris($_SESSION['id_utilisateur']);
+        $modele     = new FavorisModele($this->pdo);
+        $favoris    = $modele->getFavoris($_SESSION['user']['id_utilisateur']);
         $nb_favoris = count($favoris);
 
         require __DIR__ . '/../vues/favoris_vue.php';
@@ -37,13 +35,13 @@ class FavorisControleur {
 
     // -----------------------------------------------
     // TOGGLE FAVORI — ajoute ou retire selon l'état
-    // URL : ?page=favoris&action=toggle&id=3 (POST)
+    // URL : ?page=favoris&action=toggle&id=3
     // -----------------------------------------------
     public function toggle() {
         $this->verifierEtudiant();
 
         $id_offre       = $_GET['id'] ?? null;
-        $id_utilisateur = $_SESSION['id_utilisateur'];
+        $id_utilisateur = $_SESSION['user']['id_utilisateur'];
 
         $modele = new FavorisModele($this->pdo);
 

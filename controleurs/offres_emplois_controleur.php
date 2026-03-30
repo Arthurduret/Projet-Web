@@ -11,18 +11,16 @@ class OffresControleur {
 
     // -----------------------------------------------
     // Vérifie si l'utilisateur a le bon rôle
-    // Utilisé en haut des méthodes protégées
     // -----------------------------------------------
     private function verifierRole(array $rolesAutorises) {
-        if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], $rolesAutorises)) {
-            header('Location: /index.php?page=connexion');
+        if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], $rolesAutorises)) {
+            header('Location: /index.php?page=auth&action=identifier');
             exit;
         }
     }
 
     // -----------------------------------------------
     // LISTE — tout le monde peut voir les offres
-    // URL : ?page=offres_emplois
     // -----------------------------------------------
     public function index() {
         $modele = new OffresModele($this->pdo);
@@ -40,11 +38,11 @@ class OffresControleur {
 
         // Récupère les ids des favoris si étudiant connecté
         $favoris_ids = [];
-        if (isset($_SESSION['role']) && $_SESSION['role'] === 'etudiant') {
+        if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'etudiant') {
             require_once __DIR__ . '/../modeles/favoris_modele.php';
             $favorisModele = new FavorisModele($this->pdo);
-            $favoris = $favorisModele->getFavoris($_SESSION['id_utilisateur']);
-            $favoris_ids = array_column($favoris, 'id_offre');
+            $favoris       = $favorisModele->getFavoris($_SESSION['user']['id_utilisateur']);
+            $favoris_ids   = array_column($favoris, 'id_offre');
         }
 
         require __DIR__ . '/../vues/offres_emplois_vue.php';
@@ -52,12 +50,10 @@ class OffresControleur {
 
     // -----------------------------------------------
     // FICHE — tout le monde peut voir le détail
-    // URL : ?page=offres_emplois&action=show&id=3
     // -----------------------------------------------
     public function show() {
         $id = $_GET['id'] ?? null;
 
-        // Si pas d'id dans l'URL → retour à la liste
         if (!$id) {
             header('Location: /index.php?page=offres_emplois');
             exit;
@@ -66,10 +62,17 @@ class OffresControleur {
         $modele = new OffresModele($this->pdo);
         $offre  = $modele->getOffreById($id);
 
-        // Si l'offre n'existe pas en BDD → retour à la liste
         if (!$offre) {
             header('Location: /index.php?page=offres_emplois');
             exit;
+        }
+
+        // Vérifie si l'offre est en favori
+        $estFavori = false;
+        if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'etudiant') {
+            require_once __DIR__ . '/../modeles/favoris_modele.php';
+            $favorisModele = new FavorisModele($this->pdo);
+            $estFavori = $favorisModele->estFavori($_SESSION['user']['id_utilisateur'], $id);
         }
 
         require __DIR__ . '/../vues/fiche_offre_vue.php';
@@ -77,10 +80,9 @@ class OffresControleur {
 
     // -----------------------------------------------
     // FORMULAIRE CRÉATION — admin et pilote seulement
-    // URL : ?page=offres_emplois&action=create
     // -----------------------------------------------
     public function create() {
-        // $this->verifierRole(['admin', 'pilote']); // TODO : décommenter quand auth en place
+        // $this->verifierRole(['admin', 'pilote']);
 
         $modele      = new OffresModele($this->pdo);
         $entreprises = $modele->getEntreprises();
@@ -91,14 +93,12 @@ class OffresControleur {
 
     // -----------------------------------------------
     // TRAITEMENT CRÉATION — admin et pilote seulement
-    // URL : ?page=offres_emplois&action=store (POST)
     // -----------------------------------------------
     public function store() {
-        // $this->verifierRole(['admin', 'pilote']); // TODO : décommenter quand auth en place
+        // $this->verifierRole(['admin', 'pilote']);
 
         $modele = new OffresModele($this->pdo);
 
-        // Récupère les données du formulaire
         $donnees = [
             'titre'         => $_POST['titre']        ?? '',
             'description'   => $_POST['description']  ?? '',
@@ -108,19 +108,16 @@ class OffresControleur {
             'date_offre'    => $_POST['date_offre']    ?? date('Y-m-d'),
             'id_entreprise' => $_POST['id_entreprise'] ?? null,
         ];
-        $competences = $_POST['competences'] ?? []; // tableau d'ids
+        $competences = $_POST['competences'] ?? [];
 
-        // Insère l'offre et récupère son id
         $id_offre = $modele->creerOffre($donnees, $competences);
 
-        // Redirige vers la fiche de la nouvelle offre
         header('Location: /index.php?page=offres_emplois&action=show&id=' . $id_offre);
         exit;
     }
 
     // -----------------------------------------------
     // FORMULAIRE MODIFICATION — admin et pilote seulement
-    // URL : ?page=offres_emplois&action=edit&id=3
     // -----------------------------------------------
     public function edit() {
         $this->verifierRole(['admin', 'pilote']);
@@ -132,11 +129,10 @@ class OffresControleur {
             exit;
         }
 
-        $modele      = new OffresModele($this->pdo);
-        $offre       = $modele->getOffreById($id);
-        $entreprises = $modele->getEntreprises();
-        $competences = $modele->getCompetences();
-        // Compétences déjà sélectionnées pour cette offre
+        $modele            = new OffresModele($this->pdo);
+        $offre             = $modele->getOffreById($id);
+        $entreprises       = $modele->getEntreprises();
+        $competences       = $modele->getCompetences();
         $competences_offre = $modele->getCompetencesParOffre($id);
 
         require __DIR__ . '/../vues/offre_form_vue.php';
@@ -144,7 +140,6 @@ class OffresControleur {
 
     // -----------------------------------------------
     // TRAITEMENT MODIFICATION — admin et pilote seulement
-    // URL : ?page=offres_emplois&action=update (POST)
     // -----------------------------------------------
     public function update() {
         $this->verifierRole(['admin', 'pilote']);
@@ -171,7 +166,6 @@ class OffresControleur {
 
     // -----------------------------------------------
     // SUPPRESSION — admin seulement
-    // URL : ?page=offres_emplois&action=delete&id=3
     // -----------------------------------------------
     public function delete() {
         $this->verifierRole(['admin']);

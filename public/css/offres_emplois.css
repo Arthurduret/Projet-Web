@@ -301,7 +301,11 @@
     color: #d64545;
 }
 
-/* ===== BOUTON ÉTOILE FAVORI ===== */
+/* ===== COEUR FAVORI ===== */
+.carte-offre {
+    position: relative;
+}
+
 .btn-coeur {
     position: absolute;
     top: 1rem;
@@ -314,8 +318,36 @@
     line-height: 1;
     z-index: 10;
     padding: 0;
+    opacity: 1; /* ← toujours visible */
 }
 
 .btn-coeur:hover {
     transform: scale(1.2);
+}
+
+.offre-action {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.btn-postuler {
+    display: block;
+    text-align: center;
+    background: var(--orange);
+    color: var(--blanc);
+    padding: 0.6rem 1.3rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.3s;
+    white-space: nowrap;
+}
+
+.btn-postuler:hover {
+    background: var(--bleu-fonce);
+    color: var(--blanc);
 }

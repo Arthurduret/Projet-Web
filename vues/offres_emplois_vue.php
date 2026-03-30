@@ -64,6 +64,13 @@
                 <?php foreach ($offres as $offre): ?>
                     <article class="carte-offre">
 
+                        <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'etudiant'): ?>
+                            <button class="btn-coeur <?= isset($favoris_ids) && in_array($offre['id_offre'], $favoris_ids) ? 'active' : '' ?>"
+                                    data-id="<?= htmlspecialchars($offre['id_offre']) ?>">
+                                <?= isset($favoris_ids) && in_array($offre['id_offre'], $favoris_ids) ? '❤️' : '🤍' ?>
+                            </button>
+                        <?php endif; ?>
+                        
                         <!-- Logo entreprise à gauche -->
                         <div class="offre-image">
                             <img src="/images/entreprises/logo/<?php echo htmlspecialchars($offre['image_logo']); ?>" 
@@ -118,11 +125,11 @@
                                class="btn-voir">
                                 Voir l'offre
                             </a>
-                            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'etudiant'): ?>
-                                <button class="btn-coeur <?= isset($favoris_ids) && in_array($offre['id_offre'], $favoris_ids) ? 'active' : '' ?>"
-                                        data-id="<?= htmlspecialchars($offre['id_offre']) ?>">
-                                    <?= isset($favoris_ids) && in_array($offre['id_offre'], $favoris_ids) ? '❤️' : '🤍' ?>
-                                </button>
+                            <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'etudiant'): ?>
+                                <a href="/index.php?page=candidature&action=create&id=<?= htmlspecialchars($offre['id_offre']) ?>"
+                                class="btn-postuler" style="margin-top: 0.5rem;">
+                                    Postuler
+                                </a>
                             <?php endif; ?>
                         </div>
 
@@ -147,7 +154,7 @@
             .then(res => res.json())
             .then(data => {
                 if (data.favori) {
-                    this.textContent = '❤️';
+                    this.textContent = '🧡';
                     this.classList.add('active');
                 } else {
                     this.textContent = '🤍';

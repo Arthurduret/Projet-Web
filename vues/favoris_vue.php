@@ -12,9 +12,8 @@
     <?php include __DIR__ . '/partials/header.php'; ?>
 
     <main>
-        <!-- EN-TÊTE -->
         <div class="liste-offres">
-            <h1>❤️ Mes offres favorites</h1>
+            <h1>🧡 Mes offres favorites</h1>
 
             <?php if (empty($favoris)): ?>
                 <p class="aucun-resultat">
@@ -29,6 +28,11 @@
 
                 <?php foreach ($favoris as $offre): ?>
                     <article class="carte-offre">
+
+                        <!-- COEUR EN HAUT À DROITE -->
+                        <button class="btn-coeur active" data-id="<?= htmlspecialchars($offre['id_offre']) ?>">
+                            🧡
+                        </button>
 
                         <!-- LOGO -->
                         <div class="offre-image">
@@ -62,16 +66,13 @@
                             <?php endif; ?>
                         </div>
 
-                        <!-- ACTIONS -->
+                        <!-- BOUTON VOIR -->
                         <div class="offre-action">
                             <a href="/index.php?page=offres_emplois&action=show&id=<?= htmlspecialchars($offre['id_offre']) ?>"
                                class="btn-voir">Voir l'offre</a>
 
-                            <a href="/index.php?page=favoris&action=toggle&id=<?= htmlspecialchars($offre['id_offre']) ?>"
-                               class="btn-retirer-favori"
-                               onclick="return confirm('Retirer cette offre des favoris ?')">
-                               ⭐ Retirer
-                            </a>
+                            <a href="/index.php?page=candidature&action=create&id=<?= htmlspecialchars($offre['id_offre']) ?>"
+                                class="btn-postuler" style="margin-top: 0.5rem;">Postuler</a>
                         </div>
 
                     </article>
@@ -82,5 +83,28 @@
     </main>
 
     <?php include __DIR__ . '/partials/footer.php'; ?>
+
+    <script>
+    document.querySelectorAll('.btn-coeur').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const id = this.dataset.id;
+            const carte = this.closest('.carte-offre');
+
+            fetch('/index.php?page=favoris&action=toggle&id=' + id, {
+                method: 'POST',
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (!data.favori) {
+                    // Retire la carte avec une animation
+                    carte.style.transition = 'opacity 0.3s ease';
+                    carte.style.opacity = '0';
+                    setTimeout(() => carte.remove(), 300);
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>
