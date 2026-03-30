@@ -1,6 +1,6 @@
 <header>
 
-<?php $_SESSION['role'] = 'pilote';?>
+<?php $_SESSION['role'] = 'admin';?>
 
     <a href="/index.php" class="logo">
         <img src="/images/jobeo/LogoJobeo.png" alt="Logo" width="90" height="50">
