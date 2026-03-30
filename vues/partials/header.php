@@ -1,18 +1,15 @@
 <header>
 
-<?php $_SESSION['role'] = 'pilote';?>
-
     <a href="/index.php" class="logo">
         <img src="/images/jobeo/LogoJobeo.png" alt="Logo" width="90" height="50">
     </a>
-
+    
     <nav id="nav-menu">
         <a href="/index.php?page=entreprises">Nos Entreprises</a>
         <a href="/index.php?page=a_propos">A propos de nous</a>
         <a href="/index.php?page=offres_emplois">Offres d'emplois</a>
 
-        <?php if (isset($_SESSION['role']) && ($_SESSION['role'] === 'pilote' || $_SESSION['role'] === 'admin')): ?>
-            <!-- Menu déroulant Créer — visible uniquement pour les pilotes -->
+        <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['role'], ['pilote', 'admin'])): ?>
             <div class="nav-dropdown">
                 <span class="nav-dropdown__trigger">Créer ▾</span>
                 <div class="nav-dropdown__menu">
@@ -20,18 +17,30 @@
                     <a href="/index.php?page=offres_emplois&action=create">Offre</a>
                 </div>
             </div>
-        <?php else: ?>
-            <!-- Bouton Favoris — visible pour les étudiants -->
-            <a href="/favoris.php">Favoris</a>
+        <?php elseif (isset($_SESSION['user'])): ?>
+            <a href="/index.php?page=favoris">Favoris</a>
         <?php endif; ?>
     </nav>
 
     <div class="header-right">
-        <a href="/index.php?page=auth&action=identifier" class="btn-compte">
-            <img src="/images/jobeo/logo_profil.png" alt="logo_profil" width="40" height="40">
-            <span>Mon compte</span>
-        </a>
-        
+        <?php if (isset($_SESSION['user'])): ?>
+            <div class="nav-dropdown" id="dropdown-compte">
+                <span class="nav-dropdown__trigger btn-compte">
+                    <img src="/images/jobeo/logo_profil.png" alt="logo_profil" width="40" height="40">
+                    <span><?php echo htmlspecialchars($_SESSION['user']['prenom']); ?></span>
+                </span>
+                <div class="nav-dropdown__menu">
+                    <a href="/index.php?page=mon_compte">Mon compte</a>
+                    <a href="/index.php?page=auth&action=deconnexion">Déconnexion</a>
+                </div>
+            </div>
+        <?php else: ?>
+            <a href="/index.php?page=auth&action=identifier" class="btn-compte">
+                <img src="/images/jobeo/logo_profil.png" alt="logo_profil" width="40" height="40">
+                <span>Mon compte</span>
+            </a>
+        <?php endif; ?>
+
         <div class="menu-tel" onclick="toggleMenu()">☰</div>
     </div>
 

@@ -67,6 +67,13 @@ switch ($page) {
         }
         break;
 
+
+        case 'mon_compte':
+        require_once __DIR__ . '/../controleurs/auth_controleur.php';
+        $ctrl = new AuthControleur($pdo);
+        $ctrl->monCompte();
+        break;
+
     // ──────────────────────────────────────────
     // FAVORIS (wishlist étudiant)
     // ──────────────────────────────────────────
