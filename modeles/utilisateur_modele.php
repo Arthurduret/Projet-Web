@@ -15,4 +15,13 @@ class UtilisateurModele
         $stmt->execute();
         return $stmt->fetch();
     }
+
+        public function creer(array $data): void
+    {
+        $stmt = $this->pdo->prepare("
+            INSERT INTO utilisateur (email, nom, prenom, mdp, role)
+            VALUES (:email, :nom, :prenom, :mdp, :role)
+        ");
+        $stmt->execute($data);
+    }
 }

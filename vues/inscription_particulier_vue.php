@@ -11,9 +11,6 @@
     <link rel="stylesheet" href="/css/style_global.css">
     <link rel="stylesheet" href="/css/header_footer.css">
     <link rel="stylesheet" href="/css/form.css">
-    
-    
-
 </head>
 
 <body>
@@ -31,19 +28,19 @@
                 <a class="switch_btn active">Étudiant</a>
             </div>
 
-            <form method="POST"
-                  action="/index.php?page=inscription&action=store"
-                  enctype="multipart/form-data">
+            <form action="/index.php?page=auth&action=register" method="POST">
+
                 <?php echo csrfInput(); ?>
 
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="email"
-                           name="email"
-                           id="email"
-                           placeholder="prenom.nom@gmail.com"
-                           required
-                           autocomplete="email">
+                <input type="email"
+                    name="email"
+                    id="email"
+                    value="<?php echo htmlspecialchars($email ?? ''); ?>"
+                    placeholder="prenom.nom@gmail.com"
+                    required
+                    autocomplete="email">
                 </div>
 
                 <div class="double-input">
@@ -66,13 +63,6 @@
                     </div>
                 </div>
 
-                <div class="input-group">
-                    <label for="cv">CV (PDF)</label>
-                    <input type="file"
-                           name="cv"
-                           id="cv"
-                           accept=".pdf">
-                </div>
 
                 <div class="input-group">
                     <label for="password">Mot de passe</label>
@@ -98,8 +88,6 @@
                            required
                            autocomplete="new-password">
                 </div>
-
-
 
 
                 <div class="checkbox-group">
