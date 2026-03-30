@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobeo | <?= isset($entreprise) ? 'Modifier' : 'Créer' ?> une entreprise</title>
+    <title>Jobeo | <? echo isset($entreprise) ? 'Modifier' : 'Créer' ?> une entreprise</title>
     <link rel="stylesheet" href="/css/style_global.css">
     <link rel="stylesheet" href="/css/form.css">
     <link rel="stylesheet" href="/css/offre.css">
@@ -36,8 +36,8 @@
                 <?php echo csrfInput(); ?>
                 
                 <!-- NOM -->
-                <div class="form-group">
-                    <label for="nom">Nom de l'entreprise *</label>
+                <div class="input-group">
+                    <label for="nom">Nom de l'entreprise</label>
                     <input type="text"
                            name="nom"
                            id="nom"
@@ -46,8 +46,8 @@
                 </div>
 
                 <!-- DESCRIPTION -->
-                <div class="form-group">
-                    <label for="description">Description *</label>
+                <div class="input-group">
+                    <label for="description">Description</label>
                     <textarea name="description"
                               id="description"
                               rows="4"
@@ -55,8 +55,8 @@
                 </div>
 
                 <!-- EMAIL -->
-                <div class="form-group">
-                    <label for="email">Email *</label>
+                <div class="input-group">
+                    <label for="email">Email</label>
                     <input type="email"
                            name="email"
                            id="email"
@@ -65,8 +65,8 @@
                 </div>
 
                 <!-- TÉLÉPHONE -->
-                <div class="form-group">
-                    <label for="tel">Téléphone *</label>
+                <div class="input-group">
+                    <label for="tel">Téléphone</label>
                     <input type="tel"
                            name="tel"
                            id="tel"
@@ -76,9 +76,9 @@
                 </div>
 
                 <!-- LOGO -->
-                <div class="form-group">
+                <div class="input-group">
                     <label for="image_logo">
-                        Logo de l'entreprise <?= isset($entreprise) ? '(laisser vide pour garder l\'actuel)' : '*' ?>
+                        Logo de l'entreprise <?= isset($entreprise) ? '(laisser vide pour garder l\'actuel)' : '' ?>
                     </label>
                     <?php if (isset($entreprise) && $entreprise['image_logo']): ?>
                         <img src="/images/entreprises/logo/<?= htmlspecialchars($entreprise['image_logo']) ?>"
@@ -91,9 +91,9 @@
                 </div>
 
                 <!-- IMAGE FOND -->
-                <div class="form-group">
+                <div class="input-group">
                     <label for="image_fond">
-                        Image de fond <?= isset($entreprise) ? '(laisser vide pour garder l\'actuelle)' : '*' ?>
+                        Image de fond <?= isset($entreprise) ? '(laisser vide pour garder l\'actuelle)' : '' ?>
                     </label>
                     <?php if (isset($entreprise) && $entreprise['image_fond']): ?>
                         <img src="/images/entreprises/fond/<?= htmlspecialchars($entreprise['image_fond']) ?>"
@@ -111,7 +111,7 @@
                 <?php endif; ?>
 
                 <!-- BOUTONS -->
-                <div class="form-boutons">
+                <div class="input-group">
                     <a href="/index.php?page=entreprises" class="btn-annuler">
                         Annuler
                     </a>

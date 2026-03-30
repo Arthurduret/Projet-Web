@@ -1,8 +1,8 @@
-/* ================================
-   PAGE OFFRES D'EMPLOIS
-   ================================ */
+/* =============================================
+   OFFRES_EMPLOIS.CSS — Page liste des offres
+   ============================================= */
 
-/* --- BARRE DE RECHERCHE --- */
+/* ===== BARRE DE RECHERCHE ===== */
 .recherche-offres {
     background: linear-gradient(135deg, #293771 0%, #1a2550 100%);
     padding: 2.5rem 10%;
@@ -11,7 +11,7 @@
 .search-bar {
     display: flex;
     align-items: center;
-    background-color: #ffffff;
+    background-color: var(--blanc);
     border-radius: 16px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
     overflow: hidden;
@@ -35,7 +35,7 @@
 .search-bar .input-group label {
     font-size: 0.75rem;
     font-weight: 700;
-    color: #293771;
+    color: var(--bleu-fonce);
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 0.2rem;
@@ -56,7 +56,7 @@
 }
 
 .btn-search {
-    background: #f17526;
+    background: var(--orange);
     border: none;
     width: 80px;
     height: 100%;
@@ -69,7 +69,7 @@
 }
 
 .btn-search:hover {
-    background: #293771;
+    background: var(--bleu-fonce);
 }
 
 .btn-search img {
@@ -78,7 +78,7 @@
     filter: brightness(0) invert(1);
 }
 
-/* --- SECTION LISTE --- */
+/* ===== SECTION LISTE ===== */
 .liste-offres {
     max-width: 900px;
     margin: 2rem auto;
@@ -87,14 +87,14 @@
 
 .nb-resultats {
     font-size: 1.4rem;
-    color: #293771;
+    color: var(--bleu-fonce);
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
 
 .nb-resultats strong {
     font-size: 1.8rem;
-    color: #f17526;
+    color: var(--orange);
 }
 
 .aucun-resultat {
@@ -105,12 +105,12 @@
     font-style: italic;
 }
 
-/* --- CARTE OFFRE --- */
+/* ===== CARTE OFFRE ===== */
 .carte-offre {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    background: #ffffff;
+    background: var(--blanc);
     border-radius: 16px;
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -122,15 +122,15 @@
 .carte-offre:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(41, 55, 113, 0.12);
-    border-color: #293771;
+    border-color: var(--bleu-fonce);
 }
 
-/* Logo entreprise */
+/* ===== LOGO ENTREPRISE ===== */
 .offre-image {
     width: 90px;
     height: 90px;
     flex-shrink: 0;
-    background: #f8f9fa;
+    background: var(--gris-clair);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -146,7 +146,7 @@
     padding: 8px;
 }
 
-/* Contenu offre */
+/* ===== CONTENU OFFRE ===== */
 .offre-contenu {
     flex: 1;
     display: flex;
@@ -157,7 +157,7 @@
 .offre-titre {
     font-size: 1.15rem;
     font-weight: 700;
-    color: #293771;
+    color: var(--bleu-fonce);
     margin: 0;
     text-align: left;
 }
@@ -169,17 +169,16 @@
     margin: 0;
 }
 
-/* Tags (localisation, contrat, durée, salaire) */
+/* ===== TAGS OFFRE ===== */
 .offre-tags {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
     gap: 0.5rem;
 }
 
 .offre-tags span {
     background: #f0f3ff;
-    color: #293771;
+    color: var(--bleu-fonce);
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.82rem;
@@ -194,11 +193,7 @@
     font-style: italic;
 }
 
-/* Bouton voir l'offre */
-.offre-action {
-    flex-shrink: 0;
-}
-
+/* ===== COMPÉTENCES OFFRE ===== */
 .offre-competences {
     display: flex;
     flex-wrap: wrap;
@@ -208,19 +203,24 @@
 
 .tag-competence {
     background: #fff3e8;
-    color: #f17526;
+    color: var(--orange);
     padding: 0.2rem 0.7rem;
     border-radius: 20px;
     font-size: 0.78rem;
     font-weight: 600;
-    border: 1px solid #f17526;
+    border: 1px solid var(--orange);
+}
+
+/* ===== BOUTON VOIR L'OFFRE ===== */
+.offre-action {
+    flex-shrink: 0;
 }
 
 .btn-voir {
     display: inline-block;
     background: transparent;
-    color: #293771;
-    border: 2px solid #293771;
+    color: var(--bleu-fonce);
+    border: 2px solid var(--bleu-fonce);
     padding: 0.6rem 1.3rem;
     border-radius: 25px;
     font-size: 0.9rem;
@@ -228,22 +228,18 @@
     text-decoration: none;
     transition: all 0.3s ease;
     white-space: nowrap;
-
-    background-image: linear-gradient(to right, #293771 50%, transparent 50%);
+    background-image: linear-gradient(to right, var(--bleu-fonce) 50%, transparent 50%);
     background-size: 200% 100%;
     background-position: 100% 0;
 }
 
 .btn-voir:hover {
     background-position: 0 0;
-    color: #ffffff;
+    color: var(--blanc);
 }
 
-/* ================================
-   RESPONSIVE
-   ================================ */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-
     .recherche-offres {
         padding: 1.5rem 5%;
     }

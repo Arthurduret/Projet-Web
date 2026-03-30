@@ -1,32 +1,17 @@
-/* 1. VARIABLES ET RESET */
-:root {
-    --primary-blue: #1A2B56;
-    --accent-orange: #F58220;
-    --white: #FFFFFF;
-    --light-grey: #F8F9FA;
-    --text-dark: #333333;
-    --font-main: 'Poppins', sans-serif;
-}
+/* =============================================
+   STYLE_INDEX.CSS — Page d'accueil uniquement
+   ============================================= */
 
-main {
-    font-family: var(--font-main);
-    margin-bottom: 2%;
-}
-
-body {
-    background-color: var(--light-grey);
-}
-
-/* 2. LA SECTION HERO */
+/* ===== SECTION HERO ===== */
 .Hero {
     position: relative;
-    height: 450px; /* Taille ajustée pour ton visuel */
-    margin: 40px 10%; /* Plus d'espace sur les côtés pour laisser la barre respirer */
+    height: 450px;
+    margin: 40px 10%;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centre le texte verticalement */
+    justify-content: center;
     align-items: center;
-    overflow: visible; /* CRUCIAL pour que la barre dépasse */
+    overflow: visible;
     margin-bottom: 6rem;
 }
 
@@ -37,105 +22,93 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 40px; /* Arrondi prononcé comme sur ton modèle */
+    border-radius: 40px;
     filter: brightness(60%);
 }
 
-/* 3. CONTENU ET BARRE */
+/* ===== CONTENU HERO ===== */
 .content-wrapper {
     width: 100%;
     text-align: center;
     position: relative;
-    height: 100%; /* Prend toute la hauteur pour placer la barre en bas */
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+/* ===== BARRE DE RECHERCHE ACCUEIL ===== */
 .search-bar {
     display: flex;
     align-items: center;
-    background-color: var(--white);
+    background-color: var(--blanc);
     height: 90px;
     border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Ombre très légère */
-    border: 1px solid #333; /* Trait fin et net du modèle */
-
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #333;
     position: absolute;
     bottom: -45px;
-    width: 105%; 
+    width: 105%;
     left: 50%;
-    transform: translateX(-50%); 
+    transform: translateX(-50%);
     z-index: 10;
 }
 
-/* --- COMPARTIMENTS DE SAISIE --- */
-.input-group {
+.search-bar .input-group {
     flex: 1;
     display: flex;
     flex-direction: column;
     padding: 0 30px 0 60px;
-    text-align: left; /* Force l'alignement à gauche */
+    text-align: left;
     margin-top: -10px;
 }
 
-
-/* On enlève le cadre autour des zones de texte */
-.input-group input {
-    border: none;      /* Supprime le contour gris par défaut */
-    outline: none;     /* Supprime le contour bleu au clic */
-    background: none;
-    font-size: 1rem;    
-    color: #666;
-    padding: 5px 0;
-    width: 100%;
-    font-style: italic;
-}
-
-/* Style des labels comme sur ton modèle */
-.input-group label {
-    font-size: 1.4rem;
-    font-weight: 500;
-    color: #000;
-    margin-bottom: 0;
-    
-}
-
-.input-group input {
-    font-size: 0.95rem;
-    padding: 2px 0;
-}
-
-.input-group:first-of-type {
-    /* Ajoute ou modifie cette ligne */
-    border-right: 1px solid #a3a2a2; /* Crée le trait vertical noir/gris */
-    
-    /* Optionnel : tu peux ajuster la hauteur du trait en ajoutant des marges internes */
+.search-bar .input-group:first-of-type {
+    border-right: 1px solid #a3a2a2;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-right: -40px;
 }
 
-.btn-search img {
-    width: 50px; /* Loupe légèrement plus petite pour la nouvelle hauteur */
-    height: auto;
+.search-bar .input-group label {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #000;
+    margin-bottom: 0;
 }
 
-/* --- LE BOUTON LOUPE --- */
+.search-bar .input-group input {
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 0.95rem;
+    color: #666;
+    padding: 2px 0;
+    width: 100%;
+    font-style: italic;
+}
+
+/* ===== BOUTON LOUPE ===== */
 .btn-search {
     background: none;
     border: none;
     cursor: pointer;
-    padding-right: 30px; /* Espace par rapport au bord droit */
+    padding-right: 30px;
 }
 
 .btn-search img {
-    width: 65px; /* Taille agrandie pour correspondre au visuel */
+    width: 65px;
     height: auto;
-    filter: none; /* On enlève l'ombre portée pour rester fidèle au logo pur */
 }
+
 .btn-search:hover {
-    transform: scale(1.15); /* Effet d'interaction pro */
+    transform: scale(1.15);
+}
+
+/* ===== SECTION ENTREPRISES ACCUEIL ===== */
+.header-entreprise h1 {
+    text-align: left;
+    margin-left: 12%;
 }
 
 .grille-entreprises {
@@ -143,104 +116,39 @@ body {
     flex-wrap: wrap;
     gap: 3rem;
     justify-content: center;
-
+    margin-bottom: 3rem; /* ← ajoute cette ligne */
 }
 
-.carte-entreprise {
-    width: calc(25% - 2rem);
-    background-color: var(--blanc);
-    border-radius: 10px;
-    box-shadow:0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    /* min-width: 300px; */
-    transition: transform 0.3s ease;
-}
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .Hero {
+        height: 300px;
+        margin: 20px 5%;
+        margin-bottom: 4rem;
+    }
 
-.carte-entreprise:hover{
-    transform: scale(0.98);
-}
+    .search-bar {
+        flex-direction: column;
+        height: auto;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        transform: none;
+        left: 0;
+    }
 
-.carte-entreprise a {
-    text-decoration: none;
-    color: inherit;
+    .search-bar .input-group {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        margin-right: 0;
+    }
 
-}
-
-
-.image-fond img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    display: block;
-}
-
-.logo-mini {
-    width: 7rem;
-    height: 3rem;
-    background-color: var(--blanc);
-    border-radius: 8px;
-    margin-top: -3rem;
-    margin-left: 1rem;
-    padding: 0.2rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    object-fit: contain; /* ← contain au lieu de cover */
-    position: relative;
-}
-
-
-
-.contenu-carte {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.header-entreprise {
-    justify-content: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-.header-entreprise h1 {
-    text-align: left;
-    margin-left: 12%;
-
-}
-
-.name-entreprise {
-    display: flex;
-    align-items: flex-end;
-    color: var(--texte-noir);
-    margin-left: 0.5rem;
-}
-
-.infos-entreprise {
-    margin-left: 0.5rem;
-}
-
-.footer-carte {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 0.5rem;
-}
-
-.footer-carte .btn-decouvrir {
-    color: var(--bleu-fonce);
-    font-weight: bold;
-    cursor: pointer;
-    border: 1px solid var(--bleu-fonce);
-    border-radius: 20px;
-    padding: 5px 15px;
-
-    background-image: linear-gradient(to right, var(--bleu-fonce) 50%, transparent 50%);
-    background-size: 200% 100%;
-    background-position: 100% 0;
-    transition: all 0.4s ease;
-}
-
-.footer-carte .btn-decouvrir:hover {
-    background-position: 0 0; /* On déplace le fond pour afficher le bleu */
-    color: var(--blanc)
+    .btn-search {
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+    }
 }
