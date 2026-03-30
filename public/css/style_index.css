@@ -121,28 +121,59 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+    /* Cache l'image hero sur mobile */
+    .Hero > div:first-child {
+        display: none;
+    }
+
     .Hero {
-        height: 300px;
-        margin: 20px 5%;
-        margin-bottom: 4rem;
+        height: auto;
+        margin: 1rem;
+        margin-bottom: 1.5rem;
+        overflow: visible;
+    }
+
+    .content-wrapper {
+        position: static;
+        height: auto;
     }
 
     .search-bar {
-        flex-direction: column;
-        height: auto;
-        position: relative;
-        bottom: 0;
-        width: 100%;
+        position: static;
         transform: none;
-        left: 0;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        border-radius: 12px;
+        border: 1.5px solid var(--bleu-fonce);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
     .search-bar .input-group {
         width: 100%;
-        padding: 0.8rem 1rem;
+        padding: 1rem 1.5rem; /* ← même padding des deux côtés */
         border-right: none;
         border-bottom: 1px solid #e0e0e0;
         margin-right: 0;
+        margin-top: 0;
+        text-align: left; /* ← aligne à gauche */
+    }
+
+    .search-bar .input-group label {
+        font-size: 0.85rem; /* ← plus petit */
+        font-weight: 700;
+        color: var(--bleu-fonce);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.3rem;
+        display: block; /* ← force le label sur sa propre ligne */
+    }
+
+    .search-bar .input-group input {
+        font-size: 1rem;
+        color: #333;
+        display: block; /* ← force l'input sur sa propre ligne */
+        width: 100%;
     }
 
     .btn-search {
@@ -150,5 +181,19 @@
         padding: 1rem;
         display: flex;
         justify-content: center;
+        background: var(--bleu-fonce);
+        border-radius: 0 0 10px 10px;
+        border: none;
+    }
+
+    .btn-search img {
+        width: 28px;
+        filter: brightness(0) invert(1);
+    }
+
+    .header-entreprise h1 {
+        text-align: center;
+        margin-left: 0;
+        font-size: 1.5rem;
     }
 }
