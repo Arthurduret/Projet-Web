@@ -18,16 +18,16 @@ class AuthControleur
         require __DIR__ . '/../vues/identifier_vue.php';
     }
 
+
     public function check(): void
     {
         $email = $_POST['email'] ?? '';
-
         $utilisateur = $this->modele->findByEmail($email);
 
         if ($utilisateur) {
-            header('Location: /index.php?page=auth&action=connexion');
+            header('Location: /index.php?page=auth&action=connexion&email=' . urlencode($email));
         } else {
-            header('Location: /index.php?page=auth&action=inscription');
+            header('Location: /index.php?page=auth&action=inscription&email=' . urlencode($email));
         }
         exit();
     }
@@ -50,7 +50,7 @@ class AuthControleur
 
         $utilisateur = $this->modele->findByEmail($email);
 
-        if ($utilisateur && password_verify($password, $utilisateur['mot_de_passe'])) {
+        if ($utilisateur && password_verify($password, $utilisateur['mdp'])) {
             $_SESSION['user'] = $utilisateur;
             header('Location: /index.php?page=accueil');
         } else {
@@ -69,7 +69,50 @@ class AuthControleur
     // Traite le POST d'inscription
     public function register(): void
     {
-        // à compléter selon tes champs
+
+        if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
+            die('Token CSRF invalide.');
+        }
+
+        $email            = $_POST['email']            ?? '';
+        $nom              = $_POST['nom']              ?? '';
+        $prenom           = $_POST['prenom']           ?? '';
+        $password         = $_POST['password']              ?? '';
+        $password_confirm = $_POST['password_confirm']      ?? '';
+
+        // Vérification CGU
+        if (empty($_POST['accepte_cgu']) || empty($_POST['accepte_confidentialite'])) {
+            $erreur = "Vous devez accepter les CGU et la politique de confidentialité.";
+            require __DIR__ . '/../vues/inscription_particulier_vue.php';
+            return;
+        }
+
+        // Vérification mots de passe
+        if ($password !== $password_confirm) {
+            $erreur = "Les mots de passe ne correspondent pas.";
+            require __DIR__ . '/../vues/inscription_particulier_vue.php';
+            return;
+        }
+
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        try {
+            $this->modele->creer([
+                'email'    => $email,
+                'nom'      => $nom,
+                'prenom'   => $prenom,
+                'mdp'      => $hash,
+                'role'     => 'etudiant'
+            ]);
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+
+        $utilisateur = $this->modele->findByEmail($email);
+        $_SESSION['user'] = $utilisateur;
+
+        header('Location: /index.php?page=accueil');
+        exit();
     }
 
     // Déconnexion

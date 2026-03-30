@@ -47,6 +47,9 @@ switch ($page) {
             default:       $ctrl->index();  break;
         }
         break;
+    
+    var_dump($_GET, $_POST);
+    die();
 
     case 'auth':
         require_once __DIR__ . '/../controleurs/auth_controleur.php';
@@ -133,7 +136,7 @@ switch ($page) {
         break;
 
     default:
-        header('Location: /public/public/index.php?page=accueil');
+        header('Location: /index.php?page=accueil');
         exit;
 }
 ?>
