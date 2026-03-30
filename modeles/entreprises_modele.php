@@ -48,6 +48,8 @@ class EntrepriseModele {
             UPDATE entreprise
             SET nom         = :nom,
                 description = :description,
+                email       = :email,
+                tel         = :tel,
                 image_logo  = :image_logo,
                 image_fond  = :image_fond
             WHERE id_entreprise = :id

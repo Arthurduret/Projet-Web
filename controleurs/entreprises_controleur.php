@@ -28,9 +28,7 @@ class EntrepriseControleur {
         // Sauvegarde les données pour les restituer en cas d'erreur
         $_SESSION['form_data'] = $_POST;
 
-        // ──────────────────────────────────────────
         // Validations
-        // ──────────────────────────────────────────
         if (!Validation::requis($_POST['nom'] ?? '')) {
             Validation::erreur("Le nom est obligatoire.", '/index.php?page=entreprises&action=create');
         }
@@ -55,15 +53,11 @@ class EntrepriseControleur {
             Validation::erreur("L'image de fond est obligatoire.", '/index.php?page=entreprises&action=create');
         }
 
-        // ──────────────────────────────────────────
         // Upload des images
-        // ──────────────────────────────────────────
         $image_logo = $this->uploaderImage('image_logo', 'entreprises/logo');
         $image_fond = $this->uploaderImage('image_fond', 'entreprises/fond');
 
-        // ──────────────────────────────────────────
         // Insertion en BDD
-        // ──────────────────────────────────────────
         $donnees = [
             'nom'         => $_POST['nom']         ?? '',
             'description' => $_POST['description'] ?? '',
@@ -76,9 +70,7 @@ class EntrepriseControleur {
         $model = new EntrepriseModele($this->pdo);
         $model->creerEntreprise($donnees);
 
-        // ──────────────────────────────────────────
         // Succès → on vide la session et on redirige
-        // ──────────────────────────────────────────
         unset($_SESSION['form_data']);
         header('Location: /index.php?page=entreprises');
         exit;
@@ -88,7 +80,7 @@ class EntrepriseControleur {
         $id    = $_GET['id'] ?? null;
         $model = new EntrepriseModele($this->pdo);
         $entreprise = $model->getEntrepriseById($id);
-        require __DIR__ . '/../vues/entreprise_show_vue.php';
+        require __DIR__ . '/../vues/fiche_entreprise_vue.php';
     }
 
     public function edit() {
@@ -102,16 +94,27 @@ class EntrepriseControleur {
         $id    = $_GET['id'] ?? null;
         $model = new EntrepriseModele($this->pdo);
 
+        // Upload seulement si une nouvelle image est envoyée
+        $image_logo = !empty($_FILES['image_logo']['name']) 
+            ? $this->uploaderImage('image_logo', 'entreprises/logo')
+            : $_POST['image_logo_actuel'] ?? null;
+
+        $image_fond = !empty($_FILES['image_fond']['name'])
+            ? $this->uploaderImage('image_fond', 'entreprises/fond')
+            : $_POST['image_fond_actuel'] ?? null;
+
         $donnees = [
             'nom'         => $_POST['nom']         ?? '',
             'description' => $_POST['description'] ?? '',
-            'image_logo'  => $_POST['image_logo']  ?? '',
-            'image_fond'  => $_POST['image_fond']  ?? '',
+            'email'       => $_POST['email']       ?? '',
+            'tel'         => $_POST['tel']         ?? '',
+            'image_logo'  => $image_logo,
+            'image_fond'  => $image_fond,
         ];
 
         $model->modifierEntreprise($id, $donnees);
 
-        header('Location: /index.php?page=entreprises');
+        header('Location: /index.php?page=entreprises&action=show&id=' . $id);
         exit;
     }
 

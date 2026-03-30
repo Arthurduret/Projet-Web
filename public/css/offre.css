@@ -540,3 +540,61 @@ h1 {
 .btn-voir:hover {
     text-decoration: underline;
 }
+
+
+/* ===== BANNIÈRE ENTREPRISE ===== */
+.entreprise-banniere {
+    width: 100%;
+    height: 220px;
+    border-radius: 18px 18px 0 0; /* ← arrondi seulement en haut */
+    overflow: hidden;
+    box-shadow: none; /* ← retire l'ombre */
+    margin-bottom: 0;
+}
+
+.entreprise-banniere img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.entreprise-bloc-infos {
+    margin-top: 0;
+    border-radius: 0 0 18px 18px; /* ← arrondi seulement en bas */
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06); /* ← ombre uniquement sur le bloc bas */
+    border: 1px solid #f1f1f1;
+}
+
+.entreprise-logo-chevauchant {
+    width: 100px;
+    height: 100px;
+    margin-top: -60px;
+    border: 4px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    background: white;
+    border-radius: 16px;
+    flex-shrink: 0;
+}
+
+.form-group img {
+    max-height: 80px;
+    max-width: 200px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 4px;
+    background: #f8f9fa;
+    display: block;
+    margin: 0 auto 0.5rem auto;
+}
+
+.fiche-offre-main {
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+    max-width: 1100px;
+    background-color: var(--gris-clair);
+}

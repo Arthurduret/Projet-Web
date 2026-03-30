@@ -44,7 +44,7 @@
             <div class="grille-entreprises">
                 <?php foreach ($entreprises_accueil as $entreprise): ?>
                     <article class="carte-entreprise">
-                        <a href="/index.php?page=entreprises&id=<?php echo htmlspecialchars($entreprise['id_entreprise']); ?>">                            
+                        <a href="/index.php?page=entreprises&action=show&id=<?php echo htmlspecialchars($entreprise['id_entreprise']); ?>">                            
                             <div class="image-fond">
                                 <img src="/images/entreprises/fond/<?php echo htmlspecialchars($entreprise['image_fond']); ?>" 
                                      alt="Fond <?php echo htmlspecialchars($entreprise['nom']); ?>">
@@ -56,7 +56,7 @@
                                         $chemin = '/images/entreprises/logo/' . $entreprise['image_logo'];
                                         echo file_exists($_SERVER['DOCUMENT_ROOT'] . $chemin) 
                                             ? htmlspecialchars($chemin)
-                                            : '/images/default_logo.png';?>">
+                                            : '/images/default_logo.png';?>"class="logo-mini" alt="Logo <?php echo htmlspecialchars($entreprise['nom']); ?>">
                                     <h3 class="name-entreprise">
                                         <?php echo htmlspecialchars($entreprise['nom']); ?>
                                     </h3>
