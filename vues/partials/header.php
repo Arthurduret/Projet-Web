@@ -35,7 +35,7 @@
                 </div>
             </div>
         <?php else: ?>
-            <a href="/index.php?page=auth&action=identifier" class="btn-compte">
+            <a href="/index.php?page=auth&action=connexion" class="btn-compte">
                 <img src="/images/jobeo/logo_profil.png" alt="logo_profil" width="40" height="40">
                 <span>Mon compte</span>
             </a>

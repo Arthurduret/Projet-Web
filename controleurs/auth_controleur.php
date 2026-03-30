@@ -120,7 +120,7 @@ class AuthControleur
     public function monCompte(): void
     {
         if (!isset($_SESSION['user'])) {
-            header('Location: /index.php?page=auth&action=identifier');
+            header('Location: /index.php?page=auth&action=connexion');
             exit();
         }
         $utilisateur = $_SESSION['user'];
@@ -131,7 +131,7 @@ class AuthControleur
     public function deconnexion(): void
     {
         session_destroy();
-        header('Location: /index.php?page=auth&action=identifier');
+        header('Location: /index.php?page=auth&action=connexion');
         exit();
     }
 }
