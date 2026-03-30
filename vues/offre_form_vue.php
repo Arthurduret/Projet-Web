@@ -30,8 +30,8 @@
                 <?php endif; ?>
 
                 <!-- TITRE -->
-                <div class="form-group">
-                    <label for="titre">Titre du poste *</label>
+                <div class="input-group">
+                    <label for="titre">Titre du poste</label>
                     <input type="text"
                            name="titre"
                            id="titre"
@@ -41,8 +41,8 @@
                 </div>
 
                 <!-- ENTREPRISE -->
-                <div class="form-group">
-                    <label for="id_entreprise">Entreprise *</label>
+                <div class="input-group">
+                    <label for="id_entreprise">Entreprise</label>
                     <select name="id_entreprise" id="id_entreprise" required>
                         <option value="">-- Choisir une entreprise --</option>
                         <?php foreach ($entreprises as $e): ?>
@@ -60,8 +60,8 @@
                 </div>
 
                 <!-- DESCRIPTION -->
-                <div class="form-group">
-                    <label for="description">Description *</label>
+                <div class="input-group">
+                    <label for="description">Description</label>
                     <textarea name="description"
                               id="description"
                               rows="6"
@@ -71,7 +71,7 @@
 
                 <!-- LIGNE : SALAIRE + DURÉE -->
                 <div class="form-ligne">
-                    <div class="form-group">
+                    <div class="input-group">
                         <label for="salaire">Rémunération (€/mois)</label>
                         <input type="number"
                                name="salaire"
@@ -82,8 +82,8 @@
                                value="<?php echo isset($offre) ? htmlspecialchars($offre['salaire']) : ''; ?>">
                     </div>
 
-                    <div class="form-group">
-                        <label for="duree">Durée (mois) *</label>
+                    <div class="input-group">
+                        <label for="duree">Durée (mois)</label>
                         <input type="number"
                                name="duree"
                                id="duree"
@@ -97,7 +97,7 @@
 
                 <!-- LIGNE : LOCALISATION + DATE -->
                 <div class="form-ligne">
-                    <div class="form-group">
+                    <div class="input-group">
                         <label for="localisation">Localisation</label>
                         <input type="text"
                                name="localisation"
@@ -106,8 +106,8 @@
                                value="<?php echo isset($offre) ? htmlspecialchars($offre['localisation']) : ''; ?>">
                     </div>
 
-                    <div class="form-group">
-                        <label for="date_offre">Date de l'offre *</label>
+                    <div class="input-group">
+                        <label for="date_offre">Date de l'offre</label>
                         <input type="date"
                                name="date_offre"
                                id="date_offre"
@@ -117,7 +117,7 @@
                 </div>
 
                 <!-- COMPÉTENCES — cases à cocher -->
-                <div class="form-group">
+                <div class="input-group">
                     <label>Compétences requises</label>
                     <div class="competences-grid">
                         <?php foreach (($competences ?? []) as $comp): ?>

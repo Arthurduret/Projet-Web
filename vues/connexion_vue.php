@@ -33,7 +33,7 @@
                     <label for="password">Mot de passe</label>
                     <div class="password-wrapper">
                         <input type="password" name="password" id="password" required autocomplete="current-password">
-                        <span id="boutonOeil">👁️</span>
+                        <span id="boutonOeil" class="password-toggle">👁️</span>
                     </div>
                 </div>
                 
