@@ -247,3 +247,118 @@ footer p {
         display: none;
     }
 }
+
+/* ===== RESPONSIVE TABLETTE ===== */
+@media screen and (max-width: 1024px) {
+    header {
+        gap: 2rem;
+        padding: 1rem 5%;
+    }
+
+    header nav {
+        gap: 2rem;
+    }
+
+    header a {
+        font-size: 1.1rem;
+    }
+}
+
+/* ===== RESPONSIVE MOBILE ===== */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: row !important;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        position: sticky; /* ← garde le sticky sur mobile aussi */
+        gap: 0;
+    }
+
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .btn-compte span {
+        display: none;
+    }
+
+    .btn-compte {
+        padding: 0.4rem;
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+    }
+
+    .menu-tel {
+        display: block;
+    }
+
+    header nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        gap: 0;
+        width: 220px;
+        background-color: var(--blanc);
+        box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
+        height: auto;
+        justify-content: flex-start;
+        padding: 10px 0;
+        border-radius: 0 0 10px 10px;
+    }
+
+    header nav a {
+        padding: 12px 20px;
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+        text-align: left;
+        display: block;
+        font-size: 1rem;
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    header nav a:last-child {
+        border-bottom: none;
+    }
+
+    /* Dropdown mobile */
+    .nav-dropdown__menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .nav-dropdown__menu a {
+        padding: 10px 30px;
+        font-size: 0.95rem;
+        background: var(--gris-clair);
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    footer a {
+        font-size: 0.95rem;
+    }
+
+    footer p {
+        display: none;
+    }
+}

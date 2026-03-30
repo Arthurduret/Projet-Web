@@ -224,8 +224,12 @@ a:hover {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+    .grille-entreprises {
+        padding: 0 1rem; /* ← marge sur les côtés */
+        gap: 1.5rem; /* ← réduit l'espace entre les cartes */
+    }
     .carte-entreprise {
-        width: calc(50% - 1.5rem);
+        width: calc(50% - 0.75rem);
     }
 
     h1 {
