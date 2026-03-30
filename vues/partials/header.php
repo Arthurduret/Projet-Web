@@ -17,6 +17,7 @@
                     <a href="/index.php?page=offres_emplois&action=create">Offre</a>
                 </div>
             </div>
+            <a href="/index.php?page=auth&action=inscription">Créer compte étudiant</a>
         <?php elseif (isset($_SESSION['user'])): ?>
             <a href="/index.php?page=favoris">Favoris</a>
         <?php endif; ?>

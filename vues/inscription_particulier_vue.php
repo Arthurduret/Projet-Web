@@ -22,11 +22,7 @@
 
             <a href="/index.php?page=accueil" class="back-link">← Retour</a>
 
-            <h1>S'inscrire</h1>
-            
-            <div class="switch_buttons">
-                <a class="switch_btn active">Étudiant</a>
-            </div>
+            <h1>Créer un compte Etudiant</h1>
 
             <form action="/index.php?page=auth&action=register" method="POST">
 
