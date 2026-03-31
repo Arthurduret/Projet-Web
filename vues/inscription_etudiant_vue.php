@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="icon" type="image/png" href="/images/jobeo/HeadLogoJobeo.png">
-    <title>Jobeo | Inscription</title>
+    <title>Jobeo | Créer un compte</title>
 
     <link rel="stylesheet" href="/css/style_global.css">
     <link rel="stylesheet" href="/css/header_footer.css">
@@ -22,11 +22,27 @@
 
             <a href="/index.php?page=accueil" class="back-link">← Retour</a>
 
-            <h1>Créer un compte Etudiant</h1>
+            <h1>Créer un compte</h1>
+
+            <div class="switch_buttons">                   
+                <?php if ($_SESSION['user']['role'] === 'pilote') : ?>
+                    <a class="switch_btn <?php echo ($role ?? 'etudiant') === 'etudiant' ? 'active' : ''; ?>" 
+                        href="/index.php?page=auth&action=inscription&role=etudiant&email=<?php echo urlencode($email ?? ''); ?>">Étudiant</a>
+                
+                <?php elseif ($_SESSION['user']['role'] === 'admin') : ?>
+                    <a class="switch_btn <?php echo ($role ?? 'etudiant') === 'etudiant' ? 'active' : ''; ?>" 
+                        href="/index.php?page=auth&action=inscription&role=etudiant&email=<?php echo urlencode($email ?? ''); ?>">Étudiant</a>
+                    
+                    <a class="switch_btn <?php echo ($role ?? 'etudiant') === 'pilote' ? 'active' : ''; ?>"
+                        href="/index.php?page=auth&action=inscription&role=pilote&email=<?php echo urlencode($email ?? ''); ?>">Pilote</a>
+                
+                <?php endif; ?>
+            </div>
 
             <form action="/index.php?page=auth&action=register" method="POST">
 
                 <?php echo csrfInput(); ?>
+                <input type="hidden" name="role" value="<?php echo htmlspecialchars($role ?? 'etudiant'); ?>">
 
                 <div class="input-group">
                     <label for="email">Email</label>
@@ -100,7 +116,7 @@
                     </label>
                 </div>
 
-                <button type="submit">S'inscrire</button>
+                <button type="submit">Créer le compte</button>
             </form>
         </div>
     </main>
@@ -113,7 +129,7 @@
         const inputPass2  = document.querySelector('#password_confirm');
         const email_lowercase = document.querySelector('#email');
 
-        email.addEventListener('input', function () {
+        email_lowercase.addEventListener('input', function () {
             email_lowercase.value = email_lowercase.value.toLowerCase()
         })
 
