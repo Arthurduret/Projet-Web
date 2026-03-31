@@ -110,13 +110,16 @@
     <script>
         const boutonOeil = document.querySelector('#boutonOeil');
         const inputPass  = document.querySelector('#password');
+        const inputPass2  = document.querySelector('#password_confirm');
 
         boutonOeil.addEventListener('click', function () {
             if (inputPass.type === 'password') {
                 inputPass.type   = 'text';
+                inputPass2.type  = 'text';
                 this.textContent = '🙈';
             } else {
                 inputPass.type   = 'password';
+                inputPass2.type  = 'password';
                 this.textContent = '👁️';
             }
         });
