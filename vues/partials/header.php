@@ -44,6 +44,9 @@
                 </span>
                 <div class="nav-dropdown__menu">
                     <a href="/index.php?page=mon_compte">Mon compte</a>
+                    <?php if ($_SESSION['user']['role'] === 'etudiant'): ?>
+                        <a href="/index.php?page=candidature&action=index">Mes Candidatures</a>
+                    <?php endif; ?>
                     <a href="/index.php?page=auth&action=deconnexion">Déconnexion</a>
                 </div>
             </div>
