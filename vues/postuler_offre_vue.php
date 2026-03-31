@@ -29,7 +29,7 @@
                 <div class="alert-succes"><?= $succes ?></div>
             <?php endif; ?>
 
-            <form action="traitement_postuler.php" method="POST" enctype="multipart/form-data">
+            <form action="/index.php?page=candidature&action=store&id=<?= (int)$id_offre ?>"method="POST" enctype="multipart/form-data">
 
                 <!-- CV -->
                 <div class="input-group">
