@@ -351,3 +351,36 @@
     background: var(--bleu-fonce);
     color: var(--blanc);
 }
+
+/* ===== PAGINATION ===== */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.page-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    border: 2px solid var(--bleu-fonce);
+    color: var(--bleu-fonce);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+
+.page-btn:hover {
+    background: var(--bleu-fonce);
+    color: var(--blanc);
+}
+
+.page-btn.active {
+    background: var(--bleu-fonce);
+    color: var(--blanc);
+    cursor: default;
+}
