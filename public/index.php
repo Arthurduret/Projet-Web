@@ -128,9 +128,13 @@ switch ($page) {
     //     }
     //     break;
 
-    // ──────────────────────────────────────────
+    case 'evaluation':
+        require_once __DIR__ . '/../controleurs/evaluation_controleur.php';
+        $ctrl = new EvaluationControleur($pdo);
+        $ctrl->noter();
+        break;
+
     // PAGES STATIQUES
-    // ──────────────────────────────────────────
     case 'a_propos':
         require_once __DIR__ . '/../vues/a_propos_vue.php';
         break;

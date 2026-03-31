@@ -173,14 +173,44 @@ class OffresModele {
         return $query->fetchColumn();
     }
 
-    // Compte le total des offres filtrées
-    public function compterOffresFiltrees($quoi, $ou) {
-        $sql = "
-            SELECT COUNT(DISTINCT offre.id_offre)
+    public function filtrerOffres($quoi, $ou, $filtres = [], $limite = 10, $offset = 0) {
+        [$sql, $params] = $this->construireRequete($quoi, $ou, $filtres);
+        
+        $sql .= $this->getOrderBy($filtres['f_tri'] ?? '');
+        $sql .= " LIMIT $limite OFFSET $offset";
+        
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function compterOffresFiltrees($quoi, $ou, $filtres = []) {
+        // On fait une sous-requête pour compter correctement
+        [$sql, $params] = $this->construireRequete($quoi, $ou, $filtres, false);
+        
+        // On enlève le ORDER BY s'il existe
+        $sql_count = "SELECT COUNT(*) FROM ($sql) AS sous_requete";
+        
+        $stmt = $this->pdo->prepare($sql_count);
+        $stmt->execute($params);
+        return $stmt->fetchColumn();
+    }
+
+    private function construireRequete($quoi, $ou, $filtres = [], $count = false) {
+        if ($count) {
+            $sql = "SELECT COUNT(DISTINCT offre.id_offre) ";
+        } else {
+            $sql = "SELECT offre.*, entreprise.nom AS nom_entreprise, entreprise.image_logo,
+                    GROUP_CONCAT(DISTINCT competence.nom SEPARATOR ', ') AS competences,
+                    COUNT(DISTINCT candidature.id_candidature) AS nb_candidatures ";
+        }
+
+        $sql .= "
             FROM offre
             JOIN entreprise ON offre.id_entreprise = entreprise.id_entreprise
             LEFT JOIN Requerir ON offre.id_offre = Requerir.id_offre
             LEFT JOIN competence ON Requerir.id_competence = competence.id_competence
+            LEFT JOIN candidature ON candidature.id_offre = offre.id_offre
             WHERE 1=1
         ";
         $params = [];
@@ -194,10 +224,49 @@ class OffresModele {
             $sql .= " AND offre.localisation LIKE :ou";
             $params[':ou'] = '%' . $ou . '%';
         }
+        if (!empty($filtres['f_entreprise'])) {
+            $sql .= " AND entreprise.nom LIKE :f_entreprise";
+            $params[':f_entreprise'] = '%' . $filtres['f_entreprise'] . '%';
+        }
+        if (!empty($filtres['f_titre'])) {
+            $sql .= " AND offre.titre LIKE :f_titre";
+            $params[':f_titre'] = '%' . $filtres['f_titre'] . '%';
+        }
+        if (!empty($filtres['f_competence'])) {
+            $sql .= " AND competence.nom LIKE :f_competence";
+            $params[':f_competence'] = '%' . $filtres['f_competence'] . '%';
+        }
+        if (!empty($filtres['f_salaire_min'])) {
+            $sql .= " AND offre.salaire >= :f_salaire_min";
+            $params[':f_salaire_min'] = $filtres['f_salaire_min'];
+        }
+        if (!empty($filtres['f_salaire_max'])) {
+            $sql .= " AND offre.salaire <= :f_salaire_max";
+            $params[':f_salaire_max'] = $filtres['f_salaire_max'];
+        }
+        if (!empty($filtres['f_date'])) {
+            $sql .= " AND offre.date_offre >= :f_date";
+            $params[':f_date'] = $filtres['f_date'];
+        }
 
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute($params);
-        return $stmt->fetchColumn();
+        $sql .= " GROUP BY offre.id_offre";
+
+        if (!empty($filtres['f_candidatures_min'])) {
+            $sql .= " HAVING COUNT(DISTINCT candidature.id_candidature) >= :f_candidatures_min";
+            $params[':f_candidatures_min'] = $filtres['f_candidatures_min'];
+        }
+
+        return [$sql, $params];
+    }
+
+    private function getOrderBy($tri) {
+        return match($tri) {
+            'date_asc'          => ' ORDER BY offre.date_offre ASC',
+            'salaire_desc'      => ' ORDER BY offre.salaire DESC',
+            'salaire_asc'       => ' ORDER BY offre.salaire ASC',
+            'candidatures_desc' => ' ORDER BY nb_candidatures DESC',
+            default             => ' ORDER BY offre.date_offre DESC',
+        };
     }
 }
 ?>
