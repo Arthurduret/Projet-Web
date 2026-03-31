@@ -117,17 +117,18 @@ class EntrepriseControleur {
     }
 
     public function edit() {
-        $id    = $_GET['id'] ?? null;
+        $this->verifierRole(['admin', 'pilote']);
+        $id    = $_GET['id'] ?? null; // ← corrigé
         $model = new EntrepriseModele($this->pdo);
         $entreprise = $model->getEntrepriseById($id);
         require __DIR__ . '/../vues/entreprise_form_vue.php';
     }
 
     public function update() {
-        $id    = $_GET['id'] ?? null;
+        $this->verifierRole(['admin', 'pilote']);
+        $id    = $_GET['id'] ?? null; // ← corrigé
         $model = new EntrepriseModele($this->pdo);
 
-        // Upload seulement si une nouvelle image est envoyée
         $image_logo = !empty($_FILES['image_logo']['name']) 
             ? $this->uploaderImage('image_logo', 'entreprises/logo')
             : $_POST['image_logo_actuel'] ?? null;
@@ -146,13 +147,13 @@ class EntrepriseControleur {
         ];
 
         $model->modifierEntreprise($id, $donnees);
-
         header('Location: /index.php?page=entreprises&action=show&id=' . $id);
         exit;
     }
 
     public function delete() {
-        $id    = $_GET['id'] ?? null;
+        $this->verifierRole(['admin', 'pilote']);
+        $id    = $_GET['id'] ?? null; // ← corrigé
         $model = new EntrepriseModele($this->pdo);
         $model->supprimerEntreprise($id);
         header('Location: /index.php?page=entreprises');
@@ -182,7 +183,13 @@ class EntrepriseControleur {
 
         return null;
     }
-
+    
+    private function verifierRole(array $rolesAutorises) {
+        if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], $rolesAutorises)) {
+            header('Location: /index.php?page=auth&action=identifier');
+            exit;
+        }
+    }
 
 }
 ?>
