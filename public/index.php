@@ -56,8 +56,8 @@ switch ($page) {
         $ctrl   = new AuthControleur($pdo);
         $action = $_GET['action'] ?? 'connexion';
         switch ($action) {
-            case 'identifier':  $ctrl->identifier();  break;
-            case 'check':       $ctrl->check();       break;
+            // case 'identifier':  $ctrl->identifier();  break;
+            // case 'check':       $ctrl->check();       break;
             case 'connexion':   $ctrl->connexion();   break;
             case 'login':       $ctrl->login();       break; 
             case 'inscription': $ctrl->inscription(); break;
