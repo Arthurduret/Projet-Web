@@ -9,9 +9,7 @@ class OffresControleur {
         $this->pdo = $pdo;
     }
 
-    // -----------------------------------------------
     // Vérifie si l'utilisateur a le bon rôle
-    // -----------------------------------------------
     private function verifierRole(array $rolesAutorises) {
         if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], $rolesAutorises)) {
             header('Location: /index.php?page=auth&action=identifier');
@@ -19,22 +17,26 @@ class OffresControleur {
         }
     }
 
-    // -----------------------------------------------
     // LISTE — tout le monde peut voir les offres
-    // -----------------------------------------------
     public function index() {
         $modele = new OffresModele($this->pdo);
 
-        $quoi = $_GET['quoi'] ?? '';
-        $ou   = $_GET['ou']   ?? '';
+        $quoi    = $_GET['quoi'] ?? '';
+        $ou      = $_GET['ou']   ?? '';
+        $page    = max(1, (int)($_GET['p'] ?? 1));
+        $limite  = 10;
+        $offset  = ($page - 1) * $limite;
 
         if (!empty($quoi) || !empty($ou)) {
-            $offres = $modele->rechercherOffres($quoi, $ou);
+            $offres     = $modele->rechercherOffres($quoi, $ou, $limite, $offset);
+            $total      = $modele->compterOffresFiltrees($quoi, $ou);
         } else {
-            $offres = $modele->getOffres();
+            $offres     = $modele->getOffres($limite, $offset);
+            $total      = $modele->compterOffres();
         }
 
-        $nb_offres = count($offres);
+        $nb_offres    = count($offres);
+        $nb_pages     = ceil($total / $limite);
 
         // Récupère les ids des favoris si étudiant connecté
         $favoris_ids = [];
@@ -48,9 +50,7 @@ class OffresControleur {
         require __DIR__ . '/../vues/offres_emplois_vue.php';
     }
 
-    // -----------------------------------------------
     // FICHE — tout le monde peut voir le détail
-    // -----------------------------------------------
     public function show() {
         $id = $_GET['id'] ?? null;
 
@@ -78,9 +78,7 @@ class OffresControleur {
         require __DIR__ . '/../vues/fiche_offre_vue.php';
     }
 
-    // -----------------------------------------------
     // FORMULAIRE CRÉATION — admin et pilote seulement
-    // -----------------------------------------------
     public function create() {
         // $this->verifierRole(['admin', 'pilote']);
 
@@ -91,9 +89,7 @@ class OffresControleur {
         require __DIR__ . '/../vues/offre_form_vue.php';
     }
 
-    // -----------------------------------------------
     // TRAITEMENT CRÉATION — admin et pilote seulement
-    // -----------------------------------------------
     public function store() {
         // $this->verifierRole(['admin', 'pilote']);
 
@@ -116,9 +112,7 @@ class OffresControleur {
         exit;
     }
 
-    // -----------------------------------------------
     // FORMULAIRE MODIFICATION — admin et pilote seulement
-    // -----------------------------------------------
     public function edit() {
         $this->verifierRole(['admin', 'pilote']);
 
@@ -138,9 +132,7 @@ class OffresControleur {
         require __DIR__ . '/../vues/offre_form_vue.php';
     }
 
-    // -----------------------------------------------
     // TRAITEMENT MODIFICATION — admin et pilote seulement
-    // -----------------------------------------------
     public function update() {
         $this->verifierRole(['admin', 'pilote']);
 
@@ -164,9 +156,7 @@ class OffresControleur {
         exit;
     }
 
-    // -----------------------------------------------
     // SUPPRESSION — admin seulement
-    // -----------------------------------------------
     public function delete() {
         $this->verifierRole(['admin']);
 

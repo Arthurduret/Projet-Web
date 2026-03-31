@@ -51,6 +51,11 @@
     <script>
         const boutonOeil = document.querySelector('#boutonOeil');
         const inputPass = document.querySelector('#password');
+        const email_lowercase = document.querySelector('#email');
+
+        email.addEventListener('input', function() {
+            email_lowercase.value = email_lowercase.value.toLowerCase();
+        })
 
         boutonOeil.addEventListener('click', function() {
             if (inputPass.type === 'password') {

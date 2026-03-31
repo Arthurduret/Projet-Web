@@ -7,26 +7,27 @@ class OffresModele {
         $this->pdo = $pdo;
     }
 
-    // Toutes les offres (déjà existant)
-    public function getOffres() {
+    // Toutes les offres
+    public function getOffres($limite = 10, $offset = 0) {
         $query = $this->pdo->query("
             SELECT offre.*, entreprise.nom AS nom_entreprise, entreprise.image_logo,
-                   GROUP_CONCAT(competence.nom SEPARATOR ', ') AS competences
+                GROUP_CONCAT(competence.nom SEPARATOR ', ') AS competences
             FROM offre
             JOIN entreprise ON offre.id_entreprise = entreprise.id_entreprise
             LEFT JOIN Requerir ON offre.id_offre = Requerir.id_offre
             LEFT JOIN competence ON Requerir.id_competence = competence.id_competence
             GROUP BY offre.id_offre
             ORDER BY offre.date_offre DESC
+            LIMIT $limite OFFSET $offset
         ");
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Recherche (déjà existant)
-    public function rechercherOffres($quoi, $ou) {
+    // Recherche
+    public function rechercherOffres($quoi, $ou, $limite = 10, $offset = 0) {
         $sql = "
             SELECT offre.*, entreprise.nom AS nom_entreprise, entreprise.image_logo,
-                   GROUP_CONCAT(competence.nom SEPARATOR ', ') AS competences
+                GROUP_CONCAT(competence.nom SEPARATOR ', ') AS competences
             FROM offre
             JOIN entreprise ON offre.id_entreprise = entreprise.id_entreprise
             LEFT JOIN Requerir ON offre.id_offre = Requerir.id_offre
@@ -37,7 +38,7 @@ class OffresModele {
 
         if (!empty($quoi)) {
             $sql .= " AND (offre.titre LIKE :quoi OR offre.description LIKE :quoi
-                      OR entreprise.nom LIKE :quoi OR competence.nom LIKE :quoi)";
+                    OR entreprise.nom LIKE :quoi OR competence.nom LIKE :quoi)";
             $params[':quoi'] = '%' . $quoi . '%';
         }
         if (!empty($ou)) {
@@ -45,15 +46,13 @@ class OffresModele {
             $params[':ou'] = '%' . $ou . '%';
         }
 
-        $sql .= " GROUP BY offre.id_offre ORDER BY offre.date_offre DESC";
+        $sql .= " GROUP BY offre.id_offre ORDER BY offre.date_offre DESC LIMIT $limite OFFSET $offset";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute($params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // -----------------------------------------------
-    // UNE SEULE offre par id (pour la fiche et l'édition)
-    // -----------------------------------------------
+    // Une seule offre par id
     public function getOffreById($id) {
         $stmt = $this->pdo->prepare("
             SELECT offre.*, entreprise.nom AS nom_entreprise, entreprise.image_logo,
@@ -70,17 +69,13 @@ class OffresModele {
         // fetch() au lieu de fetchAll() → retourne UNE seule ligne
     }
 
-    // -----------------------------------------------
-    // TOUTES les entreprises (pour le menu déroulant du formulaire)
-    // -----------------------------------------------
+    // Toutes les entreprises
     public function getEntreprises() {
         $query = $this->pdo->query("SELECT id_entreprise, nom FROM entreprise ORDER BY nom");
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // -----------------------------------------------
-    // TOUTES les compétences (pour les cases à cocher)
-    // -----------------------------------------------
+    // Toutes les compétences
     public function getCompetences() {
         try {
             $query = $this->pdo->query("SELECT * FROM competence ORDER BY nom");
@@ -90,9 +85,7 @@ class OffresModele {
         }
     }
 
-    // -----------------------------------------------
-    // Compétences d'UNE offre (pour pré-cocher à l'édition)
-    // -----------------------------------------------
+    // Compétences d'une offre
     public function getCompetencesParOffre($id_offre) {
         $stmt = $this->pdo->prepare("
             SELECT id_competence FROM Requerir WHERE id_offre = :id
@@ -102,9 +95,7 @@ class OffresModele {
         return array_column($stmt->fetchAll(PDO::FETCH_ASSOC), 'id_competence');
     }
 
-    // -----------------------------------------------
-    // CRÉER une offre + ses compétences
-    // -----------------------------------------------
+    // Créer une offre + ses compétences
     public function creerOffre($donnees, $competences) {
         // 1. Insère l'offre
         $stmt = $this->pdo->prepare("
@@ -122,9 +113,7 @@ class OffresModele {
         return $id_offre;
     }
 
-    // -----------------------------------------------
-    // MODIFIER une offre + ses compétences
-    // -----------------------------------------------
+    // Modifier une offre + ses compétences
     public function modifierOffre($id, $donnees, $competences) {
         // 1. Met à jour l'offre
         $stmt = $this->pdo->prepare("
@@ -146,9 +135,7 @@ class OffresModele {
         $this->sauvegarderCompetences($id, $competences, true);
     }
 
-    // -----------------------------------------------
-    // SUPPRIMER une offre
-    // -----------------------------------------------
+    // Supprimer une offre
     public function supprimerOffre($id) {
         // 1. Supprime d'abord les compétences liées (clé étrangère)
         $stmt = $this->pdo->prepare("DELETE FROM Requerir WHERE id_offre = :id");
@@ -163,10 +150,7 @@ class OffresModele {
         $stmt->execute([':id' => $id]);
     }
 
-    // -----------------------------------------------
-    // MÉTHODE PRIVÉE — sauvegarde les compétences d'une offre
-    // $supprimer = true lors d'une modification
-    // -----------------------------------------------
+    // Sauvegarde les compétences d'une offre
     private function sauvegarderCompetences($id_offre, $competences, $supprimer = false) {
         if ($supprimer) {
             $stmt = $this->pdo->prepare("DELETE FROM Requerir WHERE id_offre = :id");
@@ -181,6 +165,39 @@ class OffresModele {
                 ':id_competence' => $id_competence
             ]);
         }
+    }
+
+    // Compte le total des offres pour la pagination
+    public function compterOffres() {
+        $query = $this->pdo->query("SELECT COUNT(*) FROM offre");
+        return $query->fetchColumn();
+    }
+
+    // Compte le total des offres filtrées
+    public function compterOffresFiltrees($quoi, $ou) {
+        $sql = "
+            SELECT COUNT(DISTINCT offre.id_offre)
+            FROM offre
+            JOIN entreprise ON offre.id_entreprise = entreprise.id_entreprise
+            LEFT JOIN Requerir ON offre.id_offre = Requerir.id_offre
+            LEFT JOIN competence ON Requerir.id_competence = competence.id_competence
+            WHERE 1=1
+        ";
+        $params = [];
+
+        if (!empty($quoi)) {
+            $sql .= " AND (offre.titre LIKE :quoi OR offre.description LIKE :quoi
+                    OR entreprise.nom LIKE :quoi OR competence.nom LIKE :quoi)";
+            $params[':quoi'] = '%' . $quoi . '%';
+        }
+        if (!empty($ou)) {
+            $sql .= " AND offre.localisation LIKE :ou";
+            $params[':ou'] = '%' . $ou . '%';
+        }
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchColumn();
     }
 }
 ?>

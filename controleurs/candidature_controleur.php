@@ -1,44 +1,120 @@
 <?php
-require_once __DIR__ . '/../modeles/candidatures_modele.php';
+require_once __DIR__ . '/../modeles/candidature_modele.php';
 
 class CandidatureControleur {
+
     private $pdo;
+    private $modele;
 
     public function __construct($pdo) {
-        $this->pdo = $pdo;
+        $this->pdo    = $pdo;
+        $this->modele = new CandidatureModele($pdo);
     }
 
-    // Afficher la liste des candidatures (Mes Candidatures)
-    public function index() {
-        if (!isset($_SESSION['id_utilisateur'])) {
-            header('Location: index.php?page=auth');
+    // ── GET : affiche le formulaire ──────────────────────────────
+    public function create(): void {
+        $this->exigerEtudiant();
+
+        $id_offre = (int)($_GET['id'] ?? 0);
+        if (!$id_offre) {
+            header('Location: /index.php?page=offres_emplois');
             exit;
         }
-        $candidatures = get_candidatures_by_user($_SESSION['id_utilisateur'], $this->pdo);
-        require_once __DIR__ . '/../vues/candidatures_vue.php';
+
+        $id_utilisateur = (int)$_SESSION['user']['id_utilisateur'];
+
+        if ($this->modele->dejaCandidature($id_offre, $id_utilisateur)) {
+            $erreur = "Vous avez déjà postulé à cette offre.";
+            require __DIR__ . '/../vues/postuler_offre_vue.php';
+            return;
+        }
+
+        $erreur = $succes = null;
+        require __DIR__ . '/../vues/postuler_offre_vue.php';
     }
 
-    // Action de postuler (Enregistrer en BDD)
-    public function postuler() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // On récupère les données du formulaire
-            $id_offre = $_POST['id_offre'];
-            $id_user  = $_SESSION['id_utilisateur'];
-            $cv       = $_POST['cv']; // Idéalement un chemin vers un fichier uploadé
-            $motivation = $_POST['lettre_motivation'];
+    // ── POST : traite le formulaire ──────────────────────────────
+    public function store(): void {
+        $this->exigerEtudiant();
 
-            $sql = "INSERT INTO candidature (cv, lettre_motivation, id_utilisateur, id_offre) 
-                    VALUES (:cv, :motivation, :id_user, :id_offre)";
-            
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute([
-                'cv'         => $cv,
-                'motivation' => $motivation,
-                'id_user'    => $id_user,
-                'id_offre'   => $id_offre
-            ]);
+        $id_offre       = (int)($_GET['id'] ?? 0);
+        $id_utilisateur = (int)$_SESSION['user']['id_utilisateur'];
 
-            header('Location: index.php?page=candidatures&action=index');
+        if (!$id_offre) {
+            header('Location: /index.php?page=offres_emplois');
+            exit;
         }
+
+        if ($this->modele->dejaCandidature($id_offre, $id_utilisateur)) {
+            $erreur = "Vous avez déjà postulé à cette offre.";
+            require __DIR__ . '/../vues/postuler_offre_vue.php';
+            return;
+        }
+
+        $uploadDir = __DIR__ . '/../../public/uploads/candidatures/';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+
+        $cv     = $this->uploadFichier('cv',                $uploadDir);
+        $lettre = $this->uploadFichier('lettre_motivation', $uploadDir);
+
+        if (!$cv || !$lettre) {
+            $erreur = "Erreur lors de l'envoi des fichiers. Formats acceptés : jpg, jpeg, png, gif, pdf.";
+            require __DIR__ . '/../vues/postuler_offre_vue.php';
+            return;
+        }
+
+        $donnees = [
+            'id_offre'          => $id_offre,
+            'id_utilisateur'    => $id_utilisateur,
+            'cv'                => $cv,
+            'lettre_motivation' => $lettre,
+            'date_candidature'  => date('Y-m-d H:i:s'),
+        ];
+
+        if ($this->modele->creerCandidature($donnees)) {
+            $succes = "Votre candidature a bien été envoyée ! 🎉";
+        } else {
+            $erreur = "Une erreur est survenue en base de données. Veuillez réessayer.";
+        }
+
+        require __DIR__ . '/../vues/postuler_offre_vue.php';
+    }
+
+    // ── Mes candidatures ─────────────────────────────────────────
+    public function index(): void {
+        $this->exigerEtudiant();
+
+        $id_utilisateur = (int)$_SESSION['user']['id_utilisateur'];
+        $candidatures   = $this->modele->getCandidaturesParUtilisateur($id_utilisateur);
+        require __DIR__ . '/../vues/candidatures_vue.php';
+    }
+
+    // ── Helpers ──────────────────────────────────────────────────
+
+    private function exigerEtudiant(): void {
+        if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'etudiant') {
+            header('Location: /index.php?page=auth&action=connexion');
+            exit;
+        }
+    }
+
+    private function uploadFichier(string $champ, string $dir): ?string {
+        if (empty($_FILES[$champ]['name']) || $_FILES[$champ]['error'] !== UPLOAD_ERR_OK) {
+            return null;
+        }
+
+        $ext       = strtolower(pathinfo($_FILES[$champ]['name'], PATHINFO_EXTENSION));
+        $autorises = ['jpg', 'jpeg', 'png', 'gif', 'pdf'];
+
+        if (!in_array($ext, $autorises)) {
+            return null;
+        }
+
+        $nomFichier = uniqid($champ . '_') . '.' . $ext;
+        move_uploaded_file($_FILES[$champ]['tmp_name'], $dir . $nomFichier);
+
+        return $nomFichier;
     }
 }
