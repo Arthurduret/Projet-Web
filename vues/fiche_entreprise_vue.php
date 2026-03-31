@@ -45,6 +45,22 @@
                 <?php if (!empty($entreprise['tel'])): ?>
                     <span>📞 <?= htmlspecialchars($entreprise['tel']) ?></span>
                 <?php endif; ?>
+                <!-- NOTE MOYENNE -->
+                <div class="entreprise-note">
+                    <?php if ($moyenne_eval): ?>
+                        <span class="moyenne-badge">
+                            ⭐ <strong><?= $moyenne_eval ?> / 5</strong> — <?= $nb_avis ?> avis
+                        </span>
+                    <?php else: ?>
+                        <span class="moyenne-badge gris">Pas encore évaluée</span>
+                    <?php endif; ?>
+
+                    <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['role'], ['admin', 'pilote'])): ?>
+                        <button class="btn-evaluer" onclick="ouvrirPopup()">
+                            ⭐ <?= $ma_note ? 'Modifier (' . $ma_note . '/5)' : 'Évaluer' ?>
+                        </button>
+                    <?php endif; ?>
+                </div>
             </div>
 
         </section>
@@ -85,7 +101,98 @@
         </div>
 
     </main>
+    <!-- POPUP ÉVALUATION -->
+    <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['role'], ['admin', 'pilote'])): ?>
+    <div id="popup-evaluation" class="popup-overlay" style="display:none;">
+        <div class="popup-contenu">
+            <button class="popup-fermer" onclick="fermerPopup()">✕</button>
+            <h3>Évaluer <?= htmlspecialchars($entreprise['nom']) ?></h3>
+            <p>Votre note actuelle : 
+                <strong><?= $ma_note ? $ma_note . ' ⭐' : 'Aucune' ?></strong>
+            </p>
+
+            <div class="etoiles" id="etoiles">
+                <?php for ($i = 1; $i <= 5; $i++): ?>
+                    <span class="etoile <?= $ma_note >= $i ? 'active' : '' ?>"
+                        data-note="<?= $i ?>">★</span>
+                <?php endfor; ?>
+            </div>
+
+            <p id="note-selectionnee">
+                <?= $ma_note ? 'Note sélectionnée : ' . $ma_note . ' / 5' : 'Cliquez sur une étoile' ?>
+            </p>
+
+            <button class="btn-soumettre-eval" onclick="soumettrEvaluation(<?= $entreprise['id_entreprise'] ?>)">
+                Enregistrer
+            </button>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <?php include __DIR__ . '/partials/footer.php'; ?>
+<script>
+let noteSelectionnee = <?= $ma_note ?? 0 ?>;
+
+function ouvrirPopup() {
+    document.getElementById('popup-evaluation').style.display = 'flex';
+}
+
+function fermerPopup() {
+    document.getElementById('popup-evaluation').style.display = 'none';
+}
+
+document.querySelectorAll('.etoile').forEach(etoile => {
+    etoile.addEventListener('mouseover', function() {
+        const note = this.dataset.note;
+        document.querySelectorAll('.etoile').forEach((e, i) => {
+            e.classList.toggle('hover', i < note);
+        });
+    });
+
+    etoile.addEventListener('mouseout', function() {
+        document.querySelectorAll('.etoile').forEach(e => {
+            e.classList.remove('hover');
+        });
+    });
+
+    etoile.addEventListener('click', function() {
+        noteSelectionnee = this.dataset.note;
+        document.querySelectorAll('.etoile').forEach((e, i) => {
+            e.classList.toggle('active', i < noteSelectionnee);
+        });
+        document.getElementById('note-selectionnee').textContent = 
+            'Note sélectionnée : ' + noteSelectionnee + ' / 5';
+    });
+});
+
+function soumettrEvaluation(id_entreprise) {
+    if (noteSelectionnee == 0) {
+        alert('Veuillez sélectionner une note !');
+        return;
+    }
+
+    fetch('/index.php?page=evaluation&action=noter', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: 'id_entreprise=' + id_entreprise + '&note=' + noteSelectionnee
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.succes) {
+            window.location.reload();
+        } else {
+            alert(data.message);
+        }
+    });
+}
+
+document.getElementById('popup-evaluation').addEventListener('click', function(e) {
+    if (e.target === this) fermerPopup();
+});
+</script>
+
 </body>
 </html>

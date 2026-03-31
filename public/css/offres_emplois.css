@@ -384,3 +384,154 @@
     color: var(--blanc);
     cursor: default;
 }
+
+/* ===== FILTRES AVANCÉS ===== */
+.filtres-container {
+    max-width: 900px;
+    margin: 0 auto 1.5rem auto;
+    padding: 0 1rem;
+}
+
+.btn-toggle-filtres {
+    background: none;
+    border: 2px solid var(--bleu-fonce);
+    color: var(--bleu-fonce);
+    padding: 0.5rem 1.2rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.btn-toggle-filtres:hover {
+    background: var(--bleu-fonce);
+    color: var(--blanc);
+}
+
+.filtres-avances-contenu {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 0.8rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+}
+
+.filtres-grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filtre-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.filtre-group label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--bleu-fonce);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.filtre-group input,
+.filtre-group select {
+    padding: 0.6rem 0.9rem;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.filtre-group input:focus,
+.filtre-group select:focus {
+    border-color: var(--bleu-fonce);
+}
+
+.filtres-boutons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.btn-reset-filtres {
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    border: 2px solid #ccc;
+    color: #666;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.btn-reset-filtres:hover {
+    border-color: #d64545;
+    color: #d64545;
+}
+
+.btn-appliquer-filtres {
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    background: var(--bleu-fonce);
+    color: var(--blanc);
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+    font-family: inherit;
+}
+
+.btn-appliquer-filtres:hover {
+    background: var(--orange);
+}
+
+.filtres-trigger {
+    max-width: 900px;
+    margin: 0.6rem auto 0 auto;
+    padding: 0 0 0 0;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 80px; /* ← décale vers la gauche */
+}
+
+.btn-toggle-filtres {
+    background: transparent; /* ← fond transparent */
+    border: 1.5px solid rgba(255,255,255,0.6); /* ← contour blanc fin */
+    color: var(--blanc); /* ← texte blanc */
+    padding: 0.4rem 1rem;
+    border-radius: 25px;
+    font-weight: 500; /* ← moins gras */
+    font-size: 0.85rem; /* ← plus petit */
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.btn-toggle-filtres:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: var(--blanc);
+}
+
+#filtres-avances {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-top: 0.8rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid #f0f0f0;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}

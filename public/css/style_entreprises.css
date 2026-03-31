@@ -14,6 +14,132 @@
     margin-left: 0;
 }
 
+/* ===== RECHERCHE ENTREPRISES ===== */
+.recherche-entreprises {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    padding: 0 1rem;
+}
+
+.search-entreprise {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-entreprise input {
+    flex: 1;
+    padding: 0.75rem 1.2rem;
+    border: 2px solid #4b55a3;
+    border-radius: 25px;
+    font-size: 1rem;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.search-entreprise input:focus {
+    border-color: var(--bleu-fonce);
+}
+
+.search-entreprise button {
+    padding: 0.75rem 1.5rem;
+    background: var(--bleu-fonce);
+    color: var(--blanc);
+    border: none;
+    border-radius: 25px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: inherit;
+}
+
+.search-entreprise button:hover {
+    background: var(--orange);
+}
+
+/* ===== RÉSULTATS ===== */
+.nb-resultats-entreprises {
+    color: var(--bleu-fonce);
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.aucun-resultat-entreprise {
+    text-align: center;
+    color: #888;
+    font-size: 1.1rem;
+    margin-top: 3rem;
+    font-style: italic;
+}
+
+/* ===== DÉTAILS DÉROULANTS ===== */
+.carte-details {
+    padding: 0 15px 15px 15px;
+}
+
+.btn-toggle-details {
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--bleu-fonce);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    text-align: left;
+    transition: color 0.3s;
+    font-family: inherit;
+}
+
+.btn-toggle-details:hover {
+    color: var(--orange);
+}
+
+.details-contenu {
+    background: var(--gris-clair);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    margin-top: 0.5rem;
+}
+
+.details-contenu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.details-contenu li {
+    font-size: 0.85rem;
+    color: var(--texte-noir);
+    line-height: 1.4;
+}
+
+.details-contenu li strong {
+    color: var(--bleu-fonce);
+}
+
+.search-entreprise select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #4b55a3;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    color: var(--bleu-fonce);
+    background: var(--blanc);
+    cursor: pointer;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+}
+
+.search-entreprise select:focus {
+    border-color: var(--bleu-fonce);
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .header-entreprise h1 {

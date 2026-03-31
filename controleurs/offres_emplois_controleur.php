@@ -27,18 +27,22 @@ class OffresControleur {
         $limite  = 10;
         $offset  = ($page - 1) * $limite;
 
-        if (!empty($quoi) || !empty($ou)) {
-            $offres     = $modele->rechercherOffres($quoi, $ou, $limite, $offset);
-            $total      = $modele->compterOffresFiltrees($quoi, $ou);
-        } else {
-            $offres     = $modele->getOffres($limite, $offset);
-            $total      = $modele->compterOffres();
-        }
+        $filtres = [
+            'f_entreprise'       => $_GET['f_entreprise']       ?? '',
+            'f_titre'            => $_GET['f_titre']            ?? '',
+            'f_competence'       => $_GET['f_competence']       ?? '',
+            'f_salaire_min'      => $_GET['f_salaire_min']      ?? '',
+            'f_salaire_max'      => $_GET['f_salaire_max']      ?? '',
+            'f_date'             => $_GET['f_date']             ?? '',
+            'f_candidatures_min' => $_GET['f_candidatures_min'] ?? '',
+            'f_tri'              => $_GET['f_tri']              ?? '',
+        ];
 
-        $nb_offres    = count($offres);
-        $nb_pages     = ceil($total / $limite);
+        $offres    = $modele->filtrerOffres($quoi, $ou, $filtres, $limite, $offset);
+        $total     = $modele->compterOffresFiltrees($quoi, $ou, $filtres);
+        $nb_offres = count($offres);
+        $nb_pages  = ceil($total / $limite);
 
-        // Récupère les ids des favoris si étudiant connecté
         $favoris_ids = [];
         if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'etudiant') {
             require_once __DIR__ . '/../modeles/favoris_modele.php';

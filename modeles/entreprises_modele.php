@@ -20,13 +20,19 @@ class EntrepriseModele {
         return $this->pdo->lastInsertId();
     }
 
-    public function getEntreprises() {
+    public function getEntreprises($tri = '') {
+        $order = $this->getOrderBy($tri);
         $query = $this->pdo->query("
-            SELECT entreprise.*, COUNT(offre.id_offre) AS nb_offres
+            SELECT entreprise.*,
+                COUNT(DISTINCT offre.id_offre) AS nb_offres,
+                COUNT(DISTINCT candidature.id_candidature) AS nb_candidatures,
+                ROUND(AVG(evaluation.note), 1) AS moyenne_eval
             FROM entreprise
             LEFT JOIN offre ON offre.id_entreprise = entreprise.id_entreprise
+            LEFT JOIN candidature ON candidature.id_offre = offre.id_offre
+            LEFT JOIN evaluation ON evaluation.id_entreprise = entreprise.id_entreprise
             GROUP BY entreprise.id_entreprise
-            ORDER BY entreprise.nom
+            ORDER BY $order
         ");
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -65,5 +71,33 @@ class EntrepriseModele {
         ");
         $stmt->execute(['id' => $id]);
     }    
+
+    public function rechercherEntreprises($nom, $tri = '') {
+        $order = $this->getOrderBy($tri);
+        $stmt = $this->pdo->prepare("
+            SELECT entreprise.*,
+                COUNT(DISTINCT offre.id_offre) AS nb_offres,
+                COUNT(DISTINCT candidature.id_candidature) AS nb_candidatures,
+                ROUND(AVG(evaluation.note), 1) AS moyenne_eval
+            FROM entreprise
+            LEFT JOIN offre ON offre.id_entreprise = entreprise.id_entreprise
+            LEFT JOIN candidature ON candidature.id_offre = offre.id_offre
+            LEFT JOIN evaluation ON evaluation.id_entreprise = entreprise.id_entreprise
+            WHERE entreprise.nom LIKE :nom
+            GROUP BY entreprise.id_entreprise
+            ORDER BY $order
+        ");
+        $stmt->execute([':nom' => '%' . $nom . '%']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    private function getOrderBy($tri) {
+        return match($tri) {
+            'nb_candidatures' => 'nb_candidatures DESC',
+            'moyenne_eval'    => 'moyenne_eval DESC',
+            'nb_offres'       => 'nb_offres DESC',
+            default           => 'entreprise.nom ASC'
+        };
+    }
 }
 ?>

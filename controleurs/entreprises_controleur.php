@@ -13,9 +13,17 @@ class EntrepriseControleur {
     }    
 
     public function index() {
-        $model       = new EntrepriseModele($this->pdo);
-        $model       = new EntrepriseModele($this->pdo);
-        $entreprises = $model->getEntreprises();
+        $model = new EntrepriseModele($this->pdo);
+        $nom   = $_GET['nom'] ?? '';
+        $tri   = $_GET['tri'] ?? '';
+
+        if (!empty($nom)) {
+            $entreprises = $model->rechercherEntreprises($nom, $tri);
+        } else {
+            $entreprises = $model->getEntreprises($tri);
+        }
+
+        $nb_entreprises = count($entreprises);
         require __DIR__ . '/../vues/entreprises_vue.php';
     }
 
@@ -80,6 +88,31 @@ class EntrepriseControleur {
         $id    = $_GET['id'] ?? null;
         $model = new EntrepriseModele($this->pdo);
         $entreprise = $model->getEntrepriseById($id);
+
+        // Récupère la moyenne des évaluations
+        $stmt = $this->pdo->prepare("
+            SELECT ROUND(AVG(note), 1) AS moyenne, COUNT(*) AS nb_avis
+            FROM evaluation 
+            WHERE id_entreprise = :id
+        ");
+        $stmt->execute([':id' => $id]);
+        $eval_data = $stmt->fetch(PDO::FETCH_ASSOC);
+        $moyenne_eval = $eval_data['moyenne'] ?? null;
+        $nb_avis      = $eval_data['nb_avis'] ?? 0;
+
+        // Récupère la note de l'utilisateur connecté
+        $ma_note = null;
+        if (isset($_SESSION['user']) && 
+            in_array($_SESSION['user']['role'], ['admin', 'pilote'])) {
+            require_once __DIR__ . '/../modeles/evaluation_modele.php';
+            $evalModele = new EvaluationModele($this->pdo);
+            $evaluation = $evalModele->getEvaluation(
+                $_SESSION['user']['id_utilisateur'], 
+                $id
+            );
+            $ma_note = $evaluation['note'] ?? null;
+        }
+
         require __DIR__ . '/../vues/fiche_entreprise_vue.php';
     }
 
