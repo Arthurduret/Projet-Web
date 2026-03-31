@@ -33,7 +33,7 @@
 
                 <!-- CV -->
                 <div class="input-group">
-                    <label>CV (image)</label>
+                    <label>CV </label>
                     <input type="file" name="cv" accept="image/*, .pdf, .doc, .docx, .txt" " required>
                 </div>
 
