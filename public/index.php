@@ -48,8 +48,6 @@ switch ($page) {
         }
         break;
     
-    var_dump($_GET, $_POST);
-    die();
 
     case 'auth':
         require_once __DIR__ . '/../controleurs/auth_controleur.php';
@@ -87,19 +85,17 @@ switch ($page) {
         }
         break;
 
-    // ──────────────────────────────────────────
-    // CANDIDATURES (postuler à une offre)
-    // ──────────────────────────────────────────
-    // case 'candidatures':
-    //     require_once __DIR__ . '/../controleurs/candidature_controleur.php';
-    //     $ctrl   = new CandidatureControleur($pdo);
-    //     $action = $_GET['action'] ?? 'index';
-    //     switch ($action) {
-    //         case 'index':    $ctrl->index();    break; // mes candidatures
-    //         case 'postuler': $ctrl->postuler(); break; // POST formulaire
-    //         default:         $ctrl->index();    break;
-    //     }
-    //     break;
+
+    case 'candidatures':
+         require_once __DIR__ . '/../controleurs/candidature_controleur.php';
+         $ctrl   = new CandidatureControleur($pdo);
+         $action = $_GET['action'] ?? 'index';
+         switch ($action) {
+             case 'index':    $ctrl->index();    break; // mes candidatures
+             case 'postuler': $ctrl->postuler(); break; // POST formulaire
+             default:         $ctrl->index();    break;
+         }
+         break;
 
     // ──────────────────────────────────────────
     // ADMIN / PILOTE
