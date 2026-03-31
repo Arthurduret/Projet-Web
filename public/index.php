@@ -101,16 +101,17 @@ switch ($page) {
     //     }
     //     break;
         
-    case 'candidature':
-    require_once __DIR__ . '/../controleurs/candidature_controleur.php';
-    $ctrl   = new CandidatureControleur($pdo);
-    $action = $_GET['action'] ?? 'create';
-    switch ($action) {
-        case 'create': $ctrl->create(); break;
-        case 'store':  $ctrl->store();  break;
-        default:       $ctrl->create(); break;
-    }
-    break;
+   case 'candidature':
+        require_once __DIR__ . '/../controleurs/candidature_controleur.php';
+        $ctrl   = new CandidatureControleur($pdo);
+        $action = $_GET['action'] ?? 'index'; 
+        switch ($action) {
+            case 'index':  $ctrl->index();  break; 
+            case 'create': $ctrl->create(); break;
+            case 'store':  $ctrl->store();  break;
+            default:       $ctrl->index();  break; 
+        }
+        break;
 
     // ──────────────────────────────────────────
     // ADMIN / PILOTE

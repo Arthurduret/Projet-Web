@@ -39,10 +39,9 @@
 
                 <!-- Lettre de motivation -->
                 <div class="input-group">
-                    <label>Lettre de motivation (image)</label>
-                    <input type="file" name="lettre_motivation" accept="image/*" required>
+                    <label>Lettre de motivation</label>
+                    <input type="file" name="lettre_motivation" accept="image/*, .pdf, .doc, .docx, .txt" required>         
                 </div>
-
                 <button type="submit">Envoyer ma candidature</button>
             </form>
         </div>

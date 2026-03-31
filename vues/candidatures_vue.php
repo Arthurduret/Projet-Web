@@ -1,42 +1,86 @@
-<?php 
-// 1. On inclut le header (qui contient tes balises <head> et tes menus)
-include __DIR__ . '/partials/header.php'; 
-?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobeo | Mes Candidatures</title>
+    <link rel="stylesheet" href="/css/style_global.css">
+    <link rel="stylesheet" href="/css/header_footer.css">
+    <link rel="stylesheet" href="/css/offres_emplois.css">
+</head>
+<body>
+    <?php include __DIR__ . '/partials/header.php'; ?>
 
-<link rel="stylesheet" href="public/css/offres_emplois.css">
-
-<div class="container mt-4">
-    <h1 class="mb-4">Mes candidatures envoyées</h1>
-
-    <?php if (empty($candidatures)): ?>
-        <div class="alert alert-info">
-            Vous n'avez pas encore postulé à des offres. 
-            <a href="index.php?page=offres_emplois">Voir les offres disponibles.</a>
-        </div>
-    <?php else: ?>
-        
-        <div class="row">
-            <?php foreach ($candidatures as $c): ?>
-                <div class="col-md-6 mb-3">
-                    <div class="card-offre shadow-sm p-3"> 
-                        <div class="card-body">
-                            <h3 class="h5 text-primary"><?= htmlspecialchars($c['titre']) ?></h3>
-                            <p class="text-muted small">Postulé avec le CV : <strong><?= htmlspecialchars($c['cv']) ?></strong></p>
-                            <hr>
-                            <p class="card-text">
-                                <strong>Ma motivation :</strong><br>
-                                <?= nl2br(htmlspecialchars($c['lettre_motivation'])) ?>
-                            </p>
-                        </div>
+    <main>
+        <section class="recherche-offres">
+            <form action="/index.php" method="GET">
+                <input type="hidden" name="page" value="candidature">
+                <div class="search-bar">
+                    <div class="input-group">
+                        <label for="quoi">Quoi ?</label>
+                        <input type="text" name="quoi" id="quoi" placeholder="Titre postulé..." value="<?= htmlspecialchars($quoi ?? ''); ?>">
                     </div>
+                    <div class="separateur"></div>
+                    <div class="input-group">
+                        <label for="ou">Où ?</label>
+                        <input type="text" name="ou" id="ou" placeholder="Ville..." value="<?= htmlspecialchars($ou ?? ''); ?>">
+                    </div>
+                    <button type="submit" class="btn-search">
+                        <img src="/images/jobeo/LoupeLogo.png" alt="Rechercher">
+                    </button>
                 </div>
-            <?php endforeach; ?>
-        </div>
+            </form>
+        </section>
 
-    <?php endif; ?>
-</div>
+        <section class="liste-offres">
+            <h1 class="nb-resultats">Mes candidatures envoyées</h1>
 
-<?php 
-// 3. On inclut le footer pour fermer la page proprement
-include __DIR__ . '/partials/footer.php'; 
-?>
+            <?php if (empty($candidatures)): ?>
+                <p class="aucun-resultat">Vous n'avez pas encore postulé. <a href="/index.php?page=offres_emplois">Voir les offres.</a></p>
+            <?php else: ?>
+
+                <?php foreach ($candidatures as $c): ?>
+                    <article class="carte-offre">
+
+                        <div class="offre-contenu">
+                            <h2 class="offre-titre"><?= htmlspecialchars($c['titre']); ?></h2>
+                            <p class="offre-entreprise"><?= htmlspecialchars($c['nom_entreprise']); ?></p>
+
+                            <div class="candidature-fichiers">
+                                <?php if (!empty($c['cv'])): ?>
+                                    <div class="file-badge-wrapper">
+                                        <a href="\xampp\htdocs<?= trim($c['cv']) ?>" 
+                                           download="<?= trim($c['cv']) ?>" 
+                                           class="tag-candidature">
+                                            📄 Télécharger mon CV
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if (!empty($c['lettre_motivation'])): ?>
+                                    <div class="file-badge-wrapper">
+                                        <a href="\xampp\htdocs<?= trim($c['lettre_motivation']) ?>" 
+                                           download="<?= trim($c['lettre_motivation']) ?>" 
+                                           class="tag-candidature">
+                                            ✉️ Télécharger ma lettre
+                                        </a>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="offre-action">
+                            <a href="/index.php?page=offres_emplois&action=show&id=<?= $c['id_offre']; ?>" class="btn-voir">Voir l'offre</a>
+                            <span class="status-envoye">✔️ Envoyée</span>
+                        </div>
+
+                    </article>
+                <?php endforeach; ?>
+
+            <?php endif; ?>
+        </section>
+    </main>
+
+    <?php include __DIR__ . '/partials/footer.php'; ?>
+</body>
+</html>
