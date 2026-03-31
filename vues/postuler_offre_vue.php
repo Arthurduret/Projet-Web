@@ -34,7 +34,7 @@
                 <!-- CV -->
                 <div class="input-group">
                     <label>CV (image)</label>
-                    <input type="file" name="cv" accept="image/*" required>
+                    <input type="file" name="cv" accept="image/*, .pdf, .doc, .docx, .txt" " required>
                 </div>
 
                 <!-- Lettre de motivation -->
