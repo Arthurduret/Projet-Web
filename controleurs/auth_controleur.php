@@ -33,14 +33,12 @@ class AuthControleur
     //     exit();
     // }
 
-    // Affiche le formulaire de connexion
     public function connexion(): void
     {
         $email = $_GET['email'] ?? '';
         require __DIR__ . '/../vues/connexion_vue.php';
     }
 
-    // Traite le POST de connexion
     public function login(): void
     {
         if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
@@ -62,7 +60,6 @@ class AuthControleur
         exit();
     }
 
-    // Affiche le formulaire d'inscription
     public function inscription(): void
     {
 
@@ -76,7 +73,6 @@ class AuthControleur
         require __DIR__ . '/../vues/inscription_etudiant_vue.php';
     }
 
-    // Traite le POST d'inscription
     public function register(): void
     {
         if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], ['admin', 'pilote'])) {
@@ -86,13 +82,16 @@ class AuthControleur
 
         $role = $_POST['role'] ?? 'etudiant';
     
-        // Sécurité : on accepte uniquement les rôles valides
+
         if (!in_array($role, ['etudiant', 'pilote'])) {
             $role = 'etudiant';
         }
 
-        if ($_SESSION['user']['role'] === 'pilote' && $role === 'pilote') {
-        $role = 'etudiant';
+        $id_pilote = null;
+
+        if ($_SESSION['user']['role'] === 'pilote') {
+            $id_pilote = $_SESSION['user']['id_utilisateur'];
+            $role = 'etudiant';
         }
 
         if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
@@ -105,14 +104,14 @@ class AuthControleur
         $password         = $_POST['password']              ?? '';
         $password_confirm = $_POST['password_confirm']      ?? '';
 
-        // Vérification CGU
+
         if (empty($_POST['accepte_cgu']) || empty($_POST['accepte_confidentialite'])) {
             $erreur = "Vous devez accepter les CGU et la politique de confidentialité.";
             require __DIR__ . '/../vues/inscription_etudiant_vue.php';
             return;
         }
 
-        // Vérification mots de passe
+
         if ($password !== $password_confirm) {
             $erreur = "Les mots de passe ne correspondent pas.";
             require __DIR__ . '/../vues/inscription_etudiant_vue.php';
@@ -127,7 +126,8 @@ class AuthControleur
                 'nom'      => $nom,
                 'prenom'   => $prenom,
                 'mdp'      => $hash,
-                'role'     => $role
+                'role'     => $role,
+                'id_pilote' => $id_pilote
             ]);
         } catch (Exception $e) {
             die($e->getMessage());
@@ -147,7 +147,7 @@ class AuthControleur
         require __DIR__ . '/../vues/mon_compte_vue.php';
     }
 
-    // Déconnexion
+
     public function deconnexion(): void
     {
         session_destroy();

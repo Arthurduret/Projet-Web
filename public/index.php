@@ -112,21 +112,18 @@ switch ($page) {
     }
     break;
 
-    // ──────────────────────────────────────────
-    // ADMIN / PILOTE
-    // ──────────────────────────────────────────
-    // case 'admin':
-    //     require_once __DIR__ . '/../controleurs/admin_controleur.php';
-    //     $ctrl   = new AdminControleur($pdo);
-    //     $action = $_GET['action'] ?? 'dashboard';
-    //     switch ($action) {
-    //         case 'dashboard':         $ctrl->dashboard();        break;
-    //         case 'utilisateurs':      $ctrl->utilisateurs();     break;
-    //         case 'creer_utilisateur': $ctrl->creerUtilisateur(); break;
-    //         case 'suppr_utilisateur': $ctrl->supprimerUtilisateur(); break;
-    //         default:                  $ctrl->dashboard();        break;
-    //     }
-    //     break;
+    case 'etudiants':
+    require_once __DIR__ . '/../controleurs/etudiants_controleur.php';
+    $ctrl   = new EtudiantsControleur($pdo);
+    $action = $_GET['action'] ?? 'index';
+    switch ($action) {
+        case 'index':  $ctrl->index();  break;
+        case 'edit':   $ctrl->edit();   break;
+        case 'update': $ctrl->update(); break;
+        case 'delete': $ctrl->delete(); break;
+        default:       $ctrl->index();  break;
+    }
+    break;
 
     case 'evaluation':
         require_once __DIR__ . '/../controleurs/evaluation_controleur.php';

@@ -44,6 +44,9 @@
                 </span>
                 <div class="nav-dropdown__menu">
                     <a href="/index.php?page=mon_compte">Mon compte</a>
+                            <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['role'], ['pilote', 'admin'])): ?>
+                                <a href="/index.php?page=etudiants">Mes Étudiants</a>
+                            <?php endif; ?>
                     <a href="/index.php?page=auth&action=deconnexion">Déconnexion</a>
                 </div>
             </div>
