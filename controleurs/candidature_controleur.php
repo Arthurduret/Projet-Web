@@ -70,16 +70,16 @@ class CandidatureControleur {
             'id_utilisateur'    => $id_utilisateur,
             'cv'                => $cv,
             'lettre_motivation' => $lettre,
-            'date_candidature'  => date('Y-m-d H:i:s'),
         ];
 
+        // On remplace le message de succès par la redirection vers "Mes Postulations"
         if ($this->modele->creerCandidature($donnees)) {
-            $succes = "Votre candidature a bien été envoyée ! 🎉";
+            header('Location: /index.php?page=candidature&action=index');
+            exit;
         } else {
             $erreur = "Une erreur est survenue en base de données. Veuillez réessayer.";
+            require __DIR__ . '/../vues/postuler_offre_vue.php';
         }
-
-        require __DIR__ . '/../vues/postuler_offre_vue.php';
     }
 
     // ── Mes candidatures ─────────────────────────────────────────

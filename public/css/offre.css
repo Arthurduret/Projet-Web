@@ -284,3 +284,13 @@
         height: 160px;
     }
 }
+
+/* --- SECTION MES CANDIDATURES --- */
+
+/* Le conteneur qui empile le CV et la Lettre */
+.candidature-fichiers {
+    display: flex;
+    flex-direction: column; /* Force l'un en dessous de l'autre */
+    gap: 12px;             /* Espace entre les deux badges */
+    margin-top: 15px;      /* Décolle du nom de l'entreprise */
+}
