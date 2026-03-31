@@ -51,8 +51,13 @@
 
         <!-- NOMBRE D'OFFRES TROUVÉES -->
         <section class="liste-offres">
+            <?php
+                $debut = $offset + 1;
+                $fin   = min($offset + $limite, $total);
+            ?>
+
             <p class="nb-resultats">
-                <strong><?php echo $nb_offres; ?></strong> offres trouvées
+                <strong><?= $debut ?>-<?= $fin ?></strong> sur <strong><?= $total ?></strong> offre<?= $total > 1 ? 's' : '' ?>
             </p>
 
             <!-- SI AUCUNE OFFRE -->
@@ -138,6 +143,27 @@
             <?php endif; ?>
 
         </section>
+        <!-- PAGINATION -->
+        <?php if ($nb_pages > 1): ?>
+            <div class="pagination">
+                <?php if ($page > 1): ?>
+                    <a href="?page=offres_emplois&quoi=<?= urlencode($quoi) ?>&ou=<?= urlencode($ou) ?>&p=<?= $page - 1 ?>" 
+                    class="page-btn">← Précédent</a>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $nb_pages; $i++): ?>
+                    <a href="?page=offres_emplois&quoi=<?= urlencode($quoi) ?>&ou=<?= urlencode($ou) ?>&p=<?= $i ?>"
+                    class="page-btn <?= $i === $page ? 'active' : '' ?>">
+                        <?= $i ?>
+                    </a>
+                <?php endfor; ?>
+
+                <?php if ($page < $nb_pages): ?>
+                    <a href="?page=offres_emplois&quoi=<?= urlencode($quoi) ?>&ou=<?= urlencode($ou) ?>&p=<?= $page + 1 ?>"
+                    class="page-btn">Suivant →</a>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
     </main>
 
     <?php include __DIR__ . '/partials/footer.php'; ?>
