@@ -107,7 +107,7 @@
                     class="btn-modifier">✏️ Modifier l'offre</a>
                 <?php endif; ?>
 
-                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
+                <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['role'], ['admin', 'pilote'])): ?>
                     <a href="/index.php?page=offres_emplois&action=delete&id=<?= htmlspecialchars($offre['id_offre']) ?>"
                     class="btn-supprimer"
                     onclick="return confirm('Supprimer cette offre ?')">🗑 Supprimer l'offre</a>

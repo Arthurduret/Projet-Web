@@ -80,21 +80,21 @@
             <!-- COLONNE DROITE -->
             <aside class="fiche-offre-droite">
 
-                <?php if (isset($_SESSION['role']) && in_array($_SESSION['role'], ['admin', 'pilote'])): ?>
+                <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['role'], ['admin', 'pilote'])): ?>
                     <a href="/index.php?page=entreprises&action=edit&id=<?= htmlspecialchars($entreprise['id_entreprise']) ?>"
-                       class="btn-modifier">✏️ Modifier l'entreprise</a>
+                    class="btn-modifier">✏️ Modifier l'entreprise</a>
                 <?php endif; ?>
 
-                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['role'], ['admin', 'pilote'])): ?>
                     <a href="/index.php?page=entreprises&action=delete&id=<?= htmlspecialchars($entreprise['id_entreprise']) ?>"
-                       class="btn-supprimer"
-                       onclick="return confirm('Supprimer cette entreprise ?')">🗑 Supprimer l'entreprise</a>
+                    class="btn-supprimer"
+                    onclick="return confirm('Supprimer cette entreprise ?')">🗑 Supprimer l'entreprise</a>
                 <?php endif; ?>
 
                 <div class="encart-entreprise">
                     <h3>Offres de l'entreprise</h3>
                     <a href="/index.php?page=offres_emplois&quoi=<?= htmlspecialchars($entreprise['nom']) ?>"
-                       class="btn-voir">Voir toutes les offres →</a>
+                    class="btn-voir">Voir toutes les offres →</a>
                 </div>
 
             </aside>

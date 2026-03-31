@@ -162,11 +162,10 @@ class OffresControleur {
 
     // SUPPRESSION — admin seulement
     public function delete() {
-        $this->verifierRole(['admin']);
-
+        $this->verifierRole(['admin', 'pilote']); // ← ajoute pilote
+        
         $id     = $_GET['id'] ?? null;
         $modele = new OffresModele($this->pdo);
-
         $modele->supprimerOffre($id);
 
         header('Location: /index.php?page=offres_emplois');
