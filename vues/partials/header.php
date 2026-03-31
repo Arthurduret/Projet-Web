@@ -17,10 +17,22 @@
                     <a href="/index.php?page=offres_emplois&action=create">Offre</a>
                 </div>
             </div>
-            <a href="/index.php?page=auth&action=inscription">Créer compte étudiant</a>
         <?php elseif (isset($_SESSION['user'])): ?>
             <a href="/index.php?page=favoris">Favoris</a>
         <?php endif; ?>
+
+        <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin' ) : ?>
+            <div class="nav-dropdown">
+                <span class="nav-dropdown__trigger">Créer compte ▾</span>
+                <div class="nav-dropdown__menu">
+                <a href="/index.php?page=auth&action=inscription&role=etudiant">Etudiant</a>
+                <a href="/index.php?page=auth&action=inscription&role=pilote">Pilote</a>
+                </div>
+            </div>
+        <?php elseif (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'pilote' ) : ?>
+            <a href="/index.php?page=auth&action=inscription&role=etudiant">Créer compte étudiant</a>
+        <?php endif; ?>
+
     </nav>
 
     <div class="header-right">
@@ -51,22 +63,23 @@
             nav.classList.toggle('active');
         }
 
-        // Ferme le dropdown si on clique ailleurs sur la page
+
+        // Ferme tous les dropdowns si on clique ailleurs
         document.addEventListener('click', function(e) {
-            const dropdown = document.querySelector('.nav-dropdown');
-            if (dropdown && !dropdown.contains(e.target)) {
-                dropdown.classList.remove('open');
-            }
+            document.querySelectorAll('.nav-dropdown').forEach(function(dropdown) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('open');
+                }
+            });
         });
 
-        // Ouvre/ferme le dropdown au clic
-        const trigger = document.querySelector('.nav-dropdown__trigger');
-        if (trigger) {
+        // Ouvre/ferme chaque dropdown au clic
+        document.querySelectorAll('.nav-dropdown__trigger').forEach(function(trigger) {
             trigger.addEventListener('click', function(e) {
                 e.stopPropagation();
-                document.querySelector('.nav-dropdown').classList.toggle('open');
+                this.closest('.nav-dropdown').classList.toggle('open');
             });
-        }
+        });
     </script>
 
 </header>

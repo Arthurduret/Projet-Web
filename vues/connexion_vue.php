@@ -53,7 +53,7 @@
         const inputPass = document.querySelector('#password');
         const email_lowercase = document.querySelector('#email');
 
-        email.addEventListener('input', function() {
+        email_lowercase.addEventListener('input', function() {
             email_lowercase.value = email_lowercase.value.toLowerCase();
         })
 

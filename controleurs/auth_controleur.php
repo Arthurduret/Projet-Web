@@ -13,24 +13,25 @@ class AuthControleur
         $this->modele = new UtilisateurModele($pdo);
     }
 
-    public function identifier(): void
-    {
-        require __DIR__ . '/../vues/identifier_vue.php';
-    }
+    // public function identifier(): void
+    // {
+    //     require __DIR__ . '/../vues/identifier_vue.php';
+    // }
 
 
-    public function check(): void
-    {
-        $email = $_POST['email'] ?? '';
-        $utilisateur = $this->modele->findByEmail($email);
+    // public function check(): void
+    // {
+    //     $email = $_POST['email'] ?? '';
+    //     $utilisateur = $this->modele->findByEmail($email);
 
-        if ($utilisateur) {
-            header('Location: /index.php?page=auth&action=connexion&email=' . urlencode($email));
-        } else {
-            header('Location: /index.php?page=auth&action=inscription&email=' . urlencode($email));
-        }
-        exit();
-    }
+    //     if ($utilisateur) {
+    //         header('Location: /index.php?page=auth&action=connexion&email=' . urlencode($email));
+    //     } else {
+    //         $erreur = "Aucun compte associé à cet email.";
+    //         require __DIR__ . '/../vues/identifier_vue.php';
+    //     }
+    //     exit();
+    // }
 
     // Affiche le formulaire de connexion
     public function connexion(): void
@@ -64,13 +65,35 @@ class AuthControleur
     // Affiche le formulaire d'inscription
     public function inscription(): void
     {
+
+        if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], ['admin', 'pilote'])) {
+        header('Location: /index.php?page=accueil');
+        exit();
+        }
+
         $email = $_GET['email'] ?? '';
-        require __DIR__ . '/../vues/inscription_particulier_vue.php';
+        $role  = $_GET['role']  ?? 'etudiant';
+        require __DIR__ . '/../vues/inscription_etudiant_vue.php';
     }
 
     // Traite le POST d'inscription
     public function register(): void
     {
+        if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], ['admin', 'pilote'])) {
+        header('Location: /index.php?page=accueil');
+        exit();
+    }
+
+        $role = $_POST['role'] ?? 'etudiant';
+    
+        // Sécurité : on accepte uniquement les rôles valides
+        if (!in_array($role, ['etudiant', 'pilote'])) {
+            $role = 'etudiant';
+        }
+
+        if ($_SESSION['user']['role'] === 'pilote' && $role === 'pilote') {
+        $role = 'etudiant';
+        }
 
         if (!validateCsrfToken($_POST['csrf_token'] ?? '')) {
             die('Token CSRF invalide.');
@@ -85,14 +108,14 @@ class AuthControleur
         // Vérification CGU
         if (empty($_POST['accepte_cgu']) || empty($_POST['accepte_confidentialite'])) {
             $erreur = "Vous devez accepter les CGU et la politique de confidentialité.";
-            require __DIR__ . '/../vues/inscription_particulier_vue.php';
+            require __DIR__ . '/../vues/inscription_etudiant_vue.php';
             return;
         }
 
         // Vérification mots de passe
         if ($password !== $password_confirm) {
             $erreur = "Les mots de passe ne correspondent pas.";
-            require __DIR__ . '/../vues/inscription_particulier_vue.php';
+            require __DIR__ . '/../vues/inscription_etudiant_vue.php';
             return;
         }
 
@@ -104,14 +127,11 @@ class AuthControleur
                 'nom'      => $nom,
                 'prenom'   => $prenom,
                 'mdp'      => $hash,
-                'role'     => 'etudiant'
+                'role'     => $role
             ]);
         } catch (Exception $e) {
             die($e->getMessage());
         }
-
-        $utilisateur = $this->modele->findByEmail($email);
-        $_SESSION['user'] = $utilisateur;
 
         header('Location: /index.php?page=accueil');
         exit();
