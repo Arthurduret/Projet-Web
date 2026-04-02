@@ -38,15 +38,17 @@ header nav a:hover {
 
 /* Style du bouton "Mon compte" */
 .btn-compte {
-    display: inline-flex;    /* Aligner l'icône et le texte */
-    align-items: center;     /* Centrer l'icône verticalement par rapport au texte */
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    gap: 1rem;               /* Espace entre l'image et le mot "Mon compte" */
+    gap: 0.8rem;
     background-color: #293771;
-    color: white !important; /* Force le texte en blanc même au survol */
-    padding: 0.8rem 1.1rem;
-    border-radius: 3rem;     /* Forme pilule */
-    transition: background-color 0.3s;
+    color: white !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
 }
 
 .btn-compte:hover {
@@ -153,125 +155,23 @@ footer p {
     color: white;
 }
 
-
+#dropdown-compte .nav-dropdown__menu {
+    left: auto;
+    right: 0;
+    transform: none;
+}
 
 .menu-tel {
     display: none;
 }
 
-/* --- Styles pour MOBILE --- */
-@media screen and (max-width: 768px) {
-    header {
-        flex-direction: row !important; /* Force l'alignement horizontal */
-        justify-content: space-between; /* Écarte le logo des contrôles */
-        align-items: center;
-        padding: 0.5rem 1rem;
-        position: relative; /* Fixer le menu déroulant */
-    }
-
-    .header-right {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    /* On cache le texte "Mon compte" pour garder que l'icône */
-    .btn-compte span {
-        display: none;
-    }
-    
-    .btn-compte {
-        padding: 0.4rem;
-        border-radius: 50%;
-        width: 45px;
-        height: 45px;
-    }
-
-    .menu-tel {
-        display: block; 
-        font-size: 1.8rem;
-        color: #293771;
-        cursor: pointer;
-    }
-
-    /* Menu déroulant */
-    header nav {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%; 
-        right: 0;
-        gap: 1rem;
-        width: 220px;
-        background-color: white;
-        box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
-        z-index: 1000;
-        
-        height: auto;           /* Empêche le menu de s'étirer verticalement */
-        justify-content: flex-start; /* Aligne les liens vers le haut */
-        padding: 10px 0;       
-    }
-
-    header nav a {
-        padding: 12px 20px;     
-        margin: 0;              
-        width: 100%;
-        border-bottom: 1px solid #f0f0f0;
-        text-align: left;
-        display: block;         /* Force le lien à se comporter comme un bloc */
-    }
-
-
-    header nav.active {
-        display: flex;
-    }
-
-    header nav a:last-child {
-        border-bottom: none; 
-    }
-
-    footer {
-        flex-direction: column; 
-        gap: 5%;              
-        padding-top: 1%;   
-        padding-bottom: 4%;
-        text-align: center;
-    }
-
-    footer a {        
-        margin-top: 2%;
-        font-size: medium;
-    }
-
-    footer p {
-        display: none;
-    }
-}
-
-/* ===== RESPONSIVE TABLETTE ===== */
-@media screen and (max-width: 1024px) {
-    header {
-        gap: 2rem;
-        padding: 1rem 5%;
-    }
-
-    header nav {
-        gap: 2rem;
-    }
-
-    header a {
-        font-size: 1.1rem;
-    }
-}
-
-/* ===== RESPONSIVE MOBILE ===== */
 @media screen and (max-width: 768px) {
     header {
         flex-direction: row !important;
         justify-content: space-between;
         align-items: center;
         padding: 0.5rem 1rem;
-        position: sticky; /* ← garde le sticky sur mobile aussi */
+        position: sticky; 
         gap: 0;
     }
 
@@ -279,6 +179,13 @@ footer p {
         display: flex;
         align-items: center;
         gap: 1rem;
+    }
+
+    #dropdown-compte .nav-dropdown__menu {
+        position: absolute; 
+        top: 60px; 
+        right: 10px;
+        width: 180px;
     }
 
     .btn-compte span {
@@ -331,7 +238,7 @@ footer p {
         border-bottom: none;
     }
 
-    /* Dropdown mobile */
+    
     .nav-dropdown__menu {
         position: static;
         transform: none;
@@ -344,7 +251,7 @@ footer p {
     .nav-dropdown__menu a {
         padding: 10px 30px;
         font-size: 0.95rem;
-        background: var(--gris-clair);
+        background: var(--blanc);
     }
 
     footer {
