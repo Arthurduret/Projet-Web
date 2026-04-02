@@ -52,9 +52,10 @@
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
                     <a href="/index.php?page=pilotes">Les Pilotes</a>
                 <?php endif; ?>
-                <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['role'], ['pilote', 'admin'])): ?>
-                    <a href="/index.php?page=candidature&action=pilote">Candidatures Étudiants</a>
+                <?php if ($_SESSION['user']['role'] === 'etudiant'): ?>
+                        <a href="/index.php?page=candidature&action=index">Mes Candidatures</a>
                 <?php endif; ?>
+
                     <a href="/index.php?page=auth&action=deconnexion">Déconnexion</a>
                 </div>
             </div>
