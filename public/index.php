@@ -55,9 +55,7 @@ switch ($page) {
             default:       $ctrl->index();  break;
         }
         break;
-    
-    // var_dump($_GET, $_POST);
-    // die();
+
 
     case 'auth':
         require_once __DIR__ . '/../controleurs/auth_controleur.php';
@@ -82,60 +80,56 @@ switch ($page) {
         $ctrl->monCompte();
         break;
 
-    // ──────────────────────────────────────────
-    // FAVORIS (wishlist étudiant)
+
     case 'favoris':
         require_once __DIR__ . '/../controleurs/favoris_controleur.php';
         $ctrl   = new FavorisControleur($pdo);
         $action = $_GET['action'] ?? 'index';
         switch ($action) {
             case 'index':    $ctrl->index();    break;
-            case 'toggle':   $ctrl->toggle();   break; // ← vérifie que c'est bien là
+            case 'toggle':   $ctrl->toggle();   break; 
             default:         $ctrl->index();    break;
         }
         break;
-
-    // ──────────────────────────────────────────
-    // CANDIDATURES (postuler à une offre)
-    // ──────────────────────────────────────────
-    // case 'candidatures':
-    //     require_once __DIR__ . '/../controleurs/candidature_controleur.php';
-    //     $ctrl   = new CandidatureControleur($pdo);
-    //     $action = $_GET['action'] ?? 'index';
-    //     switch ($action) {
-    //         case 'index':    $ctrl->index();    break; // mes candidatures
-    //         case 'postuler': $ctrl->postuler(); break; // POST formulaire
-    //         default:         $ctrl->index();    break;
-    //     }
-    //     break;
         
-   case 'candidature':
-        require_once __DIR__ . '/../controleurs/candidature_controleur.php';
-        $ctrl   = new CandidatureControleur($pdo);
-        $action = $_GET['action'] ?? 'index'; 
-        switch ($action) {
-            case 'index':  $ctrl->index();  break; 
-            case 'create': $ctrl->create(); break;
-            case 'store':  $ctrl->store();  break;
-            default:       $ctrl->index();  break; 
-        }
-        break;
+    case 'candidature':
+    require_once __DIR__ . '/../controleurs/candidature_controleur.php';
+    $ctrl   = new CandidatureControleur($pdo);
+    $action = $_GET['action'] ?? 'create';
+    switch ($action) {
+        case 'create': $ctrl->create(); break;
+        case 'store':  $ctrl->store();  break;
+        case 'index':     $ctrl->index();            break;
+        case 'pilote':    $ctrl->candidaturesPilote(); break;
+        default:       $ctrl->create(); break;
+    }
+    break;
 
-    // ──────────────────────────────────────────
-    // ADMIN / PILOTE
-    // ──────────────────────────────────────────
-    // case 'admin':
-    //     require_once __DIR__ . '/../controleurs/admin_controleur.php';
-    //     $ctrl   = new AdminControleur($pdo);
-    //     $action = $_GET['action'] ?? 'dashboard';
-    //     switch ($action) {
-    //         case 'dashboard':         $ctrl->dashboard();        break;
-    //         case 'utilisateurs':      $ctrl->utilisateurs();     break;
-    //         case 'creer_utilisateur': $ctrl->creerUtilisateur(); break;
-    //         case 'suppr_utilisateur': $ctrl->supprimerUtilisateur(); break;
-    //         default:                  $ctrl->dashboard();        break;
-    //     }
-    //     break;
+    case 'etudiants':
+    require_once __DIR__ . '/../controleurs/etudiants_controleur.php';
+    $ctrl   = new EtudiantsControleur($pdo);
+    $action = $_GET['action'] ?? 'index';
+    switch ($action) {
+        case 'index':  $ctrl->index();  break;
+        case 'edit':   $ctrl->edit();   break;
+        case 'update': $ctrl->update(); break;
+        case 'delete': $ctrl->delete(); break;
+        default:       $ctrl->index();  break;
+    }
+    break;
+
+    case 'pilotes':
+    require_once __DIR__ . '/../controleurs/pilotes_controleur.php';
+    $ctrl   = new PilotesControleur($pdo);
+    $action = $_GET['action'] ?? 'index';
+    switch ($action) {
+        case 'index':  $ctrl->index();  break;
+        case 'edit':   $ctrl->edit();   break;
+        case 'update': $ctrl->update(); break;
+        case 'delete': $ctrl->delete(); break;
+        default:       $ctrl->index();  break;
+    }
+    break;
 
     case 'evaluation':
         require_once __DIR__ . '/../controleurs/evaluation_controleur.php';
@@ -143,7 +137,7 @@ switch ($page) {
         $ctrl->noter();
         break;
 
-    // PAGES STATIQUES
+
     case 'a_propos':
         require_once __DIR__ . '/../vues/a_propos_vue.php';
         break;
