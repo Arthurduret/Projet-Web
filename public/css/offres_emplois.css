@@ -1,8 +1,4 @@
-/* =============================================
-   OFFRES_EMPLOIS.CSS — Page liste des offres
-   ============================================= */
 
-/* ===== BARRE DE RECHERCHE ===== */
 .recherche-offres {
     background: linear-gradient(135deg, #293771 0%, #1a2550 100%);
     padding: 2.5rem 10%;
@@ -78,7 +74,7 @@
     filter: brightness(0) invert(1);
 }
 
-/* ===== SECTION LISTE ===== */
+
 .liste-offres {
     max-width: 900px;
     margin: 2rem auto;
@@ -105,7 +101,7 @@
     font-style: italic;
 }
 
-/* ===== CARTE OFFRE ===== */
+
 .carte-offre {
     display: flex;
     align-items: center;
@@ -125,7 +121,6 @@
     border-color: var(--bleu-fonce);
 }
 
-/* ===== LOGO ENTREPRISE ===== */
 .offre-image {
     width: 90px;
     height: 90px;
@@ -146,7 +141,7 @@
     padding: 8px;
 }
 
-/* ===== CONTENU OFFRE ===== */
+
 .offre-contenu {
     flex: 1;
     display: flex;
@@ -169,7 +164,7 @@
     margin: 0;
 }
 
-/* ===== TAGS OFFRE ===== */
+
 .offre-tags {
     display: flex;
     flex-wrap: wrap;
@@ -193,7 +188,7 @@
     font-style: italic;
 }
 
-/* ===== COMPÉTENCES OFFRE ===== */
+
 .offre-competences {
     display: flex;
     flex-wrap: wrap;
@@ -211,7 +206,7 @@
     border: 1px solid var(--orange);
 }
 
-/* ===== BOUTON VOIR L'OFFRE ===== */
+
 .offre-action {
     flex-shrink: 0;
 }
@@ -238,7 +233,6 @@
     color: var(--blanc);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .recherche-offres {
         padding: 1.5rem 5%;
@@ -285,7 +279,7 @@
     }
 }
 
-/* ===== BOUTON RETIRER FAVORI ===== */
+
 .btn-retirer-favori {
     display: block;
     text-align: center;
@@ -301,7 +295,7 @@
     color: #d64545;
 }
 
-/* ===== COEUR FAVORI ===== */
+
 .carte-offre {
     position: relative;
 }
@@ -318,7 +312,7 @@
     line-height: 1;
     z-index: 10;
     padding: 0;
-    opacity: 1; /* ← toujours visible */
+    opacity: 1; 
 }
 
 .btn-coeur:hover {
@@ -352,7 +346,7 @@
     color: var(--blanc);
 }
 
-/* ===== PAGINATION ===== */
+
 .pagination {
     display: flex;
     justify-content: center;
@@ -385,7 +379,7 @@
     cursor: default;
 }
 
-/* ===== FILTRES AVANCÉS ===== */
+
 .filtres-container {
     max-width: 900px;
     margin: 0 auto 1.5rem auto;
@@ -503,17 +497,17 @@
     padding: 0 0 0 0;
     display: flex;
     justify-content: flex-end;
-    padding-right: 80px; /* ← décale vers la gauche */
+    padding-right: 80px; 
 }
 
 .btn-toggle-filtres {
-    background: transparent; /* ← fond transparent */
-    border: 1.5px solid rgba(255,255,255,0.6); /* ← contour blanc fin */
-    color: var(--blanc); /* ← texte blanc */
+    background: transparent; 
+    border: 1.5px solid rgba(255,255,255,0.6);
+    color: var(--blanc); 
     padding: 0.4rem 1rem;
     border-radius: 25px;
-    font-weight: 500; /* ← moins gras */
-    font-size: 0.85rem; /* ← plus petit */
+    font-weight: 500; 
+    font-size: 0.85rem;
     cursor: pointer;
     transition: all 0.3s;
     font-family: inherit;

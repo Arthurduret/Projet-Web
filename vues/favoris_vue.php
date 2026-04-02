@@ -29,18 +29,16 @@
                 <?php foreach ($favoris as $offre): ?>
                     <article class="carte-offre">
 
-                        <!-- COEUR EN HAUT À DROITE -->
                         <button class="btn-coeur active" data-id="<?= htmlspecialchars($offre['id_offre']) ?>">
                             🧡
                         </button>
 
-                        <!-- LOGO -->
+
                         <div class="offre-image">
                             <img src="/images/entreprises/logo/<?= htmlspecialchars($offre['image_logo']) ?>"
                                  alt="Logo <?= htmlspecialchars($offre['nom_entreprise']) ?>">
                         </div>
 
-                        <!-- CONTENU -->
                         <div class="offre-contenu">
                             <h2 class="offre-titre"><?= htmlspecialchars($offre['titre']) ?></h2>
                             <p class="offre-entreprise"><?= htmlspecialchars($offre['nom_entreprise']) ?></p>
@@ -66,7 +64,6 @@
                             <?php endif; ?>
                         </div>
 
-                        <!-- BOUTON VOIR -->
                         <div class="offre-action">
                             <a href="/index.php?page=offres_emplois&action=show&id=<?= htmlspecialchars($offre['id_offre']) ?>"
                                class="btn-voir">Voir l'offre</a>
@@ -97,7 +94,6 @@
             .then(res => res.json())
             .then(data => {
                 if (!data.favori) {
-                    // Retire la carte avec une animation
                     carte.style.transition = 'opacity 0.3s ease';
                     carte.style.opacity = '0';
                     setTimeout(() => carte.remove(), 300);

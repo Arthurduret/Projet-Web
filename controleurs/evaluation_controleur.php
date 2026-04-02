@@ -9,9 +9,7 @@ class EvaluationControleur {
         $this->pdo = $pdo;
     }
 
-    // -----------------------------------------------
-    // Vérifie que l'utilisateur est admin ou pilote
-    // -----------------------------------------------
+
     private function verifierRole() {
         if (!isset($_SESSION['user']) || 
             !in_array($_SESSION['user']['role'], ['admin', 'pilote'])) {
@@ -21,9 +19,7 @@ class EvaluationControleur {
         }
     }
 
-    // -----------------------------------------------
-    // Sauvegarde une évaluation (AJAX)
-    // -----------------------------------------------
+
     public function noter() {
         $this->verifierRole();
 

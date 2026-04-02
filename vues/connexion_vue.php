@@ -37,10 +37,6 @@
                     </div>
                 </div>
                 
-                <p>
-                    <a href="/index.php?page=mot_de_passe_oublie" class="back-link">Mot de passe oublié ?</a>
-                </p>
-
                 <button type="submit">Se connecter</button>
             </form>
         </div>

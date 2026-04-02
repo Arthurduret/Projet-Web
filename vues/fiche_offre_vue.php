@@ -16,10 +16,8 @@
 
     <main class="fiche-offre-main">
 
-        <!-- Bouton retour -->
         <a href="/index.php?page=offres_emplois" class="btn-retour">← Retour aux offres</a>
 
-        <!-- BLOC INFOS FULL WIDTH (CSS OK) -->
         <section class="bloc-infos-full">
 
             <div class="fiche-header">
@@ -34,7 +32,6 @@
                 </div>
             </div>
 
-            <!-- Tags (classe CSS correcte : .tags) -->
             <div class="tags">
                 <?php if (!empty($offre['localisation'])): ?>
                     <span>📍 <?php echo htmlspecialchars($offre['localisation']); ?></span>
@@ -45,14 +42,11 @@
             </div>
 
         </section>
-
-        <!-- LAYOUT BAS (GAUCHE + DROITE)   -->
         <div class="fiche-offre-container">
 
             <!-- COLONNE GAUCHE -->
             <div class="fiche-offre-gauche">
 
-                <!-- COMPÉTENCES (classe CSS : .bloc + .competences + .tag-skill) -->
                 <?php if (!empty($offre['competences'])): ?>
                 <section class="bloc">
                     <h2>Compétences requises</h2>
@@ -65,7 +59,6 @@
                 </section>
                 <?php endif; ?>
 
-                <!-- DESCRIPTION (classe CSS : .bloc + .description) -->
                 <section class="bloc">
                     <h2>Description du poste</h2>
 
@@ -74,7 +67,6 @@
                     </p>
                 </section>
 
-                <!-- DATE (classe CSS : .date) -->
                 <p class="date">
                     Publiée le 
                     <?php
@@ -90,7 +82,6 @@
 
             </div>
 
-            <!-- COLONNE DROITE -->
             <aside class="fiche-offre-droite">
 
                 <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'etudiant'): ?>

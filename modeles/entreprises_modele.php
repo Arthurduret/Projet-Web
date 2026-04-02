@@ -1,9 +1,9 @@
 <?php 
-// Ce fichier a UN seul rôle : parler à la base de données
+
 
 class EntrepriseModele {
 
-    // On stocke la connexion PDO dans la classe
+
     private $pdo; 
 
     public function __construct($pdo) {
@@ -65,7 +65,6 @@ class EntrepriseModele {
     }
 
     public function supprimerEntreprise($id) {
-        // 1. Récupère toutes les offres de cette entreprise
         $stmt = $this->pdo->prepare("SELECT id_offre FROM offre WHERE id_entreprise = :id");
         $stmt->execute([':id' => $id]);
         $offres = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -73,28 +72,22 @@ class EntrepriseModele {
         foreach ($offres as $offre) {
             $id_offre = $offre['id_offre'];
 
-            // 2. Supprime les compétences liées à chaque offre
             $stmt = $this->pdo->prepare("DELETE FROM Requerir WHERE id_offre = :id");
             $stmt->execute([':id' => $id_offre]);
 
-            // 3. Supprime les candidatures liées à chaque offre
             $stmt = $this->pdo->prepare("DELETE FROM candidature WHERE id_offre = :id");
             $stmt->execute([':id' => $id_offre]);
 
-            // 4. Supprime les favoris liés à chaque offre
             $stmt = $this->pdo->prepare("DELETE FROM liker WHERE id_offre = :id");
             $stmt->execute([':id' => $id_offre]);
         }
 
-        // 5. Supprime toutes les offres de l'entreprise
         $stmt = $this->pdo->prepare("DELETE FROM offre WHERE id_entreprise = :id");
         $stmt->execute([':id' => $id]);
 
-        // 6. Supprime les évaluations de l'entreprise
         $stmt = $this->pdo->prepare("DELETE FROM evaluation WHERE id_entreprise = :id");
         $stmt->execute([':id' => $id]);
 
-        // 7. Supprime l'entreprise elle-même
         $stmt = $this->pdo->prepare("DELETE FROM entreprise WHERE id_entreprise = :id");
         $stmt->execute([':id' => $id]);
     } 

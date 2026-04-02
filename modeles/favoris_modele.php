@@ -7,9 +7,7 @@ class FavorisModele {
         $this->pdo = $pdo;
     }
 
-    // -----------------------------------------------
-    // Récupère toutes les offres favorites d'un utilisateur
-    // -----------------------------------------------
+
     public function getFavoris($id_utilisateur) {
         $stmt = $this->pdo->prepare("
             SELECT offre.*, entreprise.nom AS nom_entreprise, entreprise.image_logo,
@@ -27,9 +25,6 @@ class FavorisModele {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // -----------------------------------------------
-    // Vérifie si une offre est déjà en favori
-    // -----------------------------------------------
     public function estFavori($id_utilisateur, $id_offre) {
         $stmt = $this->pdo->prepare("
             SELECT COUNT(*) FROM liker
@@ -43,9 +38,6 @@ class FavorisModele {
         return $stmt->fetchColumn() > 0;
     }
 
-    // -----------------------------------------------
-    // Ajoute une offre aux favoris
-    // -----------------------------------------------
     public function ajouter($id_utilisateur, $id_offre) {
         $stmt = $this->pdo->prepare("
             INSERT INTO liker (id_utilisateur, id_offre)
@@ -57,9 +49,6 @@ class FavorisModele {
         ]);
     }
 
-    // -----------------------------------------------
-    // Retire une offre des favoris
-    // -----------------------------------------------
     public function retirer($id_utilisateur, $id_offre) {
         $stmt = $this->pdo->prepare("
             DELETE FROM liker

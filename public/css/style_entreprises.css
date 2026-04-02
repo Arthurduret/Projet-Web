@@ -1,8 +1,4 @@
-/* =============================================
-   STYLE_ENTREPRISES.CSS — Page liste entreprises
-   ============================================= */
 
-/* ===== EN-TÊTE PAGE ===== */
 .header-entreprise {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -14,7 +10,7 @@
     margin-left: 0;
 }
 
-/* ===== RECHERCHE ENTREPRISES ===== */
+
 .recherche-entreprises {
     max-width: 600px;
     margin: 0 auto 2rem auto;
@@ -57,7 +53,7 @@
     background: var(--orange);
 }
 
-/* ===== RÉSULTATS ===== */
+
 .nb-resultats-entreprises {
     color: var(--bleu-fonce);
     font-size: 1rem;
@@ -74,7 +70,7 @@
     font-style: italic;
 }
 
-/* ===== DÉTAILS DÉROULANTS ===== */
+
 .carte-details {
     padding: 0 15px 15px 15px;
 }
@@ -140,7 +136,7 @@
     border-color: var(--bleu-fonce);
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 768px) {
     .header-entreprise h1 {
         font-size: 1.4rem;

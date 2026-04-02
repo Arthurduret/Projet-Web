@@ -16,7 +16,6 @@
             <h1>Explorez les entreprises qui recrutent</h1>
         </div>
 
-        <!-- BARRE DE RECHERCHE -->
         <form action="/index.php" method="GET" class="recherche-entreprises">
             <input type="hidden" name="page" value="entreprises">
             <div class="search-entreprise">
@@ -42,14 +41,12 @@
             </div>
         </form>
 
-        <!-- NOMBRE DE RÉSULTATS -->
         <div class="header-entreprise">
             <p class="nb-resultats-entreprises">
                 <strong><?= $nb_entreprises ?></strong> entreprise<?= $nb_entreprises > 1 ? 's' : '' ?> trouvée<?= $nb_entreprises > 1 ? 's' : '' ?>
             </p>
         </div>
 
-        <!-- GRILLE ENTREPRISES -->
         <?php if ($nb_entreprises === 0): ?>
             <p class="aucun-resultat-entreprise">Aucune entreprise ne correspond à votre recherche.</p>
         <?php else: ?>
@@ -80,7 +77,6 @@
                             </div>
                         </a>
 
-                        <!-- FLÈCHE DÉROULANTE -->
                         <div class="carte-details">
                             <button class="btn-toggle-details" onclick="toggleDetails(this)">
                                 ▼ Voir les détails

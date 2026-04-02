@@ -1,7 +1,5 @@
 <?php
-// Ce fichier a un seul rôle : faire le lien entre le modèle et la vue
 
-// On importe le modèle pour pouvoir l'utiliser ici
 require_once __DIR__ . '/../modeles/entreprises_modele.php';
 require_once __DIR__ . '/../helper/validation.php';
 
@@ -28,12 +26,12 @@ class EntrepriseControleur {
     }
 
     public function create() {
-        // $this->verifierRole(['admin', 'pilote']); // TODO : décommenter quand auth en place
+
         require __DIR__ . '/../vues/entreprise_form_vue.php';
     }
 
     public function store() {
-        // Sauvegarde les données pour les restituer en cas d'erreur
+
         $_SESSION['form_data'] = $_POST;
 
         // Validations
@@ -61,11 +59,10 @@ class EntrepriseControleur {
             Validation::erreur("L'image de fond est obligatoire.", '/index.php?page=entreprises&action=create');
         }
 
-        // Upload des images
+
         $image_logo = $this->uploaderImage('image_logo', 'entreprises/logo');
         $image_fond = $this->uploaderImage('image_fond', 'entreprises/fond');
 
-        // Insertion en BDD
         $donnees = [
             'nom'         => $_POST['nom']         ?? '',
             'description' => $_POST['description'] ?? '',
@@ -78,7 +75,7 @@ class EntrepriseControleur {
         $model = new EntrepriseModele($this->pdo);
         $model->creerEntreprise($donnees);
 
-        // Succès → on vide la session et on redirige
+
         unset($_SESSION['form_data']);
         header('Location: /index.php?page=entreprises');
         exit;
@@ -89,7 +86,6 @@ class EntrepriseControleur {
         $model = new EntrepriseModele($this->pdo);
         $entreprise = $model->getEntrepriseById($id);
 
-        // Récupère la moyenne des évaluations
         $stmt = $this->pdo->prepare("
             SELECT ROUND(AVG(note), 1) AS moyenne, COUNT(*) AS nb_avis
             FROM evaluation 
@@ -100,7 +96,6 @@ class EntrepriseControleur {
         $moyenne_eval = $eval_data['moyenne'] ?? null;
         $nb_avis      = $eval_data['nb_avis'] ?? 0;
 
-        // Récupère la note de l'utilisateur connecté
         $ma_note = null;
         if (isset($_SESSION['user']) && 
             in_array($_SESSION['user']['role'], ['admin', 'pilote'])) {
@@ -118,7 +113,7 @@ class EntrepriseControleur {
 
     public function edit() {
         $this->verifierRole(['admin', 'pilote']);
-        $id    = $_GET['id'] ?? null; // ← corrigé
+        $id    = $_GET['id'] ?? null;
         $model = new EntrepriseModele($this->pdo);
         $entreprise = $model->getEntrepriseById($id);
         require __DIR__ . '/../vues/entreprise_form_vue.php';
@@ -126,7 +121,7 @@ class EntrepriseControleur {
 
     public function update() {
         $this->verifierRole(['admin', 'pilote']);
-        $id    = $_GET['id'] ?? null; // ← corrigé
+        $id    = $_GET['id'] ?? null; 
         $model = new EntrepriseModele($this->pdo);
 
         $image_logo = !empty($_FILES['image_logo']['name']) 
@@ -153,7 +148,7 @@ class EntrepriseControleur {
 
     public function delete() {
         $this->verifierRole(['admin', 'pilote']);
-        $id    = $_GET['id'] ?? null; // ← corrigé
+        $id    = $_GET['id'] ?? null; 
         $model = new EntrepriseModele($this->pdo);
         $model->supprimerEntreprise($id);
         header('Location: /index.php?page=entreprises');

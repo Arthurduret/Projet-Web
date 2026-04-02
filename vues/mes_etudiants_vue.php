@@ -14,7 +14,6 @@
 
     <main>
 
-        <!--  BARRE DE RECHERCHE  -->
         <section class="recherche-offres">
             <form action="/index.php" method="GET">
                 <input type="hidden" name="page" value="etudiants">
@@ -34,7 +33,6 @@
             </form>
         </section>
 
-        <!--  LISTE DES ÉTUDIANTS  -->
         <section class="liste-offres">
 
             <p class="nb-resultats">
@@ -48,12 +46,10 @@
                 <?php foreach ($etudiants as $etudiant): ?>
                     <article class="carte-offre">
 
-                        <!-- AVATAR -->
                         <div class="offre-image">
                             <img src="/images/jobeo/logo_profil.png" alt="Avatar">
                         </div>
 
-                        <!-- CONTENU -->
                         <div class="offre-contenu">
                             <h2 class="offre-titre">
                                 <?= htmlspecialchars($etudiant['prenom']) ?>
@@ -66,7 +62,6 @@
                             </div>
                         </div>
 
-                        <!-- ACTIONS -->
                         <div class="offre-action" style="display:flex; flex-direction:column; gap:0.5rem;">
                             <a href="/index.php?page=etudiants&action=edit&id=<?= $etudiant['id_utilisateur'] ?>"
                                class="btn-voir">Modifier</a>

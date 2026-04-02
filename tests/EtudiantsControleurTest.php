@@ -11,10 +11,10 @@ class EtudiantsControleurTest extends TestCase
         return $this->createMock(PDO::class);
     }
     
-    // ── Test 1 : un non connecté est redirigé ────────────────────
+    //  Test 1 : un non connecté est redirigé 
     public function testNonConnecteEstRedirige(): void
     {
-        $_SESSION = []; // pas de session
+        $_SESSION = [];
 
         $pdo  = $this->creerPDOMock();
         $ctrl = new EtudiantsControleur($pdo);
@@ -24,7 +24,7 @@ class EtudiantsControleurTest extends TestCase
         $this->assertInstanceOf(EtudiantsControleur::class, $ctrl);
     }
 
-    // ── Test 2 : un étudiant n'a pas accès ──────────────────────
+    //  Test 2 : un étudiant n'a pas accès
     public function testEtudiantNaPasAcces(): void
     {
         $_SESSION['user'] = [
@@ -40,7 +40,7 @@ class EtudiantsControleurTest extends TestCase
         );
     }
 
-    // ── Test 3 : un pilote a bien accès ─────────────────────────
+    //  Test 3 : un pilote a bien accès 
     public function testPiloteAAcces(): void
     {
         $_SESSION['user'] = [
@@ -56,7 +56,7 @@ class EtudiantsControleurTest extends TestCase
         );
     }
 
-    // ── Test 4 : un admin a bien accès ──────────────────────────
+    //  Test 4 : un admin a bien accès 
     public function testAdminAAcces(): void
     {
         $_SESSION['user'] = [
@@ -72,7 +72,7 @@ class EtudiantsControleurTest extends TestCase
         );
     }
 
-    // ── Test 5 : le contrôleur s'instancie correctement ─────────
+    //  Test 5 : le contrôleur s'instancie correctement 
     public function testInstanciation(): void
     {
         $_SESSION['user'] = [

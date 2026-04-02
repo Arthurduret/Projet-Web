@@ -1,9 +1,4 @@
-/* =============================================
-   STYLE_GLOBAL.CSS — Charte graphique Jobeo
-   Importé sur toutes les pages
-   ============================================= */
 
-/* ===== VARIABLES ===== */
 :root {
     --bleu-fonce: #293771;
     --orange: #f17526;
@@ -13,7 +8,7 @@
     --police-principale: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ===== RESET ===== */
+
 * {
     margin: 0;
     padding: 0;
@@ -33,7 +28,7 @@ body {
     color: var(--texte-noir);
 }
 
-/* ===== MAIN ===== */
+
 main {
     flex: 1;
     padding-top: 2rem;
@@ -43,7 +38,6 @@ main {
 
 }
 
-/* ===== TYPOGRAPHIE ===== */
 h1 {
     color: var(--bleu-fonce);
     font-size: 2rem;
@@ -73,14 +67,14 @@ a:hover {
     color: var(--orange);
 }
 
-/* ===== CONTENEUR GLOBAL ===== */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* ===== BOUTON GÉNÉRIQUE ===== */
+
 .btn-jobeo {
     display: inline-block;
     background-color: var(--bleu-fonce);
@@ -99,7 +93,7 @@ a:hover {
     color: var(--blanc);
 }
 
-/* ===== MESSAGE D'ERREUR ===== */
+
 .alert-erreur {
     background-color: #fdecea;
     border-left: 4px solid #e53935;
@@ -110,7 +104,7 @@ a:hover {
     font-size: 0.95rem;
 }
 
-/* ===== MESSAGE DE SUCCÈS ===== */
+
 .alert-succes {
     background-color: #e8f5e9;
     border-left: 4px solid #43a047;
@@ -121,10 +115,7 @@ a:hover {
     font-size: 0.95rem;
 }
 
-/* =============================================
-   CARTES ENTREPRISES
-   Utilisées sur : accueil + page entreprises
-   ============================================= */
+
 
 .grille-entreprises {
     display: flex;
@@ -222,11 +213,11 @@ a:hover {
     color: var(--blanc);
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 768px) {
     .grille-entreprises {
-        padding: 0 1rem; /* ← marge sur les côtés */
-        gap: 1.5rem; /* ← réduit l'espace entre les cartes */
+        padding: 0 1rem;
+        gap: 1.5rem; 
     }
     .carte-entreprise {
         width: calc(50% - 0.75rem);

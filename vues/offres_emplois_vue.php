@@ -13,7 +13,6 @@
 
     <main>
 
-        <!-- ===== BARRE DE RECHERCHE ===== -->
         <section class="recherche-offres">
             <form action="/index.php" method="GET">
                 <input type="hidden" name="page" value="offres_emplois">
@@ -41,7 +40,6 @@
                 </div>
             </form>
 
-            <!-- BOUTON FILTRES -->
             <div class="filtres-trigger">
                 <button class="btn-toggle-filtres" onclick="toggleFiltres()">
                     ▼ Filtres avancés
@@ -49,7 +47,6 @@
             </div>
         </section>
 
-        <!-- ===== FILTRES AVANCÉS ===== -->
         <div class="filtres-container">
             <div id="filtres-avances" style="display:none;">
                 <form action="/index.php" method="GET">
@@ -113,7 +110,6 @@
             </div>
         </div>
 
-        <!-- ===== LISTE DES OFFRES ===== -->
         <section class="liste-offres">
 
             <?php
@@ -138,7 +134,6 @@
                 <?php foreach ($offres as $offre): ?>
                     <article class="carte-offre">
 
-                        <!-- COEUR FAVORI -->
                         <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'etudiant'): ?>
                             <button class="btn-coeur <?= isset($favoris_ids) && in_array($offre['id_offre'], $favoris_ids) ? 'active' : '' ?>"
                                     data-id="<?= htmlspecialchars($offre['id_offre']) ?>">
@@ -146,13 +141,11 @@
                             </button>
                         <?php endif; ?>
 
-                        <!-- LOGO -->
                         <div class="offre-image">
                             <img src="/images/entreprises/logo/<?= htmlspecialchars($offre['image_logo']) ?>"
                                  alt="Logo <?= htmlspecialchars($offre['nom_entreprise']) ?>">
                         </div>
 
-                        <!-- CONTENU -->
                         <div class="offre-contenu">
                             <h2 class="offre-titre"><?= htmlspecialchars($offre['titre']) ?></h2>
                             <p class="offre-entreprise"><?= htmlspecialchars($offre['nom_entreprise']) ?></p>
@@ -185,7 +178,6 @@
                             </p>
                         </div>
 
-                        <!-- ACTIONS -->
                         <div class="offre-action">
                             <a href="/index.php?page=offres_emplois&action=show&id=<?= htmlspecialchars($offre['id_offre']) ?>"
                                class="btn-voir">Voir l'offre</a>
@@ -202,7 +194,6 @@
 
         </section>
 
-        <!-- ===== PAGINATION ===== -->
         <?php if ($nb_pages > 1): ?>
             <?php
             $params_url = http_build_query(array_filter([
@@ -239,7 +230,6 @@
     <?php include __DIR__ . '/partials/footer.php'; ?>
 
     <script>
-    // ===== TOGGLE FILTRES =====
     function toggleFiltres() {
         const filtres = document.getElementById('filtres-avances');
         const btn     = document.querySelector('.btn-toggle-filtres');
@@ -266,7 +256,6 @@
         }
     });
 
-    // ===== COEUR FAVORI =====
     document.querySelectorAll('.btn-coeur').forEach(btn => {
         btn.addEventListener('click', function() {
             const id = this.dataset.id;

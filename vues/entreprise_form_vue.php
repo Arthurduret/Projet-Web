@@ -15,7 +15,6 @@
     <main class="form-main">
         <div class="form-container">
 
-            <!-- Message d'erreur -->
             <?php if (isset($_SESSION['erreur'])): ?>
                 <div class="alert-erreur">
                     ⚠️ <?php echo htmlspecialchars($_SESSION['erreur']); ?>
@@ -23,10 +22,8 @@
                 <?php unset($_SESSION['erreur']); ?>
             <?php endif; ?>
 
-            <!-- Titre dynamique -->
             <h1><?= isset($entreprise) ? 'Modifier l\'entreprise' : 'Créer une entreprise' ?></h1>
 
-            <!-- Action dynamique selon création ou modification -->
             <form method="POST" 
                   action="<?= isset($entreprise) 
                     ? '/index.php?page=entreprises&action=update&id=' . $entreprise['id_entreprise']
@@ -35,7 +32,6 @@
                   novalidate>
                 <?php echo csrfInput(); ?>
                 
-                <!-- NOM -->
                 <div class="input-group">
                     <label for="nom">Nom de l'entreprise</label>
                     <input type="text"
@@ -45,7 +41,6 @@
                            placeholder="Ex : Google">
                 </div>
 
-                <!-- DESCRIPTION -->
                 <div class="input-group">
                     <label for="description">Description</label>
                     <textarea name="description"
@@ -54,7 +49,6 @@
                               placeholder="Décrivez l'entreprise..."><?= isset($entreprise) ? htmlspecialchars($entreprise['description']) : Validation::oldValue('description') ?></textarea>
                 </div>
 
-                <!-- EMAIL -->
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="email"
@@ -64,7 +58,6 @@
                            placeholder="Ex : contact@google.fr">
                 </div>
 
-                <!-- TÉLÉPHONE -->
                 <div class="input-group">
                     <label for="tel">Téléphone</label>
                     <input type="tel"
@@ -75,7 +68,6 @@
                            placeholder="Ex : 0123456789">
                 </div>
 
-                <!-- LOGO -->
                 <div class="input-group">
                     <label for="image_logo">
                         Logo de l'entreprise <?= isset($entreprise) ? '(laisser vide pour garder l\'actuel)' : '' ?>
@@ -90,7 +82,6 @@
                            accept="image/*">
                 </div>
 
-                <!-- IMAGE FOND -->
                 <div class="input-group">
                     <label for="image_fond">
                         Image de fond <?= isset($entreprise) ? '(laisser vide pour garder l\'actuelle)' : '' ?>
@@ -110,7 +101,6 @@
                     <input type="hidden" name="image_fond_actuel" value="<?= htmlspecialchars($entreprise['image_fond']) ?>">
                 <?php endif; ?>
 
-                <!-- BOUTONS -->
                 <div class="input-group">
                     <a href="/index.php?page=entreprises" class="btn-annuler">
                         Annuler

@@ -13,26 +13,6 @@ class AuthControleur
         $this->modele = new UtilisateurModele($pdo);
     }
 
-    // public function identifier(): void
-    // {
-    //     require __DIR__ . '/../vues/identifier_vue.php';
-    // }
-
-
-    // public function check(): void
-    // {
-    //     $email = $_POST['email'] ?? '';
-    //     $utilisateur = $this->modele->findByEmail($email);
-
-    //     if ($utilisateur) {
-    //         header('Location: /index.php?page=auth&action=connexion&email=' . urlencode($email));
-    //     } else {
-    //         $erreur = "Aucun compte associé à cet email.";
-    //         require __DIR__ . '/../vues/identifier_vue.php';
-    //     }
-    //     exit();
-    // }
-
     public function connexion(): void
     {
         $email = $_GET['email'] ?? '';

@@ -85,7 +85,7 @@
             });
         });
 
-        // Ouvre/ferme chaque dropdown au clic
+        // Ouvre et ferme chaque dropdown au clic
         document.querySelectorAll('.nav-dropdown__trigger').forEach(function(trigger) {
             trigger.addEventListener('click', function(e) {
                 e.stopPropagation();

@@ -1,10 +1,4 @@
-/* =============================================
-   FORM.CSS — Tous les formulaires
-   Connexion, inscription, offre, entreprise
-   ============================================= */
 
-/* ===== LAYOUT PAGE FORMULAIRE CENTRÉ ===== */
-/* Pour : connexion, inscription, identifier */
 main.form-page {
     display: flex;
     justify-content: center;
@@ -13,8 +7,7 @@ main.form-page {
     padding: 60px 15px;
 }
 
-/* ===== CARTE FORMULAIRE PETITE ===== */
-/* Pour : connexion, inscription, identifier */
+
 .login-container {
     background: var(--blanc);
     padding: 40px;
@@ -44,7 +37,7 @@ main.form-page {
     color: var(--bleu-fonce);
 }
 
-/* ===== CHAMPS FLOATING LABEL ===== */
+
 .input-group {
     position: relative;
     margin-bottom: 25px;
@@ -88,13 +81,13 @@ main.form-page {
     box-sizing: border-box;
 }
 
-/* ===== DOUBLE INPUT ===== */
+
 .double-input {
     display: flex;
     gap: 15px;
 }
 
-/* ===== INPUT FILE ===== */
+
 input[type="file"] {
     width: 100%;
     padding: 12px;
@@ -124,7 +117,7 @@ input[type="file"]::file-selector-button:hover {
     background-color: var(--orange);
 }
 
-/* ===== BOUTONS PARTICULIER / ENTREPRISE ===== */
+
 .switch_buttons {
     display: flex;
     justify-content: center;
@@ -159,7 +152,7 @@ input[type="file"]::file-selector-button:hover {
     cursor: default;
 }
 
-/* ===== CHECKBOX CGU ===== */
+
 .checkbox-group {
     display: flex;
     align-items: center;
@@ -177,7 +170,7 @@ input[type="file"]::file-selector-button:hover {
     text-decoration: underline;
 }
 
-/* ===== BOUTON SUBMIT PETIT FORMULAIRE ===== */
+
 .login-container button[type="submit"] {
     background-color: var(--bleu-fonce);
     color: var(--blanc);
@@ -197,7 +190,7 @@ input[type="file"]::file-selector-button:hover {
     background-color: var(--orange);
 }
 
-/* ===== PASSWORD TOGGLE ===== */
+
 .password-wrapper {
     position: relative;
     display: flex;
@@ -206,7 +199,7 @@ input[type="file"]::file-selector-button:hover {
 
 .password-wrapper input {
     width: 100%;
-    padding-right: 45px; /* ← espace pour l'œil */
+    padding-right: 45px;
 }
 
 .password-toggle,
@@ -219,7 +212,7 @@ input[type="file"]::file-selector-button:hover {
     z-index: 2;
 }
 
-/* ===== GRAND FORMULAIRE (offre, entreprise) ===== */
+
 main.form-main {
     max-width: 800px;
     margin: 2rem auto;
@@ -273,14 +266,14 @@ main.form-main {
     border-color: var(--bleu-fonce);
 }
 
-/* ===== DEUX CHAMPS CÔTE À CÔTE ===== */
+
 .form-ligne {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
 }
 
-/* ===== COMPÉTENCES CASES À COCHER ===== */
+
 
 .competences-grid {
     display: flex;
@@ -331,7 +324,7 @@ main.form-main {
     border: none;
 }
 
-/* ===== BOUTONS GRAND FORMULAIRE ===== */
+
 .form-boutons {
     display: flex;
     justify-content: flex-end;
@@ -373,7 +366,7 @@ main.form-main {
     background: var(--orange);
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 768px) {
     main.form-page {
         padding: 40px 10px;

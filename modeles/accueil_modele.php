@@ -7,7 +7,7 @@ class AccueilModele {
         $this->pdo = $pdo;
     }
 
-    // Récupère seulement 3 entreprises pour la page d'accueil
+
     public function getEntreprisesAccueil() {
         $query = $this->pdo->query("
             SELECT 

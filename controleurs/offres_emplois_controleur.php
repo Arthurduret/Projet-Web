@@ -9,7 +9,7 @@ class OffresControleur {
         $this->pdo = $pdo;
     }
 
-    // Vérifie si l'utilisateur a le bon rôle
+
     private function verifierRole(array $rolesAutorises) {
         if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], $rolesAutorises)) {
             header('Location: /index.php?page=auth&action=identifier');
@@ -17,7 +17,7 @@ class OffresControleur {
         }
     }
 
-    // LISTE — tout le monde peut voir les offres
+
     public function index() {
         $modele = new OffresModele($this->pdo);
 
@@ -54,7 +54,7 @@ class OffresControleur {
         require __DIR__ . '/../vues/offres_emplois_vue.php';
     }
 
-    // FICHE — tout le monde peut voir le détail
+
     public function show() {
         $id = $_GET['id'] ?? null;
 
@@ -71,14 +71,13 @@ class OffresControleur {
             exit;
         }
 
-        // Récupère le nombre de candidatures
+
         $stmt = $this->pdo->prepare("
             SELECT COUNT(*) FROM candidature WHERE id_offre = :id
         ");
         $stmt->execute([':id' => $id]);
         $nb_candidatures = $stmt->fetchColumn();
 
-        // Vérifie si l'offre est en favori
         $estFavori = false;
         if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'etudiant') {
             require_once __DIR__ . '/../modeles/favoris_modele.php';
@@ -89,9 +88,8 @@ class OffresControleur {
         require __DIR__ . '/../vues/fiche_offre_vue.php';
     }
 
-    // FORMULAIRE CRÉATION — admin et pilote seulement
+
     public function create() {
-        // $this->verifierRole(['admin', 'pilote']);
 
         $modele      = new OffresModele($this->pdo);
         $entreprises = $modele->getEntreprises();
@@ -100,9 +98,8 @@ class OffresControleur {
         require __DIR__ . '/../vues/offre_form_vue.php';
     }
 
-    // TRAITEMENT CRÉATION — admin et pilote seulement
+
     public function store() {
-        // $this->verifierRole(['admin', 'pilote']);
 
         $modele = new OffresModele($this->pdo);
 
@@ -123,7 +120,6 @@ class OffresControleur {
         exit;
     }
 
-    // FORMULAIRE MODIFICATION — admin et pilote seulement
     public function edit() {
         $this->verifierRole(['admin', 'pilote']);
 
@@ -143,7 +139,6 @@ class OffresControleur {
         require __DIR__ . '/../vues/offre_form_vue.php';
     }
 
-    // TRAITEMENT MODIFICATION — admin et pilote seulement
     public function update() {
         $this->verifierRole(['admin', 'pilote']);
 
@@ -167,9 +162,9 @@ class OffresControleur {
         exit;
     }
 
-    // SUPPRESSION — admin seulement
+
     public function delete() {
-        $this->verifierRole(['admin', 'pilote']); // ← ajoute pilote
+        $this->verifierRole(['admin', 'pilote']); 
         
         $id     = $_GET['id'] ?? null;
         $modele = new OffresModele($this->pdo);

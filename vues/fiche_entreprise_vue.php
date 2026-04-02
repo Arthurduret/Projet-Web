@@ -13,19 +13,15 @@
 
     <main class="fiche-offre-main">
 
-        <!-- Bouton retour -->
         <a href="/index.php?page=entreprises" class="btn-retour">← Retour aux entreprises</a>
 
-        <!-- BANNIÈRE -->
         <div class="entreprise-banniere">
             <img src="/images/entreprises/fond/<?= htmlspecialchars($entreprise['image_fond']) ?>"
                 alt="Fond <?= htmlspecialchars($entreprise['nom']) ?>">
         </div>
 
-        <!-- BLOC INFOS avec logo qui chevauche -->
         <section class="bloc-infos-full entreprise-bloc-infos">
             
-            <!-- GAUCHE : logo + nom -->
             <div class="fiche-header" style="margin-bottom:0;">
                 <div class="fiche-logo entreprise-logo-chevauchant">
                     <img src="/images/entreprises/logo/<?= htmlspecialchars($entreprise['image_logo']) ?>"
@@ -37,7 +33,6 @@
                 </div>
             </div>
 
-            <!-- DROITE : email + tel -->
             <div class="tags">
                 <?php if (!empty($entreprise['email'])): ?>
                     <span>✉️ <?= htmlspecialchars($entreprise['email']) ?></span>
@@ -45,7 +40,6 @@
                 <?php if (!empty($entreprise['tel'])): ?>
                     <span>📞 <?= htmlspecialchars($entreprise['tel']) ?></span>
                 <?php endif; ?>
-                <!-- NOTE MOYENNE -->
                 <div class="entreprise-note">
                     <?php if ($moyenne_eval): ?>
                         <span class="moyenne-badge">
@@ -64,10 +58,8 @@
             </div>
 
         </section>
-        <!-- LAYOUT BAS -->
         <div class="fiche-offre-container">
 
-            <!-- COLONNE GAUCHE -->
             <div class="fiche-offre-gauche">
                 <section class="bloc">
                     <h2>À propos</h2>
@@ -77,7 +69,6 @@
                 </section>
             </div>
 
-            <!-- COLONNE DROITE -->
             <aside class="fiche-offre-droite">
 
                 <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['role'], ['admin', 'pilote'])): ?>
@@ -101,7 +92,6 @@
         </div>
 
     </main>
-    <!-- POPUP ÉVALUATION -->
     <?php if (isset($_SESSION['user']) && in_array($_SESSION['user']['role'], ['admin', 'pilote'])): ?>
     <div id="popup-evaluation" class="popup-overlay" style="display:none;">
         <div class="popup-contenu">

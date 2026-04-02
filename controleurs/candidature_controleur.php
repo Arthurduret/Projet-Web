@@ -35,7 +35,6 @@ class CandidatureControleur {
         $id_offre = (int)($_GET['id'] ?? 0);
         $id_utilisateur = (int)$_SESSION['user']['id_utilisateur'];
 
-        // Chemin vers public/uploads
         $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/candidatures/';
 
         if (!is_dir($uploadDir)) {
@@ -74,7 +73,6 @@ class CandidatureControleur {
         require __DIR__ . '/../vues/candidatures_vue.php';
     }
 
-    // --- Fonctions privées ---
 
     private function exigerEtudiant(): void {
         if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'etudiant') {

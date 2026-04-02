@@ -1,1 +1,0 @@
-<!-- Page : pour les pages réservées à l'admin et au pilote (CRUD utilisateurs, gestion des offres côté back-office). -->

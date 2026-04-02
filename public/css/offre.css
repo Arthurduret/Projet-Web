@@ -1,15 +1,11 @@
-/* =============================================
-   OFFRE.CSS — Fiche offre + Fiche entreprise
-   ============================================= */
 
-/* ===== LAYOUT PAGE ===== */
 .fiche-offre-main {
     max-width: 1100px;
     margin: 2rem auto;
     padding: 0 1.5rem;
 }
 
-/* ===== BOUTON RETOUR ===== */
+
 .btn-retour {
     display: inline-block;
     margin-bottom: 1.5rem;
@@ -23,7 +19,7 @@
     color: var(--orange);
 }
 
-/* ===== BLOC INFOS FULL WIDTH ===== */
+
 .bloc-infos-full {
     background: var(--blanc);
     padding: 2.2rem;
@@ -33,7 +29,7 @@
     margin-bottom: 2rem;
 }
 
-/* ===== HEADER FICHE ===== */
+
 .fiche-header {
     display: flex;
     align-items: center;
@@ -66,7 +62,7 @@
     font-size: 1rem;
 }
 
-/* ===== TAGS ===== */
+
 .tags {
     display: flex;
     flex-wrap: wrap;
@@ -83,7 +79,7 @@
     border: 1px solid #dce3ff;
 }
 
-/* ===== LAYOUT BAS ===== */
+
 .fiche-offre-container {
     display: flex;
     gap: 2rem;
@@ -102,7 +98,7 @@
     flex-shrink: 0;
 }
 
-/* ===== BLOCS GAUCHE ===== */
+
 .bloc {
     background: var(--blanc);
     padding: 2rem;
@@ -117,7 +113,7 @@
     color: var(--orange);
 }
 
-/* ===== COMPÉTENCES ===== */
+
 .competences {
     display: flex;
     flex-wrap: wrap;
@@ -133,20 +129,20 @@
     font-weight: 600;
 }
 
-/* ===== DESCRIPTION ===== */
+
 .description {
     line-height: 1.7;
     color: #444;
     font-size: 1rem;
 }
 
-/* ===== DATE ===== */
+
 .date {
     font-size: 0.85rem;
     color: #888;
 }
 
-/* ===== BOUTONS SIDEBAR ===== */
+
 .btn-postuler {
     display: block;
     background: var(--bleu-fonce);
@@ -195,7 +191,7 @@
     color: var(--blanc);
 }
 
-/* ===== ENCART ENTREPRISE ===== */
+
 .encart-entreprise {
     background: var(--blanc);
     padding: 1.5rem;
@@ -219,7 +215,7 @@
     text-decoration: underline;
 }
 
-/* ===== BANNIÈRE ENTREPRISE ===== */
+
 .entreprise-banniere {
     width: 100%;
     height: 220px;
@@ -257,7 +253,7 @@
     flex-shrink: 0;
 }
 
-/* ===== IMAGES PREVIEW FORMULAIRE ===== */
+
 .form-group img {
     max-height: 80px;
     max-width: 200px;
@@ -270,8 +266,7 @@
     margin: 0 auto 0.5rem auto;
 }
 
-/* ===== NOTE MOYENNE ===== */
-/* ===== NOTE MOYENNE ===== */
+
 .entreprise-note {
     display: flex;
     align-items: center;
@@ -434,7 +429,6 @@
 .btn-soumettre-eval:hover {
     background: var(--orange);
 }
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .fiche-offre-container {
         flex-direction: column;
@@ -449,12 +443,10 @@
     }
 }
 
-/* --- SECTION MES CANDIDATURES --- */
 
-/* Le conteneur qui empile le CV et la Lettre */
 .candidature-fichiers {
     display: flex;
-    flex-direction: column; /* Force l'un en dessous de l'autre */
-    gap: 12px;             /* Espace entre les deux badges */
-    margin-top: 15px;      /* Décolle du nom de l'entreprise */
+    flex-direction: column; 
+    gap: 12px;             
+    margin-top: 15px;     
 }

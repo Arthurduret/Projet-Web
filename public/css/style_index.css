@@ -1,8 +1,4 @@
-/* =============================================
-   STYLE_INDEX.CSS — Page d'accueil uniquement
-   ============================================= */
 
-/* ===== SECTION HERO ===== */
 .Hero {
     position: relative;
     height: 450px;
@@ -26,7 +22,7 @@
     filter: brightness(60%);
 }
 
-/* ===== CONTENU HERO ===== */
+
 .content-wrapper {
     width: 100%;
     text-align: center;
@@ -37,7 +33,7 @@
     justify-content: center;
 }
 
-/* ===== BARRE DE RECHERCHE ACCUEIL ===== */
+
 .search-bar {
     display: flex;
     align-items: center;
@@ -88,7 +84,7 @@
     font-style: italic;
 }
 
-/* ===== BOUTON LOUPE ===== */
+
 .btn-search {
     background: none;
     border: none;
@@ -105,7 +101,7 @@
     transform: scale(1.15);
 }
 
-/* ===== SECTION ENTREPRISES ACCUEIL ===== */
+
 .header-entreprise h1 {
     text-align: left;
     margin-left: 12%;
@@ -116,12 +112,12 @@
     flex-wrap: wrap;
     gap: 3rem;
     justify-content: center;
-    margin-bottom: 3rem; /* ← ajoute cette ligne */
+    margin-bottom: 3rem; 
 }
 
-/* ===== RESPONSIVE ===== */
+
 @media (max-width: 768px) {
-    /* Cache l'image hero sur mobile */
+
     .Hero > div:first-child {
         display: none;
     }
@@ -151,28 +147,28 @@
 
     .search-bar .input-group {
         width: 100%;
-        padding: 1rem 1.5rem; /* ← même padding des deux côtés */
+        padding: 1rem 1.5rem; 
         border-right: none;
         border-bottom: 1px solid #e0e0e0;
         margin-right: 0;
         margin-top: 0;
-        text-align: left; /* ← aligne à gauche */
+        text-align: left; 
     }
 
     .search-bar .input-group label {
-        font-size: 0.85rem; /* ← plus petit */
+        font-size: 0.85rem; 
         font-weight: 700;
         color: var(--bleu-fonce);
         text-transform: uppercase;
         letter-spacing: 0.05em;
         margin-bottom: 0.3rem;
-        display: block; /* ← force le label sur sa propre ligne */
+        display: block; 
     }
 
     .search-bar .input-group input {
         font-size: 1rem;
         color: #333;
-        display: block; /* ← force l'input sur sa propre ligne */
+        display: block;
         width: 100%;
     }
 

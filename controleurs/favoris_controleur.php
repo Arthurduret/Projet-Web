@@ -9,9 +9,7 @@ class FavorisControleur {
         $this->pdo = $pdo;
     }
 
-    // -----------------------------------------------
-    // Vérifie que l'utilisateur est connecté en tant qu'étudiant
-    // -----------------------------------------------
+
     private function verifierEtudiant() {
         if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'etudiant') {
             header('Location: /index.php?page=auth&action=identifier');
@@ -19,10 +17,7 @@ class FavorisControleur {
         }
     }
 
-    // -----------------------------------------------
-    // PAGE FAVORIS — liste des offres sauvegardées
-    // URL : ?page=favoris
-    // -----------------------------------------------
+
     public function index() {
         $this->verifierEtudiant();
 
@@ -33,10 +28,7 @@ class FavorisControleur {
         require __DIR__ . '/../vues/favoris_vue.php';
     }
 
-    // -----------------------------------------------
-    // TOGGLE FAVORI — ajoute ou retire selon l'état
-    // URL : ?page=favoris&action=toggle&id=3
-    // -----------------------------------------------
+
     public function toggle() {
         $this->verifierEtudiant();
 
@@ -53,7 +45,6 @@ class FavorisControleur {
             $estFavori = true;
         }
 
-        // Si requête AJAX → retourne JSON
         if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && 
             strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
             header('Content-Type: application/json');
@@ -61,7 +52,6 @@ class FavorisControleur {
             exit;
         }
 
-        // Sinon → redirection classique
         $retour = $_SERVER['HTTP_REFERER'] ?? '/index.php?page=favoris';
         header('Location: ' . $retour);
         exit;
