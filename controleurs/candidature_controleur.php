@@ -72,7 +72,16 @@ class CandidatureControleur {
         $candidatures = $this->modele->getCandidaturesParUtilisateur($id_utilisateur);
         require __DIR__ . '/../vues/candidatures_vue.php';
     }
+    
+    public function candidaturesPilote(): void {
+        if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], ['pilote', 'admin'])) {
+            header('Location: /index.php?page=auth&action=connexion');
+            exit;
+        }
 
+        $candidatures = $this->modele->getCandidaturesPilote();
+        require __DIR__ . '/../vues/candidatures_pilote_vue.php';
+    }
 
     private function exigerEtudiant(): void {
         if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'etudiant') {

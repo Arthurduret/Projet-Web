@@ -78,5 +78,24 @@ class CandidatureModele {
         ]);
         return $stmt->fetchColumn() > 0;
     }
+
+    public function getCandidaturesPilote() {
+        $stmt = $this->pdo->prepare("
+            SELECT candidature.*, 
+                offre.titre AS titre_offre,
+                entreprise.nom AS nom_entreprise,
+                utilisateur.nom AS nom_etudiant,
+                utilisateur.prenom AS prenom_etudiant,
+                utilisateur.email AS email_etudiant
+            FROM candidature
+            JOIN offre ON candidature.id_offre = offre.id_offre
+            JOIN entreprise ON offre.id_entreprise = entreprise.id_entreprise
+            JOIN utilisateur ON candidature.id_utilisateur = utilisateur.id_utilisateur
+            ORDER BY offre.titre, utilisateur.nom
+        ");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }    
+
 }
 ?>

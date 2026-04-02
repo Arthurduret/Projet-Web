@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jobeo.local/sitemap.xml
+
+Disallow: /index.php?page=auth
+Disallow: /index.php?page=admin
+Disallow: /index.php?page=favoris
+Disallow: /index.php?page=candidature
