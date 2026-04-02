@@ -9,7 +9,7 @@ header {
     width: 100%;
     font-style: italic;
 
-    position: fixed; /* reste en haut */
+    position: sticky; /* reste en haut */
     /* top: 0;           collé en haut */
     z-index: 100;     /* passe au-dessus du contenu */
 }
