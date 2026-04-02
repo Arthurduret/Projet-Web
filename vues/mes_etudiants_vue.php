@@ -14,7 +14,7 @@
 
     <main>
 
-        <!-- ===== BARRE DE RECHERCHE ===== -->
+        <!--  BARRE DE RECHERCHE  -->
         <section class="recherche-offres">
             <form action="/index.php" method="GET">
                 <input type="hidden" name="page" value="etudiants">
@@ -34,7 +34,7 @@
             </form>
         </section>
 
-        <!-- ===== LISTE DES ÉTUDIANTS ===== -->
+        <!--  LISTE DES ÉTUDIANTS  -->
         <section class="liste-offres">
 
             <p class="nb-resultats">
