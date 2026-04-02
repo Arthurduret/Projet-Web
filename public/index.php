@@ -2,6 +2,14 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+// Configuration sécurisée des cookies de session
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path'     => '/',
+    'secure'   => true,    // HTTPS uniquement
+    'httponly' => true,    // Inaccessible en JavaScript
+    'samesite' => 'Strict' // Protection CSRF
+]);
 session_start();
 require_once __DIR__ . '/../db.php';
 require_once __DIR__ . '/../helper/csrf.php';
