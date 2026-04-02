@@ -45,6 +45,42 @@ class UtilisateurModele
         return $stmt->fetchAll();
     }
 
+    public function findAllEtudiants(string $search = ''): array
+    {
+        $sql = "SELECT * FROM utilisateur WHERE role = 'etudiant'";
+
+        if (!empty($search)) {
+            $sql .= " AND (nom LIKE :search OR prenom LIKE :search OR email LIKE :search)";
+        }
+
+        $stmt = $this->pdo->prepare($sql);
+
+        if (!empty($search)) {
+            $stmt->bindValue(':search', '%' . $search . '%');
+        }
+
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public function findAllPilotes(string $search = ''): array
+{
+    $sql = "SELECT * FROM utilisateur WHERE role = 'pilote'";
+
+    if (!empty($search)) {
+        $sql .= " AND (nom LIKE :search OR prenom LIKE :search OR email LIKE :search)";
+    }
+
+    $stmt = $this->pdo->prepare($sql);
+
+    if (!empty($search)) {
+        $stmt->bindValue(':search', '%' . $search . '%');
+    }
+
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
     public function findById(int $id): array|false
     {
         $stmt = $this->pdo->prepare("SELECT * FROM utilisateur WHERE id_utilisateur = :id");

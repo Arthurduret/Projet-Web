@@ -91,6 +91,22 @@ class CandidatureControleur {
         require __DIR__ . '/../vues/candidatures_vue.php';
     }
 
+    public function candidaturesPilote(): void {
+        if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], ['pilote', 'admin'])) {
+            header('Location: /index.php?page=accueil');
+            exit;
+        }
+
+        $search    = $_GET['search'] ?? '';
+        $id_pilote = (int)$_SESSION['user']['id_utilisateur'];
+        $role      = $_SESSION['user']['role'];
+
+        $candidatures = $this->modele->getCandidaturesByPilote($id_pilote, $role, $search);
+        $total        = count($candidatures);
+
+        require __DIR__ . '/../vues/candidatures_etudiants_vue.php';
+    }
+
     // ── Helpers ──────────────────────────────────────────────────
 
     private function exigerEtudiant(): void {

@@ -24,12 +24,16 @@ class EtudiantsControleur
     {
         $this->verifierPilote();
 
-        $search    = $_GET['search'] ?? '';
-        $id_pilote = $_SESSION['user']['id_utilisateur'];
+        $search = $_GET['search'] ?? '';
 
-        $etudiants = $this->modele->findEtudiantsByPilote($id_pilote, $search);
-        $total     = count($etudiants);
+        if ($_SESSION['user']['role'] === 'admin') {
+            $etudiants = $this->modele->findAllEtudiants($search);
+        } else {
+            $id_pilote = $_SESSION['user']['id_utilisateur'];
+            $etudiants = $this->modele->findEtudiantsByPilote($id_pilote, $search);
+        }
 
+        $total = count($etudiants);
         require __DIR__ . '/../vues/mes_etudiants_vue.php';
     }
 
