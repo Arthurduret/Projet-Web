@@ -1,4 +1,6 @@
 <?php
+
+
 require_once __DIR__ . '/../modeles/offres_emplois_modele.php';
 
 class OffresControleur {
@@ -51,6 +53,11 @@ class OffresControleur {
             $favoris_ids   = array_column($favoris, 'id_offre');
         }
 
+
+        $meta_title       = "Jobeo | Offres de stage";
+        $meta_description = "Recherchez parmi nos offres de stage en région PACA. Filtrez par compétence, salaire, localisation et date.";
+        $meta_keywords    = "offres de stage, stage informatique, stage PACA, stage Marseille, stage développeur";
+
         require __DIR__ . '/../vues/offres_emplois_vue.php';
     }
 
@@ -84,6 +91,11 @@ class OffresControleur {
             $favorisModele = new FavorisModele($this->pdo);
             $estFavori = $favorisModele->estFavori($_SESSION['user']['id_utilisateur'], $id);
         }
+
+        $meta_title       = "Jobeo | " . htmlspecialchars($offre['titre']) . " — " . htmlspecialchars($offre['nom_entreprise']);
+        $meta_description = "Stage " . htmlspecialchars($offre['titre']) . " chez " . htmlspecialchars($offre['nom_entreprise']) . " — " . htmlspecialchars($offre['localisation']) . ". Durée : " . htmlspecialchars($offre['duree']) . " mois.";
+        $meta_keywords    = "stage " . htmlspecialchars($offre['titre']) . ", " . htmlspecialchars($offre['nom_entreprise']) . ", stage " . htmlspecialchars($offre['localisation']);    
+
 
         require __DIR__ . '/../vues/fiche_offre_vue.php';
     }

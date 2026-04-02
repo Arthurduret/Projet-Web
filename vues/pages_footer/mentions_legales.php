@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php
+    $meta_title       = "Jobeo | Mentions Légales";
+    $meta_description = "Mentions légales de la plateforme Jobeo — informations sur l'éditeur, l'hébergeur et vos droits.";
+    $meta_keywords    = "mentions légales, RGPD, données personnelles, Jobeo";
+    ?>
     <link rel="stylesheet" href="/css/style_global.css">
     <link rel="stylesheet" href="/css/header_footer.css">
     <link rel="stylesheet" href="/css/legal.css">

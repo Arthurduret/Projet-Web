@@ -16,6 +16,11 @@ class AuthControleur
     public function connexion(): void
     {
         $email = $_GET['email'] ?? '';
+
+        $meta_title       = "Jobeo | Connexion";
+        $meta_description = "Connectez-vous à votre espace Jobeo pour accéder aux offres de stage et gérer vos candidatures.";
+        $meta_keywords    = "connexion Jobeo, espace étudiant, espace pilote";
+
         require __DIR__ . '/../vues/connexion_vue.php';
     }
 
@@ -50,6 +55,11 @@ class AuthControleur
 
         $email = $_GET['email'] ?? '';
         $role  = $_GET['role']  ?? 'etudiant';
+
+        $meta_title       = "Jobeo | Créer un compte";
+        $meta_description = "Créez votre compte Jobeo pour postuler aux offres de stage et gérer votre wishlist.";
+        $meta_keywords    = "inscription Jobeo, créer compte étudiant, rejoindre Jobeo";
+
         require __DIR__ . '/../vues/inscription_etudiant_vue.php';
     }
 

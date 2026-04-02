@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php
+    $meta_title       = "Jobeo | Conditions Générales d'Utilisation";
+    $meta_description = "Conditions générales d'utilisation de la plateforme Jobeo.";
+    $meta_keywords    = "CGU, conditions utilisation, règles Jobeo";
+    ?>
     <link rel="stylesheet" href="/css/style_global.css">
     <link rel="stylesheet" href="/css/header_footer.css">
     <link rel="stylesheet" href="/css/legal.css">

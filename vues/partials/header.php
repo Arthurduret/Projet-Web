@@ -1,3 +1,22 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title><?= htmlspecialchars($meta_title ?? 'Jobeo | Plateforme de stages') ?></title>
+    <meta name="description" content="<?= htmlspecialchars($meta_description ?? 'Jobeo — Trouvez votre stage idéal parmi nos offres en région PACA.') ?>">
+    <meta name="keywords" content="<?= htmlspecialchars($meta_keywords ?? 'stage, alternance, emploi, CESI, PACA, Marseille') ?>">
+    <meta name="author" content="Web4All">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="<?= htmlspecialchars($meta_title ?? 'Jobeo | Plateforme de stages') ?>">
+    <meta property="og:description" content="<?= htmlspecialchars($meta_description ?? 'Jobeo — Trouvez votre stage idéal parmi nos offres en région PACA.') ?>">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jobeo.local<?= htmlspecialchars($_SERVER['REQUEST_URI']) ?>">
+    <meta property="og:site_name" content="Jobeo">
+</head>
+
 <header>
 
     <a href="/index.php" class="logo">

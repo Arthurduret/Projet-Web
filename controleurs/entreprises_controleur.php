@@ -22,6 +22,11 @@ class EntrepriseControleur {
         }
 
         $nb_entreprises = count($entreprises);
+
+        $meta_title       = "Jobeo | Nos Entreprises partenaires";
+        $meta_description = "Découvrez les entreprises partenaires de Jobeo qui recrutent des stagiaires CESI en région PACA.";
+        $meta_keywords    = "entreprises stage, partenaires CESI, recrutement stagiaire PACA, entreprise Marseille";
+
         require __DIR__ . '/../vues/entreprises_vue.php';
     }
 
@@ -108,6 +113,10 @@ class EntrepriseControleur {
             $ma_note = $evaluation['note'] ?? null;
         }
 
+        $meta_title       = "Jobeo | " . htmlspecialchars($entreprise['nom']);
+        $meta_description = "Découvrez " . htmlspecialchars($entreprise['nom']) . " — " . mb_substr(strip_tags($entreprise['description']), 0, 150) . "...";
+        $meta_keywords    = "stage " . htmlspecialchars($entreprise['nom']) . ", entreprise partenaire CESI";
+                
         require __DIR__ . '/../vues/fiche_entreprise_vue.php';
     }
 

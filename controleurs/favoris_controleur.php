@@ -25,6 +25,10 @@ class FavorisControleur {
         $favoris    = $modele->getFavoris($_SESSION['user']['id_utilisateur']);
         $nb_favoris = count($favoris);
 
+        $meta_title       = "Jobeo | Mes Favoris";
+        $meta_description = "Retrouvez toutes les offres de stage que vous avez ajoutées à votre wishlist.";
+        $meta_keywords    = "favoris, wishlist stage, offres sauvegardées";
+
         require __DIR__ . '/../vues/favoris_vue.php';
     }
 

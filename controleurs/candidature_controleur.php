@@ -70,9 +70,14 @@ class CandidatureControleur {
         $this->exigerEtudiant();
         $id_utilisateur = (int)$_SESSION['user']['id_utilisateur'];
         $candidatures = $this->modele->getCandidaturesParUtilisateur($id_utilisateur);
+
+        $meta_title       = "Jobeo | Mes Candidatures";
+        $meta_description = "Suivez l'état de vos candidatures aux offres de stage sur Jobeo.";
+        $meta_keywords    = "candidatures, postuler stage, suivi candidature";
+                
         require __DIR__ . '/../vues/candidatures_vue.php';
     }
-    
+
     public function candidaturesPilote(): void {
         if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], ['pilote', 'admin'])) {
             header('Location: /index.php?page=auth&action=connexion');
