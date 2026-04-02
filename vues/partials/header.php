@@ -53,7 +53,7 @@
                     <a href="/index.php?page=pilotes">Les Pilotes</a>
                 <?php endif; ?>
                 <?php if ($_SESSION['user']['role'] === 'etudiant'): ?>
-                        <a href="/index.php?page=candidature&action=index">Mes Candidatures</a>
+                        <a href="/index.php?page=candidature&action=index">Candidatures</a>
                 <?php endif; ?>
 
                     <a href="/index.php?page=auth&action=deconnexion">Déconnexion</a>
