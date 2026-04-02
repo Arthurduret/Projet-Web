@@ -20,8 +20,14 @@
             <h2>Éditeur du site</h2>
             <p>Jobeo</p>
 
-            <h2>Statut</h2>
-            <p>Particulier</p>
+            <h2>Forme Juridique</h2>
+            <p>SAS</p>
+
+            <h2>Numero SIRET</h2>
+            <p>99373633900017</p>
+
+            <h2>Capital Social</h2>
+            <p>300,00 €</p>
 
             <h2>Adresse</h2>
             <p>CESI Aix-en-Provence<br>Campus d'Aix-en-Provence
