@@ -12,52 +12,39 @@
 </head>
 <body>
     <?php include __DIR__ . '/../../vues/partials/header.php'; ?> 
+    
     <main>
         <div class="pages_footer">
-            <h1> Mentions Légales</h1>
-            <div class="mentions">
-                <h2>
-                    Éditeur du site :
-                </h2>
-                <p>
-                    Jobeo 
-                </p>
-            </div>
-            <div class="mentions">
-                <h2>
-                    Statut : 
-                </h2>
-                <p>
-                    Particuliers 
-                </p>
-                </div>
-                <div class="mentions">
-                <h2>
-                    Siège social :
-                </h2>
-                <p>
-                    CESI
-                </p>
-                </div>
-                <div class="mentions">
-                <h2>
-                    Directeur de la publication : 
-                </h2>  
-                <p>
-                    Lavignac, Duret, Ceccaldi, Couliard
-                </p>
-                </div>
-                <div class="mentions">
-                <h2>
-                    Hébergement :
-                </h2>
-                <p>
-                    Le site est hébergé par OVH.
-                </p>
-                </div>
+            <h1>Mentions Légales</h1>
+
+            <h2>Éditeur du site</h2>
+            <p>Jobeo</p>
+
+            <h2>Statut</h2>
+            <p>Particulier</p>
+
+            <h2>Adresse</h2>
+            <p>CESI Aix-en-Provence<br>Campus d'Aix-en-Provence
+            <br>390 Rue Claude Nicolas Ledoux
+            <br>13100 Aix-en-Provence</p>
+
+            <h2>Email de contact</h2>
+            <p>administration@jobeo.fr</p>
+
+            <h2>Directeur de la publication</h2>  
+            <p>Lavignac, Duret, Ceccaldi, Couliard</p>
+
+            <h2>Hébergement</h2>
+            <p>
+                OVHcloud<br>
+                SAS OVHcloud<br>
+                2 rue Kellermann<br>
+                59100 Roubaix – France<br>
+                Téléphone : 1007
+            </p>
         </div>
     </main>    
+
     <?php include __DIR__ . '/../../vues/partials/footer.php'; ?> 
 </body>
 </html>
-
