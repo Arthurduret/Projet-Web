@@ -11,56 +11,42 @@ class CandidatureControleur {
         $this->modele = new CandidatureModele($pdo);
     }
 
-    // ── GET : affiche le formulaire ──────────────────────────────
     public function create(): void {
         $this->exigerEtudiant();
-
         $id_offre = (int)($_GET['id'] ?? 0);
+        
         if (!$id_offre) {
             header('Location: /index.php?page=offres_emplois');
             exit;
         }
 
         $id_utilisateur = (int)$_SESSION['user']['id_utilisateur'];
+        $erreur = $succes = null;
 
         if ($this->modele->dejaCandidature($id_offre, $id_utilisateur)) {
             $erreur = "Vous avez déjà postulé à cette offre.";
-            require __DIR__ . '/../vues/postuler_offre_vue.php';
-            return;
         }
 
-        $erreur = $succes = null;
         require __DIR__ . '/../vues/postuler_offre_vue.php';
     }
 
-    // ── POST : traite le formulaire ──────────────────────────────
     public function store(): void {
         $this->exigerEtudiant();
-
-        $id_offre       = (int)($_GET['id'] ?? 0);
+        $id_offre = (int)($_GET['id'] ?? 0);
         $id_utilisateur = (int)$_SESSION['user']['id_utilisateur'];
 
-        if (!$id_offre) {
-            header('Location: /index.php?page=offres_emplois');
-            exit;
-        }
+        // Chemin vers public/uploads
+        $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/uploads/candidatures/';
 
-        if ($this->modele->dejaCandidature($id_offre, $id_utilisateur)) {
-            $erreur = "Vous avez déjà postulé à cette offre.";
-            require __DIR__ . '/../vues/postuler_offre_vue.php';
-            return;
-        }
-
-        $uploadDir = __DIR__ . '/../../public/uploads/candidatures/';
         if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0755, true);
+            mkdir($uploadDir, 0777, true);
         }
 
-        $cv     = $this->uploadFichier('cv',                $uploadDir);
+        $cv     = $this->uploadFichier('cv', $uploadDir);
         $lettre = $this->uploadFichier('lettre_motivation', $uploadDir);
 
         if (!$cv || !$lettre) {
-            $erreur = "Erreur lors de l'envoi des fichiers. Formats acceptés : jpg, jpeg, png, gif, pdf.";
+            $erreur = "Erreur : formats acceptés PDF, Word, Images, TXT.";
             require __DIR__ . '/../vues/postuler_offre_vue.php';
             return;
         }
@@ -69,45 +55,26 @@ class CandidatureControleur {
             'id_offre'          => $id_offre,
             'id_utilisateur'    => $id_utilisateur,
             'cv'                => $cv,
-            'lettre_motivation' => $lettre,
+            'lettre_motivation' => $lettre
         ];
 
-        // On remplace le message de succès par la redirection vers "Mes Postulations"
         if ($this->modele->creerCandidature($donnees)) {
             header('Location: /index.php?page=candidature&action=index');
             exit;
         } else {
-            $erreur = "Une erreur est survenue en base de données. Veuillez réessayer.";
+            $erreur = "Erreur lors de l'enregistrement.";
             require __DIR__ . '/../vues/postuler_offre_vue.php';
         }
     }
 
-    // ── Mes candidatures ─────────────────────────────────────────
     public function index(): void {
         $this->exigerEtudiant();
-
         $id_utilisateur = (int)$_SESSION['user']['id_utilisateur'];
-        $candidatures   = $this->modele->getCandidaturesParUtilisateur($id_utilisateur);
+        $candidatures = $this->modele->getCandidaturesParUtilisateur($id_utilisateur);
         require __DIR__ . '/../vues/candidatures_vue.php';
     }
 
-    public function candidaturesPilote(): void {
-        if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], ['pilote', 'admin'])) {
-            header('Location: /index.php?page=accueil');
-            exit;
-        }
-
-        $search    = $_GET['search'] ?? '';
-        $id_pilote = (int)$_SESSION['user']['id_utilisateur'];
-        $role      = $_SESSION['user']['role'];
-
-        $candidatures = $this->modele->getCandidaturesByPilote($id_pilote, $role, $search);
-        $total        = count($candidatures);
-
-        require __DIR__ . '/../vues/candidatures_etudiants_vue.php';
-    }
-
-    // ── Helpers ──────────────────────────────────────────────────
+    // --- Fonctions privées ---
 
     private function exigerEtudiant(): void {
         if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'etudiant') {
@@ -116,21 +83,24 @@ class CandidatureControleur {
         }
     }
 
-    private function uploadFichier(string $champ, string $dir): ?string {
-        if (empty($_FILES[$champ]['name']) || $_FILES[$champ]['error'] !== UPLOAD_ERR_OK) {
+    private function uploadFichier(string $nomChamp, string $destination): ?string {
+        if (empty($_FILES[$nomChamp]['name']) || $_FILES[$nomChamp]['error'] !== UPLOAD_ERR_OK) {
             return null;
         }
 
-        $ext       = strtolower(pathinfo($_FILES[$champ]['name'], PATHINFO_EXTENSION));
-        $autorises = ['jpg', 'jpeg', 'png', 'gif', 'pdf'];
+        $extension = strtolower(pathinfo($_FILES[$nomChamp]['name'], PATHINFO_EXTENSION));
+        $autorises = ['pdf', 'jpg', 'jpeg', 'png', 'doc', 'docx', 'txt', 'odt'];
 
-        if (!in_array($ext, $autorises)) {
+        if (!in_array($extension, $autorises)) {
             return null;
         }
 
-        $nomFichier = uniqid($champ . '_') . '.' . $ext;
-        move_uploaded_file($_FILES[$champ]['tmp_name'], $dir . $nomFichier);
+        $nouveauNom = $nomChamp . '_' . uniqid() . '.' . $extension;
 
-        return $nomFichier;
+        if (move_uploaded_file($_FILES[$nomChamp]['tmp_name'], $destination . $nouveauNom)) {
+            return $nouveauNom;
+        }
+
+        return null;
     }
 }

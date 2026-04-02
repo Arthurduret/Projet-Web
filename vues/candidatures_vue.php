@@ -49,7 +49,7 @@
                             <div class="candidature-fichiers">
                                 <?php if (!empty($c['cv'])): ?>
                                     <div class="file-badge-wrapper">
-                                        <a href="\xampp\htdocs<?= trim($c['cv']) ?>" 
+                                        <a href="/uploads/candidatures/<?= trim($c['cv']) ?>?t=<?= time() ?>" 
                                            download="<?= trim($c['cv']) ?>" 
                                            class="tag-candidature">
                                             📄 Télécharger mon CV
@@ -59,7 +59,7 @@
 
                                 <?php if (!empty($c['lettre_motivation'])): ?>
                                     <div class="file-badge-wrapper">
-                                        <a href="\xampp\htdocs<?= trim($c['lettre_motivation']) ?>" 
+                                        <a href="/uploads/candidatures/<?= trim($c['lettre_motivation']) ?>?t=<?= time() ?>" 
                                            download="<?= trim($c['lettre_motivation']) ?>" 
                                            class="tag-candidature">
                                             ✉️ Télécharger ma lettre

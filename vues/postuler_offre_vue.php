@@ -29,19 +29,18 @@
                 <div class="alert-succes"><?= $succes ?></div>
             <?php endif; ?>
 
-            <form action="/index.php?page=candidature&action=store&id=<?= (int)$id_offre ?>"method="POST" enctype="multipart/form-data">
+            <form action="/index.php?page=candidature&action=store&id=<?= (int)$id_offre ?>" method="POST" enctype="multipart/form-data">
 
-                <!-- CV -->
                 <div class="input-group">
-                    <label>CV </label>
-                    <input type="file" name="cv" accept="image/*, .pdf, .doc, .docx, .txt" " required>
+                    <label>CV (PDF, Image, Word...)</label>
+                    <input type="file" name="cv" accept="image/*, .pdf, .doc, .docx, .txt" required>
                 </div>
 
-                <!-- Lettre de motivation -->
                 <div class="input-group">
-                    <label>Lettre de motivation</label>
+                    <label>Lettre de motivation (PDF, Image, Word...)</label>
                     <input type="file" name="lettre_motivation" accept="image/*, .pdf, .doc, .docx, .txt" required>         
                 </div>
+
                 <button type="submit">Envoyer ma candidature</button>
             </form>
         </div>

@@ -14,15 +14,15 @@ class CandidatureModele {
 }
 
     public function getCandidaturesParUtilisateur(int $id_utilisateur): array {
-        $sql = "SELECT c.*, o.titre, e.nom AS nom_entreprise
-                FROM candidature c
-                JOIN offre o          ON c.id_offre       = o.id_offre
-                JOIN entreprise e     ON o.id_entreprise  = e.id_entreprise
-                WHERE c.id_utilisateur = :id_utilisateur";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute(['id_utilisateur' => $id_utilisateur]);
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    $sql = "SELECT c.*, o.titre, e.nom AS nom_entreprise
+            FROM candidature c
+            JOIN offre o ON c.id_offre = o.id_offre
+            JOIN entreprise e ON o.id_entreprise = e.id_entreprise
+            WHERE c.id_utilisateur = :id_utilisateur";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute(['id_utilisateur' => $id_utilisateur]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
     public function getCandidaturesByPilote(int $id_pilote, string $role, string $search = ''): array {
         $sql = "
