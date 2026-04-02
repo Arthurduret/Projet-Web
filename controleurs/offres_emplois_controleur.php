@@ -71,6 +71,13 @@ class OffresControleur {
             exit;
         }
 
+        // Récupère le nombre de candidatures
+        $stmt = $this->pdo->prepare("
+            SELECT COUNT(*) FROM candidature WHERE id_offre = :id
+        ");
+        $stmt->execute([':id' => $id]);
+        $nb_candidatures = $stmt->fetchColumn();
+
         // Vérifie si l'offre est en favori
         $estFavori = false;
         if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'etudiant') {

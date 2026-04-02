@@ -41,6 +41,7 @@
                 <?php endif; ?>
                 <span>⏱ <?php echo htmlspecialchars($offre['duree']); ?> mois</span>
                 <span>💶 <?php echo htmlspecialchars($offre['salaire']); ?> €/mois</span>
+                <span>👥 <?= $nb_candidatures ?> candidature<?= $nb_candidatures > 1 ? 's' : '' ?></span>
             </div>
 
         </section>

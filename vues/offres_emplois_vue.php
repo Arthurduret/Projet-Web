@@ -161,6 +161,7 @@
                                 <span>📍 <?= htmlspecialchars($offre['localisation']) ?></span>
                                 <span>⏱ <?= htmlspecialchars($offre['duree']) ?> mois</span>
                                 <span>💶 <?= htmlspecialchars($offre['salaire']) ?> €</span>
+                                <span>👥 <?= $offre['nb_candidatures'] ?? 0 ?> candidature<?= ($offre['nb_candidatures'] ?? 0) > 1 ? 's' : '' ?></span>
                             </div>
 
                             <?php if (!empty($offre['competences'])): ?>
