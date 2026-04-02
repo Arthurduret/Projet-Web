@@ -167,7 +167,7 @@
 
         function cbAccepter() {
             const expires = new Date(Date.now() + 365*24*60*60*1000).toUTCString();
-            document.cookie = "cookies_jobeo=1; path=/; expires=" + expires + "; samesite=strict";
+            document.cookie = "cookies_jobeo=1; path=/; expires=" + expires + "; samesite=strict; secure";
             const b = document.getElementById('cookie-banner');
             b.innerHTML = '<p style="color:#fff;text-align:center;padding:1.5rem 0;font-size:16px;font-weight:500">Merci ! Bonne Visite !</p>';
             setTimeout(() => document.getElementById('cookie-overlay').style.display = 'none', 2000);
@@ -175,7 +175,7 @@
 
         function cbRefuser() {
             const expires = new Date(Date.now() + 365*24*60*60*1000).toUTCString();
-            document.cookie = "cookies_jobeo=0; path=/; expires=" + expires + "; samesite=strict";
+            document.cookie = "cookies_jobeo=0; path=/; expires=" + expires + "; samesite=strict; secure";
             document.getElementById('cookie-overlay').style.display = 'none';
         }
         </script>
