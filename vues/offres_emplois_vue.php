@@ -266,7 +266,7 @@
             .then(res => res.json())
             .then(data => {
                 if (data.favori) {
-                    this.textContent = '❤️';
+                    this.textContent = '🧡';
                     this.classList.add('active');
                 } else {
                     this.textContent = '🤍';

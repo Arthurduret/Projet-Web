@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobeo | Mes Candidatures</title>
+
+    <!-- SEO -->
+    <title><?= htmlspecialchars($meta_title ?? 'Jobeo | Mes Candidatures') ?></title>
+    <meta name="description" content="<?= htmlspecialchars($meta_description ?? 'Suivez l\'état de vos candidatures aux offres de stage sur Jobeo.') ?>">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/jobeo/HeadLogoJobeo.png">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="/css/style_global.css">
     <link rel="stylesheet" href="/css/header_footer.css">
     <link rel="stylesheet" href="/css/offres_emplois.css">
@@ -12,72 +21,71 @@
     <?php include __DIR__ . '/partials/header.php'; ?>
 
     <main>
-        <section class="recherche-offres">
-            <form action="/index.php" method="GET">
-                <input type="hidden" name="page" value="candidature">
-                <div class="search-bar">
-                    <div class="input-group">
-                        <label for="quoi">Quoi ?</label>
-                        <input type="text" name="quoi" id="quoi" placeholder="Titre postulé..." value="<?= htmlspecialchars($quoi ?? ''); ?>">
-                    </div>
-                    <div class="separateur"></div>
-                    <div class="input-group">
-                        <label for="ou">Où ?</label>
-                        <input type="text" name="ou" id="ou" placeholder="Ville..." value="<?= htmlspecialchars($ou ?? ''); ?>">
-                    </div>
-                    <button type="submit" class="btn-search">
-                        <img src="/images/jobeo/LoupeLogo.png" alt="Rechercher">
-                    </button>
-                </div>
-            </form>
-        </section>
 
-        <section class="liste-offres">
-            <h1 class="nb-resultats">Mes candidatures envoyées</h1>
+        <!-- ===== EN-TÊTE ===== -->
+        <section class="liste-offres" aria-labelledby="titre-candidatures">
+
+            <h1 id="titre-candidatures" class="nb-resultats">
+                Mes candidatures envoyées
+                <span style="font-size:1rem; font-weight:400; color:#888;">
+                    (<?= count($candidatures) ?> au total)
+                </span>
+            </h1>
 
             <?php if (empty($candidatures)): ?>
-                <p class="aucun-resultat">Vous n'avez pas encore postulé. <a href="/index.php?page=offres_emplois">Voir les offres.</a></p>
-            <?php else: ?>
+                <p class="aucun-resultat">
+                    Vous n'avez pas encore postulé.
+                    <a href="/index.php?page=offres_emplois">Voir les offres →</a>
+                </p>
 
+            <?php else: ?>
                 <?php foreach ($candidatures as $c): ?>
                     <article class="carte-offre">
 
+                        <!-- CONTENU -->
                         <div class="offre-contenu">
-                            <h2 class="offre-titre"><?= htmlspecialchars($c['titre']); ?></h2>
-                            <p class="offre-entreprise"><?= htmlspecialchars($c['nom_entreprise']); ?></p>
+                            <h2 class="offre-titre">
+                                <?= htmlspecialchars($c['titre']) ?>
+                            </h2>
+                            <p class="offre-entreprise">
+                                <?= htmlspecialchars($c['nom_entreprise']) ?>
+                            </p>
 
-                            <div class="candidature-fichiers">
+                            <!-- Documents téléchargeables -->
+                            <div class="offre-competences" style="margin-top:0.5rem;">
                                 <?php if (!empty($c['cv'])): ?>
-                                    <div class="file-badge-wrapper">
-                                        <a href="/uploads/candidatures/<?= trim($c['cv']) ?>?t=<?= time() ?>" 
-                                           download="<?= trim($c['cv']) ?>" 
-                                           class="tag-candidature">
-                                            📄 Télécharger mon CV
-                                        </a>
-                                    </div>
+                                    <a href="/uploads/candidatures/<?= htmlspecialchars(trim($c['cv'])) ?>"
+                                       download="<?= htmlspecialchars(trim($c['cv'])) ?>"
+                                       class="tag-competence"
+                                       aria-label="Télécharger mon CV">
+                                        📄 Mon CV
+                                    </a>
                                 <?php endif; ?>
 
                                 <?php if (!empty($c['lettre_motivation'])): ?>
-                                    <div class="file-badge-wrapper">
-                                        <a href="/uploads/candidatures/<?= trim($c['lettre_motivation']) ?>?t=<?= time() ?>" 
-                                           download="<?= trim($c['lettre_motivation']) ?>" 
-                                           class="tag-candidature">
-                                            ✉️ Télécharger ma lettre
-                                        </a>
-                                    </div>
+                                    <a href="/uploads/candidatures/<?= htmlspecialchars(trim($c['lettre_motivation'])) ?>"
+                                       download="<?= htmlspecialchars(trim($c['lettre_motivation'])) ?>"
+                                       class="tag-competence"
+                                       aria-label="Télécharger ma lettre de motivation">
+                                        ✉️ Ma lettre de motivation
+                                    </a>
                                 <?php endif; ?>
                             </div>
                         </div>
 
+                        <!-- ACTIONS -->
                         <div class="offre-action">
-                            <a href="/index.php?page=offres_emplois&action=show&id=<?= $c['id_offre']; ?>" class="btn-voir">Voir l'offre</a>
+                            <a href="/index.php?page=offres_emplois&action=show&id=<?= htmlspecialchars((string)$c['id_offre']) ?>"
+                               class="btn-voir">
+                                Voir l'offre
+                            </a>
                             <span class="status-envoye">✔️ Envoyée</span>
                         </div>
 
                     </article>
                 <?php endforeach; ?>
-
             <?php endif; ?>
+
         </section>
     </main>
 

@@ -3,12 +3,15 @@ class AccueilModele {
 
     private $pdo;
 
-    public function __construct($pdo) {
+    public function __construct(PDO $pdo) {
         $this->pdo = $pdo;
     }
 
-
-    public function getEntreprisesAccueil() {
+    // -----------------------------------------------
+    // Récupère 3 entreprises pour la page d'accueil
+    // Ordre aléatoire pour varier l'affichage
+    // -----------------------------------------------
+    public function getEntreprisesAccueil(): array {
         $query = $this->pdo->query("
             SELECT 
                 entreprise.*,
@@ -16,9 +19,11 @@ class AccueilModele {
             FROM entreprise
             LEFT JOIN offre ON offre.id_entreprise = entreprise.id_entreprise
             GROUP BY entreprise.id_entreprise
+            ORDER BY RAND()
             LIMIT 3
         ");
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+
+        return $query ? $query->fetchAll(PDO::FETCH_ASSOC) : [];
     }
 }
 ?>

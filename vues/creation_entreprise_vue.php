@@ -1,78 +1,211 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/png" href="/images/jobeo/HeadLogoJobeo.png">
-    <title>Jobeo | Création d'une entreprise</title>
+    <!-- SEO -->
+    <title><?= htmlspecialchars($meta_title ?? 'Jobeo | ' . (isset($entreprise) ? 'Modifier' : 'Créer') . ' une entreprise') ?></title>
+    <meta name="description" content="<?= htmlspecialchars($meta_description ?? 'Gérez les entreprises partenaires sur la plateforme Jobeo.') ?>">
+    <meta name="robots" content="noindex, nofollow">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/jobeo/HeadLogoJobeo.png">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="/css/style_global.css">
     <link rel="stylesheet" href="/css/header_footer.css">
     <link rel="stylesheet" href="/css/form.css">
 </head>
-
 <body>
     <?php include __DIR__ . '/partials/header.php'; ?>
 
     <main>
-      <div class="login-container">
+        <div class="login-container">
 
-            <a href="#" class="back-link">← Retour</a>
-            <h1>Creation d'une entreprise</h1>
+            <!-- Retour -->
+            <a href="/index.php?page=entreprises" class="back-link">← Retour aux entreprises</a>
 
-            <form class="form-entreprise" action="#" method="POST" enctype="multipart/form-data">
-                
+            <h1><?= isset($entreprise) ? 'Modifier l\'entreprise' : 'Créer une entreprise' ?></h1>
+
+            <!-- Message d'erreur -->
+            <?php if (!empty($_SESSION['erreur'])): ?>
+                <p class="erreur-message" role="alert">
+                    <?= htmlspecialchars($_SESSION['erreur']) ?>
+                    <?php unset($_SESSION['erreur']); ?>
+                </p>
+            <?php endif; ?>
+
+            <form class="form-entreprise"
+                  action="/index.php?page=entreprises&action=<?= isset($entreprise) ? 'update' : 'store' ?>"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  novalidate>
+
+                <?= csrfInput() ?>
+
+                <?php if (isset($entreprise)): ?>
+                    <input type="hidden" name="id_entreprise" value="<?= htmlspecialchars($entreprise['id_entreprise']) ?>">
+                    <input type="hidden" name="image_logo_actuel" value="<?= htmlspecialchars($entreprise['image_logo'] ?? '') ?>">
+                    <input type="hidden" name="image_fond_actuel" value="<?= htmlspecialchars($entreprise['image_fond'] ?? '') ?>">
+                <?php endif; ?>
+
+                <!-- Nom -->
                 <div class="input-group">
-                    <label>Nom</label>
-                    <input id="nom" type="text" name="nom" maxlength="50" placeholder="Nom de l'entreprise" required>
+                    <label for="nom">Nom <span aria-hidden="true">*</span></label>
+                    <input id="nom"
+                           type="text"
+                           name="nom"
+                           maxlength="50"
+                           placeholder="Nom de l'entreprise"
+                           value="<?= htmlspecialchars($entreprise['nom'] ?? Validation::oldValue('nom')) ?>"
+                           required
+                           aria-required="true">
                 </div>
 
+                <!-- Description -->
                 <div class="input-group input-group--commentaire">
-                    <label for="commentaire">Description de l'entreprise</label>
-                    <textarea
-                        id="commentaire"
-                        name="description"
-                        placeholder="Faîtes une description de votre entreprise (Taille de l'entreprise, domaine d'expertise...)"
-                        rows="5"
-                        maxlength="500"
-                        required
-                    ></textarea>
+                    <label for="description">Description <span aria-hidden="true">*</span></label>
+                    <textarea id="description"
+                              name="description"
+                              placeholder="Faites une description de votre entreprise (taille, domaine d'expertise...)"
+                              rows="5"
+                              maxlength="500"
+                              required
+                              aria-required="true"><?= htmlspecialchars($entreprise['description'] ?? Validation::oldValue('description')) ?></textarea>
                 </div>
 
+                <!-- Email -->
                 <div class="input-group">
-                    <label>Email</label>
-                    <input id="email" type="email" name="email" placeholder="contact@exemple.com" required>
+                    <label for="email">Email <span aria-hidden="true">*</span></label>
+                    <input id="email"
+                           type="email"
+                           name="email"
+                           placeholder="contact@exemple.com"
+                           value="<?= htmlspecialchars($entreprise['email'] ?? Validation::oldValue('email')) ?>"
+                           required
+                           aria-required="true"
+                           autocomplete="email">
                 </div>
 
+                <!-- Téléphone -->
                 <div class="input-group">
-                    <label>Numéro de téléphone</label>
-                    <input id="tel" type="tel" name="tel" placeholder="06 12 34 56 78" required>
-                </div>
-                
-                <div class="input-group">
-                    <label>Image de fond</label>
-                    <input 
-                    id="image_fond" 
-                    type="file" 
-                    name="image_fond" 
-                    accept="image/*" >
-                </div>
-                
-                <div class="input-group">
-                    <label>Logo entreprise</label>
-                    <input id="image_logo" type="file" name="image_logo" accept="image/*">
+                    <label for="tel">Numéro de téléphone <span aria-hidden="true">*</span></label>
+                    <input id="tel"
+                           type="tel"
+                           name="tel"
+                           placeholder="0612345678"
+                           value="<?= htmlspecialchars($entreprise['tel'] ?? Validation::oldValue('tel')) ?>"
+                           pattern="^0[1-9][0-9]{8}$"
+                           required
+                           aria-required="true"
+                           aria-describedby="tel-hint">
+                    <span id="tel-hint" class="field-hint">Format : 10 chiffres commençant par 0</span>
                 </div>
 
-                <button type="submit">Inscrire l’entreprise</button>
+                <!-- Image de fond -->
+                <div class="input-group">
+                    <label for="image_fond">Image de fond <?= !isset($entreprise) ? '<span aria-hidden="true">*</span>' : '' ?></label>
+                    <?php if (isset($entreprise) && !empty($entreprise['image_fond'])): ?>
+                        <img src="/images/entreprises/fond/<?= htmlspecialchars($entreprise['image_fond']) ?>"
+                             alt="Image de fond actuelle"
+                             style="max-height:80px; margin-bottom:0.5rem; border-radius:8px;">
+                        <p class="field-hint">Laissez vide pour conserver l'image actuelle</p>
+                    <?php endif; ?>
+                    <input id="image_fond"
+                           type="file"
+                           name="image_fond"
+                           accept="image/*"
+                           <?= !isset($entreprise) ? 'required' : '' ?>>
+                </div>
+
+                <!-- Logo -->
+                <div class="input-group">
+                    <label for="image_logo">Logo de l'entreprise <?= !isset($entreprise) ? '<span aria-hidden="true">*</span>' : '' ?></label>
+                    <?php if (isset($entreprise) && !empty($entreprise['image_logo'])): ?>
+                        <img src="/images/entreprises/logo/<?= htmlspecialchars($entreprise['image_logo']) ?>"
+                             alt="Logo actuel"
+                             style="max-height:60px; margin-bottom:0.5rem; border-radius:8px;">
+                        <p class="field-hint">Laissez vide pour conserver le logo actuel</p>
+                    <?php endif; ?>
+                    <input id="image_logo"
+                           type="file"
+                           name="image_logo"
+                           accept="image/*"
+                           <?= !isset($entreprise) ? 'required' : '' ?>>
+                </div>
+
+                <button type="submit">
+                    <?= isset($entreprise) ? 'Enregistrer les modifications' : 'Créer l\'entreprise' ?>
+                </button>
 
             </form>
         </div>
     </main>
 
-
     <?php include __DIR__ . '/partials/footer.php'; ?>
 
+    <script>
+    // ===== VALIDATION JS CÔTÉ CLIENT =====
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', function(e) {
+        let valid = true;
+
+        // Nom
+        const nom = document.querySelector('#nom');
+        if (!nom.value.trim()) {
+            nom.setCustomValidity('Le nom est obligatoire.');
+            valid = false;
+        } else {
+            nom.setCustomValidity('');
+        }
+
+        // Description
+        const description = document.querySelector('#description');
+        if (!description.value.trim()) {
+            description.setCustomValidity('La description est obligatoire.');
+            valid = false;
+        } else {
+            description.setCustomValidity('');
+        }
+
+        // Email
+        const email = document.querySelector('#email');
+        if (!email.value.trim()) {
+            email.setCustomValidity("L'email est obligatoire.");
+            valid = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+            email.setCustomValidity("Veuillez saisir un email valide.");
+            valid = false;
+        } else {
+            email.setCustomValidity('');
+        }
+
+        // Téléphone
+        const tel = document.querySelector('#tel');
+        if (!tel.value.trim()) {
+            tel.setCustomValidity('Le téléphone est obligatoire.');
+            valid = false;
+        } else if (!/^0[1-9][0-9]{8}$/.test(tel.value.replace(/\s/g, ''))) {
+            tel.setCustomValidity('Format invalide — 10 chiffres commençant par 0.');
+            valid = false;
+        } else {
+            tel.setCustomValidity('');
+        }
+
+        if (!valid) {
+            e.preventDefault();
+            form.reportValidity();
+        }
+    });
+
+    // ===== RESET setCustomValidity à la saisie =====
+    document.querySelectorAll('input, textarea').forEach(function(el) {
+        el.addEventListener('input', function() {
+            this.setCustomValidity('');
+        });
+    });
+    </script>
 </body>
 </html>
